@@ -953,6 +953,54 @@ namespace ElectrumGames.Core.Player.Movement
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""UiEvents"",
+            ""id"": ""759c82e1-d0c3-45c5-b7e7-f2759ed0a193"",
+            ""actions"": [
+                {
+                    ""name"": ""OpenJournal"",
+                    ""type"": ""Button"",
+                    ""id"": ""3c301f87-3738-4211-8167-2f02972bd304"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""eea7bec2-7a7c-412a-9cc7-38b4e6f94e5c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""8bc20407-dca9-4d04-bc5e-4fdfeabc3025"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""OpenJournal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1d9f164b-ac95-438a-808b-93edaf8e8f4c"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""OpenMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1039,12 +1087,17 @@ namespace ElectrumGames.Core.Player.Movement
             m_UI_ScrollWheel = m_UI.FindAction("ScrollWheel", throwIfNotFound: true);
             m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
             m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+            // UiEvents
+            m_UiEvents = asset.FindActionMap("UiEvents", throwIfNotFound: true);
+            m_UiEvents_OpenJournal = m_UiEvents.FindAction("OpenJournal", throwIfNotFound: true);
+            m_UiEvents_OpenMenu = m_UiEvents.FindAction("OpenMenu", throwIfNotFound: true);
         }
 
         ~@InputActions()
         {
             Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, InputActions.Player.Disable() has not been called.");
             Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, InputActions.UI.Disable() has not been called.");
+            Debug.Assert(!m_UiEvents.enabled, "This will cause a leak and performance issues, InputActions.UiEvents.Disable() has not been called.");
         }
 
         public void Dispose()
@@ -1314,6 +1367,60 @@ namespace ElectrumGames.Core.Player.Movement
             }
         }
         public UIActions @UI => new UIActions(this);
+
+        // UiEvents
+        private readonly InputActionMap m_UiEvents;
+        private List<IUiEventsActions> m_UiEventsActionsCallbackInterfaces = new List<IUiEventsActions>();
+        private readonly InputAction m_UiEvents_OpenJournal;
+        private readonly InputAction m_UiEvents_OpenMenu;
+        public struct UiEventsActions
+        {
+            private @InputActions m_Wrapper;
+            public UiEventsActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+            public InputAction @OpenJournal => m_Wrapper.m_UiEvents_OpenJournal;
+            public InputAction @OpenMenu => m_Wrapper.m_UiEvents_OpenMenu;
+            public InputActionMap Get() { return m_Wrapper.m_UiEvents; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(UiEventsActions set) { return set.Get(); }
+            public void AddCallbacks(IUiEventsActions instance)
+            {
+                if (instance == null || m_Wrapper.m_UiEventsActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_UiEventsActionsCallbackInterfaces.Add(instance);
+                @OpenJournal.started += instance.OnOpenJournal;
+                @OpenJournal.performed += instance.OnOpenJournal;
+                @OpenJournal.canceled += instance.OnOpenJournal;
+                @OpenMenu.started += instance.OnOpenMenu;
+                @OpenMenu.performed += instance.OnOpenMenu;
+                @OpenMenu.canceled += instance.OnOpenMenu;
+            }
+
+            private void UnregisterCallbacks(IUiEventsActions instance)
+            {
+                @OpenJournal.started -= instance.OnOpenJournal;
+                @OpenJournal.performed -= instance.OnOpenJournal;
+                @OpenJournal.canceled -= instance.OnOpenJournal;
+                @OpenMenu.started -= instance.OnOpenMenu;
+                @OpenMenu.performed -= instance.OnOpenMenu;
+                @OpenMenu.canceled -= instance.OnOpenMenu;
+            }
+
+            public void RemoveCallbacks(IUiEventsActions instance)
+            {
+                if (m_Wrapper.m_UiEventsActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            public void SetCallbacks(IUiEventsActions instance)
+            {
+                foreach (var item in m_Wrapper.m_UiEventsActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_UiEventsActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        public UiEventsActions @UiEvents => new UiEventsActions(this);
         private int m_KeyboardMouseSchemeIndex = -1;
         public InputControlScheme KeyboardMouseScheme
         {
@@ -1381,6 +1488,11 @@ namespace ElectrumGames.Core.Player.Movement
             void OnScrollWheel(InputAction.CallbackContext context);
             void OnTrackedDevicePosition(InputAction.CallbackContext context);
             void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+        }
+        public interface IUiEventsActions
+        {
+            void OnOpenJournal(InputAction.CallbackContext context);
+            void OnOpenMenu(InputAction.CallbackContext context);
         }
     }
 }
