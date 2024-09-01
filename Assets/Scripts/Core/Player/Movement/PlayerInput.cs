@@ -27,7 +27,6 @@ namespace ElectrumGames.Core.Player.Movement
         {
             _inputActions.Player.SetCallbacks(this);
             _inputActions.Player.Enable();
-            _inputActions.Enable();
         }
 
         public void Update(float deltaTime)
