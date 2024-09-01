@@ -1,0 +1,335 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3b320e139884360afa1e135ba0f4d2f, type: 3}
+  m_Name: ActivityConfig
+  m_EditorClassIdentifier: 
+  ghostActivities:
+  - <GhostType>k__BackingField: 0
+    throws: {x: 0.3, y: 0.6}
+    doorsInteractions: {x: 0.2, y: 0.4}
+    switchesInteractions: {x: 0.25, y: 0.45}
+    otherInteractions: {x: 0.25, y: 0.45}
+    ghostEvents: {x: 0.6, y: 0.8}
+    <DistanceMoving>k__BackingField: 2
+    <DefaultSanityStartHunting>k__BackingField: 50
+    <ModifiedSanityStartHunting>k__BackingField: 50
+    <DefaultHuntingSpeed>k__BackingField: 3
+    <HasSpeedUp>k__BackingField: 0
+    <GhostVisibility>k__BackingField: 2
+    <HuntCooldown>k__BackingField: 30
+    <GhostEventCooldown>k__BackingField: 35
+    <AbilityCooldown>k__BackingField: 0
+    <AbilityChance>k__BackingField: 0
+  - <GhostType>k__BackingField: 1
+    throws: {x: 0.325, y: 0.65}
+    doorsInteractions: {x: 0.35, y: 0.55}
+    switchesInteractions: {x: 0.25, y: 0.45}
+    otherInteractions: {x: 0.375, y: 0.565}
+    ghostEvents: {x: 0.3, y: 0.6}
+    <DistanceMoving>k__BackingField: 2
+    <DefaultSanityStartHunting>k__BackingField: 50
+    <ModifiedSanityStartHunting>k__BackingField: 50
+    <DefaultHuntingSpeed>k__BackingField: 1.8
+    <HasSpeedUp>k__BackingField: 1
+    <GhostVisibility>k__BackingField: 2
+    <HuntCooldown>k__BackingField: 35
+    <GhostEventCooldown>k__BackingField: 40
+    <AbilityCooldown>k__BackingField: 0
+    <AbilityChance>k__BackingField: 0
+  - <GhostType>k__BackingField: 2
+    throws: {x: 0.2875, y: 0.55}
+    doorsInteractions: {x: 0.25, y: 0.45}
+    switchesInteractions: {x: 0.3, y: 0.55}
+    otherInteractions: {x: 0.3, y: 0.6}
+    ghostEvents: {x: 0.55, y: 0.75}
+    <DistanceMoving>k__BackingField: 3
+    <DefaultSanityStartHunting>k__BackingField: 50
+    <ModifiedSanityStartHunting>k__BackingField: 50
+    <DefaultHuntingSpeed>k__BackingField: 1.8
+    <HasSpeedUp>k__BackingField: 1
+    <GhostVisibility>k__BackingField: 1
+    <HuntCooldown>k__BackingField: 30
+    <GhostEventCooldown>k__BackingField: 30
+    <AbilityCooldown>k__BackingField: 0
+    <AbilityChance>k__BackingField: 0
+  - <GhostType>k__BackingField: 3
+    throws: {x: 0.375, y: 0.7}
+    doorsInteractions: {x: 0.3, y: 0.5}
+    switchesInteractions: {x: 0.5, y: 0.8}
+    otherInteractions: {x: 0.3, y: 0.55}
+    ghostEvents: {x: 0.35, y: 0.6}
+    <DistanceMoving>k__BackingField: 1
+    <DefaultSanityStartHunting>k__BackingField: 60
+    <ModifiedSanityStartHunting>k__BackingField: 40
+    <DefaultHuntingSpeed>k__BackingField: 1.8
+    <HasSpeedUp>k__BackingField: 1
+    <GhostVisibility>k__BackingField: 1
+    <HuntCooldown>k__BackingField: 35
+    <GhostEventCooldown>k__BackingField: 40
+    <AbilityCooldown>k__BackingField: 0
+    <AbilityChance>k__BackingField: 0
+  - <GhostType>k__BackingField: 4
+    throws: {x: 0.35, y: 0.65}
+    doorsInteractions: {x: 0.45, y: 0.75}
+    switchesInteractions: {x: 0.3, y: 0.5}
+    otherInteractions: {x: 0.35, y: 0.55}
+    ghostEvents: {x: 0.35, y: 0.65}
+    <DistanceMoving>k__BackingField: 2
+    <DefaultSanityStartHunting>k__BackingField: 60
+    <ModifiedSanityStartHunting>k__BackingField: 35
+    <DefaultHuntingSpeed>k__BackingField: 1.8
+    <HasSpeedUp>k__BackingField: 1
+    <GhostVisibility>k__BackingField: 2
+    <HuntCooldown>k__BackingField: 35
+    <GhostEventCooldown>k__BackingField: 35
+    <AbilityCooldown>k__BackingField: 65
+    <AbilityChance>k__BackingField: 0.16666667
+  - <GhostType>k__BackingField: 5
+    throws: {x: 0.285, y: 0.55}
+    doorsInteractions: {x: 0.35, y: 0.625}
+    switchesInteractions: {x: 0.425, y: 0.6625}
+    otherInteractions: {x: 0.3, y: 0.5625}
+    ghostEvents: {x: 0.4, y: 0.65}
+    <DistanceMoving>k__BackingField: 2
+    <DefaultSanityStartHunting>k__BackingField: 50
+    <ModifiedSanityStartHunting>k__BackingField: 50
+    <DefaultHuntingSpeed>k__BackingField: 1.6
+    <HasSpeedUp>k__BackingField: 1
+    <GhostVisibility>k__BackingField: 0
+    <HuntCooldown>k__BackingField: 35
+    <GhostEventCooldown>k__BackingField: 35
+    <AbilityCooldown>k__BackingField: 0
+    <AbilityChance>k__BackingField: 0
+  - <GhostType>k__BackingField: 6
+    throws: {x: 0.3, y: 0.55}
+    doorsInteractions: {x: 0.5, y: 0.8}
+    switchesInteractions: {x: 0.285, y: 0.505}
+    otherInteractions: {x: 0.3, y: 0.575}
+    ghostEvents: {x: 0.5, y: 0.725}
+    <DistanceMoving>k__BackingField: 2
+    <DefaultSanityStartHunting>k__BackingField: 50
+    <ModifiedSanityStartHunting>k__BackingField: 50
+    <DefaultHuntingSpeed>k__BackingField: 1.8
+    <HasSpeedUp>k__BackingField: 1
+    <GhostVisibility>k__BackingField: 2
+    <HuntCooldown>k__BackingField: 40
+    <GhostEventCooldown>k__BackingField: 30
+    <AbilityCooldown>k__BackingField: 0
+    <AbilityChance>k__BackingField: 0
+  - <GhostType>k__BackingField: 7
+    throws: {x: 0, y: 1}
+    doorsInteractions: {x: 0, y: 1}
+    switchesInteractions: {x: 0, y: 1}
+    otherInteractions: {x: 0, y: 1}
+    ghostEvents: {x: 0.5, y: 0.7}
+    <DistanceMoving>k__BackingField: 3
+    <DefaultSanityStartHunting>k__BackingField: 50
+    <ModifiedSanityStartHunting>k__BackingField: 50
+    <DefaultHuntingSpeed>k__BackingField: 1.8
+    <HasSpeedUp>k__BackingField: 1
+    <GhostVisibility>k__BackingField: 1
+    <HuntCooldown>k__BackingField: 35
+    <GhostEventCooldown>k__BackingField: 30
+    <AbilityCooldown>k__BackingField: 0
+    <AbilityChance>k__BackingField: 0
+  - <GhostType>k__BackingField: 8
+    throws: {x: 0.3, y: 0.55}
+    doorsInteractions: {x: 0.3, y: 0.6}
+    switchesInteractions: {x: 0.25, y: 0.465}
+    otherInteractions: {x: 0.265, y: 0.475}
+    ghostEvents: {x: 0.335, y: 0.565}
+    <DistanceMoving>k__BackingField: 2
+    <DefaultSanityStartHunting>k__BackingField: 50
+    <ModifiedSanityStartHunting>k__BackingField: 50
+    <DefaultHuntingSpeed>k__BackingField: 1.8
+    <HasSpeedUp>k__BackingField: 1
+    <GhostVisibility>k__BackingField: 1
+    <HuntCooldown>k__BackingField: 35
+    <GhostEventCooldown>k__BackingField: 35
+    <AbilityCooldown>k__BackingField: 25
+    <AbilityChance>k__BackingField: 0.35
+  - <GhostType>k__BackingField: 9
+    throws: {x: 0.35, y: 0.65}
+    doorsInteractions: {x: 0.3, y: 0.585}
+    switchesInteractions: {x: 0.25, y: 0.455}
+    otherInteractions: {x: 0.25, y: 0.5}
+    ghostEvents: {x: 0.615, y: 0.825}
+    <DistanceMoving>k__BackingField: 1
+    <DefaultSanityStartHunting>k__BackingField: 60
+    <ModifiedSanityStartHunting>k__BackingField: 60
+    <DefaultHuntingSpeed>k__BackingField: 1.8
+    <HasSpeedUp>k__BackingField: 1
+    <GhostVisibility>k__BackingField: 1
+    <HuntCooldown>k__BackingField: 30
+    <GhostEventCooldown>k__BackingField: 25
+    <AbilityCooldown>k__BackingField: 60
+    <AbilityChance>k__BackingField: 0.2
+  - <GhostType>k__BackingField: 10
+    throws: {x: 0.3, y: 0.55}
+    doorsInteractions: {x: 0.3, y: 0.575}
+    switchesInteractions: {x: 0.3, y: 0.485}
+    otherInteractions: {x: 0.35, y: 0.525}
+    ghostEvents: {x: 0.3, y: 0.515}
+    <DistanceMoving>k__BackingField: 1
+    <DefaultSanityStartHunting>k__BackingField: 40
+    <ModifiedSanityStartHunting>k__BackingField: 40
+    <DefaultHuntingSpeed>k__BackingField: 1.6
+    <HasSpeedUp>k__BackingField: 1
+    <GhostVisibility>k__BackingField: 2
+    <HuntCooldown>k__BackingField: 35
+    <GhostEventCooldown>k__BackingField: 40
+    <AbilityCooldown>k__BackingField: 0
+    <AbilityChance>k__BackingField: 0
+  - <GhostType>k__BackingField: 11
+    throws: {x: 0.33, y: 0.55}
+    doorsInteractions: {x: 0.425, y: 0.615}
+    switchesInteractions: {x: 0.355, y: 0.6225}
+    otherInteractions: {x: 0.345, y: 0.595}
+    ghostEvents: {x: 0.325, y: 0.615}
+    <DistanceMoving>k__BackingField: 0
+    <DefaultSanityStartHunting>k__BackingField: 50
+    <ModifiedSanityStartHunting>k__BackingField: 50
+    <DefaultHuntingSpeed>k__BackingField: 1.8
+    <HasSpeedUp>k__BackingField: 1
+    <GhostVisibility>k__BackingField: 1
+    <HuntCooldown>k__BackingField: 35
+    <GhostEventCooldown>k__BackingField: 35
+    <AbilityCooldown>k__BackingField: 0
+    <AbilityChance>k__BackingField: 0
+  - <GhostType>k__BackingField: 12
+    throws: {x: 0.325, y: 0.625}
+    doorsInteractions: {x: 0.33, y: 0.615}
+    switchesInteractions: {x: 0.3, y: 0.65}
+    otherInteractions: {x: 0.33, y: 0.595}
+    ghostEvents: {x: 0.4, y: 0.685}
+    <DistanceMoving>k__BackingField: 2
+    <DefaultSanityStartHunting>k__BackingField: 50
+    <ModifiedSanityStartHunting>k__BackingField: 50
+    <DefaultHuntingSpeed>k__BackingField: 1.8
+    <HasSpeedUp>k__BackingField: 1
+    <GhostVisibility>k__BackingField: 1
+    <HuntCooldown>k__BackingField: 35
+    <GhostEventCooldown>k__BackingField: 35
+    <AbilityCooldown>k__BackingField: 120
+    <AbilityChance>k__BackingField: 1
+  - <GhostType>k__BackingField: 13
+    throws: {x: 0.33, y: 0.6}
+    doorsInteractions: {x: 0.35, y: 0.625}
+    switchesInteractions: {x: 0.315, y: 0.635}
+    otherInteractions: {x: 0.325, y: 0.615}
+    ghostEvents: {x: 0.385, y: 0.7}
+    <DistanceMoving>k__BackingField: 2
+    <DefaultSanityStartHunting>k__BackingField: 50
+    <ModifiedSanityStartHunting>k__BackingField: 50
+    <DefaultHuntingSpeed>k__BackingField: 1.8
+    <HasSpeedUp>k__BackingField: 1
+    <GhostVisibility>k__BackingField: 1
+    <HuntCooldown>k__BackingField: 35
+    <GhostEventCooldown>k__BackingField: 35
+    <AbilityCooldown>k__BackingField: 0
+    <AbilityChance>k__BackingField: 0
+  - <GhostType>k__BackingField: 14
+    throws: {x: 0.415, y: 0.7125}
+    doorsInteractions: {x: 0.25, y: 0.515}
+    switchesInteractions: {x: 0.275, y: 0.495}
+    otherInteractions: {x: 0.285, y: 0.515}
+    ghostEvents: {x: 0.585, y: 0.775}
+    <DistanceMoving>k__BackingField: 3
+    <DefaultSanityStartHunting>k__BackingField: 60
+    <ModifiedSanityStartHunting>k__BackingField: 60
+    <DefaultHuntingSpeed>k__BackingField: 2
+    <HasSpeedUp>k__BackingField: 1
+    <GhostVisibility>k__BackingField: 2
+    <HuntCooldown>k__BackingField: 30
+    <GhostEventCooldown>k__BackingField: 35
+    <AbilityCooldown>k__BackingField: 90
+    <AbilityChance>k__BackingField: 0.25
+  - <GhostType>k__BackingField: 15
+    throws: {x: 0.315, y: 0.525}
+    doorsInteractions: {x: 0.235, y: 0.5}
+    switchesInteractions: {x: 0.345, y: 0.665}
+    otherInteractions: {x: 0.225, y: 0.475}
+    ghostEvents: {x: 0.55, y: 0.75}
+    <DistanceMoving>k__BackingField: 3
+    <DefaultSanityStartHunting>k__BackingField: 50
+    <ModifiedSanityStartHunting>k__BackingField: 50
+    <DefaultHuntingSpeed>k__BackingField: 2.1
+    <HasSpeedUp>k__BackingField: 1
+    <GhostVisibility>k__BackingField: 2
+    <HuntCooldown>k__BackingField: 35
+    <GhostEventCooldown>k__BackingField: 40
+    <AbilityCooldown>k__BackingField: 10
+    <AbilityChance>k__BackingField: 0.85
+  - <GhostType>k__BackingField: 16
+    throws: {x: 0.33, y: 0.63}
+    doorsInteractions: {x: 0.225, y: 0.485}
+    switchesInteractions: {x: 0.235, y: 0.475}
+    otherInteractions: {x: 0.23, y: 0.46}
+    ghostEvents: {x: 0.325, y: 0.625}
+    <DistanceMoving>k__BackingField: 3
+    <DefaultSanityStartHunting>k__BackingField: 50
+    <ModifiedSanityStartHunting>k__BackingField: 50
+    <DefaultHuntingSpeed>k__BackingField: 1.8
+    <HasSpeedUp>k__BackingField: 1
+    <GhostVisibility>k__BackingField: 2
+    <HuntCooldown>k__BackingField: 35
+    <GhostEventCooldown>k__BackingField: 35
+    <AbilityCooldown>k__BackingField: 90
+    <AbilityChance>k__BackingField: 0.35
+  - <GhostType>k__BackingField: 17
+    throws: {x: 0.55, y: 0.755}
+    doorsInteractions: {x: 0.4, y: 0.665}
+    switchesInteractions: {x: 0.425, y: 0.7}
+    otherInteractions: {x: 0.4, y: 0.665}
+    ghostEvents: {x: 0.425, y: 0.685}
+    <DistanceMoving>k__BackingField: 4
+    <DefaultSanityStartHunting>k__BackingField: 50
+    <ModifiedSanityStartHunting>k__BackingField: 50
+    <DefaultHuntingSpeed>k__BackingField: 1.8
+    <HasSpeedUp>k__BackingField: 1
+    <GhostVisibility>k__BackingField: 1
+    <HuntCooldown>k__BackingField: 40
+    <GhostEventCooldown>k__BackingField: 35
+    <AbilityCooldown>k__BackingField: 60
+    <AbilityChance>k__BackingField: 0.6666667
+  - <GhostType>k__BackingField: 18
+    throws: {x: 0.33, y: 0.525}
+    doorsInteractions: {x: 0.235, y: 0.5}
+    switchesInteractions: {x: 0.225, y: 0.45}
+    otherInteractions: {x: 0.23, y: 0.47}
+    ghostEvents: {x: 0.3, y: 0.54}
+    <DistanceMoving>k__BackingField: 3
+    <DefaultSanityStartHunting>k__BackingField: 50
+    <ModifiedSanityStartHunting>k__BackingField: 50
+    <DefaultHuntingSpeed>k__BackingField: 1.35
+    <HasSpeedUp>k__BackingField: 0
+    <GhostVisibility>k__BackingField: 1
+    <HuntCooldown>k__BackingField: 35
+    <GhostEventCooldown>k__BackingField: 35
+    <AbilityCooldown>k__BackingField: 0
+    <AbilityChance>k__BackingField: 0
+  - <GhostType>k__BackingField: 19
+    throws: {x: 0.35, y: 0.675}
+    doorsInteractions: {x: 0.325, y: 0.715}
+    switchesInteractions: {x: 0, y: 0}
+    otherInteractions: {x: 0.33, y: 0.685}
+    ghostEvents: {x: 0.33, y: 0.575}
+    <DistanceMoving>k__BackingField: 2
+    <DefaultSanityStartHunting>k__BackingField: 50
+    <ModifiedSanityStartHunting>k__BackingField: 50
+    <DefaultHuntingSpeed>k__BackingField: 2.25
+    <HasSpeedUp>k__BackingField: 0
+    <GhostVisibility>k__BackingField: 2
+    <HuntCooldown>k__BackingField: 35
+    <GhostEventCooldown>k__BackingField: 40
+    <AbilityCooldown>k__BackingField: 0
+    <AbilityChance>k__BackingField: 0

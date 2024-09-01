@@ -1,0 +1,103 @@
+﻿using System.Collections.Generic;
+using ElectrumGames.Configs;
+using ElectrumGames.Core.Inventory;
+using ElectrumGames.Core.Player.Journal;
+using ElectrumGames.Core.Player.Movement;
+using ElectrumGames.Core.PlayerVisuals;
+using UnityEngine;
+using Zenject;
+
+namespace ElectrumGames.Core.Player
+{
+    public abstract class PlayerBase : MonoBehaviour, IPlayer
+    {
+        [SerializeField] private CharacterController characterController;
+        [SerializeField] protected Camera playerCamera;
+        [Space]
+        [SerializeField] private Transform headBob;
+        [SerializeField] private Transform stayCameraTransform;
+        [SerializeField] private Transform sitCameraTransform;
+
+        protected IInventory inventory;
+        protected IInput input;
+        protected IMotor motor;
+        protected CameraLifter cameraLifter;
+
+        private bool _isInited;
+        
+        protected List<IInputSimulateVisuals> simulateVisuals;
+
+        protected PlayerConfig playerConfig;
+        protected ConfigService configService;
+
+        public bool IsHost { get; protected set; }
+        public int NetId { get; protected set; }
+        public int OwnerId { get; protected set; }
+
+        public IHaveJournal Journal { get; protected set; }
+
+        public Vector3 Position => transform.position;
+
+        public void SetNetId(int netId, int ownerId = -1)
+        {
+            NetId = netId;
+            OwnerId = ownerId;
+        }
+
+        private void Update()
+        {
+            if (!_isInited)
+                return;
+
+            var deltaTime = Time.deltaTime;
+
+            input.Update(deltaTime);
+            motor.Simulate(input, deltaTime);
+            
+            cameraLifter.UpdateInput(input);
+
+            foreach (var simulateVisual in simulateVisuals)
+            {
+                simulateVisual.Simulate(input, deltaTime);
+            }
+        }
+
+        private void FixedUpdate()
+        {
+            if (!_isInited)
+                return;
+
+            motor.FixedSimulate(input, Time.fixedDeltaTime);
+        }
+
+        public void Spawn(PlayerConfig config, ConfigService configSrv, bool isHost, InputActions inputActions)
+        {
+            input = new PlayerInput(inputActions);
+            input.Init();
+
+            IsHost = isHost;
+
+            playerConfig = config;
+            configService = configSrv;
+
+            motor = new PlayerMovementMotor(characterController, playerCamera, config, configService);
+            cameraLifter = new CameraLifter(playerConfig, headBob, stayCameraTransform.localPosition,
+                sitCameraTransform.localPosition);
+
+            playerCamera.fieldOfView = configService.FOV;
+
+            simulateVisuals = new List<IInputSimulateVisuals>();
+            
+            OnAfterSpawn();
+            _isInited = true;
+        }
+
+        protected virtual void OnAfterSpawn()
+        {
+        }
+
+        public void Despawn()
+        {
+        }
+    }
+}
