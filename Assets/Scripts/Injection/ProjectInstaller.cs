@@ -19,7 +19,7 @@ public class ProjectInstaller : MonoInstaller
         Container.BindInstance(playerConfig).AsSingle();
         
         Container.Bind<ConfigService>().AsSingle().NonLazy();
-        Container.BindInstance(userConfig).WhenInjectedInto<ConfigService>();
+        Container.BindInstance(userConfig).AsSingle();
 
         Container.Bind<InputActions>().AsSingle();
     }

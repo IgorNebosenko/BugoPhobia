@@ -24,6 +24,7 @@ namespace ElectrumGames.UI.Presenters
 
         public void OnSettingsButtonClicked()
         {
+            _viewManager.ShowView<SettingsPresenter>();
         }
 
         public void OnExitButtonClicked()
