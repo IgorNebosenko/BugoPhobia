@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using ElectrumGames.MVP;
+using ElectrumGames.UI.Components;
 using ElectrumGames.UI.Presenters;
 using Sirenix.OdinInspector;
 using TMPro;
@@ -25,59 +28,91 @@ namespace ElectrumGames.UI.Views
         [SerializeField, FoldoutGroup("Head")] private Button audioButton;
         [SerializeField, FoldoutGroup("Head")] private Button controlsButton;
 
+        [SerializeField, FoldoutGroup("Items templates")] private SettingsSliderItem settingsSliderItem;
+        [SerializeField, FoldoutGroup("Items templates")] private SettingsSelectableItem settingsSelectableItem;
+        [SerializeField, FoldoutGroup("Items templates")] private SettingsButtonItem settingsButtonItem;
+        
         [SerializeField, FoldoutGroup("Tabs")] private GameObject gameTab;
         [SerializeField, FoldoutGroup("Tabs")] private GameObject videoTab;
         [SerializeField, FoldoutGroup("Tabs")] private GameObject audioTab;
         [SerializeField, FoldoutGroup("Tabs")] private GameObject controlsTab;
-        
-        [SerializeField, FoldoutGroup("Game")] private Slider xSensitivitySlider;
-        [SerializeField, FoldoutGroup("Game")] private TMP_Text xSensitivityText;
         [Space]
-        [SerializeField, FoldoutGroup("Game")] private Slider ySensitivitySlider;
-        [SerializeField, FoldoutGroup("Game")] private TMP_Text ySensitivityText;
-        [Space]
-        [SerializeField, FoldoutGroup("Game")] private Button previousLanguageButton;
-        [SerializeField, FoldoutGroup("Game")] private TMP_Text languageText;
-        [SerializeField, FoldoutGroup("Game")] private Button nextLanguageButton;
-        [Space]
-        [SerializeField, FoldoutGroup("Game")] private Button previousVoiceButton;
-        [SerializeField, FoldoutGroup("Game")] private TMP_Text languageVoice;
-        [SerializeField, FoldoutGroup("Game")] private Button nextVoiceButton;
-
-        [SerializeField, FoldoutGroup("Video")] private Button previousResolutionButton;
-        [SerializeField, FoldoutGroup("Video")] private TMP_Text resolutionText;
-        [SerializeField, FoldoutGroup("Video")] private Button nextResolutionButton;
-        [Space]
-        [SerializeField, FoldoutGroup("Video")] private Button previousFpsButton;
-        [SerializeField, FoldoutGroup("Video")] private TMP_Text fpsText;
-        [SerializeField, FoldoutGroup("Video")] private Button nextFpsButton;
-        [Space]
-        [SerializeField, FoldoutGroup("Video")] private Slider fovSlider;
-        [SerializeField, FoldoutGroup("Video")] private TMP_Text fovText;
-        
-        [SerializeField, FoldoutGroup("Sounds")] private Slider musicSlider;
-        [SerializeField, FoldoutGroup("Sounds")] private TMP_Text musicText;
-        
-        //TODO Sounds, input, output device
+        [SerializeField, FoldoutGroup("Tabs")] private Transform gameTabContainer;
+        [SerializeField, FoldoutGroup("Tabs")] private Transform videoTabContainer;
+        [SerializeField, FoldoutGroup("Tabs")] private Transform audioTabContainer;
+        [SerializeField, FoldoutGroup("Tabs")] private Transform controlsTabContainer;
 
         private void Start()
         {
+            #region Game tab
+            
+            Instantiate(settingsSliderItem, gameTabContainer).Init("X Sensitivity", 
+                Presenter.UserConfig.MinXSensitivity, Presenter.UserConfig.MaxXSensitivity, 
+                Presenter.ConfigService.XSensitivity, Presenter.OnXSensitivitySliderChanged, 
+                SettingsSliderItem.DisplayDigitsMode.OneAfterComa);
+            
+            Instantiate(settingsSliderItem, gameTabContainer).Init("Y Sensitivity", 
+                Presenter.UserConfig.MinYSensitivity, Presenter.UserConfig.MaxYSensitivity, 
+                Presenter.ConfigService.YSensitivity, Presenter.OnYSensitivitySliderChanged, 
+                SettingsSliderItem.DisplayDigitsMode.OneAfterComa);
+            
+            Instantiate(settingsSelectableItem, gameTabContainer).Init("*Language", 
+                new List<string>{"English"}, Presenter.OnChangeLanguage, 0);
+            
+            Instantiate(settingsSelectableItem, gameTabContainer).Init("*Voice",
+                new List<string>{"English"}, Presenter.OnChangeVoice, 0);
+            
+            Instantiate(settingsSelectableItem, gameTabContainer).Init("*Recognition system",
+                new List<string>{"System", "Vosk", "Text", "None"}, Presenter.OnChangeRecognitionSystem,
+                0);
+            #endregion
+
+            #region Video
+            var resolutions = Screen.resolutions.Select(x => $"{x.width}x{x.height}").ToList();
+            var fpsVariants = new List<string>{"30", "60", "75", "90", "120", "144", "170", "240", "Unlimited"};
+            
+            Instantiate(settingsSelectableItem, videoTabContainer).Init("*Resolution",
+                resolutions, Presenter.OnChangeResolution, 0);
+            
+            Instantiate(settingsSelectableItem, videoTabContainer).Init("*FPS",
+                fpsVariants, Presenter.OnChangeResolution, 1);
+            
+            Instantiate(settingsSliderItem, videoTabContainer).Init("*FOV", 
+                Presenter.UserConfig.MinFOV, Presenter.UserConfig.MaxFOV, 
+                Presenter.ConfigService.FOV, Presenter.OnChangeFov, 
+                SettingsSliderItem.DisplayDigitsMode.Rounded);
+            
+            #endregion
+
+            #region Audio
+            
+            Instantiate(settingsSliderItem, audioTabContainer).Init("*Music", 
+                0f, 1f, 
+                1f, Presenter.OnChangeMusicVolume, 
+                SettingsSliderItem.DisplayDigitsMode.AsHundredPercents);
+            Instantiate(settingsSliderItem, audioTabContainer).Init("*Sounds", 
+                0f, 1f, 
+                1f, Presenter.OnChangeSoundsVolume, 
+                SettingsSliderItem.DisplayDigitsMode.AsHundredPercents);
+            
+            Instantiate(settingsSelectableItem, audioTabContainer).Init("*Output device",
+                new List<string>{"Default"}, Presenter.OnOutputDeviceChanged, 0);
+            
+            Instantiate(settingsSelectableItem, audioTabContainer).Init("*Input device",
+                new List<string>{"Default"}, Presenter.OnInputDeviceChanged, 0);
+
+            #endregion
+
+            #region Controls
+
+            #endregion
+            
             SwitchTab(SettingsTab.Game);
             
             gameButton.onClick.AddListener(() => SwitchTab(SettingsTab.Game));
             videoButton.onClick.AddListener(() => SwitchTab(SettingsTab.Video));
             audioButton.onClick.AddListener(() => SwitchTab(SettingsTab.Audio));
             controlsButton.onClick.AddListener(() => SwitchTab(SettingsTab.Controls));
-
-            xSensitivitySlider.minValue = Presenter.UserConfig.MinXSensitivity;
-            xSensitivitySlider.maxValue = Presenter.UserConfig.MaxXSensitivity;
-            xSensitivitySlider.value = Presenter.ConfigService.XSensitivity;
-            xSensitivitySlider.onValueChanged.AddListener(Presenter.OnXSensitivitySliderChanged);
-            
-            ySensitivitySlider.minValue = Presenter.UserConfig.MinYSensitivity;
-            ySensitivitySlider.maxValue = Presenter.UserConfig.MaxYSensitivity;
-            ySensitivitySlider.value = Presenter.ConfigService.YSensitivity;
-            ySensitivitySlider.onValueChanged.AddListener(Presenter.OnYSensitivitySliderChanged);
             
             //TODO Change language
             //TODO Change voice
@@ -87,9 +122,9 @@ namespace ElectrumGames.UI.Views
             //TODO FOV
             
             //TODO music
-            
-            ChangeXSensitivityText(Presenter.ConfigService.XSensitivity);
-            ChangeYSensitivityText(Presenter.ConfigService.YSensitivity);
+            //TODO sounds
+            //TODO input device
+            //TODO output device
         }
 
         private void OnDestroy()
@@ -98,9 +133,6 @@ namespace ElectrumGames.UI.Views
             videoButton.onClick.RemoveListener(() => SwitchTab(SettingsTab.Video));
             audioButton.onClick.RemoveListener(() => SwitchTab(SettingsTab.Audio));
             controlsButton.onClick.RemoveListener(() => SwitchTab(SettingsTab.Controls));
-            
-            xSensitivitySlider.onValueChanged.RemoveListener(Presenter.OnXSensitivitySliderChanged);
-            ySensitivitySlider.onValueChanged.RemoveListener(Presenter.OnYSensitivitySliderChanged);
         }
 
 
@@ -110,16 +142,6 @@ namespace ElectrumGames.UI.Views
             videoTab.SetActive(settingsTab == SettingsTab.Video);
             audioTab.SetActive(settingsTab == SettingsTab.Audio);
             controlsTab.SetActive(settingsTab == SettingsTab.Controls);
-        }
-
-        public void ChangeXSensitivityText(float xSensitivity)
-        {
-            xSensitivityText.text = Math.Round(xSensitivity, 1).ToString(CultureInfo.InvariantCulture);
-        }
-        
-        public void ChangeYSensitivityText(float ySensitivity)
-        {
-            ySensitivityText.text = Math.Round(ySensitivity, 1).ToString(CultureInfo.InvariantCulture);
         }
     }
 }

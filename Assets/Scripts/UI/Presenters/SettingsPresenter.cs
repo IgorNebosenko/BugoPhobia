@@ -39,13 +39,47 @@ namespace ElectrumGames.UI.Presenters
         public void OnXSensitivitySliderChanged(float value)
         {
             ConfigService.XSensitivity = value;
-            View.ChangeXSensitivityText(value);
         }
 
         public void OnYSensitivitySliderChanged(float value)
         {
             ConfigService.YSensitivity = value;
-            View.ChangeYSensitivityText(value);
+        }
+
+        public void OnChangeLanguage(int value)
+        {
+        }
+
+        public void OnChangeVoice(int value)
+        {
+        }
+
+        public void OnChangeRecognitionSystem(int value)
+        {
+        }
+
+        public void OnChangeResolution(int value)
+        {
+        }
+
+        public void OnChangeFov(float value)
+        {
+        }
+
+        public void OnChangeMusicVolume(float value)
+        {
+        }
+
+        public void OnChangeSoundsVolume(float value)
+        {
+        }
+
+        public void OnOutputDeviceChanged(int value)
+        {
+        }
+
+        public void OnInputDeviceChanged(int value)
+        {
         }
     }
 }
