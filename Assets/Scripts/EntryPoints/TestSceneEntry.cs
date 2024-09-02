@@ -28,7 +28,7 @@ namespace ElectrumGames.EntryPoints
             _playersFactory.CreatePlayer(
                 true, playerSpawnpoints[0].position, playerSpawnpoints[0].rotation);
 
-            _viewManager.ShowView<InGamePresenter>();
+            _viewManager.ShowView<MenuPresenter>();
         }
     }
 }
