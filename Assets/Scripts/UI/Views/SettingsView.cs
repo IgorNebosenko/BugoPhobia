@@ -44,7 +44,7 @@ namespace ElectrumGames.UI.Views
 
         private void Start()
         {
-            #region Game tab
+            #region Game
             
             Instantiate(settingsSliderItem, gameTabContainer).Init("X Sensitivity", 
                 Presenter.UserConfig.MinXSensitivity, Presenter.UserConfig.MaxXSensitivity, 
@@ -65,9 +65,11 @@ namespace ElectrumGames.UI.Views
             Instantiate(settingsSelectableItem, gameTabContainer).Init("*Recognition system",
                 new List<string>{"System", "Vosk", "Text", "None"}, Presenter.OnChangeRecognitionSystem,
                 0);
+            
             #endregion
 
             #region Video
+            
             var resolutions = Screen.resolutions.Select(x => $"{x.width}x{x.height}").ToList();
             var fpsVariants = new List<string>{"30", "60", "75", "90", "120", "144", "170", "240", "Unlimited"};
             
@@ -104,7 +106,40 @@ namespace ElectrumGames.UI.Views
             #endregion
 
             #region Controls
-
+            
+            Instantiate(settingsButtonItem, controlsTabContainer).Init("*Forward", "W", 
+                Presenter.OnForwardActionChanged);
+            
+            Instantiate(settingsButtonItem, controlsTabContainer).Init("*Backward", "S", 
+                Presenter.OnBackwardActionChanged);
+            
+            Instantiate(settingsButtonItem, controlsTabContainer).Init("*Left", "A", 
+                Presenter.OnLeftActionChanged);
+            
+            Instantiate(settingsButtonItem, controlsTabContainer).Init("*Right", "D", 
+                Presenter.OnRightActionChanged);
+            
+            Instantiate(settingsButtonItem, controlsTabContainer).Init("*Sprint", "Shift", 
+                Presenter.OnSprintActionChanged);
+            
+            Instantiate(settingsButtonItem, controlsTabContainer).Init("*Crouch", "C", 
+                Presenter.OnCrouchActionChanged);
+            
+            Instantiate(settingsButtonItem, controlsTabContainer).Init("*Primary interaction", "LMB", 
+                Presenter.OnPrimaryActionChanged);
+            
+            Instantiate(settingsButtonItem, controlsTabContainer).Init("*Alternative interaction", "RBM", 
+                Presenter.OnAlternativeActionChanged);
+            
+            Instantiate(settingsButtonItem, controlsTabContainer).Init("*Voice", "T", 
+                Presenter.OnVoiceActionChanged);
+            
+            Instantiate(settingsButtonItem, controlsTabContainer).Init("*Journal", "J", 
+                Presenter.OnJournalActionChanged);
+            
+            Instantiate(settingsButtonItem, controlsTabContainer).Init("*Menu", "Escape", 
+                Presenter.OnMenuActionChanged);
+            
             #endregion
             
             SwitchTab(SettingsTab.Game);

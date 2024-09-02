@@ -81,5 +81,49 @@ namespace ElectrumGames.UI.Presenters
         public void OnInputDeviceChanged(int value)
         {
         }
+
+        public void OnForwardActionChanged()
+        {
+        }
+        
+        public void OnBackwardActionChanged()
+        {
+        }
+        
+        public void OnLeftActionChanged()
+        {
+        }
+        
+        public void OnRightActionChanged()
+        {
+        }
+
+        public void OnSprintActionChanged()
+        {
+        }
+
+        public void OnCrouchActionChanged()
+        {
+        }
+
+        public void OnPrimaryActionChanged()
+        {
+        }
+
+        public void OnAlternativeActionChanged()
+        {
+        }
+
+        public void OnVoiceActionChanged()
+        {
+        }
+
+        public void OnJournalActionChanged()
+        {
+        }
+
+        public void OnMenuActionChanged()
+        {
+        }
     }
 }

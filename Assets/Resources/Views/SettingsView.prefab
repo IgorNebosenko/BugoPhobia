@@ -277,7 +277,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8865142507650278268
 RectTransform:
   m_ObjectHideFlags: 0
@@ -333,9 +333,9 @@ RectTransform:
   m_Father: {fileID: 2213868755845827584}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -17, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &3799232402875706610
 CanvasRenderer:
@@ -547,7 +547,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 1
-  m_Spacing: 0
+  m_Spacing: 10
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
@@ -1100,7 +1100,7 @@ RectTransform:
   m_Father: {fileID: 6420041269494307298}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1198,7 +1198,7 @@ MonoBehaviour:
   controlsButton: {fileID: 1822506648131951001}
   settingsSliderItem: {fileID: 2840839853272570618, guid: 84a93495a0ee2cb419275f6324061996, type: 3}
   settingsSelectableItem: {fileID: 4406116338094498571, guid: efffb1aa081355c46be1bc7063d0210b, type: 3}
-  settingsButtonItem: {fileID: 0}
+  settingsButtonItem: {fileID: 7110473623225972982, guid: bd007607f7a5a904c9e9a3a232b27e4d, type: 3}
   gameTab: {fileID: 486657180574660136}
   videoTab: {fileID: 1771920408818190975}
   audioTab: {fileID: 6199909065105136036}
@@ -1206,7 +1206,7 @@ MonoBehaviour:
   gameTabContainer: {fileID: 3031457849603634531}
   videoTabContainer: {fileID: 2250376627778694601}
   audioTabContainer: {fileID: 8699348579616986145}
-  controlsTabContainer: {fileID: 5460555089110851219}
+  controlsTabContainer: {fileID: 6827119590307992932}
 --- !u!1 &2933338032536906142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1598,7 +1598,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 1
-  m_Spacing: 0
+  m_Spacing: 19
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
@@ -2240,7 +2240,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 1
-  m_Spacing: 0
+  m_Spacing: 10
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
@@ -2317,7 +2317,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 1
-  m_Spacing: 0
+  m_Spacing: 10
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1

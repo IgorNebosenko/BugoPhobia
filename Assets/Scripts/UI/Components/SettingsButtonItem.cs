@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,7 @@ namespace ElectrumGames.UI.Components
     public class SettingsButtonItem : SettingsItemBase
     {
         [SerializeField] private Button buttonChange;
-        [SerializeField] private Text textButton;
+        [SerializeField] private TMP_Text textButton;
 
         private Action _cashedEvent;
         private bool _isInited;
