@@ -7,6 +7,7 @@ public class ProjectInstaller : MonoInstaller
 {
     [SerializeField] private ActivityConfig activityConfig;
     [SerializeField] private EvidenceConfig evidenceConfig;
+    [SerializeField] private DescriptionConfig descriptionConfig;
     [Space]
     [SerializeField] private PlayerConfig playerConfig;
     [SerializeField] private UserConfig userConfig;
@@ -15,6 +16,7 @@ public class ProjectInstaller : MonoInstaller
     {
         Container.BindInstance(activityConfig).AsSingle();
         Container.BindInstance(evidenceConfig).AsSingle();
+        Container.BindInstance(descriptionConfig).AsSingle();
         
         Container.BindInstance(playerConfig).AsSingle();
         
