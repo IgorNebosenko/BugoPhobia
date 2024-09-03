@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using ElectrumGames.Core.Player;
 using ElectrumGames.UI;
+using ElectrumGames.UI.UiEvents;
 using UnityEngine;
 
 namespace ElectrumGames.Injection
@@ -16,6 +17,7 @@ namespace ElectrumGames.Injection
             base.InstallBindings();
 
             Container.BindInstance(playersFactory).AsSingle();
+            Container.Bind<UiEventsHandler>().AsSingle().NonLazy();
         }
     }
 }
