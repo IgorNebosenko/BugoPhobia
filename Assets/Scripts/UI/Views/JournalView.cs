@@ -1,4 +1,6 @@
-﻿using ElectrumGames.Configs;
+﻿using System.Linq;
+using System.Text;
+using ElectrumGames.Configs;
 using ElectrumGames.MVP;
 using ElectrumGames.UI.Components;
 using ElectrumGames.UI.Presenters;
@@ -21,13 +23,18 @@ namespace ElectrumGames.UI.Views
         [SerializeField, FoldoutGroup("Ghosts")] private TMP_Text ghostDescriptionText;
         [SerializeField, FoldoutGroup("Ghosts")] private TMP_Text ghostStrengthText;
         [SerializeField, FoldoutGroup("Ghosts")] private TMP_Text ghostWeaknessesText;
+        [Space]
+        [SerializeField, FoldoutGroup("Ghosts")] private TMP_Text ghostsEvidencesText;
 
         private void Start()
         {
             foreach (var config in Presenter.DescriptionConfig.Data)
             {
+                var evidenceConfig = Presenter.EvidenceConfig.ConfigData.First
+                    (x => x.GhostType == config.GhostType);
+                
                 Instantiate(buttonTemplate, ghostsListTransform).Init(config.Name, 
-                    () => SetDescription(config));
+                    () => SetDescription(config, evidenceConfig));
             }
         }
 
@@ -36,11 +43,25 @@ namespace ElectrumGames.UI.Views
             
         }
 
-        private void SetDescription(DescriptionConfigData data)
+        private void SetDescription(DescriptionConfigData data, EvidenceConfigData evidenceData)
         {
             ghostDescriptionText.text = data.Description;
             ghostStrengthText.text = $"Strength: {data.Strength}";
             ghostWeaknessesText.text = $"Weaknesses: {data.Weaknesses}";
+
+            var sb = new StringBuilder("Evidences: \n");
+            for (var i = 0; i < evidenceData.Evidences.Length; i++)
+            {
+                sb.Append("- ");
+                sb.Append(evidenceData.Evidences[i]);
+
+                if (i == 0 && evidenceData.IsFirstMandatory)
+                    sb.Append("* (Mandatory)");
+                
+                sb.Append("\n");
+            }
+            
+            ghostsEvidencesText.text = sb.ToString();
         }
     }
 }
