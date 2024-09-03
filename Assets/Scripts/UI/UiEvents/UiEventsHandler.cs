@@ -1,8 +1,9 @@
 ﻿using System;
 using ElectrumGames.Core.Player.Movement;
+using ElectrumGames.Extensions;
 using ElectrumGames.MVP.Managers;
+using ElectrumGames.UI.Presenters;
 using UniRx;
-using UnityEngine;
 
 namespace ElectrumGames.UI.UiEvents
 {
@@ -15,6 +16,9 @@ namespace ElectrumGames.UI.UiEvents
         
         private bool _journalLastState;
         private bool _menuLastState;
+
+        private JournalPresenter _journalPresenter;
+        private MenuPresenter _menuPresenter;
         
         public UiEventsHandler(ViewManager viewManager, InputActions inputActions)
         {
@@ -36,7 +40,16 @@ namespace ElectrumGames.UI.UiEvents
                 if (!_journalLastState)
                 {
                     _journalLastState = true;
-                    Debug.Log("journal pressed");
+                    if (_journalPresenter.UnityNullCheck())
+                    {
+                        _journalPresenter = _viewManager.ShowView<JournalPresenter>();
+                    }
+                    else
+                    {
+                        _viewManager.ShowView<InGamePresenter>();
+                        _journalPresenter = null;
+                        _menuPresenter = null;
+                    }
                 }
             }
             else
@@ -49,7 +62,16 @@ namespace ElectrumGames.UI.UiEvents
                 if (!_menuLastState)
                 {
                     _menuLastState = true;
-                    Debug.Log("menu pressed");
+                    if (_menuPresenter.UnityNullCheck())
+                    {
+                        _menuPresenter = _viewManager.ShowView<MenuPresenter>();
+                    }
+                    else
+                    {
+                        _viewManager.ShowView<InGamePresenter>();
+                        _menuPresenter = null;
+                        _journalPresenter = null;
+                    }
                 }
             }
             else
