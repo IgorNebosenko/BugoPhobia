@@ -3,6 +3,7 @@ using System.Text;
 using ElectrumGames.Configs;
 using ElectrumGames.MVP;
 using ElectrumGames.UI.Components;
+using ElectrumGames.UI.Components.Enums;
 using ElectrumGames.UI.Presenters;
 using Sirenix.OdinInspector;
 using TMPro;
@@ -26,6 +27,12 @@ namespace ElectrumGames.UI.Views
         [Space]
         [SerializeField, FoldoutGroup("Ghosts")] private TMP_Text ghostsEvidencesText;
 
+        [SerializeField, FoldoutGroup("Evidences")] private EvidenceUiElement evidenceElementTemplate;
+        [SerializeField, FoldoutGroup("Evidences")] private Transform evidenceListTransform;
+        
+        [SerializeField, FoldoutGroup("Tabs")] private GameObject ghostsTab;
+        [SerializeField, FoldoutGroup("Tabs")] private GameObject evidencesTab;
+
         private void Start()
         {
             foreach (var config in Presenter.DescriptionConfig.Data)
@@ -36,11 +43,32 @@ namespace ElectrumGames.UI.Views
                 Instantiate(buttonTemplate, ghostsListTransform).Init(config.Name, 
                     () => SetDescription(config, evidenceConfig));
             }
+            
+            Instantiate(evidenceElementTemplate, evidenceListTransform).Init("Ultraviolet", 
+                EvidenceState.Unselected, Presenter.OnUltravioletStateChanged);
+            Instantiate(evidenceElementTemplate, evidenceListTransform).Init("Radiation", 
+                EvidenceState.Unselected, Presenter.OnRadiationStateChanged);
+            Instantiate(evidenceElementTemplate, evidenceListTransform).Init("Ghost writing", 
+                EvidenceState.Unselected, Presenter.OnGhostWritingStateChanged);
+            Instantiate(evidenceElementTemplate, evidenceListTransform).Init("Torching", 
+                EvidenceState.Unselected, Presenter.OnTorchingStateChanged);
+            Instantiate(evidenceElementTemplate, evidenceListTransform).Init("Freezing temperature", 
+                EvidenceState.Unselected, Presenter.OnFreezingTemperatureStateChanged);
+            Instantiate(evidenceElementTemplate, evidenceListTransform).Init("EMF 5", 
+                EvidenceState.Unselected, Presenter.OnEMF5StateChanged);
+            Instantiate(evidenceElementTemplate, evidenceListTransform).Init("Spirit box", 
+                EvidenceState.Unselected, Presenter.OnSpiritBoxStateChanged);
+            
+            ghostsButton.onClick.AddListener(() => SwitchTab(true));
+            evidencesButton.onClick.AddListener(() => SwitchTab(false));
+            
+            SwitchTab(true);
         }
 
         private void OnDestroy()
         {
-            
+            ghostsButton.onClick.RemoveListener(() => SwitchTab(true));
+            evidencesButton.onClick.RemoveListener(() => SwitchTab(false)); 
         }
 
         private void SetDescription(DescriptionConfigData data, EvidenceConfigData evidenceData)
@@ -62,6 +90,12 @@ namespace ElectrumGames.UI.Views
             }
             
             ghostsEvidencesText.text = sb.ToString();
+        }
+
+        private void SwitchTab(bool isGhosts)
+        {
+            ghostsTab.SetActive(isGhosts);
+            evidencesTab.SetActive(!isGhosts);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using ElectrumGames.Configs;
 using ElectrumGames.Core.Player.Movement;
 using ElectrumGames.MVP;
+using ElectrumGames.UI.Components.Enums;
 using ElectrumGames.UI.Views;
 using UnityEngine;
 
@@ -30,6 +31,34 @@ namespace ElectrumGames.UI.Presenters
         {
             Cursor.visible = false;
             _inputActions.Player.Enable();
+        }
+
+        public void OnUltravioletStateChanged(EvidenceState state)
+        {
+        }
+
+        public void OnRadiationStateChanged(EvidenceState state)
+        {
+        }
+
+        public void OnGhostWritingStateChanged(EvidenceState state)
+        {
+        }
+
+        public void OnTorchingStateChanged(EvidenceState state)
+        {
+        }
+
+        public void OnFreezingTemperatureStateChanged(EvidenceState state)
+        {
+        }
+
+        public void OnEMF5StateChanged(EvidenceState state)
+        {
+        }
+
+        public void OnSpiritBoxStateChanged(EvidenceState state)
+        {
         }
     }
 }
