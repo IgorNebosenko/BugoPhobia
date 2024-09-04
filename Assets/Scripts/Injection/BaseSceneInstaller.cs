@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using ElectrumGames.Core.Player;
-using ElectrumGames.Core.Player.Journal;
 using ElectrumGames.MVP;
 using ElectrumGames.MVP.Managers;
 using ElectrumGames.MVP.Utils;

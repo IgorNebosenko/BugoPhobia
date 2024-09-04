@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
 using ElectrumGames.Configs;
 using ElectrumGames.Core.Inventory;
-using ElectrumGames.Core.Player.Journal;
 using ElectrumGames.Core.Player.Movement;
 using ElectrumGames.Core.PlayerVisuals;
 using UnityEngine;
-using Zenject;
 
 namespace ElectrumGames.Core.Player
 {
@@ -33,8 +31,6 @@ namespace ElectrumGames.Core.Player
         public bool IsHost { get; protected set; }
         public int NetId { get; protected set; }
         public int OwnerId { get; protected set; }
-
-        public IHaveJournal Journal { get; protected set; }
 
         public Vector3 Position => transform.position;
 
