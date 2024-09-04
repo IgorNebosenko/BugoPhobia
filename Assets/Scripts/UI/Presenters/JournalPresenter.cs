@@ -1,4 +1,5 @@
-﻿using ElectrumGames.Configs;
+﻿using System.Linq;
+using ElectrumGames.Configs;
 using ElectrumGames.Core.Journal;
 using ElectrumGames.Core.Player.Movement;
 using ElectrumGames.GlobalEnums;
@@ -36,9 +37,14 @@ namespace ElectrumGames.UI.Presenters
             _inputActions.Player.Enable();
         }
 
-        public void OnGhostStateChanged(GhostType ghost, JournalItemState state)
+        public bool CalculateGhostState(GhostType ghost)
         {
-            
+            var ghostData = EvidenceConfig.ConfigData.First(x => x.GhostType == ghost);
+
+            return JournalManager.PlayerJournalInstance.SelectedEvidences.All(
+                x => ghostData.Evidences.Contains(x) && 
+                     JournalManager.PlayerJournalInstance.DeselectedEvidences.All(
+                         x => !ghostData.Evidences.Contains(x)));
         }
     }
 }

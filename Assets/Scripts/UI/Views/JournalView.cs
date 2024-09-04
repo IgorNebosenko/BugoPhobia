@@ -81,8 +81,9 @@ namespace ElectrumGames.UI.Views
             foreach (var ghost in Presenter.DescriptionConfig.Data)
             {
                 var ghostElement = Instantiate(ghostElementTemplate, ghostListTransform);
-                ghostElement.Init(ghost.Name, JournalItemState.Unselected, true, 
-                    element => Presenter.OnGhostStateChanged(ghost.GhostType, element));
+                ghostElement.Init(ghost.Name, Presenter.JournalManager.GetUserGhostState(ghost.GhostType), 
+                    Presenter.CalculateGhostState(ghost.GhostType), 
+                    element => Presenter.JournalManager.SetUserGhost(ghost.GhostType, element));
             }
             
             ghostsButton.onClick.AddListener(() => SwitchTab(true));

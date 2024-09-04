@@ -16,7 +16,7 @@ namespace ElectrumGames.Core.Journal
         public HashSet<EvidenceType> SelectedEvidences { get; private set; }
         public HashSet<EvidenceType> DeselectedEvidences { get; private set; }
 
-        public GhostType SelectedGhost { get; private set; }
+        public GhostType SelectedGhost { get; set; }
         public HashSet<GhostType> DeselectedGhosts { get; private set; }
         
         public event Action JournalUpdated;

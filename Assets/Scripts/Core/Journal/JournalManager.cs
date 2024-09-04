@@ -50,5 +50,39 @@ namespace ElectrumGames.Core.Journal
                     break;
             }
         }
+
+        public JournalItemState GetUserGhostState(GhostType ghostType)
+        {
+            if (PlayerJournalInstance.SelectedGhost == ghostType)
+            {
+                return JournalItemState.Selected;
+            }
+
+            if (PlayerJournalInstance.DeselectedGhosts.Contains(ghostType))
+            {
+                return JournalItemState.Deselected;
+            }
+            
+            return JournalItemState.Unselected;
+        }
+
+        public void SetUserGhost(GhostType ghost, JournalItemState previousState)
+        {
+            switch (previousState)
+            {
+                case JournalItemState.Unselected:
+                    PlayerJournalInstance.SelectedGhost = ghost;
+                    PlayerJournalInstance.DeselectedGhosts.Remove(ghost);
+                    break;
+                case JournalItemState.Selected:
+                    PlayerJournalInstance.SelectedGhost = GhostType.None;
+                    PlayerJournalInstance.DeselectedGhosts.Add(ghost);
+                    break;
+                case JournalItemState.Deselected:
+                    PlayerJournalInstance.SelectedGhost = GhostType.None;
+                    PlayerJournalInstance.DeselectedGhosts.Remove(ghost);
+                    break;
+            }
+        }
     }
 }
