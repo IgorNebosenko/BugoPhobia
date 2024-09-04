@@ -1,5 +1,5 @@
 ﻿using System;
-using ElectrumGames.UI.Components.Enums;
+using ElectrumGames.Core.Journal;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,11 +13,11 @@ namespace ElectrumGames.UI.Components
         [SerializeField] private GameObject crossedOutLine;
         [SerializeField] private Button evidenceButton;
 
-        private UiJournalElementState _uiJournalElementState;
-        private Action<UiJournalElementState> _cashedEvent;
+        private JournalItemState _uiJournalElementState;
+        private Action<JournalItemState> _cashedEvent;
         private bool _isInited;
         
-        public void Init(string evidenceName, UiJournalElementState uiJournalElementState, Action<UiJournalElementState> onButtonClick)
+        public void Init(string evidenceName, JournalItemState uiJournalElementState, Action<JournalItemState> onButtonClick)
         {
             nameText.text = evidenceName;
             
@@ -42,20 +42,20 @@ namespace ElectrumGames.UI.Components
 
         private void OnChangeVisual()
         {
-            if (_uiJournalElementState == UiJournalElementState.Unselected)
-                _uiJournalElementState = UiJournalElementState.Selected;
-            else if (_uiJournalElementState == UiJournalElementState.Selected)
-                _uiJournalElementState = UiJournalElementState.Deselected;
+            if (_uiJournalElementState == JournalItemState.Unselected)
+                _uiJournalElementState = JournalItemState.Selected;
+            else if (_uiJournalElementState == JournalItemState.Selected)
+                _uiJournalElementState = JournalItemState.Deselected;
             else
-                _uiJournalElementState = UiJournalElementState.Unselected;
+                _uiJournalElementState = JournalItemState.Unselected;
             
             SetState(_uiJournalElementState);
         }
 
-        private void SetState(UiJournalElementState uiJournalElementState)
+        private void SetState(JournalItemState uiJournalElementState)
         {
-            stateToggle.isOn = uiJournalElementState == UiJournalElementState.Selected;
-            crossedOutLine.SetActive(uiJournalElementState == UiJournalElementState.Deselected);
+            stateToggle.isOn = uiJournalElementState == JournalItemState.Selected;
+            crossedOutLine.SetActive(uiJournalElementState == JournalItemState.Deselected);
         }
     }
 }

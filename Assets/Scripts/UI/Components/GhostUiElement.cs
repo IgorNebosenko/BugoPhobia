@@ -1,5 +1,5 @@
 ﻿using System;
-using ElectrumGames.UI.Components.Enums;
+using ElectrumGames.Core.Journal;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,14 +18,14 @@ namespace ElectrumGames.UI.Components
         [Space]
         [SerializeField] private Button ghostButton;
 
-        private UiJournalElementState _journalElementState;
+        private JournalItemState _journalElementState;
         private bool _isNormalState;
         
-        private Action<UiJournalElementState> _cashedEvent;
+        private Action<JournalItemState> _cashedEvent;
         private bool _isInited;
 
-        public void Init(string ghostName, UiJournalElementState state, bool isNormalState, 
-            Action<UiJournalElementState> onClick)
+        public void Init(string ghostName, JournalItemState state, bool isNormalState, 
+            Action<JournalItemState> onClick)
         {
             nameText.text = ghostName;
             
@@ -53,12 +53,12 @@ namespace ElectrumGames.UI.Components
 
         private void SwitchState()
         {
-            if (_journalElementState == UiJournalElementState.Unselected)
-                _journalElementState = UiJournalElementState.Selected;
-            else if (_journalElementState == UiJournalElementState.Selected)
-                _journalElementState = UiJournalElementState.Deselected;
+            if (_journalElementState == JournalItemState.Unselected)
+                _journalElementState = JournalItemState.Selected;
+            else if (_journalElementState == JournalItemState.Selected)
+                _journalElementState = JournalItemState.Deselected;
             else
-                _journalElementState = UiJournalElementState.Unselected;
+                _journalElementState = JournalItemState.Unselected;
             
             ChangeState(_journalElementState, _isNormalState);
         }
@@ -69,10 +69,10 @@ namespace ElectrumGames.UI.Components
             ChangeState(_journalElementState, _isNormalState);
         }
 
-        private void ChangeState(UiJournalElementState state, bool isNormalState)
+        private void ChangeState(JournalItemState state, bool isNormalState)
         {
-            selectionImage.gameObject.SetActive(state == UiJournalElementState.Selected);
-            crossedOutLine.gameObject.SetActive(state == UiJournalElementState.Deselected);
+            selectionImage.gameObject.SetActive(state == JournalItemState.Selected);
+            crossedOutLine.gameObject.SetActive(state == JournalItemState.Deselected);
             
             nameText.color = isNormalState ? normalTextColor : impossibleColor;
             crossedOutLine.color = isNormalState ? normalTextColor : impossibleColor;
