@@ -13,20 +13,20 @@ namespace ElectrumGames.UI.Components
         [SerializeField] private GameObject crossedOutLine;
         [SerializeField] private Button evidenceButton;
 
-        private EvidenceState _evidenceState;
-        private Action<EvidenceState> _cashedEvent;
+        private UiJournalElementState _uiJournalElementState;
+        private Action<UiJournalElementState> _cashedEvent;
         private bool _isInited;
         
-        public void Init(string evidenceName, EvidenceState evidenceState, Action<EvidenceState> onButtonClick)
+        public void Init(string evidenceName, UiJournalElementState uiJournalElementState, Action<UiJournalElementState> onButtonClick)
         {
             nameText.text = evidenceName;
             
-            _evidenceState = evidenceState;
+            _uiJournalElementState = uiJournalElementState;
             _cashedEvent = onButtonClick;
-            evidenceButton.onClick.AddListener(() => _cashedEvent?.Invoke(_evidenceState));
+            evidenceButton.onClick.AddListener(() => _cashedEvent?.Invoke(_uiJournalElementState));
             evidenceButton.onClick.AddListener(OnChangeVisual);
             
-            SetState(_evidenceState);
+            SetState(_uiJournalElementState);
             
             _isInited = true;
         }
@@ -36,39 +36,26 @@ namespace ElectrumGames.UI.Components
             if (!_isInited)
                 return;
             
-            evidenceButton.onClick.RemoveListener(() => _cashedEvent?.Invoke(_evidenceState));
+            evidenceButton.onClick.RemoveListener(() => _cashedEvent?.Invoke(_uiJournalElementState));
             evidenceButton.onClick.RemoveListener(OnChangeVisual);
         }
 
         private void OnChangeVisual()
         {
-            if (_evidenceState == EvidenceState.Unselected)
-                _evidenceState = EvidenceState.Selected;
-            else if (_evidenceState == EvidenceState.Selected)
-                _evidenceState = EvidenceState.Deselected;
+            if (_uiJournalElementState == UiJournalElementState.Unselected)
+                _uiJournalElementState = UiJournalElementState.Selected;
+            else if (_uiJournalElementState == UiJournalElementState.Selected)
+                _uiJournalElementState = UiJournalElementState.Deselected;
             else
-                _evidenceState = EvidenceState.Unselected;
+                _uiJournalElementState = UiJournalElementState.Unselected;
             
-            SetState(_evidenceState);
+            SetState(_uiJournalElementState);
         }
 
-        private void SetState(EvidenceState evidenceState)
+        private void SetState(UiJournalElementState uiJournalElementState)
         {
-            switch (evidenceState)
-            {
-                case EvidenceState.Unselected:
-                    stateToggle.isOn = false;
-                    crossedOutLine.SetActive(false);
-                    break;
-                case EvidenceState.Selected:
-                    stateToggle.isOn = true;
-                    crossedOutLine.SetActive(false);
-                    break;
-                case EvidenceState.Deselected:
-                    stateToggle.isOn = false;
-                    crossedOutLine.SetActive(true);
-                    break;
-            }
+            stateToggle.isOn = uiJournalElementState == UiJournalElementState.Selected;
+            crossedOutLine.SetActive(uiJournalElementState == UiJournalElementState.Deselected);
         }
     }
 }

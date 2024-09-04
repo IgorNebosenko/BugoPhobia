@@ -33,31 +33,31 @@ namespace ElectrumGames.UI.Presenters
             _inputActions.Player.Enable();
         }
 
-        public void OnUltravioletStateChanged(EvidenceState state)
+        public void OnUltravioletStateChanged(UiJournalElementState state)
         {
         }
 
-        public void OnRadiationStateChanged(EvidenceState state)
+        public void OnRadiationStateChanged(UiJournalElementState state)
         {
         }
 
-        public void OnGhostWritingStateChanged(EvidenceState state)
+        public void OnGhostWritingStateChanged(UiJournalElementState state)
         {
         }
 
-        public void OnTorchingStateChanged(EvidenceState state)
+        public void OnTorchingStateChanged(UiJournalElementState state)
         {
         }
 
-        public void OnFreezingTemperatureStateChanged(EvidenceState state)
+        public void OnFreezingTemperatureStateChanged(UiJournalElementState state)
         {
         }
 
-        public void OnEMF5StateChanged(EvidenceState state)
+        public void OnEMF5StateChanged(UiJournalElementState state)
         {
         }
 
-        public void OnSpiritBoxStateChanged(EvidenceState state)
+        public void OnSpiritBoxStateChanged(UiJournalElementState state)
         {
         }
     }

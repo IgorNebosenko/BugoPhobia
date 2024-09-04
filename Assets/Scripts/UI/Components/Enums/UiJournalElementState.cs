@@ -1,6 +1,6 @@
 ﻿namespace ElectrumGames.UI.Components.Enums
 {
-    public enum EvidenceState
+    public enum UiJournalElementState
     {
         Unselected,
         Selected,
