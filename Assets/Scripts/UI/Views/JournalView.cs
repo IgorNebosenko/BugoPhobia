@@ -55,39 +55,44 @@ namespace ElectrumGames.UI.Views
             }
             
             Instantiate(evidenceElementTemplate, evidenceListTransform).Init("Ultraviolet", 
-                Presenter.JournalManager.GetUserEvidenceState(EvidenceType.UV), 
-                element => Presenter.JournalManager.SetUserEvidenceState(EvidenceType.UV, element));
+                Presenter.JournalManager.PlayerJournalInstance.GetEvidenceState(EvidenceType.UV), 
+                element => Presenter.JournalManager.PlayerJournalInstance.HandleEvidence(EvidenceType.UV, element));
             Instantiate(evidenceElementTemplate, evidenceListTransform).Init("Radiation", 
-                Presenter.JournalManager.GetUserEvidenceState(EvidenceType.Radiation),
-                element => Presenter.JournalManager.SetUserEvidenceState(EvidenceType.Radiation, element));
+                Presenter.JournalManager.PlayerJournalInstance.GetEvidenceState(EvidenceType.Radiation),
+                element => Presenter.JournalManager.PlayerJournalInstance.HandleEvidence(EvidenceType.Radiation, element));
             Instantiate(evidenceElementTemplate, evidenceListTransform).Init("Ghost writing", 
-                Presenter.JournalManager.GetUserEvidenceState(EvidenceType.GhostWriting),
-                element => Presenter.JournalManager.SetUserEvidenceState(EvidenceType.GhostWriting, element));
+                Presenter.JournalManager.PlayerJournalInstance.GetEvidenceState(EvidenceType.GhostWriting),
+                element => Presenter.JournalManager.PlayerJournalInstance.HandleEvidence(EvidenceType.GhostWriting, element));
             Instantiate(evidenceElementTemplate, evidenceListTransform).Init("Torching", 
-                Presenter.JournalManager.GetUserEvidenceState(EvidenceType.Torching), 
-                element => Presenter.JournalManager.SetUserEvidenceState(EvidenceType.Torching, element));
+                Presenter.JournalManager.PlayerJournalInstance.GetEvidenceState(EvidenceType.Torching), 
+                element => Presenter.JournalManager.PlayerJournalInstance.HandleEvidence(EvidenceType.Torching, element));
             Instantiate(evidenceElementTemplate, evidenceListTransform).Init("Freezing temperature", 
-                Presenter.JournalManager.GetUserEvidenceState(EvidenceType.FreezingTemperature), 
-                element => Presenter.JournalManager.SetUserEvidenceState(EvidenceType.FreezingTemperature, element));
+                Presenter.JournalManager.PlayerJournalInstance.GetEvidenceState(EvidenceType.FreezingTemperature), 
+                element => Presenter.JournalManager.PlayerJournalInstance.HandleEvidence(EvidenceType.FreezingTemperature, element));
             Instantiate(evidenceElementTemplate, evidenceListTransform).Init("EMF 5", 
-                Presenter.JournalManager.GetUserEvidenceState(EvidenceType.EMF5), 
-                element => Presenter.JournalManager.SetUserEvidenceState(EvidenceType.EMF5, element));
+                Presenter.JournalManager.PlayerJournalInstance.GetEvidenceState(EvidenceType.EMF5), 
+                element => Presenter.JournalManager.PlayerJournalInstance.HandleEvidence(EvidenceType.EMF5, element));
             Instantiate(evidenceElementTemplate, evidenceListTransform).Init("Spirit box", 
-                Presenter.JournalManager.GetUserEvidenceState(EvidenceType.SpiritBox), 
-                element => Presenter.JournalManager.SetUserEvidenceState(EvidenceType.SpiritBox, element));
+                Presenter.JournalManager.PlayerJournalInstance.GetEvidenceState(EvidenceType.SpiritBox), 
+                element => Presenter.JournalManager.PlayerJournalInstance.HandleEvidence(EvidenceType.SpiritBox, element));
 
             GhostUiElements = new List<GhostUiElement>();
             
             foreach (var ghost in Presenter.DescriptionConfig.Data)
             {
                 var ghostElement = Instantiate(ghostElementTemplate, ghostListTransform);
-                ghostElement.Init(ghost.Name, Presenter.JournalManager.GetUserGhostState(ghost.GhostType), 
+                ghostElement.Init(ghost.Name, Presenter.JournalManager.PlayerJournalInstance.GetUserGhostState(ghost.GhostType), 
                     Presenter.CalculateGhostState(ghost.GhostType), 
-                    element => Presenter.JournalManager.SetUserGhost(ghost.GhostType, element));
+                    element => Presenter.JournalManager.PlayerJournalInstance.HandleGhost(ghost.GhostType, element));
+
+                Presenter.JournalManager.PlayerJournalInstance.JournalUpdated += () =>
+                    ghostElement.SetState(Presenter.CalculateGhostState(ghost.GhostType));
             }
             
             ghostsButton.onClick.AddListener(() => SwitchTab(true));
             evidencesButton.onClick.AddListener(() => SwitchTab(false));
+            
+            
             
             SwitchTab(false);
         }

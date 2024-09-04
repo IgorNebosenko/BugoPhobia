@@ -30,46 +30,76 @@ namespace ElectrumGames.Core.Journal
             DeselectedGhosts = new HashSet<GhostType>();
         }
 
-        public void HandleEvidence(EvidenceType evidence, JournalItemState state)
+        public void HandleEvidence(EvidenceType evidence, JournalItemState previousState)
         {
-            switch (state)
+            switch (previousState)
             {
                 case JournalItemState.Unselected:
-                    SelectedEvidences.Remove(evidence);
-                    DeselectedEvidences.Remove(evidence);
-                    break;
-                case JournalItemState.Selected:
                     SelectedEvidences.Add(evidence);
                     DeselectedEvidences.Remove(evidence);
                     break;
-                case JournalItemState.Deselected:
+                case JournalItemState.Selected:
                     SelectedEvidences.Remove(evidence);
                     DeselectedEvidences.Add(evidence);
+                    break;
+                case JournalItemState.Deselected:
+                    SelectedEvidences.Remove(evidence);
+                    DeselectedEvidences.Remove(evidence);
                     break;
             }
             
             JournalUpdated?.Invoke();
         }
-
-        public void HandleGhost(GhostType ghost, JournalItemState state)
+        
+        public JournalItemState GetEvidenceState(EvidenceType evidenceType)
         {
-            switch (state)
+            if (SelectedEvidences.Contains(evidenceType))
+            {
+                return JournalItemState.Selected;
+            }
+
+            if (DeselectedEvidences.Contains(evidenceType))
+            {
+                return JournalItemState.Deselected;
+            }
+            
+            return JournalItemState.Unselected;
+        }
+
+        public void HandleGhost(GhostType ghost, JournalItemState previousState)
+        {
+            switch (previousState)
             {
                 case JournalItemState.Unselected:
-                    SelectedGhost = GhostType.None;
-                    DeselectedGhosts.Remove(ghost);
-                    break;
-                case JournalItemState.Selected:
                     SelectedGhost = ghost;
                     DeselectedGhosts.Remove(ghost);
                     break;
-                case JournalItemState.Deselected:
+                case JournalItemState.Selected:
                     SelectedGhost = GhostType.None;
                     DeselectedGhosts.Add(ghost);
+                    break;
+                case JournalItemState.Deselected:
+                    SelectedGhost = GhostType.None;
+                    DeselectedGhosts.Remove(ghost);
                     break;
             }
             
             JournalUpdated?.Invoke();
+        }
+        
+        public JournalItemState GetUserGhostState(GhostType ghostType)
+        {
+            if (SelectedGhost == ghostType)
+            {
+                return JournalItemState.Selected;
+            }
+
+            if (DeselectedGhosts.Contains(ghostType))
+            {
+                return JournalItemState.Deselected;
+            }
+            
+            return JournalItemState.Unselected;
         }
 
         public void Reset()
