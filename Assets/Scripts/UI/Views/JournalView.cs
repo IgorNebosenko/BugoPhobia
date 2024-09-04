@@ -50,7 +50,7 @@ namespace ElectrumGames.UI.Views
                     (x => x.GhostType == Presenter.DescriptionConfig.Data[j].GhostType);
                 
                 Instantiate(buttonTemplate, ghostsListTransform).Init(
-                    $"{i}. {Presenter.DescriptionConfig.Data[j].Name}", 
+                    $"{i + 1}. {Presenter.DescriptionConfig.Data[j].Name}", 
                     () => SetDescription(Presenter.DescriptionConfig.Data[j], evidenceConfig));
             }
             
@@ -88,7 +88,7 @@ namespace ElectrumGames.UI.Views
             ghostsButton.onClick.AddListener(() => SwitchTab(true));
             evidencesButton.onClick.AddListener(() => SwitchTab(false));
             
-            SwitchTab(true);
+            SwitchTab(false);
         }
 
         private void OnDestroy()

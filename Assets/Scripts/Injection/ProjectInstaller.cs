@@ -1,4 +1,5 @@
 using ElectrumGames.Configs;
+using ElectrumGames.Core.Journal;
 using ElectrumGames.Core.Player.Movement;
 using UnityEngine;
 using Zenject;
@@ -22,6 +23,8 @@ public class ProjectInstaller : MonoInstaller
         
         Container.Bind<ConfigService>().AsSingle().NonLazy();
         Container.BindInstance(userConfig).AsSingle();
+
+        Container.Bind<JournalManager>().AsSingle().NonLazy();
 
         Container.Bind<InputActions>().AsSingle();
     }
