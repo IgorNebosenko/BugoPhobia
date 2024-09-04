@@ -92,8 +92,6 @@ namespace ElectrumGames.UI.Views
             ghostsButton.onClick.AddListener(() => SwitchTab(true));
             evidencesButton.onClick.AddListener(() => SwitchTab(false));
             
-            
-            
             SwitchTab(false);
         }
 

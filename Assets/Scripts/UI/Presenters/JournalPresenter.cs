@@ -41,10 +41,11 @@ namespace ElectrumGames.UI.Presenters
         {
             var ghostData = EvidenceConfig.ConfigData.First(x => x.GhostType == ghost);
 
-            return JournalManager.PlayerJournalInstance.SelectedEvidences.All(
-                x => ghostData.Evidences.Contains(x) && 
-                     JournalManager.PlayerJournalInstance.DeselectedEvidences.All(
-                         x => !ghostData.Evidences.Contains(x)));
+            var selectedEvidences = JournalManager.PlayerJournalInstance.SelectedEvidences;
+            var deselectedEvidences = JournalManager.PlayerJournalInstance.DeselectedEvidences;
+
+            return (selectedEvidences.Count == 0 || selectedEvidences.All(x => ghostData.Evidences.Contains(x))) &&
+                   deselectedEvidences.All(x => !ghostData.Evidences.Contains(x));
         }
     }
 }
