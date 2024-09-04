@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Text;
 using ElectrumGames.Configs;
+using ElectrumGames.GlobalEnums;
 using ElectrumGames.MVP;
 using ElectrumGames.UI.Components;
 using ElectrumGames.UI.Components.Enums;
@@ -51,19 +52,32 @@ namespace ElectrumGames.UI.Views
             }
             
             Instantiate(evidenceElementTemplate, evidenceListTransform).Init("Ultraviolet", 
-                UiJournalElementState.Unselected, Presenter.OnUltravioletStateChanged);
+                UiJournalElementState.Unselected, 
+                (element) => Presenter.OnEvidenceStateChanged(EvidenceType.UV, element));
             Instantiate(evidenceElementTemplate, evidenceListTransform).Init("Radiation", 
-                UiJournalElementState.Unselected, Presenter.OnRadiationStateChanged);
+                UiJournalElementState.Unselected,
+                (element) => Presenter.OnEvidenceStateChanged(EvidenceType.Radiation, element));
             Instantiate(evidenceElementTemplate, evidenceListTransform).Init("Ghost writing", 
-                UiJournalElementState.Unselected, Presenter.OnGhostWritingStateChanged);
+                UiJournalElementState.Unselected,
+                (element) => Presenter.OnEvidenceStateChanged(EvidenceType.GhostWriting, element));
             Instantiate(evidenceElementTemplate, evidenceListTransform).Init("Torching", 
-                UiJournalElementState.Unselected, Presenter.OnTorchingStateChanged);
+                UiJournalElementState.Unselected, 
+                (element) => Presenter.OnEvidenceStateChanged(EvidenceType.Torching, element));
             Instantiate(evidenceElementTemplate, evidenceListTransform).Init("Freezing temperature", 
-                UiJournalElementState.Unselected, Presenter.OnFreezingTemperatureStateChanged);
+                UiJournalElementState.Unselected, 
+                (element) => Presenter.OnEvidenceStateChanged(EvidenceType.FreezingTemperature, element));
             Instantiate(evidenceElementTemplate, evidenceListTransform).Init("EMF 5", 
-                UiJournalElementState.Unselected, Presenter.OnEMF5StateChanged);
+                UiJournalElementState.Unselected, 
+                (element) => Presenter.OnEvidenceStateChanged(EvidenceType.EMF5, element));
             Instantiate(evidenceElementTemplate, evidenceListTransform).Init("Spirit box", 
-                UiJournalElementState.Unselected, Presenter.OnSpiritBoxStateChanged);
+                UiJournalElementState.Unselected, 
+                (element) => Presenter.OnEvidenceStateChanged(EvidenceType.SpiritBox, element));
+
+            foreach (var ghost in Presenter.DescriptionConfig.Data)
+            {
+                Instantiate(ghostElementTemplate, ghostListTransform).Init(ghost.Name, UiJournalElementState.Unselected, 
+                    true, (element) => Presenter.OnGhostStateChanged(ghost.GhostType, element));
+            }
             
             ghostsButton.onClick.AddListener(() => SwitchTab(true));
             evidencesButton.onClick.AddListener(() => SwitchTab(false));
