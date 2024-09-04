@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ElectrumGames.Configs;
@@ -38,7 +39,7 @@ namespace ElectrumGames.UI.Views
         [SerializeField, FoldoutGroup("Tabs")] private GameObject ghostsTab;
         [SerializeField, FoldoutGroup("Tabs")] private GameObject evidencesTab;
         
-        public List<GhostUiElement> GhostUiElements { get; private set; }
+        private List<Action> _listGhostsEvents;
 
         private void Start()
         {
@@ -75,8 +76,8 @@ namespace ElectrumGames.UI.Views
             Instantiate(evidenceElementTemplate, evidenceListTransform).Init("Spirit box", 
                 Presenter.JournalManager.PlayerJournalInstance.GetEvidenceState(EvidenceType.SpiritBox), 
                 element => Presenter.JournalManager.PlayerJournalInstance.HandleEvidence(EvidenceType.SpiritBox, element));
-
-            GhostUiElements = new List<GhostUiElement>();
+            
+            _listGhostsEvents = new List<Action>();
             
             foreach (var ghost in Presenter.DescriptionConfig.Data)
             {
@@ -84,9 +85,10 @@ namespace ElectrumGames.UI.Views
                 ghostElement.Init(ghost.Name, Presenter.JournalManager.PlayerJournalInstance.GetUserGhostState(ghost.GhostType), 
                     Presenter.CalculateGhostState(ghost.GhostType), 
                     element => Presenter.JournalManager.PlayerJournalInstance.HandleGhost(ghost.GhostType, element));
-
-                Presenter.JournalManager.PlayerJournalInstance.JournalUpdated += () =>
-                    ghostElement.SetState(Presenter.CalculateGhostState(ghost.GhostType));
+                
+                Action action = () => ghostElement.SetState(Presenter.CalculateGhostState(ghost.GhostType));
+                Presenter.JournalManager.PlayerJournalInstance.JournalUpdated += action;
+                _listGhostsEvents.Add(action);
             }
             
             ghostsButton.onClick.AddListener(() => SwitchTab(true));
@@ -98,7 +100,12 @@ namespace ElectrumGames.UI.Views
         private void OnDestroy()
         {
             ghostsButton.onClick.RemoveListener(() => SwitchTab(true));
-            evidencesButton.onClick.RemoveListener(() => SwitchTab(false)); 
+            evidencesButton.onClick.RemoveListener(() => SwitchTab(false));
+
+            foreach (var eventItem in _listGhostsEvents)
+            {
+                Presenter.JournalManager.PlayerJournalInstance.JournalUpdated -= eventItem;
+            }
         }
 
         private void SetDescription(DescriptionConfigData data, EvidenceConfigData evidenceData)
