@@ -40,6 +40,7 @@ namespace ElectrumGames.UI.Views
         [SerializeField, FoldoutGroup("Tabs")] private GameObject evidencesTab;
         
         private List<Action> _listGhostsEvents;
+        private List<GhostUiElement> _ghostUiElements;
 
         private void Start()
         {
@@ -78,17 +79,20 @@ namespace ElectrumGames.UI.Views
                 element => Presenter.JournalManager.PlayerJournalInstance.HandleEvidence(EvidenceType.SpiritBox, element));
             
             _listGhostsEvents = new List<Action>();
+            _ghostUiElements = new List<GhostUiElement>();
             
             foreach (var ghost in Presenter.DescriptionConfig.Data)
             {
                 var ghostElement = Instantiate(ghostElementTemplate, ghostListTransform);
                 ghostElement.Init(ghost.Name, Presenter.JournalManager.PlayerJournalInstance.GetUserGhostState(ghost.GhostType), 
                     Presenter.CalculateGhostState(ghost.GhostType), 
-                    element => Presenter.JournalManager.PlayerJournalInstance.HandleGhost(ghost.GhostType, element));
+                    element => OnJournalItemStateUpdated(element, ghost.GhostType), ghost.GhostType);
                 
                 Action action = () => ghostElement.SetState(Presenter.CalculateGhostState(ghost.GhostType));
                 Presenter.JournalManager.PlayerJournalInstance.JournalUpdated += action;
                 _listGhostsEvents.Add(action);
+                
+                _ghostUiElements.Add(ghostElement);
             }
             
             ghostsButton.onClick.AddListener(() => SwitchTab(true));
@@ -105,6 +109,17 @@ namespace ElectrumGames.UI.Views
             foreach (var eventItem in _listGhostsEvents)
             {
                 Presenter.JournalManager.PlayerJournalInstance.JournalUpdated -= eventItem;
+            }
+        }
+
+        private void OnJournalItemStateUpdated(JournalItemState state, GhostType type)
+        {
+            Presenter.JournalManager.PlayerJournalInstance.HandleGhost(type, state);
+
+            foreach (var element in _ghostUiElements)
+            {
+                state = Presenter.JournalManager.PlayerJournalInstance.GetUserGhostState(element.GhostType);
+                element.UpdateSelection(state);
             }
         }
 
