@@ -66,7 +66,7 @@ namespace ElectrumGames.Core.Player.Movement
                     _sprintDuration = MaxSprintDuration;
             }
 
-            if (input.Sprint && CanSprint)
+            if (input.Sprint && CanSprint && input.Movement != Vector2.zero)
             {
                 _sprintDuration -= deltaTime;
                 
