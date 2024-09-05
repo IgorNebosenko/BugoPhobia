@@ -52,13 +52,6 @@ namespace ElectrumGames.Core.Player.Movement
             var transform = _characterController.transform;
             var move = transform.right * input.Movement.x + transform.forward * input.Movement.y;
 
-            if (_characterController.isGrounded)
-                _gravityVelocity = 0f;
-            else
-                _gravityVelocity += Physics.gravity.y * deltaTime;
-
-            move.y = _gravityVelocity;
-
             if (_sprintCooldown > 0)
             {
                 _sprintCooldown -= deltaTime;
@@ -76,6 +69,16 @@ namespace ElectrumGames.Core.Player.Movement
             }
             else
                 _characterController.Move(move * (_playerConfig.DefaultSpeed * deltaTime));
+            
+            //Gravity task
+            if (_characterController.isGrounded)
+                _gravityVelocity = 0f;
+            else
+                _gravityVelocity += Physics.gravity.y * deltaTime;
+            
+            _characterController.Move(Vector3.up * (_gravityVelocity * deltaTime));
+
+            move.y = _gravityVelocity;
             #endregion
         }
     }
