@@ -34,13 +34,17 @@ namespace ElectrumGames.Core.Player.Movement
         {
             #region Rotation
             var transform = _characterController.transform;
+            
+            var xSensitivity = _configService.XSensitivity * (_configService.EnableXInversion ? -1 : 1);
+            var ySensitivity = _configService.YSensitivity * (_configService.EnableYInversion ? -1 : 1);
+
             var cameraRotation = new Vector2(
-                input.Look.x * _configService.XSensitivity * deltaTime, 
-                input.Look.y * _configService.YSensitivity * deltaTime);
+                input.Look.x * xSensitivity * deltaTime, 
+                input.Look.y * ySensitivity * deltaTime);
 
             _xRotation -= cameraRotation.y;
             _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
-            
+
             transform.localRotation = Quaternion.Euler(0f, transform.localRotation.eulerAngles.y + cameraRotation.x, 0f);
             _camera.transform.localRotation = Quaternion.Euler(_xRotation, 0, 0);
             #endregion
