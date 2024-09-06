@@ -82,7 +82,6 @@ namespace ElectrumGames.UI.Views
             #region Video
             
             var resolutions = Screen.resolutions.Select(x => $"{x.width}x{x.height}").ToList();
-            var fpsVariants = new List<string>{"30", "60", "75", "90", "120", "144", "170", "240", "Unlimited"};
             
             Instantiate(settingsSelectableItem, videoTabContainer).Init("*Resolution",
                 resolutions, Presenter.OnChangeResolution, 0);
