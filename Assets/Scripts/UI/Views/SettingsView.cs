@@ -63,6 +63,9 @@ namespace ElectrumGames.UI.Views
             Instantiate(settingsYesNoItem, gameTabContainer).Init("Invert Y",
                 Presenter.ConfigService.EnableYInversion, x => Presenter.ConfigService.EnableYInversion = x);
             
+            Instantiate(settingsYesNoItem, gameTabContainer).Init("Headbob",
+                Presenter.ConfigService.EnableHeadBob, x => Presenter.ConfigService.EnableHeadBob = x);
+            
             Instantiate(settingsSelectableItem, gameTabContainer).Init("*Language", 
                 new List<string>{"English"}, Presenter.OnChangeLanguage, 0);
             
