@@ -37,7 +37,6 @@ namespace ElectrumGames.Core.Player.Movement
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            
             _isMovementUpdated = context.phase != InputActionPhase.Canceled;
         }
 
