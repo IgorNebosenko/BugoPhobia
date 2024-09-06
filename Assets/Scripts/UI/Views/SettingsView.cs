@@ -81,8 +81,8 @@ namespace ElectrumGames.UI.Views
 
             #region Video
             
-            // Instantiate(settingsSelectableItem, videoTabContainer).Init("*Resolution",
-            //     resolutions, Presenter.OnChangeResolution, 0);
+            Instantiate(settingsSelectableItem, videoTabContainer).Init("*Resolution",
+                Presenter.ScreenResolution.ResolutionsNames, Presenter.OnChangeResolution, Presenter.ConfigService.FpsConfig);
             
             Instantiate(settingsYesNoItem, videoTabContainer).Init("Fullscreen",
                 Presenter.ConfigService.IsFullScreen,
@@ -166,7 +166,6 @@ namespace ElectrumGames.UI.Views
             //TODO Change voice
             
             //TODO resolution
-            //TODO FPS
             //TODO FOV
             
             //TODO music
