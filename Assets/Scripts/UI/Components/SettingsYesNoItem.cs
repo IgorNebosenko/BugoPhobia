@@ -30,6 +30,8 @@ namespace ElectrumGames.UI.Components
             noButton.onClick.AddListener(() => _cashedEvent?.Invoke(false));
             noButton.onClick.AddListener(() => SetSelectedState(false));
             
+            SetSelectedState(selected);
+            
             _isInited = true;
         }
 
