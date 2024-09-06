@@ -43,6 +43,7 @@ namespace ElectrumGames.UI.UiEvents
                     if (_journalPresenter.UnityNullCheck())
                     {
                         _journalPresenter = _viewManager.ShowView<JournalPresenter>();
+                        _menuPresenter = null;
                     }
                     else
                     {
@@ -65,6 +66,7 @@ namespace ElectrumGames.UI.UiEvents
                     if (_menuPresenter.UnityNullCheck())
                     {
                         _menuPresenter = _viewManager.ShowView<MenuPresenter>();
+                        _journalPresenter = null;
                     }
                     else
                     {
