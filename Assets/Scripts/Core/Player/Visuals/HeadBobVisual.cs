@@ -68,9 +68,11 @@ namespace ElectrumGames.Core.PlayerVisuals
 
         private void StopHeadBob()
         {
-            _bobTween.Kill();
-            _bobTween = null;
-            _camera.transform.localPosition = _defaultPos;
+            _camera.transform.DOLocalMove(_defaultPos, 0.25f).OnComplete(() =>
+            {
+                _bobTween.Kill();
+                _bobTween = null;
+            });
         }
     }
 }
