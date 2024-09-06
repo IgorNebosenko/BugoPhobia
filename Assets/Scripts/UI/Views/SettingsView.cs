@@ -31,6 +31,7 @@ namespace ElectrumGames.UI.Views
         [SerializeField, FoldoutGroup("Items templates")] private SettingsSliderItem settingsSliderItem;
         [SerializeField, FoldoutGroup("Items templates")] private SettingsSelectableItem settingsSelectableItem;
         [SerializeField, FoldoutGroup("Items templates")] private SettingsButtonItem settingsButtonItem;
+        [SerializeField, FoldoutGroup("Items templates")] private SettingsYesNoItem settingsYesNoItem;
         
         [SerializeField, FoldoutGroup("Tabs")] private GameObject gameTab;
         [SerializeField, FoldoutGroup("Tabs")] private GameObject videoTab;
@@ -55,6 +56,12 @@ namespace ElectrumGames.UI.Views
                 Presenter.UserConfig.MinYSensitivity, Presenter.UserConfig.MaxYSensitivity, 
                 Presenter.ConfigService.YSensitivity, Presenter.OnYSensitivitySliderChanged, 
                 SettingsSliderItem.DisplayDigitsMode.OneAfterComa);
+            
+            Instantiate(settingsYesNoItem, gameTabContainer).Init("Invert X",
+                Presenter.ConfigService.EnableXInversion, x => Presenter.ConfigService.EnableXInversion = x);
+            
+            Instantiate(settingsYesNoItem, gameTabContainer).Init("Invert Y",
+                Presenter.ConfigService.EnableYInversion, x => Presenter.ConfigService.EnableYInversion = x);
             
             Instantiate(settingsSelectableItem, gameTabContainer).Init("*Language", 
                 new List<string>{"English"}, Presenter.OnChangeLanguage, 0);
