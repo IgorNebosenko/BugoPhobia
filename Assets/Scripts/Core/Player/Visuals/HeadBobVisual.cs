@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using ElectrumGames.Configs;
 using ElectrumGames.Core.Player.Movement;
+using ElectrumGames.Extensions;
 using UnityEngine;
 
 namespace ElectrumGames.Core.PlayerVisuals
@@ -39,6 +40,13 @@ namespace ElectrumGames.Core.PlayerVisuals
             if (!_isInited)
                 return;
 
+            if (!_configService.EnableHeadBob)
+            {
+                if (_bobTween.UnityNullCheck())
+                    StopHeadBob();
+                return;
+            }
+
             if (input.Movement != Vector2.zero)
             {
                 if (_bobTween == null || !_bobTween.IsPlaying())
@@ -60,8 +68,11 @@ namespace ElectrumGames.Core.PlayerVisuals
 
         private void StopHeadBob()
         {
-            _bobTween.Kill();
-            _camera.transform.localPosition = _defaultPos;
+            _camera.transform.DOLocalMove(_defaultPos, 0.25f).OnComplete(() =>
+            {
+                _bobTween.Kill();
+                _bobTween = null;
+            });
         }
     }
 }

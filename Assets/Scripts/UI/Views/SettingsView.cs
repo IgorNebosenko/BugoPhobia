@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using ElectrumGames.Configs;
 using ElectrumGames.MVP;
 using ElectrumGames.UI.Components;
 using ElectrumGames.UI.Presenters;
@@ -31,6 +32,7 @@ namespace ElectrumGames.UI.Views
         [SerializeField, FoldoutGroup("Items templates")] private SettingsSliderItem settingsSliderItem;
         [SerializeField, FoldoutGroup("Items templates")] private SettingsSelectableItem settingsSelectableItem;
         [SerializeField, FoldoutGroup("Items templates")] private SettingsButtonItem settingsButtonItem;
+        [SerializeField, FoldoutGroup("Items templates")] private SettingsYesNoItem settingsYesNoItem;
         
         [SerializeField, FoldoutGroup("Tabs")] private GameObject gameTab;
         [SerializeField, FoldoutGroup("Tabs")] private GameObject videoTab;
@@ -56,6 +58,15 @@ namespace ElectrumGames.UI.Views
                 Presenter.ConfigService.YSensitivity, Presenter.OnYSensitivitySliderChanged, 
                 SettingsSliderItem.DisplayDigitsMode.OneAfterComa);
             
+            Instantiate(settingsYesNoItem, gameTabContainer).Init("Invert X",
+                Presenter.ConfigService.EnableXInversion, x => Presenter.ConfigService.EnableXInversion = x);
+            
+            Instantiate(settingsYesNoItem, gameTabContainer).Init("Invert Y",
+                Presenter.ConfigService.EnableYInversion, x => Presenter.ConfigService.EnableYInversion = x);
+            
+            Instantiate(settingsYesNoItem, gameTabContainer).Init("Headbob",
+                Presenter.ConfigService.EnableHeadBob, x => Presenter.ConfigService.EnableHeadBob = x);
+            
             Instantiate(settingsSelectableItem, gameTabContainer).Init("*Language", 
                 new List<string>{"English"}, Presenter.OnChangeLanguage, 0);
             
@@ -70,14 +81,16 @@ namespace ElectrumGames.UI.Views
 
             #region Video
             
-            var resolutions = Screen.resolutions.Select(x => $"{x.width}x{x.height}").ToList();
-            var fpsVariants = new List<string>{"30", "60", "75", "90", "120", "144", "170", "240", "Unlimited"};
+            Instantiate(settingsSelectableItem, videoTabContainer).Init("Resolution",
+                Presenter.ScreenResolution.ResolutionsNames, Presenter.OnChangeResolution, Presenter.ConfigService.Resolution);
             
-            Instantiate(settingsSelectableItem, videoTabContainer).Init("*Resolution",
-                resolutions, Presenter.OnChangeResolution, 0);
+            Instantiate(settingsYesNoItem, videoTabContainer).Init("Fullscreen",
+                Presenter.ConfigService.IsFullScreen,
+                x => Presenter.ConfigService.IsFullScreen = x);
             
-            Instantiate(settingsSelectableItem, videoTabContainer).Init("*FPS",
-                fpsVariants, Presenter.OnChangeResolution, 1);
+            Instantiate(settingsSelectableItem, videoTabContainer).Init("FPS",
+                Presenter.FpsConfig.Data.Select(x => x.fpsName).ToList(), 
+                Presenter.OnChangeFps, Presenter.ConfigService.FpsConfig);
             
             Instantiate(settingsSliderItem, videoTabContainer).Init("*FOV", 
                 Presenter.UserConfig.MinFOV, Presenter.UserConfig.MaxFOV, 
@@ -153,7 +166,6 @@ namespace ElectrumGames.UI.Views
             //TODO Change voice
             
             //TODO resolution
-            //TODO FPS
             //TODO FOV
             
             //TODO music

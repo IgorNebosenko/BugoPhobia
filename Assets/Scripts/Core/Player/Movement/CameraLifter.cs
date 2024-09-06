@@ -16,6 +16,8 @@ namespace ElectrumGames.Core.Player.Movement
         public bool IsStay { get; private set; } = true;
 
         private bool _lastState;
+        private bool _lockState;
+        
         private Tween _tween;
         
         public CameraLifter(PlayerConfig playerConfig,Transform headBob, Vector3 stayPos, Vector3 sitPos)
@@ -30,14 +32,16 @@ namespace ElectrumGames.Core.Player.Movement
 
         public void UpdateInput(IInput input)
         {
-            if (input.IsCrouch && !_lastState)
+            if (input.IsCrouch && !_lastState && !_lockState)
             {
                 _lastState = true;
+                _lockState = true;
                 
                 IsStay = !IsStay;
 
                 _tween?.Kill();
-                _tween = _headBob.DOLocalMove(IsStay ? _stayPos : _sitPos, _playerConfig.SitStandDuration);
+                _tween = _headBob.DOLocalMove(IsStay ? _stayPos : _sitPos, _playerConfig.SitStandDuration).
+                    OnComplete(() => _lockState = false);
             }
             else if (!input.IsCrouch)
             {

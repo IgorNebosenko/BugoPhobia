@@ -32,18 +32,6 @@ namespace ElectrumGames.Core.Player.Movement
 
         public void Simulate(IInput input, float deltaTime)
         {
-            #region Rotation
-            var transform = _characterController.transform;
-            var cameraRotation = new Vector2(
-                input.Look.x * _configService.XSensitivity * deltaTime, 
-                input.Look.y * _configService.YSensitivity * deltaTime);
-
-            _xRotation -= cameraRotation.y;
-            _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
-            
-            transform.localRotation = Quaternion.Euler(0f, transform.localRotation.eulerAngles.y + cameraRotation.x, 0f);
-            _camera.transform.localRotation = Quaternion.Euler(_xRotation, 0, 0);
-            #endregion
         }
 
         public void FixedSimulate(IInput input, float deltaTime)
@@ -79,6 +67,21 @@ namespace ElectrumGames.Core.Player.Movement
             _characterController.Move(Vector3.up * (_gravityVelocity * deltaTime));
 
             move.y = _gravityVelocity;
+            #endregion
+            
+            #region Rotation
+            var xSensitivity = _configService.XSensitivity * (_configService.EnableXInversion ? -1 : 1);
+            var ySensitivity = _configService.YSensitivity * (_configService.EnableYInversion ? -1 : 1);
+
+            var cameraRotation = new Vector2(
+                input.Look.x * xSensitivity * deltaTime, 
+                input.Look.y * ySensitivity * deltaTime);
+
+            _xRotation -= cameraRotation.y;
+            _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
+
+            transform.localRotation = Quaternion.Euler(0f, transform.localRotation.eulerAngles.y + cameraRotation.x, 0f);
+            _camera.transform.localRotation = Quaternion.Euler(_xRotation, 0, 0);
             #endregion
         }
     }

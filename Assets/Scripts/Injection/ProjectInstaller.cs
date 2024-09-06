@@ -12,6 +12,8 @@ public class ProjectInstaller : MonoInstaller
     [Space]
     [SerializeField] private PlayerConfig playerConfig;
     [SerializeField] private UserConfig userConfig;
+    [Space]
+    [SerializeField] private FpsConfig fpsConfig;
     
     public override void InstallBindings()
     {
@@ -22,7 +24,11 @@ public class ProjectInstaller : MonoInstaller
         Container.BindInstance(playerConfig).AsSingle();
         
         Container.Bind<ConfigService>().AsSingle().NonLazy();
+        Container.Bind<ScreenResolutionService>().AsSingle().NonLazy();
+        
         Container.BindInstance(userConfig).AsSingle();
+
+        Container.BindInstance(fpsConfig).AsSingle();
 
         Container.Bind<JournalManager>().AsSingle().NonLazy();
 

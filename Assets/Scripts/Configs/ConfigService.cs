@@ -13,8 +13,14 @@ namespace ElectrumGames.Configs
         private const string HeadBobKey = "HeadBob";
         
         private const string FOVKey = "FOV";
+
+        private const string FpsKey = "FPS";
+
+        private const string ResolutionKey = "ResolutionVariant";
+        private const string IsFullScreenKey = "IsFullScreen";
         
         private readonly UserConfig _userConfig;
+        private readonly FpsConfig _fpsConfig;
 
         public float XSensitivity
         {
@@ -52,9 +58,37 @@ namespace ElectrumGames.Configs
             set => PlayerPrefs.SetFloat(FOVKey, value);
         }
 
-        public ConfigService(UserConfig userConfig)
+        public int FpsConfig
+        {
+            get => PlayerPrefs.GetInt(FpsKey, _fpsConfig.DefaultIndex);
+            set
+            {
+                PlayerPrefs.SetInt(FpsKey, value);
+                Application.targetFrameRate = _fpsConfig.Data[value].fpsValue;
+            }
+        }
+
+        public int Resolution
+        {
+            get => PlayerPrefs.GetInt(ResolutionKey, -1);
+            set => PlayerPrefs.SetInt(ResolutionKey, value);
+            
+        }
+
+        public bool IsFullScreen
+        {
+            get => PlayerPrefs.GetInt(IsFullScreenKey, 1) != 0;
+            set
+            {
+                Screen.fullScreen = value;
+                PlayerPrefs.SetInt(IsFullScreenKey, value ? 1 : 0);
+            }
+        }
+
+        public ConfigService(UserConfig userConfig, FpsConfig fpsConfig)
         {
             _userConfig = userConfig;
+            _fpsConfig = fpsConfig;
             
             CheckUserConfigs();
         }
@@ -91,9 +125,14 @@ namespace ElectrumGames.Configs
                 PlayerPrefs.SetInt(HeadBobKey, _userConfig.DefaultHeadBobValue);
             }
 
-            if (!PlayerPrefs.HasKey(FOVKey) || FOV < _userConfig.MinFOV || _userConfig.MaxFOV < FOV)
+            if (!PlayerPrefs.HasKey(FOVKey) || FOV < _userConfig.MinFOV || _userConfig.MaxFOV > FOV)
             {
                 FOV = _userConfig.DefaultFOV;
+            }
+
+            if (!PlayerPrefs.HasKey(FpsKey) || FpsConfig < 0 || FpsConfig >= _fpsConfig.Data.Length)
+            {
+                FpsConfig = _fpsConfig.DefaultIndex;
             }
         }
     }
