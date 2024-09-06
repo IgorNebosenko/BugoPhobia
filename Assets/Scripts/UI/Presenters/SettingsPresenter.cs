@@ -11,15 +11,17 @@ namespace ElectrumGames.UI.Presenters
         public UserConfig UserConfig { get; }
         public PlayerConfig PlayerConfig { get; }
         public ConfigService ConfigService { get; }
+        public FpsConfig FpsConfig { get; }
         
         private readonly InputActions _inputActions;
         
         public SettingsPresenter(UserConfig userConfig, PlayerConfig playerConfig, ConfigService configService,
-            InputActions inputActions, SettingsView view) : base(view)
+            FpsConfig fpsConfig, InputActions inputActions, SettingsView view) : base(view)
         {
             UserConfig = userConfig;
             PlayerConfig = playerConfig;
             ConfigService = configService;
+            FpsConfig = fpsConfig;
             
             _inputActions = inputActions;
         }
@@ -60,6 +62,11 @@ namespace ElectrumGames.UI.Presenters
 
         public void OnChangeResolution(int value)
         {
+        }
+
+        public void OnChangeFps(int value)
+        {
+            ConfigService.FpsConfig = value;
         }
 
         public void OnChangeFov(float value)

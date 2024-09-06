@@ -13,8 +13,11 @@ namespace ElectrumGames.Configs
         private const string HeadBobKey = "HeadBob";
         
         private const string FOVKey = "FOV";
+
+        private const string FpsKey = "FPS";
         
         private readonly UserConfig _userConfig;
+        private readonly FpsConfig _fpsConfig;
 
         public float XSensitivity
         {
@@ -52,9 +55,20 @@ namespace ElectrumGames.Configs
             set => PlayerPrefs.SetFloat(FOVKey, value);
         }
 
-        public ConfigService(UserConfig userConfig)
+        public int FpsConfig
+        {
+            get => PlayerPrefs.GetInt(FpsKey, _fpsConfig.DefaultIndex);
+            set
+            {
+                PlayerPrefs.SetInt(FpsKey, value);
+                Application.targetFrameRate = _fpsConfig.Data[value].fpsValue;
+            }
+        }
+
+        public ConfigService(UserConfig userConfig, FpsConfig fpsConfig)
         {
             _userConfig = userConfig;
+            _fpsConfig = fpsConfig;
             
             CheckUserConfigs();
         }
@@ -91,9 +105,14 @@ namespace ElectrumGames.Configs
                 PlayerPrefs.SetInt(HeadBobKey, _userConfig.DefaultHeadBobValue);
             }
 
-            if (!PlayerPrefs.HasKey(FOVKey) || FOV < _userConfig.MinFOV || _userConfig.MaxFOV < FOV)
+            if (!PlayerPrefs.HasKey(FOVKey) || FOV < _userConfig.MinFOV || _userConfig.MaxFOV > FOV)
             {
                 FOV = _userConfig.DefaultFOV;
+            }
+
+            if (!PlayerPrefs.HasKey(FpsKey) || FpsConfig < 0 || FpsConfig >= _fpsConfig.Data.Length)
+            {
+                FpsConfig = _fpsConfig.DefaultIndex;
             }
         }
     }

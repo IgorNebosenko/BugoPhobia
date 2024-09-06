@@ -1,3 +1,4 @@
+using ElectrumGames.Configs;
 using ElectrumGames.Core.Player;
 using ElectrumGames.MVP.Managers;
 using ElectrumGames.UI.Presenters;
@@ -12,17 +13,19 @@ namespace ElectrumGames.EntryPoints
         
         private PlayersFactory _playersFactory;
         private ViewManager _viewManager;
+        private ConfigService _configService;
         
         [Inject]
-        private void Construct(PlayersFactory playersFactory, ViewManager viewManager)
+        private void Construct(PlayersFactory playersFactory, ViewManager viewManager, ConfigService configService)
         {
             _playersFactory = playersFactory;
             _viewManager = viewManager;
+            _configService = configService;
         }
 
         private void Start()
         {
-            Application.targetFrameRate = 60;
+            _configService.FpsConfig = _configService.FpsConfig;
             Cursor.visible = false;
             
             _playersFactory.CreatePlayer(

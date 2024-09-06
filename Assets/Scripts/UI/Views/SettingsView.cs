@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using ElectrumGames.Configs;
 using ElectrumGames.MVP;
 using ElectrumGames.UI.Components;
 using ElectrumGames.UI.Presenters;
@@ -86,8 +87,9 @@ namespace ElectrumGames.UI.Views
             Instantiate(settingsSelectableItem, videoTabContainer).Init("*Resolution",
                 resolutions, Presenter.OnChangeResolution, 0);
             
-            Instantiate(settingsSelectableItem, videoTabContainer).Init("*FPS",
-                fpsVariants, Presenter.OnChangeResolution, 1);
+            Instantiate(settingsSelectableItem, videoTabContainer).Init("FPS",
+                Presenter.FpsConfig.Data.Select(x => x.fpsName).ToList(), 
+                Presenter.OnChangeFps, Presenter.ConfigService.FpsConfig);
             
             Instantiate(settingsSliderItem, videoTabContainer).Init("*FOV", 
                 Presenter.UserConfig.MinFOV, Presenter.UserConfig.MaxFOV, 
