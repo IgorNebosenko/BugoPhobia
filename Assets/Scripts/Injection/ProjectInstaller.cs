@@ -24,6 +24,8 @@ public class ProjectInstaller : MonoInstaller
         Container.BindInstance(playerConfig).AsSingle();
         
         Container.Bind<ConfigService>().AsSingle().NonLazy();
+        Container.Bind<ScreenResolutionService>().AsSingle().NonLazy();
+        
         Container.BindInstance(userConfig).AsSingle();
 
         Container.BindInstance(fpsConfig).AsSingle();

@@ -15,6 +15,10 @@ namespace ElectrumGames.Configs
         private const string FOVKey = "FOV";
 
         private const string FpsKey = "FPS";
+
+        private const string ResolutionXKey = "ResolutionX";
+        private const string ResolutionYKey = "ResolutionY";
+        private const string IsFullScreenKey = "IsFullScreen";
         
         private readonly UserConfig _userConfig;
         private readonly FpsConfig _fpsConfig;
@@ -62,6 +66,27 @@ namespace ElectrumGames.Configs
             {
                 PlayerPrefs.SetInt(FpsKey, value);
                 Application.targetFrameRate = _fpsConfig.Data[value].fpsValue;
+            }
+        }
+
+        public Vector2Int Resolution
+        {
+            get => new (PlayerPrefs.GetInt(ResolutionXKey, 1280), PlayerPrefs.GetInt(ResolutionYKey, 720));
+            set
+            {
+                PlayerPrefs.SetInt(ResolutionXKey, value.x);
+                PlayerPrefs.SetInt(ResolutionYKey, value.y);
+                Screen.SetResolution(value.x, value.y, IsFullScreen);
+            }
+        }
+        
+        public bool IsFullScreen
+        {
+            get => PlayerPrefs.GetInt(IsFullScreenKey, 1) != 0;
+            set
+            {
+                Screen.fullScreen = value;
+                PlayerPrefs.SetInt(IsFullScreenKey, value ? 1 : 0);
             }
         }
 
