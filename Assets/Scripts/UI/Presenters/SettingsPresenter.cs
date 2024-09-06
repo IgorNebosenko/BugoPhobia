@@ -64,6 +64,7 @@ namespace ElectrumGames.UI.Presenters
 
         public void OnChangeResolution(int value)
         {
+            ConfigService.Resolution = value;
             ScreenResolution.SetResolutionById(value);
         }
 

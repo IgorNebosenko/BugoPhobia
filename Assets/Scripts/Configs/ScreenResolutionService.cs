@@ -11,6 +11,7 @@ namespace ElectrumGames.Configs
         private List<Vector2Int> _resolutions;
 
         public List<string> ResolutionsNames => _resolutions.Select(res => $"{res.x}x{res.y}").ToList();
+        public IReadOnlyList<Vector2Int> Resolutions => _resolutions;
         
         public ScreenResolutionService(ConfigService configService)
         {
@@ -19,9 +20,9 @@ namespace ElectrumGames.Configs
             _resolutions = Screen.resolutions.Select(x => new Vector2Int(x.width, x.height)).
                 Distinct().ToList();
 
-            if (!_resolutions.Contains(_configService.Resolution))
+            if (_configService.Resolution < 0 || _configService.Resolution >= _resolutions.Count)
             {
-                _configService.Resolution = _resolutions[0];
+                _configService.Resolution = _resolutions.Count - 1;
             }
 
         }

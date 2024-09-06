@@ -16,8 +16,7 @@ namespace ElectrumGames.Configs
 
         private const string FpsKey = "FPS";
 
-        private const string ResolutionXKey = "ResolutionX";
-        private const string ResolutionYKey = "ResolutionY";
+        private const string ResolutionKey = "ResolutionVariant";
         private const string IsFullScreenKey = "IsFullScreen";
         
         private readonly UserConfig _userConfig;
@@ -69,17 +68,13 @@ namespace ElectrumGames.Configs
             }
         }
 
-        public Vector2Int Resolution
+        public int Resolution
         {
-            get => new (PlayerPrefs.GetInt(ResolutionXKey, 1280), PlayerPrefs.GetInt(ResolutionYKey, 720));
-            set
-            {
-                PlayerPrefs.SetInt(ResolutionXKey, value.x);
-                PlayerPrefs.SetInt(ResolutionYKey, value.y);
-                Screen.SetResolution(value.x, value.y, IsFullScreen);
-            }
+            get => PlayerPrefs.GetInt(ResolutionKey, -1);
+            set => PlayerPrefs.SetInt(ResolutionKey, value);
+            
         }
-        
+
         public bool IsFullScreen
         {
             get => PlayerPrefs.GetInt(IsFullScreenKey, 1) != 0;
