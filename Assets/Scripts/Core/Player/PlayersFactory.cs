@@ -42,11 +42,8 @@ namespace ElectrumGames.Core.Player
         
         public IPlayer CreatePlayer(bool isHost, Vector3 position, Quaternion rotation)
         {
-            var player = Instantiate(playerTemplate, transform);
+            var player = Instantiate(playerTemplate, position, rotation, transform);
             player.Spawn(_playerConfig, _configService, isHost, _inputActions, _playerCamera);
-            
-            player.transform.position = position;
-            player.transform.rotation = rotation;
             
             return (Player)_netIdFactory.Initialize(player, NetId);
         }
