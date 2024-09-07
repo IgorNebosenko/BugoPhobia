@@ -10,12 +10,13 @@ namespace ElectrumGames.Core.Player
     public abstract class PlayerBase : MonoBehaviour, IPlayer
     {
         [SerializeField] private CharacterController characterController;
-        [SerializeField] protected Camera playerCamera;
         [Space]
         [SerializeField] private Transform headBob;
         [SerializeField] private Transform stayCameraTransform;
         [SerializeField] private Transform sitCameraTransform;
 
+        protected Camera playerCamera;
+        
         protected IInventory inventory;
         protected IInput input;
         protected IMotor motor;
@@ -66,12 +67,19 @@ namespace ElectrumGames.Core.Player
             motor.FixedSimulate(input, Time.fixedDeltaTime);
         }
 
-        public void Spawn(PlayerConfig config, ConfigService configSrv, bool isHost, InputActions inputActions)
+        public void Spawn(PlayerConfig config, ConfigService configSrv, bool isHost, InputActions inputActions, Camera injectedCamera)
         {
             input = new PlayerInput(inputActions);
             input.Init();
 
             IsHost = isHost;
+
+            if (IsHost)
+            {
+                injectedCamera.transform.parent = headBob;
+                playerCamera = injectedCamera;
+                playerCamera.transform.localPosition = Vector3.zero;
+            }
 
             playerConfig = config;
             configService = configSrv;

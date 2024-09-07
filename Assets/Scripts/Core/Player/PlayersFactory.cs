@@ -15,6 +15,8 @@ namespace ElectrumGames.Core.Player
         private PlayerConfig _playerConfig;
         private InputActions _inputActions;
         private ConfigService _configService;
+
+        private Camera _playerCamera;
         
         public int NetId { get; private set; }
         public int OwnerId { get; private set; }
@@ -26,12 +28,14 @@ namespace ElectrumGames.Core.Player
         
         [Inject]
         private void Construct(NetIdFactory netIdFactory, PlayerConfig playerConfig, InputActions inputActions,
-            ConfigService configService)
+            ConfigService configService, Camera playerCamera)
         {
             _netIdFactory = netIdFactory;
             _playerConfig = playerConfig;
             _inputActions = inputActions;
             _configService = configService;
+
+            _playerCamera = playerCamera;
             
             SetNetId(_netIdFactory.GetNextNetId());
         }
@@ -39,7 +43,7 @@ namespace ElectrumGames.Core.Player
         public IPlayer CreatePlayer(bool isHost, Vector3 position, Quaternion rotation)
         {
             var player = Instantiate(playerTemplate, transform);
-            player.Spawn(_playerConfig, _configService, isHost, _inputActions);
+            player.Spawn(_playerConfig, _configService, isHost, _inputActions, _playerCamera);
             
             player.transform.position = position;
             player.transform.rotation = rotation;

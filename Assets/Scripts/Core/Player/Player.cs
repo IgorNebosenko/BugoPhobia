@@ -1,4 +1,5 @@
 ﻿using ElectrumGames.Core.PlayerVisuals;
+using UnityEngine;
 
 namespace ElectrumGames.Core.Player
 {
