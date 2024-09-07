@@ -13,17 +13,22 @@ namespace ElectrumGames.UI.Presenters
         public ConfigService ConfigService { get; }
         public FpsConfig FpsConfig { get; }
         public ScreenResolutionService ScreenResolution { get; }
+
+        private readonly Camera _injectedCamera;
         
         private readonly InputActions _inputActions;
         
         public SettingsPresenter(UserConfig userConfig, PlayerConfig playerConfig, ConfigService configService,
-            FpsConfig fpsConfig, InputActions inputActions, SettingsView view, ScreenResolutionService screenResolution) : base(view)
+            FpsConfig fpsConfig, InputActions inputActions, SettingsView view, ScreenResolutionService screenResolution,
+            Camera injectedCamera) : base(view)
         {
             UserConfig = userConfig;
             PlayerConfig = playerConfig;
             ConfigService = configService;
             FpsConfig = fpsConfig;
             ScreenResolution = screenResolution;
+
+            _injectedCamera = injectedCamera;
             
             _inputActions = inputActions;
         }
@@ -75,6 +80,8 @@ namespace ElectrumGames.UI.Presenters
 
         public void OnChangeFov(float value)
         {
+            ConfigService.FOV = value;
+            _injectedCamera.fieldOfView = value;
         }
 
         public void OnChangeMusicVolume(float value)

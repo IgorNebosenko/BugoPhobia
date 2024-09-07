@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Collections.Generic;
 using System.Linq;
-using ElectrumGames.Configs;
 using ElectrumGames.MVP;
 using ElectrumGames.UI.Components;
 using ElectrumGames.UI.Presenters;
 using Sirenix.OdinInspector;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -92,7 +88,7 @@ namespace ElectrumGames.UI.Views
                 Presenter.FpsConfig.Data.Select(x => x.fpsName).ToList(), 
                 Presenter.OnChangeFps, Presenter.ConfigService.FpsConfig);
             
-            Instantiate(settingsSliderItem, videoTabContainer).Init("*FOV", 
+            Instantiate(settingsSliderItem, videoTabContainer).Init("FOV", 
                 Presenter.UserConfig.MinFOV, Presenter.UserConfig.MaxFOV, 
                 Presenter.ConfigService.FOV, Presenter.OnChangeFov, 
                 SettingsSliderItem.DisplayDigitsMode.Rounded);
