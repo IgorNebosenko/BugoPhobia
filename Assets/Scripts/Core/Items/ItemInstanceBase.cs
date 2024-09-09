@@ -8,7 +8,7 @@ namespace ElectrumGames.Core.Items
     public abstract class ItemInstanceBase : MonoBehaviour, IHaveNetId
     {
         [field: SerializeField] public Rigidbody physicObject { get; private set; }
-        [field: SerializeField] public ItemType ItemType { get; private set; }
+        [field: SerializeField] public ItemType ItemType { get; protected set; }
 
         private PlayerConfig _playerConfig;
         
@@ -24,7 +24,7 @@ namespace ElectrumGames.Core.Items
         {
             _playerConfig = playerConfig;
         }
-
+        
         public abstract void OnMainInteraction();
         public abstract void OnAlternativeInteraction();
 

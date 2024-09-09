@@ -9,7 +9,6 @@ namespace ElectrumGames.Core.Items
     public class ItemConfigData
     {
         [field: SerializeField] public ItemInstanceBase ItemInstance { get; private set; }
-        [field: SerializeField] public float ItemMass { get; private set; }
     }
 
     [CreateAssetMenu(fileName = "Items Config", menuName = "Items/ItemsConfig")]

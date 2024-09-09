@@ -1,5 +1,6 @@
 using ElectrumGames.CommonInterfaces;
 using ElectrumGames.Configs;
+using ElectrumGames.GlobalEnums;
 using ElectrumGames.Network;
 using UnityEngine;
 using Zenject;
@@ -10,6 +11,7 @@ namespace ElectrumGames.Core.Items
     {
         private NetIdFactory _netIdFactory;
         private ItemsConfig _itemsConfig;
+        private PlayerConfig _playerConfig;
         
         public int NetId { get; private set; }
         public int OwnerId { get; private set; }
@@ -20,14 +22,21 @@ namespace ElectrumGames.Core.Items
         }
         
         [Inject]
-        private void Construct(NetIdFactory netIdFactory, ItemsConfig itemsConfig)
+        private void Construct(NetIdFactory netIdFactory, ItemsConfig itemsConfig, PlayerConfig playerConfig)
         {
             _netIdFactory = netIdFactory;
             _itemsConfig = itemsConfig;
+            _playerConfig = playerConfig;
 
             _netIdFactory.Initialize(this);
         }
-        
-        
+
+        public ItemInstanceBase Spawn(ItemType type, Vector3 position, Quaternion rotation)
+        {
+            var item = Instantiate(_itemsConfig.GetItemByType(type).ItemInstance, position, rotation, transform);
+            _netIdFactory.Initialize(item);
+            item.Init(_playerConfig);
+            return item;
+        }
     }
 }

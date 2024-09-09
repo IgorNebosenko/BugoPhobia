@@ -1,4 +1,5 @@
 using System.Reflection;
+using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Player;
 using ElectrumGames.UI;
 using ElectrumGames.UI.UiEvents;
@@ -10,6 +11,7 @@ namespace ElectrumGames. Injection
     {
         [Space]
         [SerializeField] private PlayersFactory playersFactory;
+        [SerializeField] private ItemsFactory itemsFactory;
         [Space]
         [SerializeField] private Camera injectedCamera;
         
@@ -20,6 +22,7 @@ namespace ElectrumGames. Injection
             base.InstallBindings();
             
             Container.BindInstance(playersFactory).AsSingle();
+            Container.BindInstance(itemsFactory).AsSingle();
 
             Container.BindInstance(injectedCamera).AsSingle();
             
