@@ -14,7 +14,7 @@ namespace ElectrumGames.Core.Items
         private Tween _flickerProcess;
 
         public bool IsGhostHuntInteractable => true;
-        
+
         public override void OnMainInteraction()
         {
             IsOn = !IsOn;
