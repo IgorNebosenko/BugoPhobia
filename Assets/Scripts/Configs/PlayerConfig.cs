@@ -18,5 +18,8 @@ namespace ElectrumGames.Configs
         [field: Space]
         [field: SerializeField] public float BobSpeed { get; private set; }
         [field: SerializeField] public float BobAmount { get; private set; }
+        [field: Space]
+        [field: SerializeField] public float MinDropForce { get; private set; }
+        [field: SerializeField] public float MaxDropForce { get; private set; }
     }
 }
