@@ -31,9 +31,10 @@ namespace ElectrumGames.Core.Items
             _netIdFactory.Initialize(this);
         }
 
-        public ItemInstanceBase Spawn(ItemType type, Vector3 position, Quaternion rotation)
+        public ItemInstanceBase Spawn(ItemSpawnPoint spawnPoint)
         {
-            var item = Instantiate(_itemsConfig.GetItemByType(type).ItemInstance, position, rotation, transform);
+            var item = Instantiate(_itemsConfig.GetItemByType(spawnPoint.ItemType).ItemInstance, 
+                spawnPoint.Position, spawnPoint.Rotation, transform);
             _netIdFactory.Initialize(item);
             item.Init(_playerConfig);
             return item;

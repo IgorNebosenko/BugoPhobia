@@ -12,6 +12,7 @@ namespace ElectrumGames.EntryPoints
     public class LobbySceneEntry : MonoBehaviour
     {
         [SerializeField] private Transform playerSpawnPoint;
+        [SerializeField] private ItemSpawnPoint[] itemSpawnPoints;
 
         private PlayersFactory _playersFactory;
         private ItemsFactory _itemsFactory;
@@ -37,8 +38,8 @@ namespace ElectrumGames.EntryPoints
             _playersFactory.CreatePlayer(
                 true, playerSpawnPoint.position, playerSpawnPoint.rotation);
 
-            //ToDo make it from config!
-            _itemsFactory.Spawn(ItemType.FlashLightSmall, new Vector3(-1f, 1f, 1f), Quaternion.identity);
+            for (var i = 0; i < itemSpawnPoints.Length; i++)
+                _itemsFactory.Spawn(itemSpawnPoints[i]);
 
             _viewManager.ShowView<InGamePresenter>();
         }

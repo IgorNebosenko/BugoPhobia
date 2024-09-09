@@ -11,9 +11,15 @@ namespace ElectrumGames.Core.Items
 
         public bool IsOn { get; private set; }
 
+        private float _startIntensity;
         private Tween _flickerProcess;
 
         public bool IsGhostHuntInteractable => true;
+
+        private void Start()
+        {
+            _startIntensity = lightSource.intensity;
+        }
 
         public override void OnMainInteraction()
         {
@@ -42,7 +48,7 @@ namespace ElectrumGames.Core.Items
         {
             _flickerProcess.Kill();
             
-            //TODO check is need return to start
+            lightSource.intensity = _startIntensity;
         }
     }
 }
