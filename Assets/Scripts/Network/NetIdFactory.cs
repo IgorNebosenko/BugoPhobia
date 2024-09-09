@@ -16,11 +16,5 @@ namespace ElectrumGames.Network
 
             return networkObject;
         }
-
-        public int GetNextNetId()
-        {
-            _aliveIds.Add(++_lastNetId);
-            return _lastNetId;
-        }
     }
 }

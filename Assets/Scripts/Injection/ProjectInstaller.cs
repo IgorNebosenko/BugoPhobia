@@ -1,4 +1,5 @@
 using ElectrumGames.Configs;
+using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Journal;
 using ElectrumGames.Core.Player.Movement;
 using UnityEngine;
@@ -12,6 +13,8 @@ public class ProjectInstaller : MonoInstaller
     [Space]
     [SerializeField] private PlayerConfig playerConfig;
     [SerializeField] private UserConfig userConfig;
+    [Space]
+    [SerializeField] private ItemsConfig itemsConfig;
     [Space]
     [SerializeField] private FpsConfig fpsConfig;
     
@@ -27,7 +30,9 @@ public class ProjectInstaller : MonoInstaller
         Container.Bind<ScreenResolutionService>().AsSingle().NonLazy();
         
         Container.BindInstance(userConfig).AsSingle();
-
+        
+        Container.BindInstance(itemsConfig).AsSingle();
+        
         Container.BindInstance(fpsConfig).AsSingle();
 
         Container.Bind<JournalManager>().AsSingle().NonLazy();

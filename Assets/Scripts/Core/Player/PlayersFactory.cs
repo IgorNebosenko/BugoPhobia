@@ -36,8 +36,8 @@ namespace ElectrumGames.Core.Player
             _configService = configService;
 
             _playerCamera = playerCamera;
-            
-            SetNetId(_netIdFactory.GetNextNetId());
+
+            _netIdFactory.Initialize(this);
         }
         
         public IPlayer CreatePlayer(bool isHost, Vector3 position, Quaternion rotation)

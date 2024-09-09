@@ -14,8 +14,6 @@ namespace ElectrumGames.Configs
         [field: SerializeField, TextArea] public string Strength { get; private set; }
         [field: SerializeField, TextArea] public string Weaknesses { get; private set; }
     }
-    
-    
 
     [CreateAssetMenu(fileName = "Description Config", menuName = "Ghosts configs/Description Config")]
     public class DescriptionConfig : ScriptableObject
