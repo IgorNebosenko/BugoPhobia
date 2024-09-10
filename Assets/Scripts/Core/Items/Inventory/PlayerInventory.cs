@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using ElectrumGames.Core.Items;
+using System.Linq;
 using UnityEngine;
 
 namespace ElectrumGames.Core.Items.Inventory
@@ -28,12 +28,20 @@ namespace ElectrumGames.Core.Items.Inventory
 
         public bool TryAddItem(ItemInstanceBase item, int slot)
         {
-            if (slot < 0 || slot >= _listItems.Count || _listItems[slot] != null)
+            if (slot < 0 || slot >= _listItems.Count)
                 return false;
 
+            if (_listItems[slot] != null)
+            {
+                slot = _listItems.IndexOf(null);
+                if (slot == -1)
+                    return false;
+            }
+
+
             item.transform.parent = _parent;
-            item.transform.position = Vector3.zero;
-            item.transform.rotation = Quaternion.identity;
+            item.transform.localPosition = Vector3.zero;
+            item.transform.localRotation = Quaternion.identity;
             item.gameObject.SetActive(false);
             
             _listItems[slot] = item;

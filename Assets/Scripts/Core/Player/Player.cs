@@ -1,4 +1,5 @@
-﻿using Core.Player.Interactions;
+﻿using Core.Items.Inventory;
+using Core.Player.Interactions;
 using ElectrumGames.Core.PlayerVisuals;
 
 namespace ElectrumGames.Core.Player
@@ -6,9 +7,14 @@ namespace ElectrumGames.Core.Player
     public class Player : PlayerBase
     {
         private PutInteractionHandler _putInteractionHandler;
+        private InventoryIndexHandler _inventoryIndexHandler;
+        
         protected override void OnAfterSpawn()
         {
-            _putInteractionHandler = new PutInteractionHandler(interaction, playerCamera, playerConfig, inventory);
+            _inventoryIndexHandler = new InventoryIndexHandler(playerConfig);
+            
+            _putInteractionHandler = new PutInteractionHandler(interaction, playerCamera, playerConfig, 
+                inventory, _inventoryIndexHandler);
             
             var headBob = new HeadBobVisual();
             headBob.SetCamera(playerCamera);
