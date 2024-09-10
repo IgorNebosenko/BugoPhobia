@@ -306,7 +306,7 @@ namespace ElectrumGames.Core.Player.Movement
             ""id"": ""3cb9b27b-cea7-4e3b-b8b8-6d9d7bcb76df"",
             ""actions"": [
                 {
-                    ""name"": ""ExternalInteraction"",
+                    ""name"": ""PutItem"",
                     ""type"": ""Button"",
                     ""id"": ""070b4b9b-9975-4d50-a427-c362daff1c42"",
                     ""expectedControlType"": """",
@@ -350,7 +350,7 @@ namespace ElectrumGames.Core.Player.Movement
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ExternalInteraction"",
+                    ""action"": ""PutItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1102,7 +1102,7 @@ namespace ElectrumGames.Core.Player.Movement
             m_Moving_Crouch = m_Moving.FindAction("Crouch", throwIfNotFound: true);
             // Interactions
             m_Interactions = asset.FindActionMap("Interactions", throwIfNotFound: true);
-            m_Interactions_ExternalInteraction = m_Interactions.FindAction("ExternalInteraction", throwIfNotFound: true);
+            m_Interactions_PutItem = m_Interactions.FindAction("PutItem", throwIfNotFound: true);
             m_Interactions_PrimaryInteraction = m_Interactions.FindAction("PrimaryInteraction", throwIfNotFound: true);
             m_Interactions_AlternativeInteraction = m_Interactions.FindAction("AlternativeInteraction", throwIfNotFound: true);
             m_Interactions_Voice = m_Interactions.FindAction("Voice", throwIfNotFound: true);
@@ -1261,7 +1261,7 @@ namespace ElectrumGames.Core.Player.Movement
         // Interactions
         private readonly InputActionMap m_Interactions;
         private List<IInteractionsActions> m_InteractionsActionsCallbackInterfaces = new List<IInteractionsActions>();
-        private readonly InputAction m_Interactions_ExternalInteraction;
+        private readonly InputAction m_Interactions_PutItem;
         private readonly InputAction m_Interactions_PrimaryInteraction;
         private readonly InputAction m_Interactions_AlternativeInteraction;
         private readonly InputAction m_Interactions_Voice;
@@ -1269,7 +1269,7 @@ namespace ElectrumGames.Core.Player.Movement
         {
             private @InputActions m_Wrapper;
             public InteractionsActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-            public InputAction @ExternalInteraction => m_Wrapper.m_Interactions_ExternalInteraction;
+            public InputAction @PutItem => m_Wrapper.m_Interactions_PutItem;
             public InputAction @PrimaryInteraction => m_Wrapper.m_Interactions_PrimaryInteraction;
             public InputAction @AlternativeInteraction => m_Wrapper.m_Interactions_AlternativeInteraction;
             public InputAction @Voice => m_Wrapper.m_Interactions_Voice;
@@ -1282,9 +1282,9 @@ namespace ElectrumGames.Core.Player.Movement
             {
                 if (instance == null || m_Wrapper.m_InteractionsActionsCallbackInterfaces.Contains(instance)) return;
                 m_Wrapper.m_InteractionsActionsCallbackInterfaces.Add(instance);
-                @ExternalInteraction.started += instance.OnExternalInteraction;
-                @ExternalInteraction.performed += instance.OnExternalInteraction;
-                @ExternalInteraction.canceled += instance.OnExternalInteraction;
+                @PutItem.started += instance.OnPutItem;
+                @PutItem.performed += instance.OnPutItem;
+                @PutItem.canceled += instance.OnPutItem;
                 @PrimaryInteraction.started += instance.OnPrimaryInteraction;
                 @PrimaryInteraction.performed += instance.OnPrimaryInteraction;
                 @PrimaryInteraction.canceled += instance.OnPrimaryInteraction;
@@ -1298,9 +1298,9 @@ namespace ElectrumGames.Core.Player.Movement
 
             private void UnregisterCallbacks(IInteractionsActions instance)
             {
-                @ExternalInteraction.started -= instance.OnExternalInteraction;
-                @ExternalInteraction.performed -= instance.OnExternalInteraction;
-                @ExternalInteraction.canceled -= instance.OnExternalInteraction;
+                @PutItem.started -= instance.OnPutItem;
+                @PutItem.performed -= instance.OnPutItem;
+                @PutItem.canceled -= instance.OnPutItem;
                 @PrimaryInteraction.started -= instance.OnPrimaryInteraction;
                 @PrimaryInteraction.performed -= instance.OnPrimaryInteraction;
                 @PrimaryInteraction.canceled -= instance.OnPrimaryInteraction;
@@ -1553,7 +1553,7 @@ namespace ElectrumGames.Core.Player.Movement
         }
         public interface IInteractionsActions
         {
-            void OnExternalInteraction(InputAction.CallbackContext context);
+            void OnPutItem(InputAction.CallbackContext context);
             void OnPrimaryInteraction(InputAction.CallbackContext context);
             void OnAlternativeInteraction(InputAction.CallbackContext context);
             void OnVoice(InputAction.CallbackContext context);

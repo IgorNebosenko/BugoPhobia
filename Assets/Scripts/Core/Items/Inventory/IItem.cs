@@ -1,6 +1,6 @@
 using ElectrumGames.CommonInterfaces;
 
-namespace ElectrumGames.Core.Inventory
+namespace ElectrumGames.Core.Items.Inventory
 {
     public interface IItem : IHaveNetId
     {

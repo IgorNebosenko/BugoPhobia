@@ -2,7 +2,7 @@
 {
     public interface IInteraction
     {
-        bool ExternalInteraction { get; }
+        bool PutInteraction { get; }
         bool PrimaryInteraction { get; }
         bool AlternativeInteraction { get; }
         bool VoiceActivation { get; }

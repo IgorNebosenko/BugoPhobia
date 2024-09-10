@@ -7,7 +7,7 @@ namespace Core.Player.Interactions
     {
         private InputActions _inputActions;
         
-        public bool ExternalInteraction { get; private set; }
+        public bool PutInteraction { get; private set; }
         public bool PrimaryInteraction { get; private set; }
         public bool AlternativeInteraction { get; private set; }
         public bool VoiceActivation { get; private set; }
@@ -23,9 +23,9 @@ namespace Core.Player.Interactions
             _inputActions.Interactions.Enable();
         }
 
-        public void OnExternalInteraction(InputAction.CallbackContext context)
+        public void OnPutItem(InputAction.CallbackContext context)
         {
-            ExternalInteraction = context.phase != InputActionPhase.Canceled;
+            PutInteraction = context.phase != InputActionPhase.Canceled;
         }
 
         public void OnPrimaryInteraction(InputAction.CallbackContext context)

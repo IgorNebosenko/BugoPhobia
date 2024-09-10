@@ -1,12 +1,15 @@
-﻿using ElectrumGames.Core.PlayerVisuals;
-using UnityEngine;
+﻿using Core.Player.Interactions;
+using ElectrumGames.Core.PlayerVisuals;
 
 namespace ElectrumGames.Core.Player
 {
     public class Player : PlayerBase
     {
+        private ExternalInteractionHandler _externalInteractionHandler;
         protected override void OnAfterSpawn()
         {
+            _externalInteractionHandler = new ExternalInteractionHandler(interaction, playerCamera, playerConfig);
+            
             var headBob = new HeadBobVisual();
             headBob.SetCamera(playerCamera);
             
@@ -16,6 +19,11 @@ namespace ElectrumGames.Core.Player
             {
                 simulateVisual.Init(configService, playerConfig);
             }
+        }
+
+        protected override void OnInteractionSimulate(float deltaTime)
+        {
+            _externalInteractionHandler.Simulate(deltaTime);
         }
     }
 }

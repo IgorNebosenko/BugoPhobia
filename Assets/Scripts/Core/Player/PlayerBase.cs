@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Core.Player.Interactions;
 using ElectrumGames.Configs;
-using ElectrumGames.Core.Inventory;
+using ElectrumGames.Core.Items.Inventory;
 using ElectrumGames.Core.Player.Movement;
 using ElectrumGames.Core.PlayerVisuals;
 using UnityEngine;
@@ -68,7 +68,11 @@ namespace ElectrumGames.Core.Player
                 return;
 
             motor.FixedSimulate(input, Time.fixedDeltaTime);
+            OnInteractionSimulate(Time.fixedDeltaTime);
         }
+        
+        protected virtual void OnInteractionSimulate(float deltaTime)
+        {}
 
         public void Spawn(PlayerConfig config, ConfigService configSrv, bool isHost, InputActions inputActions, Camera injectedCamera)
         {
