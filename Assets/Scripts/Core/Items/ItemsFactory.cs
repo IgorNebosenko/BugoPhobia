@@ -36,7 +36,7 @@ namespace ElectrumGames.Core.Items
             var item = Instantiate(_itemsConfig.GetItemByType(spawnPoint.ItemType).ItemInstance, 
                 spawnPoint.Position, spawnPoint.Rotation, transform);
             _netIdFactory.Initialize(item);
-            item.Init(_playerConfig);
+            item.Init(_playerConfig, this);
             return item;
         }
     }

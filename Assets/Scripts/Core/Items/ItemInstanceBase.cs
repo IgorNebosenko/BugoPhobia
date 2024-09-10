@@ -11,6 +11,7 @@ namespace ElectrumGames.Core.Items
         [field: SerializeField] public ItemType ItemType { get; protected set; }
 
         private PlayerConfig _playerConfig;
+        private ItemsFactory _itemsFactory;
         
         public int NetId { get; private set; }
         public int OwnerId { get; private set; }
@@ -20,9 +21,10 @@ namespace ElectrumGames.Core.Items
             OwnerId = ownerId;
         }
 
-        public void Init(PlayerConfig playerConfig)
+        public void Init(PlayerConfig playerConfig, ItemsFactory itemsFactory)
         {
             _playerConfig = playerConfig;
+            _itemsFactory = itemsFactory;
         }
         
         public abstract void OnMainInteraction();
@@ -30,11 +32,16 @@ namespace ElectrumGames.Core.Items
 
         public void OnDropItem(Transform playerTransform)
         {
+            gameObject.SetActive(true);
+            
             OwnerId = -1;
-
+            
             var dropForce = Random.Range(_playerConfig.MinDropForce, _playerConfig.MaxDropForce);
             
-            physicObject.AddForce(playerTransform.forward * dropForce);
+            physicObject.AddForce(playerTransform.forward * dropForce + Vector3.up * _playerConfig.AdditionalLiftForce);
+            
+            transform.parent = _itemsFactory.transform;
+            transform.localScale = Vector3.one;
         }
     }
 }

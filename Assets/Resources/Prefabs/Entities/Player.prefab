@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5544509260644594519}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HeadBobSitPos
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8202975295015769363}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HeadBobStayPos
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 5178021054706703614}
   - component: {fileID: 2070004977640403730}
   - component: {fileID: 5270881302362390620}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NearLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7536245566947300952}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HeadBob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 1927771201637159516}
   - component: {fileID: 5966476366774476420}
   - component: {fileID: 5659353643633751768}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,3 +371,4 @@ MonoBehaviour:
   headBob: {fileID: 7536245566947300952}
   stayCameraTransform: {fileID: 8202975295015769363}
   sitCameraTransform: {fileID: 5544509260644594519}
+  dropOutObject: {fileID: 0}

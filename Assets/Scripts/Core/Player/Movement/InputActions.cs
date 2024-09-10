@@ -385,6 +385,15 @@ namespace ElectrumGames.Core.Player.Movement
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DropItem"",
+                    ""type"": ""Button"",
+                    ""id"": ""5e2bd73a-aca8-44cc-8866-2529498c1980"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -561,6 +570,17 @@ namespace ElectrumGames.Core.Player.Movement
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""NextSlotInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d77dd622-7cbe-4923-91ac-f6af664821b1"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DropItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1211,6 +1231,7 @@ namespace ElectrumGames.Core.Player.Movement
             m_Interactions_ThirdSlotSelected = m_Interactions.FindAction("ThirdSlotSelected", throwIfNotFound: true);
             m_Interactions_FourthSlotSelected = m_Interactions.FindAction("FourthSlotSelected", throwIfNotFound: true);
             m_Interactions_NextSlotInventory = m_Interactions.FindAction("NextSlotInventory", throwIfNotFound: true);
+            m_Interactions_DropItem = m_Interactions.FindAction("DropItem", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1375,6 +1396,7 @@ namespace ElectrumGames.Core.Player.Movement
         private readonly InputAction m_Interactions_ThirdSlotSelected;
         private readonly InputAction m_Interactions_FourthSlotSelected;
         private readonly InputAction m_Interactions_NextSlotInventory;
+        private readonly InputAction m_Interactions_DropItem;
         public struct InteractionsActions
         {
             private @InputActions m_Wrapper;
@@ -1388,6 +1410,7 @@ namespace ElectrumGames.Core.Player.Movement
             public InputAction @ThirdSlotSelected => m_Wrapper.m_Interactions_ThirdSlotSelected;
             public InputAction @FourthSlotSelected => m_Wrapper.m_Interactions_FourthSlotSelected;
             public InputAction @NextSlotInventory => m_Wrapper.m_Interactions_NextSlotInventory;
+            public InputAction @DropItem => m_Wrapper.m_Interactions_DropItem;
             public InputActionMap Get() { return m_Wrapper.m_Interactions; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1424,6 +1447,9 @@ namespace ElectrumGames.Core.Player.Movement
                 @NextSlotInventory.started += instance.OnNextSlotInventory;
                 @NextSlotInventory.performed += instance.OnNextSlotInventory;
                 @NextSlotInventory.canceled += instance.OnNextSlotInventory;
+                @DropItem.started += instance.OnDropItem;
+                @DropItem.performed += instance.OnDropItem;
+                @DropItem.canceled += instance.OnDropItem;
             }
 
             private void UnregisterCallbacks(IInteractionsActions instance)
@@ -1455,6 +1481,9 @@ namespace ElectrumGames.Core.Player.Movement
                 @NextSlotInventory.started -= instance.OnNextSlotInventory;
                 @NextSlotInventory.performed -= instance.OnNextSlotInventory;
                 @NextSlotInventory.canceled -= instance.OnNextSlotInventory;
+                @DropItem.started -= instance.OnDropItem;
+                @DropItem.performed -= instance.OnDropItem;
+                @DropItem.canceled -= instance.OnDropItem;
             }
 
             public void RemoveCallbacks(IInteractionsActions instance)
@@ -1707,6 +1736,7 @@ namespace ElectrumGames.Core.Player.Movement
             void OnThirdSlotSelected(InputAction.CallbackContext context);
             void OnFourthSlotSelected(InputAction.CallbackContext context);
             void OnNextSlotInventory(InputAction.CallbackContext context);
+            void OnDropItem(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {

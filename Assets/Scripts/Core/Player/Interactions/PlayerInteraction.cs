@@ -18,6 +18,7 @@ namespace Core.Player.Interactions
         public bool ThirdSlotSelected { get; private set; }
         public bool FourthSlotSelected { get; private set; }
         public bool NextSlotSelected { get; private set; }
+        public bool DropItem { get; private set; }
 
         public PlayerInteraction(InputActions inputActions, InventoryIndexHandler inventoryIndexHandler)
         {
@@ -53,27 +54,32 @@ namespace Core.Player.Interactions
 
         public void OnFirstSlotSelected(InputAction.CallbackContext context)
         {
-            FirstSlotSelected = context.phase == InputActionPhase.Canceled;
+            FirstSlotSelected = context.phase != InputActionPhase.Canceled;
         }
 
         public void OnSecondSlotSelected(InputAction.CallbackContext context)
         {
-            SecondSlotSelected = context.phase == InputActionPhase.Canceled;
+            SecondSlotSelected = context.phase != InputActionPhase.Canceled;
         }
 
         public void OnThirdSlotSelected(InputAction.CallbackContext context)
         {
-            ThirdSlotSelected = context.phase == InputActionPhase.Canceled;
+            ThirdSlotSelected = context.phase != InputActionPhase.Canceled;
         }
 
         public void OnFourthSlotSelected(InputAction.CallbackContext context)
         {
-            FourthSlotSelected = context.phase == InputActionPhase.Canceled;
+            FourthSlotSelected = context.phase != InputActionPhase.Canceled;
         }
 
         public void OnNextSlotInventory(InputAction.CallbackContext context)
         {
-            NextSlotSelected = context.phase == InputActionPhase.Canceled;
+            NextSlotSelected = context.phase != InputActionPhase.Canceled;
+        }
+
+        public void OnDropItem(InputAction.CallbackContext context)
+        {
+            DropItem = context.phase != InputActionPhase.Canceled;
         }
     }
 }

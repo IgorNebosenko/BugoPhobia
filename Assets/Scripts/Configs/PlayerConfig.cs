@@ -21,6 +21,7 @@ namespace ElectrumGames.Configs
         [field: Space]
         [field: SerializeField] public float MinDropForce { get; private set; }
         [field: SerializeField] public float MaxDropForce { get; private set; }
+        [field: SerializeField] public float AdditionalLiftForce { get; private set; }
         [field: Space]
         [field: SerializeField] public float RayCastDistance { get; private set; }
     }

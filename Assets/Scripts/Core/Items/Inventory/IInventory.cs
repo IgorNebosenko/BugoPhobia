@@ -5,7 +5,7 @@ namespace ElectrumGames.Core.Items.Inventory
 {
     public interface IInventory
     {
-        IReadOnlyList<ItemInstanceBase> Items { get; }
+        List<ItemInstanceBase> Items { get; }
 
         void Init(int countItems, Transform parent, int playerNetId);
 

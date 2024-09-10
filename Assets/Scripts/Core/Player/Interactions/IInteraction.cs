@@ -12,6 +12,8 @@
         bool ThirdSlotSelected { get; }
         bool FourthSlotSelected { get; }
         bool NextSlotSelected { get; }
+        
+        bool DropItem { get; }
 
         void Init();
     }

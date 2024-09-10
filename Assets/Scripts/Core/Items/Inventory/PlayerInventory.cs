@@ -5,14 +5,13 @@ namespace ElectrumGames.Core.Items.Inventory
 {
     public class PlayerInventory : IInventory
     {
-        private List<ItemInstanceBase> _listItems;
         private int _countItems;
 
         private Transform _parent;
 
         private int _playerNetId;
         
-        public IReadOnlyList<ItemInstanceBase> Items => _listItems;
+        public List<ItemInstanceBase> Items { get; private set; }
         
         public void Init(int countItems, Transform parent, int playerNetId)
         {
@@ -20,22 +19,22 @@ namespace ElectrumGames.Core.Items.Inventory
             _parent = parent;
             _playerNetId = playerNetId;
             
-            _listItems = new List<ItemInstanceBase>();
+            Items = new List<ItemInstanceBase>();
 
             for (var i = 0; i < _countItems; i++)
             {
-                _listItems.Add(null);
+                Items.Add(null);
             }
         }
 
         public bool TryAddItem(ItemInstanceBase item, int slot)
         {
-            if (slot < 0 || slot >= _listItems.Count)
+            if (slot < 0 || slot >= Items.Count)
                 return false;
 
-            if (_listItems[slot] != null)
+            if (Items[slot] != null)
             {
-                slot = _listItems.IndexOf(null);
+                slot = Items.IndexOf(null);
                 if (slot == -1)
                     return false;
             }
@@ -43,21 +42,22 @@ namespace ElectrumGames.Core.Items.Inventory
             item.transform.parent = _parent;
             item.transform.localPosition = Vector3.zero;
             item.transform.localRotation = Quaternion.identity;
+            item.transform.localScale = Vector3.one;
             item.gameObject.SetActive(false);
             item.SetNetId(item.NetId, _playerNetId);
             
-            _listItems[slot] = item;
+            Items[slot] = item;
             
             return true;
         }
 
         public ItemInstanceBase RealizeItem(int slot)
         {
-            if (slot < 0 || slot >= _listItems.Count)
+            if (slot < 0 || slot >= Items.Count)
                 return null;
             
-            var item = _listItems[slot];
-            _listItems[slot] = null;
+            var item = Items[slot];
+            Items[slot] = null;
             return item;
         }
     }
