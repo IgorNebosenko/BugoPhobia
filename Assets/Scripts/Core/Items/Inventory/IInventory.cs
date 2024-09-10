@@ -7,7 +7,7 @@ namespace ElectrumGames.Core.Items.Inventory
     {
         IReadOnlyList<ItemInstanceBase> Items { get; }
 
-        void Init(int countItems, Transform parent);
+        void Init(int countItems, Transform parent, int playerNetId);
 
         bool TryAddItem(ItemInstanceBase item, int slot);
         ItemInstanceBase RealizeItem(int slot);

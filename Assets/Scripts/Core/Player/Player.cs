@@ -7,7 +7,7 @@ namespace ElectrumGames.Core.Player
     public class Player : PlayerBase
     {
         private PutInteractionHandler _putInteractionHandler;
-        
+        private SelectInventorySlotHandler _selectInventorySlotHandler;
         
         private InventoryIndexHandler _inventoryIndexHandler;
         
@@ -15,11 +15,13 @@ namespace ElectrumGames.Core.Player
         {
             _inventoryIndexHandler = new InventoryIndexHandler(playerConfig);
             
-            _putInteractionHandler = new PutInteractionHandler(interaction, playerCamera, playerConfig, 
-                inventory, _inventoryIndexHandler);
-            
             interaction = new PlayerInteraction(_inputActions, _inventoryIndexHandler);
             interaction.Init();
+            
+            _putInteractionHandler = new PutInteractionHandler(interaction, playerCamera, playerConfig, 
+                inventory, _inventoryIndexHandler);
+
+            _selectInventorySlotHandler = new SelectInventorySlotHandler(interaction, _inventoryIndexHandler);
             
             var headBob = new HeadBobVisual();
             headBob.SetCamera(playerCamera);
@@ -35,6 +37,7 @@ namespace ElectrumGames.Core.Player
         protected override void OnInteractionSimulate(float deltaTime)
         {
             _putInteractionHandler.Simulate(deltaTime);
+            _selectInventorySlotHandler.Simulate(deltaTime);
         }
     }
 }

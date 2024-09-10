@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace ElectrumGames.Core.Items.Inventory
@@ -10,13 +9,16 @@ namespace ElectrumGames.Core.Items.Inventory
         private int _countItems;
 
         private Transform _parent;
+
+        private int _playerNetId;
         
         public IReadOnlyList<ItemInstanceBase> Items => _listItems;
         
-        public void Init(int countItems, Transform parent)
+        public void Init(int countItems, Transform parent, int playerNetId)
         {
             _countItems = countItems;
             _parent = parent;
+            _playerNetId = playerNetId;
             
             _listItems = new List<ItemInstanceBase>();
 
@@ -37,12 +39,12 @@ namespace ElectrumGames.Core.Items.Inventory
                 if (slot == -1)
                     return false;
             }
-
-
+            
             item.transform.parent = _parent;
             item.transform.localPosition = Vector3.zero;
             item.transform.localRotation = Quaternion.identity;
             item.gameObject.SetActive(false);
+            item.SetNetId(item.NetId, _playerNetId);
             
             _listItems[slot] = item;
             

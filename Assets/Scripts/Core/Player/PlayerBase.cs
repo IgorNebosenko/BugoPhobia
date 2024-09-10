@@ -86,7 +86,7 @@ namespace ElectrumGames.Core.Player
             input.Init();
 
             inventory = new PlayerInventory();
-            inventory.Init(playerConfig.InventorySlots, transform);
+            inventory.Init(playerConfig.InventorySlots, transform, NetId);
 
             IsHost = isHost;
 
