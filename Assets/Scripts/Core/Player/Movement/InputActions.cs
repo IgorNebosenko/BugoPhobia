@@ -340,6 +340,51 @@ namespace ElectrumGames.Core.Player.Movement
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FirstSlotSelected"",
+                    ""type"": ""Button"",
+                    ""id"": ""26815d65-ea32-4881-a44a-a100a1c8de1d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SecondSlotSelected"",
+                    ""type"": ""Button"",
+                    ""id"": ""ce07b130-7cc4-453b-acc3-9382eba8d8d1"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ThirdSlotSelected"",
+                    ""type"": ""Button"",
+                    ""id"": ""7613ccc9-2442-4692-8ffa-f563519befb0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FourthSlotSelected"",
+                    ""type"": ""Button"",
+                    ""id"": ""9fb35dbf-0a28-4f35-b274-84c6967294cc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NextSlotInventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""a31239a6-8aa5-4d1f-979e-8c87b2e1ae0d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -461,6 +506,61 @@ namespace ElectrumGames.Core.Player.Movement
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""PrimaryInteraction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ba1cfe99-0fad-40f0-9770-165198df9ffb"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FirstSlotSelected"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c4a79153-6a69-4edb-bf90-4ffb20ebf399"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SecondSlotSelected"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""98de4e13-b71d-41ce-a336-e6ddfbc628ad"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ThirdSlotSelected"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""151f7473-0a89-401d-b016-646c482bb6e1"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FourthSlotSelected"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""61562606-0242-48ce-9295-2f84e0841279"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextSlotInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1106,6 +1206,11 @@ namespace ElectrumGames.Core.Player.Movement
             m_Interactions_PrimaryInteraction = m_Interactions.FindAction("PrimaryInteraction", throwIfNotFound: true);
             m_Interactions_AlternativeInteraction = m_Interactions.FindAction("AlternativeInteraction", throwIfNotFound: true);
             m_Interactions_Voice = m_Interactions.FindAction("Voice", throwIfNotFound: true);
+            m_Interactions_FirstSlotSelected = m_Interactions.FindAction("FirstSlotSelected", throwIfNotFound: true);
+            m_Interactions_SecondSlotSelected = m_Interactions.FindAction("SecondSlotSelected", throwIfNotFound: true);
+            m_Interactions_ThirdSlotSelected = m_Interactions.FindAction("ThirdSlotSelected", throwIfNotFound: true);
+            m_Interactions_FourthSlotSelected = m_Interactions.FindAction("FourthSlotSelected", throwIfNotFound: true);
+            m_Interactions_NextSlotInventory = m_Interactions.FindAction("NextSlotInventory", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1265,6 +1370,11 @@ namespace ElectrumGames.Core.Player.Movement
         private readonly InputAction m_Interactions_PrimaryInteraction;
         private readonly InputAction m_Interactions_AlternativeInteraction;
         private readonly InputAction m_Interactions_Voice;
+        private readonly InputAction m_Interactions_FirstSlotSelected;
+        private readonly InputAction m_Interactions_SecondSlotSelected;
+        private readonly InputAction m_Interactions_ThirdSlotSelected;
+        private readonly InputAction m_Interactions_FourthSlotSelected;
+        private readonly InputAction m_Interactions_NextSlotInventory;
         public struct InteractionsActions
         {
             private @InputActions m_Wrapper;
@@ -1273,6 +1383,11 @@ namespace ElectrumGames.Core.Player.Movement
             public InputAction @PrimaryInteraction => m_Wrapper.m_Interactions_PrimaryInteraction;
             public InputAction @AlternativeInteraction => m_Wrapper.m_Interactions_AlternativeInteraction;
             public InputAction @Voice => m_Wrapper.m_Interactions_Voice;
+            public InputAction @FirstSlotSelected => m_Wrapper.m_Interactions_FirstSlotSelected;
+            public InputAction @SecondSlotSelected => m_Wrapper.m_Interactions_SecondSlotSelected;
+            public InputAction @ThirdSlotSelected => m_Wrapper.m_Interactions_ThirdSlotSelected;
+            public InputAction @FourthSlotSelected => m_Wrapper.m_Interactions_FourthSlotSelected;
+            public InputAction @NextSlotInventory => m_Wrapper.m_Interactions_NextSlotInventory;
             public InputActionMap Get() { return m_Wrapper.m_Interactions; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1294,6 +1409,21 @@ namespace ElectrumGames.Core.Player.Movement
                 @Voice.started += instance.OnVoice;
                 @Voice.performed += instance.OnVoice;
                 @Voice.canceled += instance.OnVoice;
+                @FirstSlotSelected.started += instance.OnFirstSlotSelected;
+                @FirstSlotSelected.performed += instance.OnFirstSlotSelected;
+                @FirstSlotSelected.canceled += instance.OnFirstSlotSelected;
+                @SecondSlotSelected.started += instance.OnSecondSlotSelected;
+                @SecondSlotSelected.performed += instance.OnSecondSlotSelected;
+                @SecondSlotSelected.canceled += instance.OnSecondSlotSelected;
+                @ThirdSlotSelected.started += instance.OnThirdSlotSelected;
+                @ThirdSlotSelected.performed += instance.OnThirdSlotSelected;
+                @ThirdSlotSelected.canceled += instance.OnThirdSlotSelected;
+                @FourthSlotSelected.started += instance.OnFourthSlotSelected;
+                @FourthSlotSelected.performed += instance.OnFourthSlotSelected;
+                @FourthSlotSelected.canceled += instance.OnFourthSlotSelected;
+                @NextSlotInventory.started += instance.OnNextSlotInventory;
+                @NextSlotInventory.performed += instance.OnNextSlotInventory;
+                @NextSlotInventory.canceled += instance.OnNextSlotInventory;
             }
 
             private void UnregisterCallbacks(IInteractionsActions instance)
@@ -1310,6 +1440,21 @@ namespace ElectrumGames.Core.Player.Movement
                 @Voice.started -= instance.OnVoice;
                 @Voice.performed -= instance.OnVoice;
                 @Voice.canceled -= instance.OnVoice;
+                @FirstSlotSelected.started -= instance.OnFirstSlotSelected;
+                @FirstSlotSelected.performed -= instance.OnFirstSlotSelected;
+                @FirstSlotSelected.canceled -= instance.OnFirstSlotSelected;
+                @SecondSlotSelected.started -= instance.OnSecondSlotSelected;
+                @SecondSlotSelected.performed -= instance.OnSecondSlotSelected;
+                @SecondSlotSelected.canceled -= instance.OnSecondSlotSelected;
+                @ThirdSlotSelected.started -= instance.OnThirdSlotSelected;
+                @ThirdSlotSelected.performed -= instance.OnThirdSlotSelected;
+                @ThirdSlotSelected.canceled -= instance.OnThirdSlotSelected;
+                @FourthSlotSelected.started -= instance.OnFourthSlotSelected;
+                @FourthSlotSelected.performed -= instance.OnFourthSlotSelected;
+                @FourthSlotSelected.canceled -= instance.OnFourthSlotSelected;
+                @NextSlotInventory.started -= instance.OnNextSlotInventory;
+                @NextSlotInventory.performed -= instance.OnNextSlotInventory;
+                @NextSlotInventory.canceled -= instance.OnNextSlotInventory;
             }
 
             public void RemoveCallbacks(IInteractionsActions instance)
@@ -1557,6 +1702,11 @@ namespace ElectrumGames.Core.Player.Movement
             void OnPrimaryInteraction(InputAction.CallbackContext context);
             void OnAlternativeInteraction(InputAction.CallbackContext context);
             void OnVoice(InputAction.CallbackContext context);
+            void OnFirstSlotSelected(InputAction.CallbackContext context);
+            void OnSecondSlotSelected(InputAction.CallbackContext context);
+            void OnThirdSlotSelected(InputAction.CallbackContext context);
+            void OnFourthSlotSelected(InputAction.CallbackContext context);
+            void OnNextSlotInventory(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {

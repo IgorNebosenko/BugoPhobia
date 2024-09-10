@@ -17,7 +17,8 @@ namespace ElectrumGames.Core.Player
         [SerializeField] private Transform sitCameraTransform;
 
         protected Camera playerCamera;
-        
+
+        protected InputActions _inputActions;
         protected IInventory inventory;
         protected IInput input;
         protected IMotor motor;
@@ -78,12 +79,11 @@ namespace ElectrumGames.Core.Player
         {
             playerConfig = config;
             configService = configSrv;
+
+            _inputActions = inputActions;
             
             input = new PlayerInput(inputActions);
             input.Init();
-
-            interaction = new PlayerInteraction(inputActions);
-            interaction.Init();
 
             inventory = new PlayerInventory();
             inventory.Init(playerConfig.InventorySlots, transform);

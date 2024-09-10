@@ -16,6 +16,16 @@ namespace Core.Items.Inventory
             _playerConfig = playerConfig;
         }
 
+        public bool TrySetIndex(int index)
+        {
+            if (index < 0 || index >= _playerConfig.InventorySlots)
+                return false;
+
+            CurrentIndex = index;
+            ItemIndexChanged?.Invoke(index);
+            return true;
+        }
+
         public void OnNextItemSelected()
         {
             if (++CurrentIndex >= _playerConfig.InventorySlots)

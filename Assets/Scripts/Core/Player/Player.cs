@@ -7,6 +7,8 @@ namespace ElectrumGames.Core.Player
     public class Player : PlayerBase
     {
         private PutInteractionHandler _putInteractionHandler;
+        
+        
         private InventoryIndexHandler _inventoryIndexHandler;
         
         protected override void OnAfterSpawn()
@@ -15,6 +17,9 @@ namespace ElectrumGames.Core.Player
             
             _putInteractionHandler = new PutInteractionHandler(interaction, playerCamera, playerConfig, 
                 inventory, _inventoryIndexHandler);
+            
+            interaction = new PlayerInteraction(_inputActions, _inventoryIndexHandler);
+            interaction.Init();
             
             var headBob = new HeadBobVisual();
             headBob.SetCamera(playerCamera);
