@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace ElectrumGames.Core.Items.Inventory
 {
@@ -6,7 +7,7 @@ namespace ElectrumGames.Core.Items.Inventory
     {
         IReadOnlyList<ItemInstanceBase> Items { get; }
 
-        void Init(int countItems);
+        void Init(int countItems, Transform parent);
 
         bool TryAddItem(ItemInstanceBase item, int slot);
         ItemInstanceBase RealizeItem(int slot);

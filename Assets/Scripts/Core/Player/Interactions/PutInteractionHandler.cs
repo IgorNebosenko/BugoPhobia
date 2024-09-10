@@ -1,22 +1,26 @@
 ﻿using ElectrumGames.Configs;
 using ElectrumGames.Core.Items;
+using ElectrumGames.Core.Items.Inventory;
 using UnityEngine;
 
 namespace Core.Player.Interactions
 {
-    public class ExternalInteractionHandler
+    public class PutInteractionHandler
     {
         private readonly IInteraction _interactions;
         private readonly Camera _targetCamera;
         private readonly PlayerConfig _playerConfig;
+        private readonly IInventory _inventory;
 
         private bool _previousState;
         
-        public ExternalInteractionHandler(IInteraction interactions, Camera targetCamera, PlayerConfig playerConfig)
+        public PutInteractionHandler(IInteraction interactions, Camera targetCamera, PlayerConfig playerConfig, 
+            IInventory inventory)
         {
             _interactions = interactions;
             _targetCamera = targetCamera;
             _playerConfig = playerConfig;
+            _inventory = inventory;
         }
 
         public void Simulate(float deltaTime)
@@ -33,11 +37,10 @@ namespace Core.Player.Interactions
                     {
                         if (hit.collider.TryGetComponent<ItemInstanceBase>(out var item))
                         {
+                            _inventory.TryAddItem(item, 0);
                             Debug.Log($"Hit into {item.ItemType}");
                         }
                     }
-                    //Todo realize for switches
-                    //Todo realize for doors
                 }
             }
         }

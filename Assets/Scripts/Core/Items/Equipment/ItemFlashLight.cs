@@ -23,13 +23,13 @@ namespace ElectrumGames.Core.Items
 
         public override void OnMainInteraction()
         {
-            IsOn = !IsOn;
-
-            lightSource.enabled = IsOn;
         }
 
         public override void OnAlternativeInteraction()
         {
+            IsOn = !IsOn;
+
+            lightSource.enabled = IsOn;
         }
 
         public bool OnGhostHuntInteractionEnter()

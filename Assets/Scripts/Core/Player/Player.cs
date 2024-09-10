@@ -5,10 +5,10 @@ namespace ElectrumGames.Core.Player
 {
     public class Player : PlayerBase
     {
-        private ExternalInteractionHandler _externalInteractionHandler;
+        private PutInteractionHandler _putInteractionHandler;
         protected override void OnAfterSpawn()
         {
-            _externalInteractionHandler = new ExternalInteractionHandler(interaction, playerCamera, playerConfig);
+            _putInteractionHandler = new PutInteractionHandler(interaction, playerCamera, playerConfig, inventory);
             
             var headBob = new HeadBobVisual();
             headBob.SetCamera(playerCamera);
@@ -23,7 +23,7 @@ namespace ElectrumGames.Core.Player
 
         protected override void OnInteractionSimulate(float deltaTime)
         {
-            _externalInteractionHandler.Simulate(deltaTime);
+            _putInteractionHandler.Simulate(deltaTime);
         }
     }
 }

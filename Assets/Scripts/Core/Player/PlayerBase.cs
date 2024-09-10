@@ -76,11 +76,17 @@ namespace ElectrumGames.Core.Player
 
         public void Spawn(PlayerConfig config, ConfigService configSrv, bool isHost, InputActions inputActions, Camera injectedCamera)
         {
+            playerConfig = config;
+            configService = configSrv;
+            
             input = new PlayerInput(inputActions);
             input.Init();
 
             interaction = new PlayerInteraction(inputActions);
             interaction.Init();
+
+            inventory = new PlayerInventory();
+            inventory.Init(playerConfig.InventorySlots, transform);
 
             IsHost = isHost;
 
@@ -90,9 +96,6 @@ namespace ElectrumGames.Core.Player
                 playerCamera = injectedCamera;
                 playerCamera.transform.localPosition = Vector3.zero;
             }
-
-            playerConfig = config;
-            configService = configSrv;
 
             motor = new PlayerMovementMotor(characterController, playerCamera, config, configService);
             cameraLifter = new CameraLifter(playerConfig, headBob, stayCameraTransform.localPosition,
