@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 namespace ElectrumGames.Core.Player.Movement
 {
-    public class PlayerInput : IInput, InputActions.IPlayerActions
+    public class PlayerInput : IInput, InputActions.IMovingActions
     {
         private InputActions _inputActions;
 
@@ -14,9 +14,6 @@ namespace ElectrumGames.Core.Player.Movement
         public Vector2 Look { get; private set; }
         public bool Sprint { get; private set; }
         public bool IsCrouch { get; private set; }
-        public bool IsPrimaryInteraction { get; private set; }
-        public bool IsAlternativeInteraction { get; private set; }
-        public bool IsVoiceActivated { get; private set; }
 
         public PlayerInput(InputActions inputActions)
         {
@@ -25,14 +22,14 @@ namespace ElectrumGames.Core.Player.Movement
 
         public void Init()
         {
-            _inputActions.Player.SetCallbacks(this);
-            _inputActions.Player.Enable();
+            _inputActions.Moving.SetCallbacks(this);
+            _inputActions.Moving.Enable();
         }
 
         public void Update(float deltaTime)
         {
-            Movement = _isMovementUpdated ? _inputActions.Player.Move.ReadValue<Vector2>() : Vector2.zero;
-            Look = _isLookUpdated ? _inputActions.Player.Look.ReadValue<Vector2>() : Vector2.zero;
+            Movement = _isMovementUpdated ? _inputActions.Moving.Move.ReadValue<Vector2>() : Vector2.zero;
+            Look = _isLookUpdated ? _inputActions.Moving.Look.ReadValue<Vector2>() : Vector2.zero;
         }
 
         public void OnMove(InputAction.CallbackContext context)
@@ -53,21 +50,6 @@ namespace ElectrumGames.Core.Player.Movement
         public void OnCrouch(InputAction.CallbackContext context)
         {
             IsCrouch = context.phase == InputActionPhase.Performed;
-        }
-
-        public void OnPrimaryInteraction(InputAction.CallbackContext context)
-        {
-            IsPrimaryInteraction = context.phase != InputActionPhase.Canceled;
-        }
-
-        public void OnAlternativeInteraction(InputAction.CallbackContext context)
-        {
-            IsAlternativeInteraction = context.phase != InputActionPhase.Canceled;
-        }
-
-        public void OnVoice(InputAction.CallbackContext context)
-        {
-            IsVoiceActivated = context.phase != InputActionPhase.Canceled;
         }
     }
 }

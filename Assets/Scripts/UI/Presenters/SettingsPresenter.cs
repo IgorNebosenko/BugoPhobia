@@ -36,13 +36,15 @@ namespace ElectrumGames.UI.Presenters
         protected override void Init()
         {
             Cursor.visible = true;
-            _inputActions.Player.Disable();
+            _inputActions.Moving.Disable();
+            _inputActions.Interactions.Disable();
         }
 
         protected override void Closing()
         {
             Cursor.visible = false;
-            _inputActions.Player.Enable();
+            _inputActions.Moving.Enable();
+            _inputActions.Interactions.Enable();
         }
 
         public void OnXSensitivitySliderChanged(float value)

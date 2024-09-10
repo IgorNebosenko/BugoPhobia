@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Core.Player.Interactions;
 using ElectrumGames.Configs;
 using ElectrumGames.Core.Inventory;
 using ElectrumGames.Core.Player.Movement;
@@ -21,6 +22,8 @@ namespace ElectrumGames.Core.Player
         protected IInput input;
         protected IMotor motor;
         protected CameraLifter cameraLifter;
+
+        protected IInteraction interaction;
 
         private bool _isInited;
         
@@ -71,6 +74,9 @@ namespace ElectrumGames.Core.Player
         {
             input = new PlayerInput(inputActions);
             input.Init();
+
+            interaction = new PlayerInteraction(inputActions);
+            interaction.Init();
 
             IsHost = isHost;
 

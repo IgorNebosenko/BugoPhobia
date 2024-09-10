@@ -27,7 +27,7 @@ namespace ElectrumGames.Core.Player.Movement
     ""name"": ""InputSystem_Actions"",
     ""maps"": [
         {
-            ""name"": ""Player"",
+            ""name"": ""Moving"",
             ""id"": ""df70fa95-8a34-4494-b137-73ab6b9c7d37"",
             ""actions"": [
                 {
@@ -61,33 +61,6 @@ namespace ElectrumGames.Core.Player.Movement
                     ""name"": ""Crouch"",
                     ""type"": ""Button"",
                     ""id"": ""aa81f608-b0f7-4930-9f96-9d10fa3f88d8"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""PrimaryInteraction"",
-                    ""type"": ""Button"",
-                    ""id"": ""6c2ab1b8-8984-453a-af3d-a3c78ae1679a"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""AlternativeInteraction"",
-                    ""type"": ""Button"",
-                    ""id"": ""852140f2-7766-474d-8707-702459ba45f3"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": ""Hold"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Voice"",
-                    ""type"": ""Button"",
-                    ""id"": ""2776c80d-3c14-4091-8c56-d04ced07a2b0"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -262,72 +235,6 @@ namespace ElectrumGames.Core.Player.Movement
                 },
                 {
                     ""name"": """",
-                    ""id"": ""143bb1cd-cc10-4eca-a2f0-a3664166fe91"",
-                    ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""PrimaryInteraction"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""05f6913d-c316-48b2-a6bb-e225f14c7960"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""PrimaryInteraction"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""886e731e-7071-4ae4-95c0-e61739dad6fd"",
-                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Touch"",
-                    ""action"": ""PrimaryInteraction"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ee3d0cd2-254e-47a7-a8cb-bc94d9658c54"",
-                    ""path"": ""<Joystick>/trigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Joystick"",
-                    ""action"": ""PrimaryInteraction"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8255d333-5683-4943-a58a-ccb207ff1dce"",
-                    ""path"": ""<XRController>/{PrimaryAction}"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XR"",
-                    ""action"": ""PrimaryInteraction"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b3c1c7f0-bd20-4ee7-a0f1-899b24bca6d7"",
-                    ""path"": ""<Keyboard>/enter"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""PrimaryInteraction"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""f2e9ba44-c423-42a7-ad56-f20975884794"",
                     ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": """",
@@ -391,10 +298,65 @@ namespace ElectrumGames.Core.Player.Movement
                     ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Interactions"",
+            ""id"": ""3cb9b27b-cea7-4e3b-b8b8-6d9d7bcb76df"",
+            ""actions"": [
+                {
+                    ""name"": ""ExternalInteraction"",
+                    ""type"": ""Button"",
+                    ""id"": ""070b4b9b-9975-4d50-a427-c362daff1c42"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PrimaryInteraction"",
+                    ""type"": ""Button"",
+                    ""id"": ""d530451d-a5e5-4933-962b-d538c9732348"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AlternativeInteraction"",
+                    ""type"": ""Button"",
+                    ""id"": ""27d9ec2f-d225-44c2-a473-8037b41046f5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Voice"",
+                    ""type"": ""Button"",
+                    ""id"": ""9945cfb6-5d61-4b9d-9800-1b0686e87967"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""71586166-11a7-4955-b737-40ad3645384d"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExternalInteraction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1534dc16-a6aa-499d-9c3a-22b47347b52a"",
+                    ""id"": ""c200fc56-08ef-40b4-bd44-e7212a4282ae"",
                     ""path"": ""<Keyboard>/t"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -405,7 +367,7 @@ namespace ElectrumGames.Core.Player.Movement
                 },
                 {
                     ""name"": """",
-                    ""id"": ""25060bbd-a3a6-476e-8fba-45ae484aad05"",
+                    ""id"": ""0b38e7c1-4296-4cf0-abf6-cff37355c985"",
                     ""path"": ""<Gamepad>/dpad/left"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -416,7 +378,7 @@ namespace ElectrumGames.Core.Player.Movement
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1c04ea5f-b012-41d1-a6f7-02e963b52893"",
+                    ""id"": ""68087239-ace5-4067-ab22-90591e7ced43"",
                     ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -427,12 +389,78 @@ namespace ElectrumGames.Core.Player.Movement
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b3f66d0b-7751-423f-908b-a11c5bd95930"",
+                    ""id"": ""f19800cb-d864-4b8d-b48f-2f7d17616f3c"",
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""AlternativeInteraction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""61c2b989-99d8-441a-a300-32ccc8143b52"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""PrimaryInteraction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5f79db2f-51ee-43da-a56c-78593fb8ee6a"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""PrimaryInteraction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e05ae3c1-2170-47fe-bf79-5ba2bc2a3fe9"",
+                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Touch"",
+                    ""action"": ""PrimaryInteraction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eb64b4cc-ce2b-43ac-81d1-351c72c53dd8"",
+                    ""path"": ""<Joystick>/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""PrimaryInteraction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3a887ff0-d53c-4dbe-93a6-48cc1a1ea7b8"",
+                    ""path"": ""<XRController>/{PrimaryAction}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""XR"",
+                    ""action"": ""PrimaryInteraction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e062d19a-304d-42c6-9324-5cb87f5ea160"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""PrimaryInteraction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1066,15 +1094,18 @@ namespace ElectrumGames.Core.Player.Movement
         }
     ]
 }");
-            // Player
-            m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-            m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-            m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
-            m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
-            m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
-            m_Player_PrimaryInteraction = m_Player.FindAction("PrimaryInteraction", throwIfNotFound: true);
-            m_Player_AlternativeInteraction = m_Player.FindAction("AlternativeInteraction", throwIfNotFound: true);
-            m_Player_Voice = m_Player.FindAction("Voice", throwIfNotFound: true);
+            // Moving
+            m_Moving = asset.FindActionMap("Moving", throwIfNotFound: true);
+            m_Moving_Move = m_Moving.FindAction("Move", throwIfNotFound: true);
+            m_Moving_Look = m_Moving.FindAction("Look", throwIfNotFound: true);
+            m_Moving_Sprint = m_Moving.FindAction("Sprint", throwIfNotFound: true);
+            m_Moving_Crouch = m_Moving.FindAction("Crouch", throwIfNotFound: true);
+            // Interactions
+            m_Interactions = asset.FindActionMap("Interactions", throwIfNotFound: true);
+            m_Interactions_ExternalInteraction = m_Interactions.FindAction("ExternalInteraction", throwIfNotFound: true);
+            m_Interactions_PrimaryInteraction = m_Interactions.FindAction("PrimaryInteraction", throwIfNotFound: true);
+            m_Interactions_AlternativeInteraction = m_Interactions.FindAction("AlternativeInteraction", throwIfNotFound: true);
+            m_Interactions_Voice = m_Interactions.FindAction("Voice", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1095,7 +1126,8 @@ namespace ElectrumGames.Core.Player.Movement
 
         ~@InputActions()
         {
-            Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, InputActions.Player.Disable() has not been called.");
+            Debug.Assert(!m_Moving.enabled, "This will cause a leak and performance issues, InputActions.Moving.Disable() has not been called.");
+            Debug.Assert(!m_Interactions.enabled, "This will cause a leak and performance issues, InputActions.Interactions.Disable() has not been called.");
             Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, InputActions.UI.Disable() has not been called.");
             Debug.Assert(!m_UiEvents.enabled, "This will cause a leak and performance issues, InputActions.UiEvents.Disable() has not been called.");
         }
@@ -1156,36 +1188,30 @@ namespace ElectrumGames.Core.Player.Movement
             return asset.FindBinding(bindingMask, out action);
         }
 
-        // Player
-        private readonly InputActionMap m_Player;
-        private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
-        private readonly InputAction m_Player_Move;
-        private readonly InputAction m_Player_Look;
-        private readonly InputAction m_Player_Sprint;
-        private readonly InputAction m_Player_Crouch;
-        private readonly InputAction m_Player_PrimaryInteraction;
-        private readonly InputAction m_Player_AlternativeInteraction;
-        private readonly InputAction m_Player_Voice;
-        public struct PlayerActions
+        // Moving
+        private readonly InputActionMap m_Moving;
+        private List<IMovingActions> m_MovingActionsCallbackInterfaces = new List<IMovingActions>();
+        private readonly InputAction m_Moving_Move;
+        private readonly InputAction m_Moving_Look;
+        private readonly InputAction m_Moving_Sprint;
+        private readonly InputAction m_Moving_Crouch;
+        public struct MovingActions
         {
             private @InputActions m_Wrapper;
-            public PlayerActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-            public InputAction @Move => m_Wrapper.m_Player_Move;
-            public InputAction @Look => m_Wrapper.m_Player_Look;
-            public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
-            public InputAction @Crouch => m_Wrapper.m_Player_Crouch;
-            public InputAction @PrimaryInteraction => m_Wrapper.m_Player_PrimaryInteraction;
-            public InputAction @AlternativeInteraction => m_Wrapper.m_Player_AlternativeInteraction;
-            public InputAction @Voice => m_Wrapper.m_Player_Voice;
-            public InputActionMap Get() { return m_Wrapper.m_Player; }
+            public MovingActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Move => m_Wrapper.m_Moving_Move;
+            public InputAction @Look => m_Wrapper.m_Moving_Look;
+            public InputAction @Sprint => m_Wrapper.m_Moving_Sprint;
+            public InputAction @Crouch => m_Wrapper.m_Moving_Crouch;
+            public InputActionMap Get() { return m_Wrapper.m_Moving; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
             public bool enabled => Get().enabled;
-            public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
-            public void AddCallbacks(IPlayerActions instance)
+            public static implicit operator InputActionMap(MovingActions set) { return set.Get(); }
+            public void AddCallbacks(IMovingActions instance)
             {
-                if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
-                m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
+                if (instance == null || m_Wrapper.m_MovingActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_MovingActionsCallbackInterfaces.Add(instance);
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
@@ -1198,18 +1224,9 @@ namespace ElectrumGames.Core.Player.Movement
                 @Crouch.started += instance.OnCrouch;
                 @Crouch.performed += instance.OnCrouch;
                 @Crouch.canceled += instance.OnCrouch;
-                @PrimaryInteraction.started += instance.OnPrimaryInteraction;
-                @PrimaryInteraction.performed += instance.OnPrimaryInteraction;
-                @PrimaryInteraction.canceled += instance.OnPrimaryInteraction;
-                @AlternativeInteraction.started += instance.OnAlternativeInteraction;
-                @AlternativeInteraction.performed += instance.OnAlternativeInteraction;
-                @AlternativeInteraction.canceled += instance.OnAlternativeInteraction;
-                @Voice.started += instance.OnVoice;
-                @Voice.performed += instance.OnVoice;
-                @Voice.canceled += instance.OnVoice;
             }
 
-            private void UnregisterCallbacks(IPlayerActions instance)
+            private void UnregisterCallbacks(IMovingActions instance)
             {
                 @Move.started -= instance.OnMove;
                 @Move.performed -= instance.OnMove;
@@ -1223,6 +1240,67 @@ namespace ElectrumGames.Core.Player.Movement
                 @Crouch.started -= instance.OnCrouch;
                 @Crouch.performed -= instance.OnCrouch;
                 @Crouch.canceled -= instance.OnCrouch;
+            }
+
+            public void RemoveCallbacks(IMovingActions instance)
+            {
+                if (m_Wrapper.m_MovingActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            public void SetCallbacks(IMovingActions instance)
+            {
+                foreach (var item in m_Wrapper.m_MovingActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_MovingActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        public MovingActions @Moving => new MovingActions(this);
+
+        // Interactions
+        private readonly InputActionMap m_Interactions;
+        private List<IInteractionsActions> m_InteractionsActionsCallbackInterfaces = new List<IInteractionsActions>();
+        private readonly InputAction m_Interactions_ExternalInteraction;
+        private readonly InputAction m_Interactions_PrimaryInteraction;
+        private readonly InputAction m_Interactions_AlternativeInteraction;
+        private readonly InputAction m_Interactions_Voice;
+        public struct InteractionsActions
+        {
+            private @InputActions m_Wrapper;
+            public InteractionsActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+            public InputAction @ExternalInteraction => m_Wrapper.m_Interactions_ExternalInteraction;
+            public InputAction @PrimaryInteraction => m_Wrapper.m_Interactions_PrimaryInteraction;
+            public InputAction @AlternativeInteraction => m_Wrapper.m_Interactions_AlternativeInteraction;
+            public InputAction @Voice => m_Wrapper.m_Interactions_Voice;
+            public InputActionMap Get() { return m_Wrapper.m_Interactions; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(InteractionsActions set) { return set.Get(); }
+            public void AddCallbacks(IInteractionsActions instance)
+            {
+                if (instance == null || m_Wrapper.m_InteractionsActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_InteractionsActionsCallbackInterfaces.Add(instance);
+                @ExternalInteraction.started += instance.OnExternalInteraction;
+                @ExternalInteraction.performed += instance.OnExternalInteraction;
+                @ExternalInteraction.canceled += instance.OnExternalInteraction;
+                @PrimaryInteraction.started += instance.OnPrimaryInteraction;
+                @PrimaryInteraction.performed += instance.OnPrimaryInteraction;
+                @PrimaryInteraction.canceled += instance.OnPrimaryInteraction;
+                @AlternativeInteraction.started += instance.OnAlternativeInteraction;
+                @AlternativeInteraction.performed += instance.OnAlternativeInteraction;
+                @AlternativeInteraction.canceled += instance.OnAlternativeInteraction;
+                @Voice.started += instance.OnVoice;
+                @Voice.performed += instance.OnVoice;
+                @Voice.canceled += instance.OnVoice;
+            }
+
+            private void UnregisterCallbacks(IInteractionsActions instance)
+            {
+                @ExternalInteraction.started -= instance.OnExternalInteraction;
+                @ExternalInteraction.performed -= instance.OnExternalInteraction;
+                @ExternalInteraction.canceled -= instance.OnExternalInteraction;
                 @PrimaryInteraction.started -= instance.OnPrimaryInteraction;
                 @PrimaryInteraction.performed -= instance.OnPrimaryInteraction;
                 @PrimaryInteraction.canceled -= instance.OnPrimaryInteraction;
@@ -1234,21 +1312,21 @@ namespace ElectrumGames.Core.Player.Movement
                 @Voice.canceled -= instance.OnVoice;
             }
 
-            public void RemoveCallbacks(IPlayerActions instance)
+            public void RemoveCallbacks(IInteractionsActions instance)
             {
-                if (m_Wrapper.m_PlayerActionsCallbackInterfaces.Remove(instance))
+                if (m_Wrapper.m_InteractionsActionsCallbackInterfaces.Remove(instance))
                     UnregisterCallbacks(instance);
             }
 
-            public void SetCallbacks(IPlayerActions instance)
+            public void SetCallbacks(IInteractionsActions instance)
             {
-                foreach (var item in m_Wrapper.m_PlayerActionsCallbackInterfaces)
+                foreach (var item in m_Wrapper.m_InteractionsActionsCallbackInterfaces)
                     UnregisterCallbacks(item);
-                m_Wrapper.m_PlayerActionsCallbackInterfaces.Clear();
+                m_Wrapper.m_InteractionsActionsCallbackInterfaces.Clear();
                 AddCallbacks(instance);
             }
         }
-        public PlayerActions @Player => new PlayerActions(this);
+        public InteractionsActions @Interactions => new InteractionsActions(this);
 
         // UI
         private readonly InputActionMap m_UI;
@@ -1466,12 +1544,16 @@ namespace ElectrumGames.Core.Player.Movement
                 return asset.controlSchemes[m_XRSchemeIndex];
             }
         }
-        public interface IPlayerActions
+        public interface IMovingActions
         {
             void OnMove(InputAction.CallbackContext context);
             void OnLook(InputAction.CallbackContext context);
             void OnSprint(InputAction.CallbackContext context);
             void OnCrouch(InputAction.CallbackContext context);
+        }
+        public interface IInteractionsActions
+        {
+            void OnExternalInteraction(InputAction.CallbackContext context);
             void OnPrimaryInteraction(InputAction.CallbackContext context);
             void OnAlternativeInteraction(InputAction.CallbackContext context);
             void OnVoice(InputAction.CallbackContext context);
