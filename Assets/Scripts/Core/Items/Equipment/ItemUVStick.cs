@@ -34,7 +34,7 @@ namespace ElectrumGames.Core.Items
 
         public override void OnAlternativeInteraction()
         {
-            if (_lifeTime > 0)
+            if (_lifeTime > 0 || !_isOn)
                 return;
 
             sourceLight.DOIntensity(startLightForce, lightOnDuration);
