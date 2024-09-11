@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Core.Player.Interactions;
 using ElectrumGames.Configs;
+using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Items.Inventory;
 using ElectrumGames.Core.Player.Movement;
 using ElectrumGames.Core.PlayerVisuals;
@@ -18,7 +19,9 @@ namespace ElectrumGames.Core.Player
 
         protected Camera playerCamera;
 
-        protected InputActions _inputActions;
+        protected InputActions inputActions;
+        protected ItemsConfig itemsConfig;
+        
         protected IInventory inventory;
         protected IInput input;
         protected IMotor motor;
@@ -75,12 +78,14 @@ namespace ElectrumGames.Core.Player
         protected virtual void OnInteractionSimulate(float deltaTime)
         {}
 
-        public void Spawn(PlayerConfig config, ConfigService configSrv, bool isHost, InputActions inputActions, Camera injectedCamera)
+        public void Spawn(PlayerConfig config, ConfigService configSrv, bool isHost, InputActions inputActions, 
+            ItemsConfig itemsConfig, Camera injectedCamera)
         {
             playerConfig = config;
             configService = configSrv;
 
-            _inputActions = inputActions;
+            this.inputActions = inputActions;
+            this.itemsConfig = itemsConfig;
             
             input = new PlayerInput(inputActions);
             input.Init();

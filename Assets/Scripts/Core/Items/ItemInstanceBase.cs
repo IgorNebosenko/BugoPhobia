@@ -33,6 +33,7 @@ namespace ElectrumGames.Core.Items
         public void OnDropItem(Transform playerTransform)
         {
             gameObject.SetActive(true);
+            physicObject.isKinematic = false;
             
             OwnerId = -1;
             

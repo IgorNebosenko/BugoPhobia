@@ -1,5 +1,6 @@
 ﻿using ElectrumGames.CommonInterfaces;
 using ElectrumGames.Configs;
+using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Player.Movement;
 using ElectrumGames.Network;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace ElectrumGames.Core.Player
         private PlayerConfig _playerConfig;
         private InputActions _inputActions;
         private ConfigService _configService;
+        private ItemsConfig _itemsConfig;
 
         private Camera _playerCamera;
         
@@ -28,12 +30,13 @@ namespace ElectrumGames.Core.Player
         
         [Inject]
         private void Construct(NetIdFactory netIdFactory, PlayerConfig playerConfig, InputActions inputActions,
-            ConfigService configService, Camera playerCamera)
+            ConfigService configService, ItemsConfig itemsConfig, Camera playerCamera)
         {
             _netIdFactory = netIdFactory;
             _playerConfig = playerConfig;
             _inputActions = inputActions;
             _configService = configService;
+            _itemsConfig = itemsConfig;
 
             _playerCamera = playerCamera;
 
@@ -43,7 +46,7 @@ namespace ElectrumGames.Core.Player
         public IPlayer CreatePlayer(bool isHost, Vector3 position, Quaternion rotation)
         {
             var player = Instantiate(playerTemplate, position, rotation, transform);
-            player.Spawn(_playerConfig, _configService, isHost, _inputActions, _playerCamera);
+            player.Spawn(_playerConfig, _configService, isHost, _inputActions, _itemsConfig, _playerCamera);
             
             return (Player)_netIdFactory.Initialize(player, NetId);
         }

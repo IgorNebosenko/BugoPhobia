@@ -1,7 +1,7 @@
 ﻿using Core.Items.Inventory;
 using Core.Player.Interactions;
+using ElectrumGames.Core.Player.Interactions.Items;
 using ElectrumGames.Core.PlayerVisuals;
-using UnityEngine;
 
 namespace ElectrumGames.Core.Player
 {
@@ -10,6 +10,7 @@ namespace ElectrumGames.Core.Player
         private PutInteractionHandler _putInteractionHandler;
         private DropInteractionHandler _dropInteractionHandler;
         private SelectInventorySlotHandler _selectInventorySlotHandler;
+        private ItemInteractionVisual _itemInteractionVisual;
         
         private InventoryIndexHandler _inventoryIndexHandler;
         
@@ -17,11 +18,14 @@ namespace ElectrumGames.Core.Player
         {
             _inventoryIndexHandler = new InventoryIndexHandler(playerConfig);
             
-            interaction = new PlayerInteraction(_inputActions, _inventoryIndexHandler);
+            interaction = new PlayerInteraction(inputActions, _inventoryIndexHandler);
             interaction.Init();
             
+            _itemInteractionVisual = new ItemInteractionVisual(inventory, _inventoryIndexHandler, itemsConfig, 
+                transform, playerCamera.transform);
+            
             _putInteractionHandler = new PutInteractionHandler(interaction, playerCamera, playerConfig, 
-                inventory, _inventoryIndexHandler);
+                inventory, _inventoryIndexHandler, _itemInteractionVisual);
 
             _dropInteractionHandler =
                 new DropInteractionHandler(interaction, playerCamera.transform, inventory, _inventoryIndexHandler);
@@ -44,6 +48,7 @@ namespace ElectrumGames.Core.Player
             _putInteractionHandler.Simulate(deltaTime);
             _selectInventorySlotHandler.Simulate(deltaTime);
             _dropInteractionHandler.Simulate(deltaTime);
+            _itemInteractionVisual.Simulate(deltaTime);
         }
     }
 }

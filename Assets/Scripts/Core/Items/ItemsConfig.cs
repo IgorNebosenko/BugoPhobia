@@ -9,6 +9,8 @@ namespace ElectrumGames.Core.Items
     public class ItemConfigData
     {
         [field: SerializeField] public ItemInstanceBase ItemInstance { get; private set; }
+        [field: SerializeField] public Vector3 UserPositionAtCamera { get; private set; }
+        [field: SerializeField] public Quaternion UserRotationAtCamera { get; private set; }
     }
 
     [CreateAssetMenu(fileName = "Items Config", menuName = "Items/ItemsConfig")]
