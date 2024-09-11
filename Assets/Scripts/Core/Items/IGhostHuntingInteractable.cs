@@ -2,9 +2,8 @@
 {
     public interface IGhostHuntingInteractable
     {
-        bool IsOn { get; }
-        bool IsGhostHuntInteractable { get; }
-        bool OnGhostHuntInteractionEnter();
+        bool IsElectricityOn { get; }
+        void OnGhostHuntInteractionEnter();
         void OnGhostHuntInteractionExit();
     }
 }

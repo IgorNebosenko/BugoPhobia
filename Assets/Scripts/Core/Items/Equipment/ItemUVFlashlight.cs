@@ -3,24 +3,24 @@ using UnityEngine;
 
 namespace ElectrumGames.Core.Items
 {
-    public class ItemFlashLight : ItemInstanceBase, IGhostHuntingInteractable
+    public class ItemUVFlashlight : ItemInstanceBase, IGhostHuntingInteractable
     {
         [SerializeField] private Light lightSource;
         [SerializeField] private float flickerDuration = 0.75f;
         [SerializeField] private float flickerSpeed = 0.1f;
 
         private bool _isOn;
-
+        
         private float _startIntensity;
         private Tween _flickerProcess;
 
         public bool IsElectricityOn => _isOn;
-
+        
         private void Start()
         {
             _startIntensity = lightSource.intensity;
         }
-
+        
         public override void OnMainInteraction()
         {
         }
@@ -31,7 +31,7 @@ namespace ElectrumGames.Core.Items
 
             lightSource.enabled = _isOn;
         }
-
+        
         public void OnGhostHuntInteractionEnter()
         {
             _flickerProcess = lightSource.DOIntensity(0f, flickerSpeed)
