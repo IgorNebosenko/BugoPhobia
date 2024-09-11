@@ -46,7 +46,8 @@ namespace ElectrumGames.Core.Items
             _lifeTime = normalGlowTime;
             _decayProcess.Kill();
             
-            StopCoroutine(_lifeTimeProcess);
+            if (_lifeTimeProcess != null)
+                StopCoroutine(_lifeTimeProcess);
             _lifeTimeProcess = StartCoroutine(LifetimeCycle());
 
         }
