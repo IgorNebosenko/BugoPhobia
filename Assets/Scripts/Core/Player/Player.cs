@@ -1,4 +1,5 @@
-﻿using Core.Items.Inventory;
+﻿using System.Collections.Generic;
+using Core.Items.Inventory;
 using Core.Player.Interactions;
 using ElectrumGames.Core.Player.Interactions.Items;
 using ElectrumGames.Core.PlayerVisuals;
@@ -7,10 +8,13 @@ namespace ElectrumGames.Core.Player
 {
     public class Player : PlayerBase
     {
+        private List<IInteractionItemsManager> _interactionItemsManagers;
+        
         private PutInteractionHandler _putInteractionHandler;
         private DropInteractionHandler _dropInteractionHandler;
         private SelectInventorySlotHandler _selectInventorySlotHandler;
         private ItemInteractionVisual _itemInteractionVisual;
+        private ItemInteractionHandler _interactionHandler;
         
         private InventoryIndexHandler _inventoryIndexHandler;
         
@@ -31,6 +35,17 @@ namespace ElectrumGames.Core.Player
                 new DropInteractionHandler(interaction, playerCamera.transform, inventory, _inventoryIndexHandler);
 
             _selectInventorySlotHandler = new SelectInventorySlotHandler(interaction, _inventoryIndexHandler);
+
+            _interactionHandler = new ItemInteractionHandler(interaction, inventory, _inventoryIndexHandler);
+
+            _interactionItemsManagers = new List<IInteractionItemsManager>
+            {
+                _putInteractionHandler,
+                _dropInteractionHandler,
+                _selectInventorySlotHandler,
+                _itemInteractionVisual,
+                _interactionHandler
+            };
             
             var headBob = new HeadBobVisual();
             headBob.SetCamera(playerCamera);
@@ -45,10 +60,8 @@ namespace ElectrumGames.Core.Player
 
         protected override void OnInteractionSimulate(float deltaTime)
         {
-            _putInteractionHandler.Simulate(deltaTime);
-            _selectInventorySlotHandler.Simulate(deltaTime);
-            _dropInteractionHandler.Simulate(deltaTime);
-            _itemInteractionVisual.Simulate(deltaTime);
+            for (var i = 0; i < _interactionItemsManagers.Count; i++)
+                _interactionItemsManagers[i].Simulate(deltaTime);
         }
     }
 }

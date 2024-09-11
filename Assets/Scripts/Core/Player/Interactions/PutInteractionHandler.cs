@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Core.Player.Interactions
 {
-    public class PutInteractionHandler
+    public class PutInteractionHandler : IInteractionItemsManager
     {
         private readonly IInteraction _interactions;
         private readonly Camera _targetCamera;

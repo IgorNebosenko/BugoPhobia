@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4286461064413872197}
   - component: {fileID: 1639782749136745309}
   - component: {fileID: 3509868230975085684}
-  - component: {fileID: 4613118507875599505}
   - component: {fileID: 7811983929987407227}
   - component: {fileID: 5273315199609868676}
+  - component: {fileID: -5620107701271289909}
   m_Layer: 0
   m_Name: FlashLightMedium
   m_TagString: Untagged
@@ -90,28 +90,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4613118507875599505
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1973236997444693826}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -888733141545137240, guid: b24ee818d3911a14a9aa36b51fb69d25, type: 3}
 --- !u!54 &7811983929987407227
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -156,6 +134,28 @@ MonoBehaviour:
   lightSource: {fileID: 1374916051911190255}
   flickerDuration: 0.75
   flickerSpeed: 0.1
+--- !u!64 &-5620107701271289909
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973236997444693826}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -888733141545137240, guid: b24ee818d3911a14a9aa36b51fb69d25, type: 3}
 --- !u!1 &4381397268786218301
 GameObject:
   m_ObjectHideFlags: 0

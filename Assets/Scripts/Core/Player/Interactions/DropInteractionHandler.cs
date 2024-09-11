@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Core.Player.Interactions
 {
-    public class DropInteractionHandler
+    public class DropInteractionHandler : IInteractionItemsManager
     {
         private readonly IInteraction _interactions;
         private readonly Transform _outputTransform;

@@ -1,11 +1,12 @@
 ﻿using Core.Items.Inventory;
+using Core.Player.Interactions;
 using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Items.Inventory;
 using UnityEngine;
 
 namespace ElectrumGames.Core.Player.Interactions.Items
 {
-    public class ItemInteractionVisual
+    public class ItemInteractionVisual : IInteractionItemsManager
     {
         private readonly IInventory _inventory;
         private readonly InventoryIndexHandler _inventoryIndexHandler;

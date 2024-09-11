@@ -2,7 +2,7 @@
 
 namespace Core.Player.Interactions
 {
-    public class SelectInventorySlotHandler
+    public class SelectInventorySlotHandler : IInteractionItemsManager
     {
         private readonly IInteraction _interactions;
         private readonly InventoryIndexHandler _inventoryIndexHandler;
