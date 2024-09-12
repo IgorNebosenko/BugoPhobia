@@ -27,7 +27,7 @@ namespace Core.Player.Interactions
             {
                 _previousState = !_previousState;
 
-                if (_previousState)
+                if (_previousState && _inventory.Items[_inventoryIndexHandler.CurrentIndex] != null)
                 {
                     _inventory.Items[_inventoryIndexHandler.CurrentIndex].OnDropItem(_outputTransform);
                     _inventory.Items[_inventoryIndexHandler.CurrentIndex] = null;
