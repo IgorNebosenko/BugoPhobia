@@ -41,7 +41,8 @@ namespace ElectrumGames.Core.Items
             
             var dropForce = Random.Range(_playerConfig.MinDropForce, _playerConfig.MaxDropForce);
             
-            PhysicObject.AddForce(playerTransform.forward * dropForce + Vector3.up * _playerConfig.AdditionalLiftForce);
+            transform.localPosition = Vector3.zero;
+            PhysicObject.AddForce(playerTransform.forward * dropForce);
             
             transform.parent = _itemsFactory.transform;
             transform.localScale = Vector3.one;
