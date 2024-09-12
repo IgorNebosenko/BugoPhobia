@@ -1,5 +1,6 @@
-﻿using System.Collections;
+﻿using System;
 using DG.Tweening;
+using UniRx;
 using UnityEngine;
 
 namespace ElectrumGames.Core.Items
@@ -16,8 +17,8 @@ namespace ElectrumGames.Core.Items
         [SerializeField] private float lightOnDuration;
 
         private bool _isOn;
-        private float _lifeTime;
-        private Coroutine _lifeTimeProcess;
+        private bool _lifeCycleEnd;
+        private IDisposable _lifeTimeProcess;
         private Tween _decayProcess;
         
         public override void OnMainInteraction()
@@ -34,7 +35,7 @@ namespace ElectrumGames.Core.Items
 
         public override void OnAlternativeInteraction()
         {
-            if (_lifeTime > 0 || !_isOn)
+            if (!_lifeCycleEnd || !_isOn)
                 return;
 
             sourceLight.DOIntensity(startLightForce, lightOnDuration);
@@ -43,23 +44,18 @@ namespace ElectrumGames.Core.Items
 
         private void StartLightLifetime()
         {
-            _lifeTime = normalGlowTime;
+            _lifeCycleEnd = false;
             _decayProcess.Kill();
             
-            if (_lifeTimeProcess != null)
-                StopCoroutine(_lifeTimeProcess);
-            _lifeTimeProcess = StartCoroutine(LifetimeCycle());
+            _lifeTimeProcess?.Dispose();
+            _lifeTimeProcess = Observable.Timer(TimeSpan.FromSeconds(normalGlowTime)).Subscribe(LifetimeCycle)
+                .AddTo(this);
 
         }
 
-        private IEnumerator LifetimeCycle()
+        private void LifetimeCycle(long _)
         {
-            while (_lifeTime > 0)
-            {
-                _lifeTime -= Time.deltaTime;
-                yield return new WaitForEndOfFrame();
-            }
-
+            _lifeCycleEnd = true;
             _decayProcess = sourceLight.DOIntensity(endLightForce, glowDecreaseTime);
         }
     }
