@@ -7,7 +7,8 @@ namespace ElectrumGames.Core.Items
 {
     public abstract class ItemInstanceBase : MonoBehaviour, IHaveNetId
     {
-        [field: SerializeField] public Rigidbody physicObject { get; private set; }
+        [field: SerializeField] public Rigidbody PhysicObject { get; private set; }
+        [field: SerializeField] public Collider Collider { get; private set; }
         [field: SerializeField] public ItemType ItemType { get; protected set; }
 
         private PlayerConfig _playerConfig;
@@ -33,13 +34,14 @@ namespace ElectrumGames.Core.Items
         public void OnDropItem(Transform playerTransform)
         {
             gameObject.SetActive(true);
-            physicObject.isKinematic = false;
+            Collider.enabled = true;
+            PhysicObject.isKinematic = false;
             
             OwnerId = -1;
             
             var dropForce = Random.Range(_playerConfig.MinDropForce, _playerConfig.MaxDropForce);
             
-            physicObject.AddForce(playerTransform.forward * dropForce + Vector3.up * _playerConfig.AdditionalLiftForce);
+            PhysicObject.AddForce(playerTransform.forward * dropForce + Vector3.up * _playerConfig.AdditionalLiftForce);
             
             transform.parent = _itemsFactory.transform;
             transform.localScale = Vector3.one;

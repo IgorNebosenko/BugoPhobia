@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 9153891831194882300}
   - component: {fileID: 2274561976030652688}
   - component: {fileID: 6779436738307694981}
-  - component: {fileID: 8773689743672939289}
   - component: {fileID: 3979714382874790478}
+  - component: {fileID: 8773689743672939289}
   - component: {fileID: 7423594664720700358}
   m_Layer: 0
   m_Name: GlowStickRed
@@ -90,27 +90,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8773689743672939289
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 417850306370986315}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.032781765, y: 0.028389841, z: 0.23974748}
-  m_Center: {x: -0.00000006053597, y: -0.000000011641532, z: 0.0127858445}
 --- !u!54 &3979714382874790478
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -138,6 +117,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!65 &8773689743672939289
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417850306370986315}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.032781765, y: 0.028389841, z: 0.23974748}
+  m_Center: {x: -0.00000006053597, y: -0.000000011641532, z: 0.0127858445}
 --- !u!114 &7423594664720700358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63518f15235b4275a150ac50b9bf7746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <physicObject>k__BackingField: {fileID: 3979714382874790478}
+  <PhysicObject>k__BackingField: {fileID: 3979714382874790478}
+  <Collider>k__BackingField: {fileID: 8773689743672939289}
   <ItemType>k__BackingField: 12
   sourceLight: {fileID: 1376335670516575793}
   startLightForce: 1
