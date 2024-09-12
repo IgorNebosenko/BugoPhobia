@@ -6,7 +6,6 @@ namespace ElectrumGames.Core.Items
     public class ItemUVFlashlight : ItemInstanceBase, IGhostHuntingInteractable
     {
         [SerializeField] private Light lightSource;
-        [SerializeField] private float flickerDuration = 0.75f;
         [SerializeField] private float flickerSpeed = 0.1f;
 
         private bool _isOn;
