@@ -33,6 +33,7 @@ namespace ElectrumGames.EntryPoints
         private void Start()
         {
             _configService.FpsConfig = _configService.FpsConfig;
+            Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = false;
             
             _playersFactory.CreatePlayer(
