@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ElectrumGames.Core.Environment
 {
-    public class LightEnvironmentObject : MonoBehaviour
+    public class LightEnvironmentObject : EnvironmentObjectBase
     {
         [SerializeField] private float normalTemperature;
         [SerializeField] private Color redLightColor = Color.red;
@@ -69,6 +69,10 @@ namespace ElectrumGames.Core.Environment
                 lightSources[i].intensity = _defaultLightIntensity[i];
                 _tweens[i]?.Kill(true);
             }
+        }
+
+        public override void OnInteract()
+        {
         }
     }
 }

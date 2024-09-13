@@ -11,7 +11,7 @@ namespace ElectrumGames.Core.Environment
         
         [field: SerializeField] public bool IsOn { get; private set; }
 
-        public event Action<bool> Switch;
+        public event Action<bool, bool> Switch;
 
         public override void OnInteract()
         {
@@ -19,7 +19,7 @@ namespace ElectrumGames.Core.Environment
 
             switchTransform.localEulerAngles = IsOn ? eulerEnabledPosition : eulerDisabledPosition;
             
-            Switch?.Invoke(IsOn);
+            Switch?.Invoke(IsOn, false);
         }
     }
 }

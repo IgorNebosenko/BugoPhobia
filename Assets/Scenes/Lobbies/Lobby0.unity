@@ -2657,7 +2657,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 302118165}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4134,6 +4134,7 @@ MonoBehaviour:
   roomSwitch: {fileID: 817538936}
   lightEnvironmentObjects:
   - {fileID: 1836713916}
+  switchableLamps: []
 --- !u!114 &470827136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7765,6 +7766,8 @@ MonoBehaviour:
   - {fileID: 1530770934}
   - {fileID: 1120987540}
   - {fileID: 1668498594}
+  switchableLamps:
+  - {fileID: 1241722723}
 --- !u!65 &1026378969
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9169,6 +9172,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.47855353, y: 1.5277325, z: 0.4785576}
   m_Center: {x: -0.0012482181, y: 0.763058, z: 0.00000009685755}
+--- !u!114 &1241722723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241722716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29e26abef06349aa9482a583941bae34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalTemperature: 3400
+  redLightColor: {r: 1, g: 0, b: 0, a: 1}
+  lightSources:
+  - {fileID: 1336738182}
+  - {fileID: 302118168}
+  flickerSpeed: 0.1
+  <LightMode>k__BackingField: 0
 --- !u!1001 &1250919289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9842,7 +9864,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336738179}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -11057,6 +11079,7 @@ MonoBehaviour:
   roomSwitch: {fileID: 175164910}
   lightEnvironmentObjects:
   - {fileID: 1413657678}
+  switchableLamps: []
 --- !u!1 &1516588816
 GameObject:
   m_ObjectHideFlags: 0
@@ -11831,6 +11854,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1377084925307304, guid: 483010dfc760f4a3fb7e7ac0ebec5dfb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1241722720}
+    - targetCorrespondingSourceObject: {fileID: 1377084925307304, guid: 483010dfc760f4a3fb7e7ac0ebec5dfb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1241722723}
   m_SourcePrefab: {fileID: 100100000, guid: 483010dfc760f4a3fb7e7ac0ebec5dfb, type: 3}
 --- !u!1001 &1589459356
 PrefabInstance:
