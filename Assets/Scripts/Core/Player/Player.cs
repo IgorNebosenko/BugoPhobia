@@ -39,7 +39,7 @@ namespace ElectrumGames.Core.Player
 
             _interactionHandler = new ItemInteractionHandler(interaction, inventory, _inventoryIndexHandler);
 
-            _externalInteractionManager = new ExternalInteractionManager(interaction, playerCamera, playerConfig);
+            _externalInteractionManager = new ExternalInteractionManager(interaction, input, playerCamera, playerConfig);
 
             _interactionItemsManagers = new List<IInteractionItemsManager>
             {

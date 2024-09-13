@@ -1,5 +1,6 @@
 ﻿using ElectrumGames.Configs;
 using ElectrumGames.Core.Environment;
+using ElectrumGames.Core.Player.Movement;
 using UnityEngine;
 
 namespace Core.Player.Interactions
@@ -7,14 +8,17 @@ namespace Core.Player.Interactions
     public class ExternalInteractionManager : IInteractionItemsManager
     {
         private readonly IInteraction _interactions;
+        private readonly IInput _input;
         private readonly Camera _targetCamera;
         private readonly PlayerConfig _playerConfig;
 
         private bool _lastState;
 
-        public ExternalInteractionManager(IInteraction interactions, Camera targetCamera, PlayerConfig playerConfig)
+        public ExternalInteractionManager(IInteraction interactions, IInput input, Camera targetCamera,
+            PlayerConfig playerConfig)
         {
             _interactions = interactions;
+            _input = input;
             _targetCamera = targetCamera;
             _playerConfig = playerConfig;
         }
@@ -35,6 +39,19 @@ namespace Core.Player.Interactions
                         {
                             environmentObject.OnInteract();
                         }
+                    }
+                }
+            }
+
+            if (_interactions.ExternalInteraction)
+            {
+                var ray = _targetCamera.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f));
+
+                if (Physics.Raycast(ray, out var hit, _playerConfig.RayCastDistance))
+                {
+                    if (hit.collider.TryGetComponent<DoorEnvironmentObject>(out var door))
+                    {
+                        door.SetCameraAngleAndInteract(_input.Look);
                     }
                 }
             }
