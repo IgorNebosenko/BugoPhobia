@@ -15,6 +15,7 @@ namespace ElectrumGames.Core.Items
         [SerializeField] private float glowDecreaseTime;
         [Space]
         [SerializeField] private float lightOnDuration;
+        [SerializeField] private float vibrationStrength;
 
         private bool _isOn;
         private bool _lifeCycleEnd;
@@ -24,7 +25,14 @@ namespace ElectrumGames.Core.Items
         public override void OnMainInteraction()
         {
             if (_isOn)
+            {
+                if (_lifeCycleEnd)
+                {
+                    sourceLight.DOIntensity(startLightForce, lightOnDuration);
+                    transform.DOShakePosition(lightOnDuration, vibrationStrength).OnComplete(StartLightLifetime);
+                }
                 return;
+            }
 
             _isOn = true;
 
@@ -35,11 +43,6 @@ namespace ElectrumGames.Core.Items
 
         public override void OnAlternativeInteraction()
         {
-            if (!_lifeCycleEnd || !_isOn)
-                return;
-
-            sourceLight.DOIntensity(startLightForce, lightOnDuration);
-            transform.DOShakePosition(lightOnDuration).OnComplete(StartLightLifetime);
         }
 
         private void StartLightLifetime()
