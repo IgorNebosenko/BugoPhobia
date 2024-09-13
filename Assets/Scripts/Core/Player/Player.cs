@@ -15,6 +15,7 @@ namespace ElectrumGames.Core.Player
         private SelectInventorySlotHandler _selectInventorySlotHandler;
         private ItemInteractionVisual _itemInteractionVisual;
         private ItemInteractionHandler _interactionHandler;
+        private ExternalInteractionManager _externalInteractionManager;
         
         private InventoryIndexHandler _inventoryIndexHandler;
         
@@ -38,13 +39,16 @@ namespace ElectrumGames.Core.Player
 
             _interactionHandler = new ItemInteractionHandler(interaction, inventory, _inventoryIndexHandler);
 
+            _externalInteractionManager = new ExternalInteractionManager(interaction, playerCamera, playerConfig);
+
             _interactionItemsManagers = new List<IInteractionItemsManager>
             {
                 _putInteractionHandler,
                 _dropInteractionHandler,
                 _selectInventorySlotHandler,
                 _itemInteractionVisual,
-                _interactionHandler
+                _interactionHandler,
+                _externalInteractionManager
             };
             
             var headBob = new HeadBobVisual();

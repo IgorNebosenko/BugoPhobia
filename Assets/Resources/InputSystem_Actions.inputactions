@@ -308,6 +308,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "ExternalInteraction",
+                    "type": "Button",
+                    "id": "65cffb9f-bd78-46dd-8ca9-20b6374678b9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Voice",
                     "type": "Button",
                     "id": "9945cfb6-5d61-4b9d-9800-1b0686e87967",
@@ -408,7 +417,7 @@
                 {
                     "name": "",
                     "id": "68087239-ace5-4067-ab22-90591e7ced43",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -441,7 +450,7 @@
                 {
                     "name": "",
                     "id": "5f79db2f-51ee-43da-a56c-78593fb8ee6a",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -556,6 +565,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "DropItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7debd935-1915-4278-9e5e-2b9359b20833",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExternalInteraction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

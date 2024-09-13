@@ -12,6 +12,7 @@ namespace Core.Player.Interactions
         public bool PutInteraction { get; private set; }
         public bool PrimaryInteraction { get; private set; }
         public bool AlternativeInteraction { get; private set; }
+        public bool ExternalInteraction { get; private set; }
         public bool VoiceActivation { get; private set; }
         public bool FirstSlotSelected { get; private set; }
         public bool SecondSlotSelected { get; private set; }
@@ -45,6 +46,11 @@ namespace Core.Player.Interactions
         public void OnAlternativeInteraction(InputAction.CallbackContext context)
         {
             AlternativeInteraction = context.phase != InputActionPhase.Canceled;
+        }
+
+        public void OnExternalInteraction(InputAction.CallbackContext context)
+        {
+            ExternalInteraction = context.phase != InputActionPhase.Canceled;
         }
 
         public void OnVoice(InputAction.CallbackContext context)

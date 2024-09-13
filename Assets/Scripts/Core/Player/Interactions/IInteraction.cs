@@ -5,6 +5,7 @@
         bool PutInteraction { get; }
         bool PrimaryInteraction { get; }
         bool AlternativeInteraction { get; }
+        bool ExternalInteraction { get; }
         bool VoiceActivation { get; }
         
         bool FirstSlotSelected { get; }

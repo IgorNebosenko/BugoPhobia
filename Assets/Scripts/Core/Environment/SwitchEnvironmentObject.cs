@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ElectrumGames.Core.Environment
 {
-    public class SwitchEnvironmentObject : MonoBehaviour
+    public class SwitchEnvironmentObject : EnvironmentObjectBase
     {
         [SerializeField] private Vector3 eulerDisabledPosition;
         [SerializeField] private Vector3 eulerEnabledPosition;
@@ -13,7 +13,7 @@ namespace ElectrumGames.Core.Environment
 
         public event Action<bool> Switch;
 
-        public void SwitchState()
+        public override void OnInteract()
         {
             IsOn = !IsOn;
 

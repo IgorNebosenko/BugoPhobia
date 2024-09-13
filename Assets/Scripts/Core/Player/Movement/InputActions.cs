@@ -333,6 +333,15 @@ namespace ElectrumGames.Core.Player.Movement
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""ExternalInteraction"",
+                    ""type"": ""Button"",
+                    ""id"": ""65cffb9f-bd78-46dd-8ca9-20b6374678b9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Voice"",
                     ""type"": ""Button"",
                     ""id"": ""9945cfb6-5d61-4b9d-9800-1b0686e87967"",
@@ -433,7 +442,7 @@ namespace ElectrumGames.Core.Player.Movement
                 {
                     ""name"": """",
                     ""id"": ""68087239-ace5-4067-ab22-90591e7ced43"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -466,7 +475,7 @@ namespace ElectrumGames.Core.Player.Movement
                 {
                     ""name"": """",
                     ""id"": ""5f79db2f-51ee-43da-a56c-78593fb8ee6a"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
@@ -581,6 +590,17 @@ namespace ElectrumGames.Core.Player.Movement
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""DropItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7debd935-1915-4278-9e5e-2b9359b20833"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExternalInteraction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1225,6 +1245,7 @@ namespace ElectrumGames.Core.Player.Movement
             m_Interactions_PutItem = m_Interactions.FindAction("PutItem", throwIfNotFound: true);
             m_Interactions_PrimaryInteraction = m_Interactions.FindAction("PrimaryInteraction", throwIfNotFound: true);
             m_Interactions_AlternativeInteraction = m_Interactions.FindAction("AlternativeInteraction", throwIfNotFound: true);
+            m_Interactions_ExternalInteraction = m_Interactions.FindAction("ExternalInteraction", throwIfNotFound: true);
             m_Interactions_Voice = m_Interactions.FindAction("Voice", throwIfNotFound: true);
             m_Interactions_FirstSlotSelected = m_Interactions.FindAction("FirstSlotSelected", throwIfNotFound: true);
             m_Interactions_SecondSlotSelected = m_Interactions.FindAction("SecondSlotSelected", throwIfNotFound: true);
@@ -1390,6 +1411,7 @@ namespace ElectrumGames.Core.Player.Movement
         private readonly InputAction m_Interactions_PutItem;
         private readonly InputAction m_Interactions_PrimaryInteraction;
         private readonly InputAction m_Interactions_AlternativeInteraction;
+        private readonly InputAction m_Interactions_ExternalInteraction;
         private readonly InputAction m_Interactions_Voice;
         private readonly InputAction m_Interactions_FirstSlotSelected;
         private readonly InputAction m_Interactions_SecondSlotSelected;
@@ -1404,6 +1426,7 @@ namespace ElectrumGames.Core.Player.Movement
             public InputAction @PutItem => m_Wrapper.m_Interactions_PutItem;
             public InputAction @PrimaryInteraction => m_Wrapper.m_Interactions_PrimaryInteraction;
             public InputAction @AlternativeInteraction => m_Wrapper.m_Interactions_AlternativeInteraction;
+            public InputAction @ExternalInteraction => m_Wrapper.m_Interactions_ExternalInteraction;
             public InputAction @Voice => m_Wrapper.m_Interactions_Voice;
             public InputAction @FirstSlotSelected => m_Wrapper.m_Interactions_FirstSlotSelected;
             public InputAction @SecondSlotSelected => m_Wrapper.m_Interactions_SecondSlotSelected;
@@ -1429,6 +1452,9 @@ namespace ElectrumGames.Core.Player.Movement
                 @AlternativeInteraction.started += instance.OnAlternativeInteraction;
                 @AlternativeInteraction.performed += instance.OnAlternativeInteraction;
                 @AlternativeInteraction.canceled += instance.OnAlternativeInteraction;
+                @ExternalInteraction.started += instance.OnExternalInteraction;
+                @ExternalInteraction.performed += instance.OnExternalInteraction;
+                @ExternalInteraction.canceled += instance.OnExternalInteraction;
                 @Voice.started += instance.OnVoice;
                 @Voice.performed += instance.OnVoice;
                 @Voice.canceled += instance.OnVoice;
@@ -1463,6 +1489,9 @@ namespace ElectrumGames.Core.Player.Movement
                 @AlternativeInteraction.started -= instance.OnAlternativeInteraction;
                 @AlternativeInteraction.performed -= instance.OnAlternativeInteraction;
                 @AlternativeInteraction.canceled -= instance.OnAlternativeInteraction;
+                @ExternalInteraction.started -= instance.OnExternalInteraction;
+                @ExternalInteraction.performed -= instance.OnExternalInteraction;
+                @ExternalInteraction.canceled -= instance.OnExternalInteraction;
                 @Voice.started -= instance.OnVoice;
                 @Voice.performed -= instance.OnVoice;
                 @Voice.canceled -= instance.OnVoice;
@@ -1730,6 +1759,7 @@ namespace ElectrumGames.Core.Player.Movement
             void OnPutItem(InputAction.CallbackContext context);
             void OnPrimaryInteraction(InputAction.CallbackContext context);
             void OnAlternativeInteraction(InputAction.CallbackContext context);
+            void OnExternalInteraction(InputAction.CallbackContext context);
             void OnVoice(InputAction.CallbackContext context);
             void OnFirstSlotSelected(InputAction.CallbackContext context);
             void OnSecondSlotSelected(InputAction.CallbackContext context);

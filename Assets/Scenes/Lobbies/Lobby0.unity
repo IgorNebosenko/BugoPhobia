@@ -2815,7 +2815,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 307173423}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 11
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4838,15 +4838,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2565630725004344934, guid: 5e0aa061218e946c79c9508cd99f9da9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.20634918
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2565630725004344934, guid: 5e0aa061218e946c79c9508cd99f9da9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.041666668
+      value: -0.04
       objectReference: {fileID: 0}
     - target: {fileID: 2565630725004344934, guid: 5e0aa061218e946c79c9508cd99f9da9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.44444445
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 2565630725004344934, guid: 5e0aa061218e946c79c9508cd99f9da9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6834,7 +6834,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 971734941}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -8032,7 +8032,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8715906962741490475, guid: d139102c4bc244544a096b1c8147c948, type: 3}
       insertIndex: -1
       addedObject: {fileID: 307173424}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8340331814685976977, guid: d139102c4bc244544a096b1c8147c948, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1413657678}
   m_SourcePrefab: {fileID: 100100000, guid: d139102c4bc244544a096b1c8147c948, type: 3}
 --- !u!1001 &1151120940
 PrefabInstance:
@@ -9520,6 +9523,30 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!1 &1413657677 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8340331814685976977, guid: d139102c4bc244544a096b1c8147c948, type: 3}
+  m_PrefabInstance: {fileID: 1150280849}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1413657678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413657677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36cf06b8bdd1415e97d07405952c5109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalTemperature: 3400
+  redLightColor: {r: 1, g: 0, b: 0, a: 1}
+  lightSources:
+  - {fileID: 971734944}
+  - {fileID: 307173426}
+  flickerSpeed: 0.1
+  <LightMode>k__BackingField: 0
 --- !u!1001 &1416460750
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10377,6 +10404,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomSwitch: {fileID: 175164910}
+  lightEnvironmentObjects:
+  - {fileID: 1413657678}
 --- !u!1 &1516588816
 GameObject:
   m_ObjectHideFlags: 0
