@@ -46,6 +46,12 @@ namespace ElectrumGames.Core.Items
             
             transform.parent = _itemsFactory.transform;
             transform.localScale = Vector3.one;
+            
+            OnAfterDrop();
+        }
+
+        public virtual void OnAfterDrop()
+        {
         }
     }
 }
