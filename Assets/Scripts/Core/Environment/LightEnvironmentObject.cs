@@ -62,6 +62,7 @@ namespace ElectrumGames.Core.Environment
                 
                 lightSources[j].DOIntensity(0, Random.Range(flickerSpeedMin, flickerSpeedMax)).
                     SetEase(Ease.Flash).
+                    SetLoops(1).
                     OnComplete(() => lightSources[j].DOIntensity(_defaultLightIntensity[j], Random.Range(flickerSpeedMin, flickerSpeedMax)).
                         OnComplete(() => _isFlick = false));
             }

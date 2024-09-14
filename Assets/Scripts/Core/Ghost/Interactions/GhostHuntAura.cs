@@ -12,6 +12,7 @@ namespace ElectrumGames.Core.Ghost.Interactions
         
         private void OnTriggerStay(Collider other)
         {
+            Debug.Log($"OnTriggerStay: {gameObject.name} {other.name}");
             if (other.TryGetComponent<IPlayer>(out var player))
             {
                 for (var i = 0; i < player.Inventory.Items.Count; i++)
