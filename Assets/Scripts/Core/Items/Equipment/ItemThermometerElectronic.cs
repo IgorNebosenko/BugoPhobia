@@ -1,4 +1,5 @@
 ﻿using System;
+using ElectrumGames.Core.Common;
 using ElectrumGames.Core.Rooms;
 using TMPro;
 using UniRx;
@@ -83,26 +84,13 @@ namespace ElectrumGames.Core.Items
         {
         }
         
-        public void OnGhostHuntInteractionEnter()
-        {
-            _ghostInteractionOn = true; 
-            _ghostInteractionProcess = Observable.EveryUpdate().Subscribe(GhostInteractionProcess).AddTo(this);
-        }
-
-        private void GhostInteractionProcess(long _)
+        public void OnGhostInteractionStay()
         {
             if (!_isOn)
                 return;
 
             onLight.enabled = Random.Range(0, 100) % 3 != 0;
             DisplayTemperature(Random.Range(-10f, 30f));
-        }
-
-        public void OnGhostHuntInteractionExit()
-        {
-            _ghostInteractionOn = false;
-            _ghostInteractionProcess?.Dispose();
-            onLight.enabled = _isOn;
         }
     }
 }

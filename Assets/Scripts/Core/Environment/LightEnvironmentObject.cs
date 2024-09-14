@@ -14,14 +14,15 @@ namespace ElectrumGames.Core.Environment
         [SerializeField] private float flickerSpeed = 0.1f;
         
         [field: SerializeField] public LightEnvironmentMode LightMode { get; private set; }
+        public bool IsElectricityOn => false;
 
         private float[] _defaultLightIntensity;
-        private Tween[] _tweens;
+        private Tween[] _twens;
 
         private void Awake()
         {
             _defaultLightIntensity = new float[lightSources.Length];
-            _tweens = new Tween[lightSources.Length];
+            _twens = new Tween[lightSources.Length];
 
             for (var i = 0; i < lightSources.Length; i++)
                 _defaultLightIntensity[i] = lightSources[i].intensity;
@@ -56,7 +57,7 @@ namespace ElectrumGames.Core.Environment
                     lightSources[i].color = redLightColor;
                 else
                     lightSources[i].colorTemperature = normalTemperature;
-                _tweens[i] = lightSources[i].DOIntensity(0, flickerSpeed).SetLoops(-1, LoopType.Yoyo)
+                _twens[i] = lightSources[i].DOIntensity(0, flickerSpeed).SetLoops(-1, LoopType.Yoyo)
                     .SetEase(Ease.Flash);
             }
         }
@@ -67,7 +68,7 @@ namespace ElectrumGames.Core.Environment
             {
                 lightSources[i].colorTemperature = normalTemperature;
                 lightSources[i].intensity = _defaultLightIntensity[i];
-                _tweens[i]?.Kill(true);
+                _twens[i]?.Kill(true);
             }
         }
 

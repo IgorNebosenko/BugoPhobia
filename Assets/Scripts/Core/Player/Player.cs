@@ -26,18 +26,18 @@ namespace ElectrumGames.Core.Player
             interaction = new PlayerInteraction(inputActions, _inventoryIndexHandler);
             interaction.Init();
             
-            _itemInteractionVisual = new ItemInteractionVisual(inventory, _inventoryIndexHandler, itemsConfig, 
+            _itemInteractionVisual = new ItemInteractionVisual(Inventory, _inventoryIndexHandler, itemsConfig, 
                 transform, playerCamera.transform);
             
             _putInteractionHandler = new PutInteractionHandler(interaction, playerCamera, playerConfig, 
-                inventory, _inventoryIndexHandler, _itemInteractionVisual);
+                Inventory, _inventoryIndexHandler, _itemInteractionVisual);
 
             _dropInteractionHandler =
-                new DropInteractionHandler(interaction, playerCamera.transform, inventory, _inventoryIndexHandler);
+                new DropInteractionHandler(interaction, playerCamera.transform, Inventory, _inventoryIndexHandler);
 
             _selectInventorySlotHandler = new SelectInventorySlotHandler(interaction, _inventoryIndexHandler);
 
-            _interactionHandler = new ItemInteractionHandler(interaction, inventory, _inventoryIndexHandler);
+            _interactionHandler = new ItemInteractionHandler(interaction, Inventory, _inventoryIndexHandler);
 
             _externalInteractionManager = new ExternalInteractionManager(interaction, input, playerCamera, playerConfig);
 

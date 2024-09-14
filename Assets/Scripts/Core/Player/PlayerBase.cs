@@ -22,7 +22,6 @@ namespace ElectrumGames.Core.Player
         protected InputActions inputActions;
         protected ItemsConfig itemsConfig;
         
-        protected IInventory inventory;
         protected IInput input;
         protected IMotor motor;
         protected CameraLifter cameraLifter;
@@ -39,6 +38,7 @@ namespace ElectrumGames.Core.Player
         public bool IsHost { get; protected set; }
         public int NetId { get; protected set; }
         public int OwnerId { get; protected set; }
+        public IInventory Inventory { get; private set; }
 
         public Vector3 Position => transform.position;
 
@@ -90,8 +90,8 @@ namespace ElectrumGames.Core.Player
             input = new PlayerInput(inputActions);
             input.Init();
 
-            inventory = new PlayerInventory();
-            inventory.Init(playerConfig.InventorySlots, transform, NetId);
+            Inventory = new PlayerInventory();
+            Inventory.Init(playerConfig.InventorySlots, transform, NetId);
 
             IsHost = isHost;
 

@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using ElectrumGames.Core.Common;
 using UnityEngine;
 
 namespace ElectrumGames.Core.Items
@@ -6,12 +7,12 @@ namespace ElectrumGames.Core.Items
     public class ItemFlashLight : ItemInstanceBase, IGhostHuntingInteractable
     {
         [SerializeField] private Light lightSource;
-        [SerializeField] private float flickerSpeed = 0.1f;
+        [SerializeField] private float flickerSpeedMin = 0.1f;
+        [SerializeField] private float flickerSpeedMax = 0.3f;
 
         private bool _isOn;
 
         private float _startIntensity;
-        private Tween _flickerProcess;
 
         public bool IsElectricityOn => _isOn;
 
@@ -31,18 +32,12 @@ namespace ElectrumGames.Core.Items
         {
         }
 
-        public void OnGhostHuntInteractionEnter()
+        public void OnGhostInteractionStay()
         {
-            _flickerProcess = lightSource.DOIntensity(0f, flickerSpeed)
-                .SetLoops(-1, LoopType.Yoyo)
-                .SetEase(Ease.Flash);
-        }
-
-        public void OnGhostHuntInteractionExit()
-        {
-            _flickerProcess.Kill();
-            
-            lightSource.intensity = _startIntensity;
+            lightSource.DOIntensity(0f, Random.Range(flickerSpeedMin, flickerSpeedMax))
+                .SetEase(Ease.Flash).
+                OnComplete(() => lightSource.DOIntensity(_startIntensity, 
+                    Random.Range(flickerSpeedMin, flickerSpeedMax)));
         }
     }
 }
