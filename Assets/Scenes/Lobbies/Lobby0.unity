@@ -1205,6 +1205,7 @@ GameObject:
   - component: {fileID: 123389064}
   - component: {fileID: 123389063}
   - component: {fileID: 123389062}
+  - component: {fileID: 123389067}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -1313,6 +1314,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &123389067
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123389061}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &133534542
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4309,6 +4337,8 @@ MonoBehaviour:
   lightEnvironmentObjects:
   - {fileID: 1836713916}
   switchableLamps: []
+  flickerSpeedMin: 0.025
+  flickerSpeedMax: 0.1
 --- !u!114 &470827136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8050,6 +8080,8 @@ MonoBehaviour:
   - {fileID: 1668498594}
   switchableLamps:
   - {fileID: 1241722723}
+  flickerSpeedMin: 0.025
+  flickerSpeedMax: 0.1
 --- !u!65 &1026378969
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8708,7 +8740,6 @@ MonoBehaviour:
   - {fileID: 2059866138}
   - {fileID: 909756521}
   - {fileID: 1458590173}
-  flickerSpeed: 0.1
   <LightMode>k__BackingField: 1
 --- !u!4 &1126145036 stripped
 Transform:
@@ -9521,7 +9552,6 @@ MonoBehaviour:
   lightSources:
   - {fileID: 1336738182}
   - {fileID: 302118168}
-  flickerSpeed: 0.1
   <LightMode>k__BackingField: 0
 --- !u!1001 &1250919289
 PrefabInstance:
@@ -10615,7 +10645,6 @@ MonoBehaviour:
   lightSources:
   - {fileID: 971734944}
   - {fileID: 307173426}
-  flickerSpeed: 0.1
   <LightMode>k__BackingField: 0
 --- !u!1001 &1416460750
 PrefabInstance:
@@ -11502,6 +11531,8 @@ MonoBehaviour:
   lightEnvironmentObjects:
   - {fileID: 1413657678}
   switchableLamps: []
+  flickerSpeedMin: 0.025
+  flickerSpeedMax: 0.1
 --- !u!1 &1516588816
 GameObject:
   m_ObjectHideFlags: 0
@@ -11695,7 +11726,6 @@ MonoBehaviour:
   - {fileID: 284098663}
   - {fileID: 489297277}
   - {fileID: 2094907359}
-  flickerSpeed: 0.1
   <LightMode>k__BackingField: 1
 --- !u!1 &1533013287
 GameObject:
@@ -13226,7 +13256,6 @@ MonoBehaviour:
   - {fileID: 1403159992}
   - {fileID: 1469408022}
   - {fileID: 1040985783}
-  flickerSpeed: 0.1
   <LightMode>k__BackingField: 1
 --- !u!1001 &1675056852
 PrefabInstance:
@@ -13885,7 +13914,6 @@ MonoBehaviour:
   - {fileID: 116291440}
   - {fileID: 308864654}
   - {fileID: 1871712867}
-  flickerSpeed: 0.1
   <LightMode>k__BackingField: 0
 --- !u!1001 &1842018669
 PrefabInstance:

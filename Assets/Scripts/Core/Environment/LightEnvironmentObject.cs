@@ -10,19 +10,16 @@ namespace ElectrumGames.Core.Environment
         [SerializeField] private Color redLightColor = Color.red;
         [Space]
         [SerializeField] private Light[] lightSources;
-        [Space]
-        [SerializeField] private float flickerSpeed = 0.1f;
         
         [field: SerializeField] public LightEnvironmentMode LightMode { get; private set; }
         public bool IsElectricityOn => false;
 
         private float[] _defaultLightIntensity;
-        private Tween[] _twens;
+        private bool _isFlick;
 
         private void Awake()
         {
             _defaultLightIntensity = new float[lightSources.Length];
-            _twens = new Tween[lightSources.Length];
 
             for (var i = 0; i < lightSources.Length; i++)
                 _defaultLightIntensity[i] = lightSources[i].intensity;
@@ -47,28 +44,26 @@ namespace ElectrumGames.Core.Environment
                 lightSources[i].enabled = false;
         }
 
-        public void StartFlicker(bool isRed = false)
+        public void DoFlick(float flickerSpeedMin, float flickerSpeedMax, bool isRed = false)
         {
-            EndFlicker();
+            if (_isFlick)
+                return;
 
+            _isFlick = true;
+            
             for (var i = 0; i < lightSources.Length; i++)
             {
+                var j = i;
+                
                 if (isRed)
-                    lightSources[i].color = redLightColor;
+                    lightSources[j].color = redLightColor;
                 else
-                    lightSources[i].colorTemperature = normalTemperature;
-                _twens[i] = lightSources[i].DOIntensity(0, flickerSpeed).SetLoops(-1, LoopType.Yoyo)
-                    .SetEase(Ease.Flash);
-            }
-        }
-
-        public void EndFlicker()
-        {
-            for (var i = 0; i < lightSources.Length; i++)
-            {
-                lightSources[i].colorTemperature = normalTemperature;
-                lightSources[i].intensity = _defaultLightIntensity[i];
-                _twens[i]?.Kill(true);
+                    lightSources[j].colorTemperature = normalTemperature;
+                
+                lightSources[j].DOIntensity(0, Random.Range(flickerSpeedMin, flickerSpeedMax)).
+                    SetEase(Ease.Flash).
+                    OnComplete(() => lightSources[j].DOIntensity(_defaultLightIntensity[j], Random.Range(flickerSpeedMin, flickerSpeedMax)).
+                        OnComplete(() => _isFlick = false));
             }
         }
 

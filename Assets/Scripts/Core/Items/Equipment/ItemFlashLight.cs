@@ -11,6 +11,7 @@ namespace ElectrumGames.Core.Items
         [SerializeField] private float flickerSpeedMax = 0.3f;
 
         private bool _isOn;
+        private bool _isFlicking;
 
         private float _startIntensity;
 
@@ -34,10 +35,16 @@ namespace ElectrumGames.Core.Items
 
         public void OnGhostInteractionStay()
         {
+            if (_isFlicking)
+                return;
+
+            _isFlicking = true;
+            
             lightSource.DOIntensity(0f, Random.Range(flickerSpeedMin, flickerSpeedMax))
                 .SetEase(Ease.Flash).
                 OnComplete(() => lightSource.DOIntensity(_startIntensity, 
-                    Random.Range(flickerSpeedMin, flickerSpeedMax)));
+                    Random.Range(flickerSpeedMin, flickerSpeedMax)).
+                    OnComplete(() =>_isFlicking = false));
         }
     }
 }

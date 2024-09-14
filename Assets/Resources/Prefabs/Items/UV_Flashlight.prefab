@@ -155,7 +155,8 @@ MonoBehaviour:
   <Collider>k__BackingField: {fileID: 2118821147862825456}
   <ItemType>k__BackingField: 10
   lightSource: {fileID: 5812526576056588852}
-  flickerSpeed: 0.1
+  flickerSpeedMin: 0.025
+  flickerSpeedMax: 0.1
 --- !u!1 &4262761614340106001
 GameObject:
   m_ObjectHideFlags: 0

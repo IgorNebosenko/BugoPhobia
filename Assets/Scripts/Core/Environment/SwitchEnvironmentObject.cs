@@ -11,6 +11,8 @@ namespace ElectrumGames.Core.Environment
         
         [field: SerializeField] public bool IsOn { get; private set; }
 
+        public bool IsElectricityOn => IsOn;
+
         public event Action<bool, bool> Switch;
 
         public override void OnInteract()

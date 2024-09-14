@@ -1,8 +1,9 @@
+using ElectrumGames.Core.Common;
 using UnityEngine;
 
 namespace ElectrumGames.Core.Rooms
 {
-    public class Room : MonoBehaviour
+    public class Room : MonoBehaviour, IGhostHuntingInteractable
     {
         [field: SerializeField] public int RoomId { get; private set; }
         [Space]
@@ -14,5 +15,11 @@ namespace ElectrumGames.Core.Rooms
         [field: SerializeField] public DoorsRoomHandler DoorsRoomHandler { get; private set; }
         [Space]
         [SerializeField] private Room[] neighborRooms;
+
+        public bool IsElectricityOn => LightRoomHandler.IsLightOn;
+        public void OnGhostInteractionStay()
+        {
+            LightRoomHandler.DoFlick();
+        }
     }
 }
