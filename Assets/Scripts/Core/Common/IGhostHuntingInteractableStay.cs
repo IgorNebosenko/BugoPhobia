@@ -1,8 +1,7 @@
 ﻿namespace ElectrumGames.Core.Common
 {
-    public interface IGhostHuntingInteractable
+    public interface IGhostHuntingInteractableStay
     {
-        bool IsElectricityOn { get; }
         void OnGhostInteractionStay();
     }
 }

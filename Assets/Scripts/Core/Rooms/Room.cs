@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ElectrumGames.Core.Rooms
 {
-    public class Room : MonoBehaviour, IGhostHuntingInteractable
+    public class Room : MonoBehaviour, IGhostHuntingInteractableStay
     {
         [field: SerializeField] public int RoomId { get; private set; }
         [Space]

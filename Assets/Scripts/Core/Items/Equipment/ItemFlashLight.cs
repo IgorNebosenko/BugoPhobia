@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace ElectrumGames.Core.Items
 {
-    public class ItemFlashLight : ItemInstanceBase, IGhostHuntingInteractable
+    public class ItemFlashLight : ItemInstanceBase, 
+        IGhostHuntingHasElectricity, IGhostHuntingInteractableStay
     {
         [SerializeField] private Light lightSource;
         [SerializeField] private float flickerSpeedMin = 0.1f;

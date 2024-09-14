@@ -8,7 +8,8 @@ using Random = UnityEngine.Random;
 
 namespace ElectrumGames.Core.Items
 {
-    public class ItemThermometerElectronic : ItemInstanceBase, IGhostHuntingInteractable
+    public class ItemThermometerElectronic : ItemInstanceBase,
+        IGhostHuntingHasElectricity, IGhostHuntingInteractableStay, IGhostHuntingInteractableExit
     {
         [SerializeField] private TMP_Text thermometerText;
         [SerializeField] private Light onLight;
@@ -91,6 +92,12 @@ namespace ElectrumGames.Core.Items
 
             onLight.enabled = Random.Range(0, 100) % 3 != 0;
             DisplayTemperature(Random.Range(-10f, 30f));
+        }
+
+        public void OnGhostInteractionExit()
+        {
+            onLight.enabled = _isOn;
+            thermometerText.text = _isOn ? textOn : textOff;
         }
     }
 }
