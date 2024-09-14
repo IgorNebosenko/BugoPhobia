@@ -7,11 +7,11 @@ namespace ElectrumGames.Core.Rooms
         [field: SerializeField] public int RoomId { get; private set; }
         [Space]
         [SerializeField] private BoxCollider boxCollider;
-        [Space]
-        [SerializeField] private LightRoomHandler lightRoomHandler;
-        [SerializeField] private TemperatureRoomHandler temperatureRoom;
-        [SerializeField] private GhostRoomHandler ghostRoomHandler;
-        [SerializeField] private DoorsRoomHandler doorsRoomHandler;
+        [field: Space]
+        [field: SerializeField] public LightRoomHandler LightRoomHandler { get; private set; }
+        [field: SerializeField] public TemperatureRoomHandler TemperatureRoom { get; private set; }
+        [field: SerializeField] public GhostRoomHandler GhostRoomHandler { get; private set; }
+        [field: SerializeField] public DoorsRoomHandler DoorsRoomHandler { get; private set; }
         [Space]
         [SerializeField] private Room[] neighborRooms;
     }

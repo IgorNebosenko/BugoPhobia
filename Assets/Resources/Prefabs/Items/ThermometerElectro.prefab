@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8864862548445575675
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27,7 +27,7 @@ RectTransform:
   m_GameObject: {fileID: 1751597169882267320}
   m_LocalRotation: {x: 0.0000000050870854, y: 0.9984211, z: -0.05617314, w: -0.00000029819174}
   m_LocalPosition: {x: 0, y: 0, z: 0.023509637}
-  m_LocalScale: {x: 0.00009999999, y: 0.0001, z: 0.0001}
+  m_LocalScale: {x: 0.0001, y: 0.0001, z: 0.0001}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 975636030467373344}
@@ -44,12 +44,12 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1751597169882267320}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 11
   m_Type: 2
   m_Color: {r: 0.64705884, g: 0.7490196, b: 0.64705884, a: 1}
-  m_Intensity: 0.15
-  m_Range: 0.05
+  m_Intensity: 0.1
+  m_Range: 0.15
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -60,7 +60,7 @@ Light:
     m_Strength: 0.66
     m_Bias: 0.05
     m_NormalBias: 0.4
-    m_NearPlane: 0.0005
+    m_NearPlane: 0.0015
     m_CullingMatrixOverride:
       e00: 1
       e01: 0
@@ -285,6 +285,9 @@ MonoBehaviour:
   textOff: OFF
   textOn: SCAN
   textOnFormat: '{0:0.0} C'
+  differenceTemperature: 3
+  updateInterval: 2
+  radiusOverlapDetection: 0.5
 --- !u!1 &2889353412677951485
 GameObject:
   m_ObjectHideFlags: 0

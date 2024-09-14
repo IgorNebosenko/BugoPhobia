@@ -4126,6 +4126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d750f3ccbac241dcb57b4f8f72c901e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AverageTemperature>k__BackingField: 20
 --- !u!114 &470827135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4156,10 +4157,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <RoomId>k__BackingField: 2
   boxCollider: {fileID: 470827137}
-  lightRoomHandler: {fileID: 470827135}
-  temperatureRoom: {fileID: 470827134}
-  ghostRoomHandler: {fileID: 470827133}
-  doorsRoomHandler: {fileID: 470827132}
+  <LightRoomHandler>k__BackingField: {fileID: 470827135}
+  <TemperatureRoom>k__BackingField: {fileID: 470827134}
+  <GhostRoomHandler>k__BackingField: {fileID: 470827133}
+  <DoorsRoomHandler>k__BackingField: {fileID: 470827132}
   neighborRooms:
   - {fileID: 1026378964}
 --- !u!65 &470827137
@@ -7820,10 +7821,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <RoomId>k__BackingField: 0
   boxCollider: {fileID: 1026378969}
-  lightRoomHandler: {fileID: 1026378968}
-  temperatureRoom: {fileID: 1026378967}
-  ghostRoomHandler: {fileID: 1026378966}
-  doorsRoomHandler: {fileID: 1026378965}
+  <LightRoomHandler>k__BackingField: {fileID: 1026378968}
+  <TemperatureRoom>k__BackingField: {fileID: 1026378967}
+  <GhostRoomHandler>k__BackingField: {fileID: 1026378966}
+  <DoorsRoomHandler>k__BackingField: {fileID: 1026378965}
   neighborRooms:
   - {fileID: 1511061070}
   - {fileID: 470827136}
@@ -7863,6 +7864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d750f3ccbac241dcb57b4f8f72c901e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AverageTemperature>k__BackingField: 22.5
 --- !u!114 &1026378968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11111,10 +11113,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <RoomId>k__BackingField: 1
   boxCollider: {fileID: 1511061071}
-  lightRoomHandler: {fileID: 1511061077}
-  temperatureRoom: {fileID: 1511061076}
-  ghostRoomHandler: {fileID: 1511061075}
-  doorsRoomHandler: {fileID: 1511061074}
+  <LightRoomHandler>k__BackingField: {fileID: 1511061077}
+  <TemperatureRoom>k__BackingField: {fileID: 1511061076}
+  <GhostRoomHandler>k__BackingField: {fileID: 1511061075}
+  <DoorsRoomHandler>k__BackingField: {fileID: 1511061074}
   neighborRooms:
   - {fileID: 1026378964}
 --- !u!65 &1511061071
@@ -11227,6 +11229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d750f3ccbac241dcb57b4f8f72c901e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AverageTemperature>k__BackingField: 18
 --- !u!114 &1511061077
 MonoBehaviour:
   m_ObjectHideFlags: 0

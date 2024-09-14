@@ -18,7 +18,7 @@ namespace ElectrumGames.Core.Environment
 
         public void SetCameraAngleAndInteract(Vector2 inputLook)
         {
-            var inputForce = inputLook.x * openedForce;
+            var inputForce = inputLook.x * openedForce * -1;
             
             CurrentAngle += inputForce;
             

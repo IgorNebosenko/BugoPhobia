@@ -1,5 +1,9 @@
-﻿using TMPro;
+﻿using System;
+using ElectrumGames.Core.Rooms;
+using TMPro;
+using UniRx;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace ElectrumGames.Core.Items
 {
@@ -7,14 +11,53 @@ namespace ElectrumGames.Core.Items
     {
         [SerializeField] private TMP_Text thermometerText;
         [SerializeField] private Light onLight;
-        
+        [Space]
         [SerializeField] private string textOff = "OFF";
         [SerializeField] private string textOn = "SCAN";
         [SerializeField] private string textOnFormat = "{0:0.0} C";
+        [SerializeField] private float differenceTemperature = 3f;
+        [Space]
+        [SerializeField] private float updateInterval = 0.5f;
+        [SerializeField] private float radiusOverlapDetection = 0.5f;
         
         private bool _isOn;
-        public bool IsElectricityOn { get; private set; }
+        private bool _ghostInteractionOn;
         
+        public bool IsElectricityOn => _isOn;
+
+        private IDisposable _ghostInteractionProcess;
+
+        private void Start()
+        {
+            Observable.Interval(TimeSpan.FromSeconds(updateInterval)).Subscribe(UpdateAction).AddTo(this);
+        }
+
+        private void UpdateAction(long _)
+        {
+            if (_ghostInteractionOn || !_isOn)
+                return;
+            
+            var colliders = Physics.OverlapSphere(transform.position, radiusOverlapDetection);
+
+            for (var i = 0; i < colliders.Length; i++)
+            {
+                if (colliders[i].TryGetComponent<Room>(out var room))
+                {
+                    var minTemp = room.TemperatureRoom.AverageTemperature - differenceTemperature;
+                    var maxTemp = room.TemperatureRoom.AverageTemperature + differenceTemperature;
+
+                    if (minTemp < 0 && room.TemperatureRoom.AverageTemperature > 0)
+                        minTemp = 0.1f;
+                    
+                    DisplayTemperature(Random.Range(minTemp, maxTemp));
+                    break;
+                }
+            }
+
+            if (colliders.Length == 0)
+                thermometerText.text = textOn;
+        }
+
         public override void OnMainInteraction()
         {
             _isOn = !_isOn;
@@ -30,9 +73,11 @@ namespace ElectrumGames.Core.Items
                 onLight.enabled = false;
             }
         }
-        
+
         private void DisplayTemperature(float temperature)
-        {}
+        {
+            thermometerText.text = string.Format(textOnFormat, temperature);
+        }
 
         public override void OnAlternativeInteraction()
         {
@@ -40,10 +85,24 @@ namespace ElectrumGames.Core.Items
         
         public void OnGhostHuntInteractionEnter()
         {
+            _ghostInteractionOn = true; 
+            _ghostInteractionProcess = Observable.EveryUpdate().Subscribe(GhostInteractionProcess).AddTo(this);
+        }
+
+        private void GhostInteractionProcess(long _)
+        {
+            if (!_isOn)
+                return;
+
+            onLight.enabled = Random.Range(0, 100) % 3 != 0;
+            DisplayTemperature(Random.Range(-10f, 30f));
         }
 
         public void OnGhostHuntInteractionExit()
         {
+            _ghostInteractionOn = false;
+            _ghostInteractionProcess?.Dispose();
+            onLight.enabled = _isOn;
         }
     }
 }
