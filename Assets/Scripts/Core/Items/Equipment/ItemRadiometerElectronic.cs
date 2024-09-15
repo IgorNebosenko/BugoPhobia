@@ -71,7 +71,7 @@ namespace ElectrumGames.Core.Items
         {
             _isOn = !_isOn;
 
-            if (_isOn)
+            if (!_isOn)
                 radiationText.text = textOff;
             else
                 DisplayRadiation(0);
