@@ -506,6 +506,9 @@ MonoBehaviour:
   - {fileID: 833879694}
   - {fileID: 1164264475}
   - {fileID: 611115351}
+  - {fileID: 144129271}
+  - {fileID: 1305073026}
+  - {fileID: 1154363020}
 --- !u!114 &46622721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1505,6 +1508,51 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a65ad7948238eea4abdda8d015cb13ac, type: 3}
+--- !u!1 &144129269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 144129270}
+  - component: {fileID: 144129271}
+  m_Layer: 0
+  m_Name: RadiometerElectronics (0)
+  m_TagString: Untagged
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &144129270
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144129269}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.6009592, y: -0.0137089975, z: 0.019337393, w: 0.79892814}
+  m_LocalPosition: {x: -4.692892, y: 0.78032947, z: -2.147}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1522740332}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &144129271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144129269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10733c8b3ce64b32ae7133f09aadfb04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ItemType>k__BackingField: 51
 --- !u!1 &170117034
 GameObject:
   m_ObjectHideFlags: 0
@@ -8451,7 +8499,7 @@ MonoBehaviour:
   - {fileID: 1120987540}
   - {fileID: 1668498594}
   switchableLamps:
-  - {fileID: 1241722723}
+  - {fileID: 0}
   flickerSpeedMin: 0.025
   flickerSpeedMax: 0.1
 --- !u!65 &1026378969
@@ -9482,6 +9530,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8556425919505891713, guid: bca7e59cca7cc0648887b9fdff7f0125, type: 3}
   m_PrefabInstance: {fileID: 1151120940}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1154363018
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1154363019}
+  - component: {fileID: 1154363020}
+  m_Layer: 0
+  m_Name: RadiometerElectronics (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1154363019
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154363018}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.6009592, y: -0.0137089975, z: 0.019337393, w: 0.79892814}
+  m_LocalPosition: {x: -5.092892, y: 0.78032947, z: -2.147}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1522740332}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &1154363020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154363018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10733c8b3ce64b32ae7133f09aadfb04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ItemType>k__BackingField: 51
 --- !u!1 &1162463347 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 53342472223017463, guid: 9a53a4c10bce2d546acada6d89e78a7d, type: 3}
@@ -10230,6 +10323,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6992246016804130811, guid: 4af891265eb332740bd67d67c469a497, type: 3}
   m_PrefabInstance: {fileID: 1020361543}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1305073024
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1305073025}
+  - component: {fileID: 1305073026}
+  m_Layer: 0
+  m_Name: RadiometerElectronics (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1305073025
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305073024}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.6009592, y: -0.0137089975, z: 0.019337393, w: 0.79892814}
+  m_LocalPosition: {x: -4.892892, y: 0.78032947, z: -2.147}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1522740332}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &1305073026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305073024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10733c8b3ce64b32ae7133f09aadfb04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ItemType>k__BackingField: 51
 --- !u!1001 &1314684015
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12079,6 +12217,9 @@ Transform:
   - {fileID: 833879693}
   - {fileID: 1164264474}
   - {fileID: 611115350}
+  - {fileID: 144129270}
+  - {fileID: 1305073025}
+  - {fileID: 1154363019}
   m_Father: {fileID: 2139506904}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1530447299

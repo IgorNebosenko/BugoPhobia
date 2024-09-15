@@ -39,11 +39,11 @@ namespace ElectrumGames.Core.Rooms
         {
             for (var i = 0; i < lightEnvironmentObjects.Length; i++)
             {
-                lightEnvironmentObjects[i].DoFlick(flickerSpeedMin, flickerSpeedMax);
+                lightEnvironmentObjects[i]?.DoFlick(flickerSpeedMin, flickerSpeedMax);
             }
             for (var i = 0; i < switchableLamps.Length; i++)
             {
-                switchableLamps[i].DoFlick(flickerSpeedMin, flickerSpeedMax);
+                switchableLamps[i]?.DoFlick(flickerSpeedMin, flickerSpeedMax);
             }
         }
     }
