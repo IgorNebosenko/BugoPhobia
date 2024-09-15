@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 6037800556901308486}
   - component: {fileID: 3939231945630045209}
   - component: {fileID: 6987182106150257003}
-  - component: {fileID: 8895175380183357194}
+  - component: {fileID: 3116618743809007696}
   - component: {fileID: 8477428610973823406}
   m_Layer: 6
   m_Name: ThermometerElectro
@@ -243,8 +243,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!64 &8895175380183357194
-MeshCollider:
+--- !u!65 &3116618743809007696
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -261,10 +261,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6686381848357290756, guid: 2607afdaf40f9bd4c9938ebc8d998974, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.055342443, y: 0.23754743, z: 0.13108575}
+  m_Center: {x: 0.000004743226, y: 0.035361107, z: -0.030989649}
 --- !u!114 &8477428610973823406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,7 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <PhysicObject>k__BackingField: {fileID: 6987182106150257003}
-  <Collider>k__BackingField: {fileID: 8895175380183357194}
+  <Collider>k__BackingField: {fileID: 3116618743809007696}
   <ItemType>k__BackingField: 21
   thermometerText: {fileID: 797289431251828047}
   onLight: {fileID: 6989648571593852529}
