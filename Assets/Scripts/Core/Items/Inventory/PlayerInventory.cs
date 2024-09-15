@@ -45,6 +45,7 @@ namespace ElectrumGames.Core.Items.Inventory
             item.transform.localScale = Vector3.one;
             item.gameObject.SetActive(false);
             item.SetNetId(item.NetId, _playerNetId);
+            item.SetInventory(this);
             
             Items[slot] = item;
             

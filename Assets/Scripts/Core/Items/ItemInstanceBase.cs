@@ -1,5 +1,6 @@
 ﻿using ElectrumGames.CommonInterfaces;
 using ElectrumGames.Configs;
+using ElectrumGames.Core.Items.Inventory;
 using ElectrumGames.GlobalEnums;
 using UnityEngine;
 
@@ -13,9 +14,16 @@ namespace ElectrumGames.Core.Items
 
         private PlayerConfig _playerConfig;
         private ItemsFactory _itemsFactory;
+        protected IInventory inventoryReference;
         
         public int NetId { get; private set; }
         public int OwnerId { get; private set; }
+
+        public void SetInventory(IInventory inventory)
+        {
+            inventoryReference = inventory;
+        }
+        
         public void SetNetId(int netId, int ownerId = -1)
         {
             NetId = netId;

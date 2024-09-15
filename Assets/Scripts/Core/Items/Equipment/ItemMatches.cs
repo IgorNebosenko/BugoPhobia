@@ -14,6 +14,8 @@ namespace ElectrumGames.Core.Items
 
         private IDisposable lightProcess;
         
+        public bool IsMatchOnFire => lightProcess != null;
+        
         public override void OnMainInteraction()
         {
             ExtinguishMatch();
@@ -29,8 +31,17 @@ namespace ElectrumGames.Core.Items
             lightProcess = Observable.Timer(TimeSpan.FromSeconds(matchBurnDuration))
                 .Subscribe(ExtinguishMatch).AddTo(this);
         }
-        
-        public void ExtinguishMatch(long _ = -1)
+
+        public bool TryUseMatch()
+        {
+            if (MatchesCount <= 0)
+                return false;
+            
+            --MatchesCount;
+            return true;
+        }
+
+        private void ExtinguishMatch(long _ = -1)
         {
             lightProcess?.Dispose();
             
