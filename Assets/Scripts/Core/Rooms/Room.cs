@@ -13,6 +13,7 @@ namespace ElectrumGames.Core.Rooms
         [field: SerializeField] public TemperatureRoomHandler TemperatureRoom { get; private set; }
         [field: SerializeField] public GhostRoomHandler GhostRoomHandler { get; private set; }
         [field: SerializeField] public DoorsRoomHandler DoorsRoomHandler { get; private set; }
+        [field: SerializeField] public RadiationRoomHandler RadiationRoomHandler { get; private set; }
         [Space]
         [SerializeField] private Room[] neighborRooms;
 

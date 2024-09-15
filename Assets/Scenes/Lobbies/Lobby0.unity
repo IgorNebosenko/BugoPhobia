@@ -4502,6 +4502,7 @@ GameObject:
   - component: {fileID: 470827134}
   - component: {fileID: 470827133}
   - component: {fileID: 470827132}
+  - component: {fileID: 470827140}
   m_Layer: 0
   m_Name: Kitchen
   m_TagString: Untagged
@@ -4622,6 +4623,7 @@ MonoBehaviour:
   <TemperatureRoom>k__BackingField: {fileID: 470827134}
   <GhostRoomHandler>k__BackingField: {fileID: 470827133}
   <DoorsRoomHandler>k__BackingField: {fileID: 470827132}
+  <RadiationRoomHandler>k__BackingField: {fileID: 470827140}
   neighborRooms:
   - {fileID: 1026378964}
 --- !u!65 &470827137
@@ -4698,6 +4700,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 470827130}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &470827140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470827130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e26d5467dee4c30bd321027c15edb7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Radiation>k__BackingField: 0.03
 --- !u!1001 &472413563
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8351,6 +8366,7 @@ GameObject:
   - component: {fileID: 1026378967}
   - component: {fileID: 1026378966}
   - component: {fileID: 1026378965}
+  - component: {fileID: 1026378973}
   m_Layer: 0
   m_Name: MainRoom
   m_TagString: Untagged
@@ -8376,6 +8392,7 @@ MonoBehaviour:
   <TemperatureRoom>k__BackingField: {fileID: 1026378967}
   <GhostRoomHandler>k__BackingField: {fileID: 1026378966}
   <DoorsRoomHandler>k__BackingField: {fileID: 1026378965}
+  <RadiationRoomHandler>k__BackingField: {fileID: 1026378973}
   neighborRooms:
   - {fileID: 1511061070}
   - {fileID: 470827136}
@@ -8551,6 +8568,19 @@ Transform:
   - {fileID: 295746845}
   m_Father: {fileID: 2130318356}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1026378973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026378963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e26d5467dee4c30bd321027c15edb7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Radiation>k__BackingField: 0.025
 --- !u!1 &1040985780
 GameObject:
   m_ObjectHideFlags: 0
@@ -11745,6 +11775,7 @@ GameObject:
   - component: {fileID: 1511061076}
   - component: {fileID: 1511061075}
   - component: {fileID: 1511061074}
+  - component: {fileID: 1511061078}
   m_Layer: 0
   m_Name: WC
   m_TagString: Untagged
@@ -11802,6 +11833,7 @@ MonoBehaviour:
   <TemperatureRoom>k__BackingField: {fileID: 1511061076}
   <GhostRoomHandler>k__BackingField: {fileID: 1511061075}
   <DoorsRoomHandler>k__BackingField: {fileID: 1511061074}
+  <RadiationRoomHandler>k__BackingField: {fileID: 1511061078}
   neighborRooms:
   - {fileID: 1026378964}
 --- !u!65 &1511061071
@@ -11929,10 +11961,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSwitch: {fileID: 175164910}
   lightEnvironmentObjects:
-  - {fileID: 1413657678}
+  - {fileID: 0}
   switchableLamps: []
   flickerSpeedMin: 0.025
   flickerSpeedMax: 0.1
+--- !u!114 &1511061078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511061068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e26d5467dee4c30bd321027c15edb7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Radiation>k__BackingField: 0.035
 --- !u!1 &1516588816
 GameObject:
   m_ObjectHideFlags: 0
