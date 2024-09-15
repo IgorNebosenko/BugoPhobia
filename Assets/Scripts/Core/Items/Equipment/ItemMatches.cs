@@ -47,5 +47,10 @@ namespace ElectrumGames.Core.Items
         {
             ExtinguishMatch();
         }
+
+        private void OnDisable()
+        {
+            ExtinguishMatch();
+        }
     }
 }
