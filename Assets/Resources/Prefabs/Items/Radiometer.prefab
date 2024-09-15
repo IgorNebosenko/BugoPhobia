@@ -141,7 +141,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0.000 mR/h
+  m_text: OFF
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
   m_sharedMaterial: {fileID: -8914906939226613671, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
@@ -601,3 +601,8 @@ MonoBehaviour:
   colorLow: {r: 0.60784316, g: 0.6784314, b: 0.60784316, a: 1}
   colorMedium: {r: 0.6773556, g: 0.6792453, b: 0.45817018, a: 1}
   colorHigh: {r: 0.6698113, g: 0.50514215, b: 0.48340157, a: 1}
+  radiationValueMedium: 0.06
+  radiationValueEvidence: 0.12
+  updateInterval: 10
+  radiusOverlapDetection: 0.5
+  differenceRadiation: 0.005

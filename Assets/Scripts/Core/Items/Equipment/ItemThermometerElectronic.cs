@@ -64,16 +64,9 @@ namespace ElectrumGames.Core.Items
         {
             _isOn = !_isOn;
 
-            if (_isOn)
-            {
-                thermometerText.text = textOn;
-                onLight.enabled = true;
-            }
-            else
-            {
-                thermometerText.text = textOff;
-                onLight.enabled = false;
-            }
+            thermometerText.text = _isOn ? textOn : textOff;
+            
+            onLight.enabled = _isOn;
         }
 
         private void DisplayTemperature(float temperature)

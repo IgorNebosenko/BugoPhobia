@@ -1,7 +1,11 @@
-﻿using ElectrumGames.Core.Common;
+﻿using System;
+using ElectrumGames.Core.Common;
+using ElectrumGames.Core.Rooms;
 using TMPro;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace ElectrumGames.Core.Items
 {
@@ -18,15 +22,84 @@ namespace ElectrumGames.Core.Items
         [SerializeField] private Color colorLow;
         [SerializeField] private Color colorMedium;
         [SerializeField] private Color colorHigh;
+        [Space]
+        [SerializeField] private float radiationValueMedium = 0.06f;
+        [SerializeField] private float radiationValueEvidence = 0.12f;
+        [Space]
+        [SerializeField] private float updateInterval = 10f;
+        [SerializeField] private float radiusOverlapDetection = 0.5f;
+        [SerializeField] private float differenceRadiation = 0.005f;
         
         private bool _isOn;
-        public bool IsElectricityOn => _isOn;
+        private bool _ghostInteractionOn;
+
+        private float _lastValue;
         
+        public bool IsElectricityOn => _isOn;
+
+        private void Start()
+        {
+            Observable.Interval(TimeSpan.FromSeconds(updateInterval)).Subscribe(UpdateAction).AddTo(this);
+        }
+
+        private void UpdateAction(long _)
+        {
+            if (_ghostInteractionOn || !_isOn)
+                return;
+            
+            var colliders = Physics.OverlapSphere(transform.position, radiusOverlapDetection);
+
+            for (var i = 0; i < colliders.Length; i++)
+            {
+                if (colliders[i].TryGetComponent<Room>(out var room))
+                {
+                    var minRad = room.RadiationRoomHandler.Radiation - differenceRadiation;
+                    var maxRad = room.RadiationRoomHandler.Radiation + differenceRadiation;
+
+                    if (minRad < 0)
+                        minRad = 0.001f;
+
+                    _lastValue = Random.Range(minRad, maxRad);
+                    
+                    DisplayRadiation(_lastValue);
+                    break;
+                }
+            }
+        }
+
         public override void OnMainInteraction()
         {
             _isOn = !_isOn;
 
+            if (_isOn)
+                radiationText.text = textOff;
+            else
+                DisplayRadiation(0);
+            
             onLight.enabled = _isOn;
+        }
+
+        private void DisplayRadiation(float value)
+        {
+            radiationText.text = string.Format(textOnFormat, value);
+
+            if (value < radiationValueMedium)
+            {
+                backgroundImage.color = colorLow;
+                onLight.color = colorLow;
+            }
+            else if (value < radiationValueEvidence)
+            {
+                backgroundImage.color = colorMedium;
+                onLight.color = colorMedium;
+            }
+            else
+            {
+                backgroundImage.color = colorHigh;
+                onLight.color = colorHigh;
+            }
+
+            onLight.enabled = Random.Range(0, 3) != 0;
         }
 
         public override void OnAlternativeInteraction()
@@ -35,10 +108,14 @@ namespace ElectrumGames.Core.Items
         
         public void OnGhostInteractionStay()
         {
+            _ghostInteractionOn = true;
+            DisplayRadiation(Random.Range(0.001f, 9.999f));
         }
 
         public void OnGhostInteractionExit()
         {
+            _ghostInteractionOn = false;
+            DisplayRadiation(_lastValue);
         }
     }
 }
