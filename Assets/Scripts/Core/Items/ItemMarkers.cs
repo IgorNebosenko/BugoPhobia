@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using Zenject;
 
 namespace ElectrumGames.Core.Items
@@ -8,6 +9,8 @@ namespace ElectrumGames.Core.Items
         [SerializeField] private ItemSpawnPoint[] itemSpawnPoints;
 
         private ItemsFactory _itemsFactory;
+
+        public IReadOnlyList<ItemSpawnPoint> ItemSpawnPoints => itemSpawnPoints;
         
         [Inject]
         private void Construct(ItemsFactory itemsFactory)
