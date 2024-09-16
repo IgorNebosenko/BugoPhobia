@@ -23,9 +23,5 @@ namespace ElectrumGames.Core.Items
                 instance.transform.rotation = spawnData.Rotation;
             }
         }
-
-        private void OnCollisionEnter(Collision other)
-        {
-        }
     }
 }
