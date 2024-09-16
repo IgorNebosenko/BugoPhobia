@@ -18,6 +18,7 @@ namespace ElectrumGames.Core.Items
         
         public int NetId { get; private set; }
         public int OwnerId { get; private set; }
+        public int SpawnerId { get; private set; }
 
         public void SetInventory(IInventory inventory)
         {
@@ -30,10 +31,11 @@ namespace ElectrumGames.Core.Items
             OwnerId = ownerId;
         }
 
-        public void Init(PlayerConfig playerConfig, ItemsFactory itemsFactory)
+        public void Init(PlayerConfig playerConfig, ItemsFactory itemsFactory, int spawnerId)
         {
             _playerConfig = playerConfig;
             _itemsFactory = itemsFactory;
+            SpawnerId = spawnerId;
         }
         
         public abstract void OnMainInteraction();

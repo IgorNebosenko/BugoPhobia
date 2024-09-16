@@ -34,6 +34,7 @@ namespace ElectrumGames.UI.Presenters
 
         protected override void Init()
         {
+            Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             _inputActions.Moving.Disable();
             _inputActions.Interactions.Disable();
@@ -41,6 +42,7 @@ namespace ElectrumGames.UI.Presenters
 
         protected override void Closing()
         {
+            Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             _inputActions.Moving.Enable();
             _inputActions.Interactions.Enable();

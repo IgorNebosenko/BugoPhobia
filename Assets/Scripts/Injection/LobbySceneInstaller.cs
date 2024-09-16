@@ -14,6 +14,8 @@ namespace ElectrumGames. Injection
         [SerializeField] private ItemsFactory itemsFactory;
         [Space]
         [SerializeField] private Camera injectedCamera;
+        [Space]
+        [SerializeField] private ItemMarkers itemMarkers;
         
         protected override Assembly UiAssembly => typeof(UiAssemblyReference).Assembly;
 
@@ -25,6 +27,8 @@ namespace ElectrumGames. Injection
             Container.BindInstance(itemsFactory).AsSingle();
 
             Container.BindInstance(injectedCamera).AsSingle();
+
+            Container.BindInstance(itemMarkers).AsSingle();
             
             Container.Bind<UiEventsHandler>().AsSingle().NonLazy();
         }

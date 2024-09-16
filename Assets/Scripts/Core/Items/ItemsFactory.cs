@@ -31,12 +31,12 @@ namespace ElectrumGames.Core.Items
             _netIdFactory.Initialize(this);
         }
 
-        public ItemInstanceBase Spawn(ItemSpawnPoint spawnPoint)
+        public ItemInstanceBase Spawn(ItemSpawnPoint spawnPoint, int id)
         {
             var item = Instantiate(_itemsConfig.GetItemByType(spawnPoint.ItemType).ItemInstance, 
                 spawnPoint.Position, spawnPoint.Rotation, transform);
             _netIdFactory.Initialize(item);
-            item.Init(_playerConfig, this);
+            item.Init(_playerConfig, this, id);
             return item;
         }
     }

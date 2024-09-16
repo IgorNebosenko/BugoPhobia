@@ -8,5 +8,6 @@ namespace ElectrumGames.Core.Items
         [field: SerializeField] public ItemType ItemType { get; private set; }
         public Vector3 Position => transform.position;
         public Quaternion Rotation => transform.rotation;
+        public int SpawnerId { get; set; }
     }
 }
