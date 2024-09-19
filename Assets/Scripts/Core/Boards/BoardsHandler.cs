@@ -92,7 +92,7 @@ namespace ElectrumGames.Core.Boards
             
             _inputActions.Moving.Disable();
             _inputActions.Interactions.Disable();
-            _inputActions.UI.Disable();
+            _inputActions.UiEvents.Disable();
             
             _viewManager.CloseRootView();
             
@@ -133,7 +133,7 @@ namespace ElectrumGames.Core.Boards
                 
                 _inputActions.Moving.Enable();
                 _inputActions.Interactions.Enable();
-                _inputActions.UI.Enable();
+                _inputActions.UiEvents.Enable();
             });
         }
 
