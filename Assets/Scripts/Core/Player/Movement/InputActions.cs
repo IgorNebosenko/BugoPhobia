@@ -1169,6 +1169,127 @@ namespace ElectrumGames.Core.Player.Movement
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Boards"",
+            ""id"": ""9cc00acd-acfa-4807-962b-1011e812ffff"",
+            ""actions"": [
+                {
+                    ""name"": ""Return"",
+                    ""type"": ""Button"",
+                    ""id"": ""3bac6357-5b10-462d-abf2-e0e2469f42f0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Open"",
+                    ""type"": ""Button"",
+                    ""id"": ""661adf25-fbff-41ce-8db7-e64619ed6c6d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MoveRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""8891d8e4-4768-46cd-ba73-5bc4e2db5f69"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MoveLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""2674f142-0541-40c3-ab53-3162b2f42988"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""389e2c5b-c30b-47f1-99af-4b57743e3aec"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Return"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e2064978-2ecc-4e67-b709-934688ff6acd"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Return"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1d79087a-a0e4-4a6d-86ec-88a55e192441"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Open"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5c02b9ab-12a4-45c5-ad2e-3f1b1f41d742"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6bf3162f-9205-4733-a3ec-6731221ff5f5"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""01b0b0ab-544b-441f-9eb5-b18f96366afc"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""914d63da-40b5-4de4-acbc-6e69e34becef"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1269,6 +1390,12 @@ namespace ElectrumGames.Core.Player.Movement
             m_UiEvents = asset.FindActionMap("UiEvents", throwIfNotFound: true);
             m_UiEvents_OpenJournal = m_UiEvents.FindAction("OpenJournal", throwIfNotFound: true);
             m_UiEvents_OpenMenu = m_UiEvents.FindAction("OpenMenu", throwIfNotFound: true);
+            // Boards
+            m_Boards = asset.FindActionMap("Boards", throwIfNotFound: true);
+            m_Boards_Return = m_Boards.FindAction("Return", throwIfNotFound: true);
+            m_Boards_Open = m_Boards.FindAction("Open", throwIfNotFound: true);
+            m_Boards_MoveRight = m_Boards.FindAction("MoveRight", throwIfNotFound: true);
+            m_Boards_MoveLeft = m_Boards.FindAction("MoveLeft", throwIfNotFound: true);
         }
 
         ~@InputActions()
@@ -1277,6 +1404,7 @@ namespace ElectrumGames.Core.Player.Movement
             Debug.Assert(!m_Interactions.enabled, "This will cause a leak and performance issues, InputActions.Interactions.Disable() has not been called.");
             Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, InputActions.UI.Disable() has not been called.");
             Debug.Assert(!m_UiEvents.enabled, "This will cause a leak and performance issues, InputActions.UiEvents.Disable() has not been called.");
+            Debug.Assert(!m_Boards.enabled, "This will cause a leak and performance issues, InputActions.Boards.Disable() has not been called.");
         }
 
         public void Dispose()
@@ -1702,6 +1830,76 @@ namespace ElectrumGames.Core.Player.Movement
             }
         }
         public UiEventsActions @UiEvents => new UiEventsActions(this);
+
+        // Boards
+        private readonly InputActionMap m_Boards;
+        private List<IBoardsActions> m_BoardsActionsCallbackInterfaces = new List<IBoardsActions>();
+        private readonly InputAction m_Boards_Return;
+        private readonly InputAction m_Boards_Open;
+        private readonly InputAction m_Boards_MoveRight;
+        private readonly InputAction m_Boards_MoveLeft;
+        public struct BoardsActions
+        {
+            private @InputActions m_Wrapper;
+            public BoardsActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Return => m_Wrapper.m_Boards_Return;
+            public InputAction @Open => m_Wrapper.m_Boards_Open;
+            public InputAction @MoveRight => m_Wrapper.m_Boards_MoveRight;
+            public InputAction @MoveLeft => m_Wrapper.m_Boards_MoveLeft;
+            public InputActionMap Get() { return m_Wrapper.m_Boards; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(BoardsActions set) { return set.Get(); }
+            public void AddCallbacks(IBoardsActions instance)
+            {
+                if (instance == null || m_Wrapper.m_BoardsActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_BoardsActionsCallbackInterfaces.Add(instance);
+                @Return.started += instance.OnReturn;
+                @Return.performed += instance.OnReturn;
+                @Return.canceled += instance.OnReturn;
+                @Open.started += instance.OnOpen;
+                @Open.performed += instance.OnOpen;
+                @Open.canceled += instance.OnOpen;
+                @MoveRight.started += instance.OnMoveRight;
+                @MoveRight.performed += instance.OnMoveRight;
+                @MoveRight.canceled += instance.OnMoveRight;
+                @MoveLeft.started += instance.OnMoveLeft;
+                @MoveLeft.performed += instance.OnMoveLeft;
+                @MoveLeft.canceled += instance.OnMoveLeft;
+            }
+
+            private void UnregisterCallbacks(IBoardsActions instance)
+            {
+                @Return.started -= instance.OnReturn;
+                @Return.performed -= instance.OnReturn;
+                @Return.canceled -= instance.OnReturn;
+                @Open.started -= instance.OnOpen;
+                @Open.performed -= instance.OnOpen;
+                @Open.canceled -= instance.OnOpen;
+                @MoveRight.started -= instance.OnMoveRight;
+                @MoveRight.performed -= instance.OnMoveRight;
+                @MoveRight.canceled -= instance.OnMoveRight;
+                @MoveLeft.started -= instance.OnMoveLeft;
+                @MoveLeft.performed -= instance.OnMoveLeft;
+                @MoveLeft.canceled -= instance.OnMoveLeft;
+            }
+
+            public void RemoveCallbacks(IBoardsActions instance)
+            {
+                if (m_Wrapper.m_BoardsActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            public void SetCallbacks(IBoardsActions instance)
+            {
+                foreach (var item in m_Wrapper.m_BoardsActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_BoardsActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        public BoardsActions @Boards => new BoardsActions(this);
         private int m_KeyboardMouseSchemeIndex = -1;
         public InputControlScheme KeyboardMouseScheme
         {
@@ -1785,6 +1983,13 @@ namespace ElectrumGames.Core.Player.Movement
         {
             void OnOpenJournal(InputAction.CallbackContext context);
             void OnOpenMenu(InputAction.CallbackContext context);
+        }
+        public interface IBoardsActions
+        {
+            void OnReturn(InputAction.CallbackContext context);
+            void OnOpen(InputAction.CallbackContext context);
+            void OnMoveRight(InputAction.CallbackContext context);
+            void OnMoveLeft(InputAction.CallbackContext context);
         }
     }
 }

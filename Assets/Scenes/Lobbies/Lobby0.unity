@@ -1275,6 +1275,58 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1505552024}
   m_SourcePrefab: {fileID: 100100000, guid: ea7cc002cd547c049aadc3caf590e6d8, type: 3}
+--- !u!1 &114294572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 114294573}
+  - component: {fileID: 114294574}
+  m_Layer: 0
+  m_Name: BoardsHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &114294573
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114294572}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 799980135}
+  m_Father: {fileID: 2139506904}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114294574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114294572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c1a42e1f5614a99ae0840531c002336, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boardCamera: {fileID: 799980133}
+  mainBoard: {fileID: 1758659560}
+  mainBoardCameraTransform: {fileID: 1480399394}
+  additionalBoard: {fileID: 479315790}
+  additionalBoardCameraTransform: {fileID: 0}
+  lerpTime: 0.5
+  targetFov: 60
 --- !u!1 &114443649
 GameObject:
   m_ObjectHideFlags: 0
@@ -5278,12 +5330,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f095ab8d6040998606ad151afb9eb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraTransform: {fileID: 0}
-  boardCamera: {fileID: 0}
-  targetFov: 60
-  lerpTime: 0.5
-  tolerance: 0.01
-  boardCollider: {fileID: 0}
+  isMainBoard: 0
+  boardsHandler: {fileID: 114294574}
+  <BoardCollider>k__BackingField: {fileID: 479315789}
 --- !u!1 &487319030
 GameObject:
   m_ObjectHideFlags: 0
@@ -7635,7 +7684,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1480399394}
+  m_Father: {fileID: 114294573}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &810209788
 PrefabInstance:
@@ -13808,8 +13857,7 @@ Transform:
   m_LocalPosition: {x: -3.089, y: 1.658, z: -1.885}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 799980135}
+  m_Children: []
   m_Father: {fileID: 288883263}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1 &1485587875
@@ -17057,12 +17105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f095ab8d6040998606ad151afb9eb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraTransform: {fileID: 1480399394}
-  boardCamera: {fileID: 799980133}
-  targetFov: 60
-  lerpTime: 0.5
-  tolerance: 0.01
-  boardCollider: {fileID: 1758659559}
+  isMainBoard: 1
+  boardsHandler: {fileID: 114294574}
+  <BoardCollider>k__BackingField: {fileID: 1758659559}
 --- !u!1 &1765556941
 GameObject:
   m_ObjectHideFlags: 0
@@ -20022,6 +20067,7 @@ Transform:
   - {fileID: 991025213}
   - {fileID: 1522740332}
   - {fileID: 2130318356}
+  - {fileID: 114294573}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2145834446
