@@ -44,15 +44,16 @@ namespace ElectrumGames.Core.Environment
             
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+            
+            _mainCamera.enabled = false;
+            boardCamera.enabled = true;
+            
+            boardCamera.transform.position = _mainCamera.transform.position;
+            boardCamera.transform.rotation = _mainCamera.transform.rotation;
 
             var sequence = DOTween.Sequence();
-            sequence.Join(_mainCamera.transform.DOMove(cameraTransform.position, lerpTime))
-                .Join(_mainCamera.transform.DORotate(cameraTransform.rotation.eulerAngles, lerpTime))
-                .Join(_mainCamera.DOFieldOfView(60, lerpTime));
-        }
-
-        public void OnCancel()
-        {
+            sequence.Join(boardCamera.transform.DOMove(cameraTransform.position, lerpTime))
+                .Join(boardCamera.transform.DORotate(cameraTransform.rotation.eulerAngles, lerpTime));
         }
     }
 }
