@@ -9,6 +9,8 @@ namespace ElectrumGames.UI.Boards.Presenters
     {
         [SerializeField] private string discordLink = @"https://discord.gg/j3Ug4MWf6P";
         [SerializeField] private string patreonLink = @"";
+        [Space]
+        [SerializeField] private BoardsUiController boardsUiController;
 
         private ViewManager _viewManager;
         
@@ -20,6 +22,7 @@ namespace ElectrumGames.UI.Boards.Presenters
 
         public void OnSinglePlayerClicked()
         {
+            boardsUiController.ShowBoardWithType(DisplayBoardsMenu.SinglePlayer);
         }
 
         public void OnDemoClicked()

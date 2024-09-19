@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace ElectrumGames.UI.Boards.Views
 {
-    public class MainMenuBoardView : MonoBehaviour
+    public class MainMenuBoardView : BoardViewBase
     {
         [SerializeField] private Button singlePlayerButton;
         [SerializeField] private Button demoButton;
@@ -22,6 +22,8 @@ namespace ElectrumGames.UI.Boards.Views
         [Space]
         [SerializeField] private MainMenuBoardPresenter presenter;
 
+        public override DisplayBoardsMenu DisplayBoardsMenu => DisplayBoardsMenu.MainMenu;
+        
         private void Awake()
         {
             versionText.text = Application.version;
