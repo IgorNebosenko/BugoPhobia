@@ -1,6 +1,7 @@
 using ElectrumGames.Configs;
 using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Journal;
+using ElectrumGames.Core.Lobby;
 using ElectrumGames.Core.Player.Movement;
 using UnityEngine;
 using Zenject;
@@ -36,6 +37,8 @@ public class ProjectInstaller : MonoInstaller
         Container.BindInstance(fpsConfig).AsSingle();
 
         Container.Bind<JournalManager>().AsSingle().NonLazy();
+
+        Container.Bind<MoneysHandler>().AsSingle();
 
         Container.Bind<InputActions>().AsSingle();
     }

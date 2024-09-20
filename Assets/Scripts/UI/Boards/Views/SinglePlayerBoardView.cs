@@ -50,7 +50,7 @@ namespace ElectrumGames.UI.Boards.Views
 
         private void Start()
         {
-            SetBalanceText(1067411);
+            SetBalanceText(presenter.Moneys);
             
             SetLevelText(134);
             SetProgress(374, 7575);
