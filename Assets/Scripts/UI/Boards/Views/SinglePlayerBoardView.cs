@@ -1,4 +1,5 @@
-﻿using ElectrumGames.UI.Boards.Presenters;
+﻿using System;
+using ElectrumGames.UI.Boards.Presenters;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -32,5 +33,17 @@ namespace ElectrumGames.UI.Boards.Views
         [SerializeField] private SinglePlayerBoardPresenter presenter;
 
         public override DisplayBoardsMenu DisplayBoardsMenu => DisplayBoardsMenu.SinglePlayer;
+
+        private void Start()
+        {
+            SetBalanceText(1067411);
+        }
+
+        public void SetBalanceText(decimal balance)
+        {
+            balance = Math.Floor(balance);
+            
+            balanceText.text = string.Format(balanceFormat, balance);
+        }
     }
 }
