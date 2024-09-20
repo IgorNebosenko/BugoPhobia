@@ -74,16 +74,25 @@ namespace ElectrumGames.Core.Common
 
         private static string DecryptAES(string cipherText)
         {
-            using var aes = Aes.Create();
-            aes.Key = GetKeyBytes();
-            aes.IV = new byte[16];
+            byte[] plainBytes = {};
+            try
+            {
+                using var aes = Aes.Create();
+                aes.Key = GetKeyBytes();
+                aes.IV = new byte[16];
 
-            var decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
-            var cipherBytes = Convert.FromBase64String(cipherText);
-            var plainBytes = decryptor.TransformFinalBlock(cipherBytes, 
-                0, cipherBytes.Length);
+                var decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
+                var cipherBytes = Convert.FromBase64String(cipherText);
+                plainBytes = decryptor.TransformFinalBlock(cipherBytes,
+                    0, cipherBytes.Length);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogException(ex);
+            }
 
             return Encoding.UTF8.GetString(plainBytes);
+            
         }
 
         private static byte[] GetKeyBytes()
