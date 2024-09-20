@@ -39,6 +39,7 @@ public class ProjectInstaller : MonoInstaller
         Container.Bind<JournalManager>().AsSingle().NonLazy();
 
         Container.Bind<MoneysHandler>().AsSingle();
+        Container.Bind<LobbyItemsHandler>().AsSingle();
 
         Container.Bind<InputActions>().AsSingle();
     }

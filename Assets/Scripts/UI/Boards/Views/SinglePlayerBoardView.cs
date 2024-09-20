@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ElectrumGames.Core.Common;
 using ElectrumGames.Core.Items;
 using ElectrumGames.GlobalEnums;
 using ElectrumGames.UI.Boards.Presenters;
@@ -55,12 +56,9 @@ namespace ElectrumGames.UI.Boards.Views
             SetLevelText(134);
             SetProgress(374, 7575);
             
-            SetItemsList(new List<(ItemType type, int currentCount, int maxCount)>()
-            {
-                (ItemType.FlashLightSmall, 1, 4),
-                (ItemType.FlashLightMedium, 0, 4),
-                (ItemType.FlashLightBig, 0, 4)
-            });
+            Debug.LogError("Here must be load config of default inventory for mission");
+            
+            SetItemsList(presenter.LobbyItemsHandler.GetSortedList());
         }
 
         public void SetBalanceText(decimal balance)
@@ -85,7 +83,7 @@ namespace ElectrumGames.UI.Boards.Views
             experienceText.text = string.Format(experienceFormat, currentXp, maxXp);
         }
 
-        public void SetItemsList(List<(ItemType type, int currentCount, int maxCount)> items)
+        public void SetItemsList(List<ItemLobbyData> items)
         {
             foreach (var item in equipmentItems)
             {
@@ -97,7 +95,7 @@ namespace ElectrumGames.UI.Boards.Views
             for (var i = 0; i < items.Count; i++)
             {
                 var item = Instantiate(equipmentItemTemplate, inventoryObject);
-                item.OnInit(_itemsConfig, items[i].type, items[i].currentCount, items[i].maxCount);
+                item.OnInit(_itemsConfig, items[i].itemType, items[i].currentCount, items[i].maxCount);
                 equipmentItems.Add(item);
             }
         }

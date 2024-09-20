@@ -8,13 +8,14 @@ namespace ElectrumGames.UI.Boards.Presenters
     {
         private MoneysHandler _moneysHandler;
 
-
         public decimal Moneys => _moneysHandler.Moneys;
+        public LobbyItemsHandler LobbyItemsHandler { get; private set; }
         
         [Inject]
-        private void Construct(MoneysHandler moneysHandler)
+        private void Construct(MoneysHandler moneysHandler, LobbyItemsHandler lobbyItemsHandler)
         {
             _moneysHandler = moneysHandler;
+            LobbyItemsHandler = lobbyItemsHandler;
         }
     }
 }

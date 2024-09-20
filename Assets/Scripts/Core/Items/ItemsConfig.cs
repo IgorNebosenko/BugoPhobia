@@ -16,6 +16,7 @@ namespace ElectrumGames.Core.Items
         
         [field: SerializeField] public int RequiredLevel { get; private set; }
         [field: SerializeField] public int Cost { get; private set; }
+        [field: SerializeField] public int MaxCountOnMission { get; private set; }
     }
 
     [CreateAssetMenu(fileName = "Items Config", menuName = "Items/ItemsConfig")]
