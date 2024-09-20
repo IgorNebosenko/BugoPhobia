@@ -6,15 +6,13 @@ namespace ElectrumGames.UI.Boards.Presenters
 {
     public class SinglePlayerBoardPresenter : MonoBehaviour
     {
-        private MoneysHandler _moneysHandler;
-
-        public decimal Moneys => _moneysHandler.Moneys;
+        public MoneysHandler MoneysHandler { get; private set; }
         public LobbyItemsHandler LobbyItemsHandler { get; private set; }
         
         [Inject]
         private void Construct(MoneysHandler moneysHandler, LobbyItemsHandler lobbyItemsHandler)
         {
-            _moneysHandler = moneysHandler;
+            MoneysHandler = moneysHandler;
             LobbyItemsHandler = lobbyItemsHandler;
         }
     }
