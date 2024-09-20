@@ -27,6 +27,8 @@ namespace ElectrumGames.UI.Boards.Views
         [Space]
         [SerializeField] private TMP_Text inventoryText;
         [Space]
+        [SerializeField] private EquipmentItemComponent equipmentItemTemplate;
+        [Space]
         [SerializeField] private SinglePlayerBoardPresenter presenter;
 
         public override DisplayBoardsMenu DisplayBoardsMenu => DisplayBoardsMenu.SinglePlayer;

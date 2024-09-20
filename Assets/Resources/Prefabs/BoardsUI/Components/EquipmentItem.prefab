@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6745050697381745286}
+  - component: {fileID: 1927672935136541313}
   m_Layer: 0
   m_Name: EquipmentItem
   m_TagString: Untagged
@@ -37,6 +38,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 748.2642, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1927672935136541313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3388031471956104996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e65c210d7a640c649b5b77d26724b3e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 0
+  equipmentName: {fileID: 4641798091314538389}
+  equipmentCount: {fileID: 8609509324895146961}
+  countPatent: '{0}/{1}'
+  defaultColor: {r: 0, g: 0, b: 0, a: 1}
+  emptyColor: {r: 0.49803922, g: 0.49803922, b: 0.49803922, a: 1}
 --- !u!1 &4403965270176036629
 GameObject:
   m_ObjectHideFlags: 0
@@ -69,7 +88,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6745050697381745286}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.8, y: 0}
+  m_AnchorMin: {x: 0.6, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
@@ -206,7 +225,7 @@ RectTransform:
   m_Father: {fileID: 6745050697381745286}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.8, y: 1}
+  m_AnchorMax: {x: 0.6, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
