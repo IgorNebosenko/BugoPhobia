@@ -1,6 +1,7 @@
 using System;
 using ElectrumGames.Core.Common;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace ElectrumGames.Core.Lobby
 {
@@ -8,7 +9,7 @@ namespace ElectrumGames.Core.Lobby
     {
         private const string MoneysKey = "Moneys";
 
-        private const decimal DifferenceWithPrevious = 52.31745m; 
+        private readonly decimal _differenceWithPrevious; 
         private decimal _previousMoneys;
 
         public event Action<decimal> BalanceUpdated;
@@ -20,21 +21,22 @@ namespace ElectrumGames.Core.Lobby
             get => PlayerPrefsAes.GetEncryptedDecimal(MoneysKey);
             set 
             {
-                if (_previousMoneys != Moneys - DifferenceWithPrevious)
+                if (_previousMoneys != Moneys - _differenceWithPrevious)
                 {
-                    value = _previousMoneys + DifferenceWithPrevious;
+                    value = _previousMoneys + _differenceWithPrevious;
                 }
                 
                 BalanceUpdated?.Invoke(value);
                 PlayerPrefsAes.SetEncryptedDecimal(MoneysKey, value);
 
-                _previousMoneys = Moneys - DifferenceWithPrevious;
+                _previousMoneys = Moneys - _differenceWithPrevious;
             }
         }
 
         public MoneysHandler()
         {
-            _previousMoneys = Moneys - DifferenceWithPrevious;
+            _differenceWithPrevious = (decimal)Random.Range(-1000f, 1000f);
+            _previousMoneys = Moneys - _differenceWithPrevious;
         }
     }
 }
