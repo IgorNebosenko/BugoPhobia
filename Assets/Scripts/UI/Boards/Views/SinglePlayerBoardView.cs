@@ -65,8 +65,8 @@ namespace ElectrumGames.UI.Boards.Views
         {
             SetBalanceText(presenter.MoneysHandler.Moneys);
             
-            SetLevelText(134);
-            SetProgress(374, 7575);
+            SetLevelText(presenter.LevelsHandler.CurrentLevel);
+            SetProgress(presenter.LevelsHandler.CurrentLevelXp, presenter.LevelsHandler.CurrentLevelMaxXp);
             
             Debug.LogError("Here must be load config of default inventory for mission");
             
