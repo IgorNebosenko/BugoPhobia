@@ -29,6 +29,7 @@ namespace ElectrumGames.UI.Boards.Views
         [SerializeField] private TMP_Text experienceText;
         [SerializeField] private string experienceFormat;
         [Space]
+        [SerializeField] private Button backButton;
         [SerializeField] private Button startButton;
         [Space]
         [SerializeField] private Transform inventoryObject;
@@ -47,6 +48,16 @@ namespace ElectrumGames.UI.Boards.Views
         private void ItemsConfig(ItemsConfig itemsConfig)
         {
             _itemsConfig = itemsConfig;
+        }
+
+        private void OnEnable()
+        {
+            backButton.onClick.AddListener(presenter.OnButtonBackClicked);
+        }
+
+        private void OnDisable()
+        {
+            backButton.onClick.RemoveListener(presenter.OnButtonBackClicked);
         }
 
         private void Start()
