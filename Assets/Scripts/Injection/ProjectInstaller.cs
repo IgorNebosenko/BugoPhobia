@@ -11,6 +11,7 @@ public class ProjectInstaller : MonoInstaller
     [SerializeField] private ActivityConfig activityConfig;
     [SerializeField] private EvidenceConfig evidenceConfig;
     [SerializeField] private DescriptionConfig descriptionConfig;
+    [SerializeField] private LevelsConfig levelsConfig;
     [Space]
     [SerializeField] private PlayerConfig playerConfig;
     [SerializeField] private UserConfig userConfig;
@@ -24,6 +25,7 @@ public class ProjectInstaller : MonoInstaller
         Container.BindInstance(activityConfig).AsSingle();
         Container.BindInstance(evidenceConfig).AsSingle();
         Container.BindInstance(descriptionConfig).AsSingle();
+        Container.BindInstance(levelsConfig).AsSingle();
         
         Container.BindInstance(playerConfig).AsSingle();
         
@@ -40,6 +42,7 @@ public class ProjectInstaller : MonoInstaller
 
         Container.Bind<MoneysHandler>().AsSingle();
         Container.Bind<LobbyItemsHandler>().AsSingle();
+        Container.Bind<LevelsHandler>().AsSingle();
 
         Container.Bind<InputActions>().AsSingle();
     }

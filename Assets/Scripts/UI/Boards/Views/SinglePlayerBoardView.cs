@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using ElectrumGames.Core.Common;
 using ElectrumGames.Core.Items;
-using ElectrumGames.GlobalEnums;
 using ElectrumGames.UI.Boards.Presenters;
 using TMPro;
 using UnityEngine;
@@ -52,18 +51,19 @@ namespace ElectrumGames.UI.Boards.Views
 
         private void OnEnable()
         {
+            presenter.MoneysHandler.BalanceUpdated += SetBalanceText;
             backButton.onClick.AddListener(presenter.OnButtonBackClicked);
         }
 
         private void OnDisable()
         {
+            presenter.MoneysHandler.BalanceUpdated -= SetBalanceText;
             backButton.onClick.RemoveListener(presenter.OnButtonBackClicked);
         }
 
         private void Start()
         {
             SetBalanceText(presenter.MoneysHandler.Moneys);
-            presenter.MoneysHandler.BalanceUpdated += SetBalanceText;
             
             SetLevelText(134);
             SetProgress(374, 7575);
