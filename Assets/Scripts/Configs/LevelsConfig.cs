@@ -10,21 +10,39 @@ namespace ElectrumGames.Configs
 
         public int GetRequiredXpAtLevel(int level)
         {
-            var xp = 100f;
-            var previousXp = xp;
+            if (level == 0)
+                return 0;
+            
+            float previousXp = StartLevelOfXp;
 
             for (var i = 1; i < level; i++)
             {
                 previousXp *= multiplierPerLevel;
-                xp += previousXp;
             }
 
-            return Mathf.RoundToInt(xp);
+            return Mathf.RoundToInt(previousXp);
         }
 
+        public int RequiredTotalXp(int currentLevel)
+        {
+            if (currentLevel == 0)
+                return 0;
+
+            float xp = StartLevelOfXp;
+            var previousXp = xp;
+
+            for (var i = 1; i < currentLevel; i++)
+            {
+                previousXp *= multiplierPerLevel;
+                xp += previousXp;
+            }
+            
+            return Mathf.RoundToInt(xp);
+        }
+        
         public int GetLevelByTotalXp(int totalXp)
         {
-            var xp = 100f;
+            float xp = StartLevelOfXp;
             var previousXp = xp;
             var level = 1;
 
