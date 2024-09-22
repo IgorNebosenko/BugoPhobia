@@ -68,9 +68,13 @@ namespace ElectrumGames.UI.Boards.Views
             SetLevelText(presenter.LevelsHandler.CurrentLevel);
             SetProgress(presenter.LevelsHandler.CurrentLevelXp, presenter.LevelsHandler.CurrentLevelMaxXp);
             
-            Debug.LogError("Here must be load config of default inventory for mission");
+            presenter.LobbyItemsHandler.ClearLobbyItems();
+            presenter.LobbyItemsHandler.FillDefault();
+            Debug.LogWarning("Fill with additional items");
             
             SetItemsList(presenter.LobbyItemsHandler.GetSortedList());
+
+            CheckStartState();
         }
 
         public void SetBalanceText(decimal balance)
@@ -110,6 +114,11 @@ namespace ElectrumGames.UI.Boards.Views
                 item.OnInit(_itemsConfig, items[i].itemType, items[i].currentCount, items[i].maxCount);
                 equipmentItems.Add(item);
             }
+        }
+
+        public void CheckStartState()
+        {
+            startButton.interactable = presenter.MissionDataHandler.CheckCanStart();
         }
     }
 }

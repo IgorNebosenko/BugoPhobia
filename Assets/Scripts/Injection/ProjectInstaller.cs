@@ -2,6 +2,7 @@ using ElectrumGames.Configs;
 using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Journal;
 using ElectrumGames.Core.Lobby;
+using ElectrumGames.Core.Missions;
 using ElectrumGames.Core.Player.Movement;
 using UnityEngine;
 using Zenject;
@@ -45,6 +46,8 @@ public class ProjectInstaller : MonoInstaller
         Container.Bind<MoneysHandler>().AsSingle();
         Container.Bind<LobbyItemsHandler>().AsSingle();
         Container.Bind<LevelsHandler>().AsSingle();
+
+        Container.Bind<MissionDataHandler>().AsSingle();
 
         Container.Bind<InputActions>().AsSingle();
     }

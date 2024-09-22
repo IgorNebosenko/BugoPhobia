@@ -26,18 +26,40 @@ namespace ElectrumGames.Core.Lobby
         private const string InventoryKey = "Inventory";
 
         private readonly ItemsConfig _itemsConfig;
+        private readonly DefaultMissionItems _defaultMissionItems;
         
         private List<LobbyItemData> _lobbyItems = new ();
+        private List<LobbyItemData> _allItems = new ();
         
-        public LobbyItemsHandler(ItemsConfig itemsConfig)
+        public LobbyItemsHandler(ItemsConfig itemsConfig, DefaultMissionItems defaultMissionItems)
         {
             _itemsConfig = itemsConfig;
+            _defaultMissionItems = defaultMissionItems;
+            
             ReadInventory();
         }
 
         private void ReadInventory()
         {
-            _lobbyItems = JsonUtility.FromJson<List<LobbyItemData>>(PlayerPrefsAes.GetEncryptedString(InventoryKey, "{}"));
+            _allItems = JsonUtility.FromJson<List<LobbyItemData>>(PlayerPrefsAes.GetEncryptedString(InventoryKey, "{}"));
+        }
+
+        public void ClearLobbyItems()
+        {
+            _lobbyItems.Clear();
+        }
+
+        public void FillDefault()
+        {
+            for (var i = 0; i < _defaultMissionItems.Items.Count; i++)
+            {
+                var pair = _lobbyItems.FirstOrDefault(x => x.itemType == _defaultMissionItems.Items[i]);
+
+                if (pair != null)
+                    pair.itemsCount++;
+                else
+                    _lobbyItems.Add(new LobbyItemData(_defaultMissionItems.Items[i], 1));
+            }
         }
 
         public bool TryUseItem(ItemType type)
