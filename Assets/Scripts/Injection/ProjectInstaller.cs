@@ -12,6 +12,7 @@ public class ProjectInstaller : MonoInstaller
     [SerializeField] private EvidenceConfig evidenceConfig;
     [SerializeField] private DescriptionConfig descriptionConfig;
     [SerializeField] private LevelsConfig levelsConfig;
+    [SerializeField] private DefaultMissionItems defaultMissionItems;
     [Space]
     [SerializeField] private PlayerConfig playerConfig;
     [SerializeField] private UserConfig userConfig;
@@ -26,6 +27,7 @@ public class ProjectInstaller : MonoInstaller
         Container.BindInstance(evidenceConfig).AsSingle();
         Container.BindInstance(descriptionConfig).AsSingle();
         Container.BindInstance(levelsConfig).AsSingle();
+        Container.BindInstance(defaultMissionItems).AsSingle();
         
         Container.BindInstance(playerConfig).AsSingle();
         
