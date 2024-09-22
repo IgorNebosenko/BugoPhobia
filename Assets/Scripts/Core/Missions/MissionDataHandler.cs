@@ -10,7 +10,7 @@ namespace ElectrumGames.Core.Missions
 
         public IReadOnlyList<ItemLobbyData> LobbyItemsData => _lobbyItemsHandler.GetSortedList();
         public MissionDifficulty MissionDifficulty { get; set; } = MissionDifficulty.Medium;
-        public MissionMap MissionMap { get; set; } = MissionMap.SmallHouse;
+        public MissionMap MissionMap { get; set; } = MissionMap.None;
         public int PlayerJournalId { get; set; }
 
         public bool CheckCanStart()
