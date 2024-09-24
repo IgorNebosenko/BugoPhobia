@@ -1,5 +1,4 @@
 ﻿using ElectrumGames.Core.Environment.Enums;
-using ElectrumGames.Core.Environment;
 using UnityEngine;
 
 namespace ElectrumGames.Core.Environment
