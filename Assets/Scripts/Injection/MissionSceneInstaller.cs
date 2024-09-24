@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using ElectrumGames.Core.Environment;
+using ElectrumGames.Core.Ghost;
 using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Player;
 using ElectrumGames.UI;
@@ -37,6 +38,7 @@ namespace ElectrumGames.Injection
             Container.BindInstance(itemMarkers).AsSingle();
             
             Container.Bind<EnvironmentData>().AsSingle();
+            Container.Bind<GhostEnvironmentHandler>().AsSingle();
             
             Container.Bind<UiEventsHandler>().AsSingle().NonLazy();
         }
