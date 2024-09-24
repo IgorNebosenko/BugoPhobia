@@ -1,4 +1,5 @@
 ﻿using ElectrumGames.Core.Environment.Enums;
+using ElectrumGames.Core.Environment;
 using UnityEngine;
 
 namespace ElectrumGames.Core.Environment
@@ -13,7 +14,7 @@ namespace ElectrumGames.Core.Environment
         
         public bool IsEnterDoorOpened { get; set; }
 
-        public void SwitchStateChange(bool state)
+        public void OnSwitchStateChanged(bool state)
         {
             if (SwitchState == SwitchState.Broken)
                 return;
@@ -21,19 +22,21 @@ namespace ElectrumGames.Core.Environment
             SwitchState = state ? SwitchState.Enabled : SwitchState.Disabled;
         }
 
-        public void PickUpKey()
+        public void OnPickUpKey()
         {
             IsKeyPicked = true;
         }
 
         private void OnEnable()
         {
-            fuseBox.SwitchChanged += SwitchStateChange;
+            fuseBox.SwitchChanged += OnSwitchStateChanged;
+            HouseKeyEnvironmentObject.PickUpKey += OnPickUpKey;
         }
 
         private void OnDisable()
         {
-            fuseBox.SwitchChanged -= SwitchStateChange;
+            fuseBox.SwitchChanged -= OnSwitchStateChanged;
+            HouseKeyEnvironmentObject.PickUpKey -= OnPickUpKey;
         }
     }
 }
