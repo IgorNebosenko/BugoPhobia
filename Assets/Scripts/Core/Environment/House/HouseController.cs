@@ -1,10 +1,10 @@
 ﻿using ElectrumGames.Core.Environment.Enums;
 using ElectrumGames.Core.Ghost;
-using ElectrumGames.GlobalEnums;
+using ElectrumGames.Core.Rooms;
 using UnityEngine;
 using Zenject;
 
-namespace ElectrumGames.Core.Environment
+namespace ElectrumGames.Core.Environment.House
 {
     public class HouseController : MonoBehaviour
     {
@@ -15,6 +15,8 @@ namespace ElectrumGames.Core.Environment
         [Space]
         [SerializeField] private int minRoomId = 0;
         [SerializeField] private int maxRoomId = 0;
+        [Space]
+        [SerializeField] private Room[] rooms;
         
         public SwitchState SwitchState { get; private set; }
         
