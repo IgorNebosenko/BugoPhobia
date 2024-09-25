@@ -1,4 +1,5 @@
-﻿using ElectrumGames.Core.Environment.Enums;
+﻿using System;
+using ElectrumGames.Core.Environment.Enums;
 using ElectrumGames.Core.Ghost;
 using ElectrumGames.Core.Rooms;
 using UnityEngine;
@@ -41,6 +42,9 @@ namespace ElectrumGames.Core.Environment.House
         public void OnPickUpKey()
         {
             IsKeyPicked = true;
+
+            for (var i = 0; i < rooms.Length; i++)
+                rooms[i].DoorsRoomHandler.OpenDoors();
         }
 
         private void OnEnable()

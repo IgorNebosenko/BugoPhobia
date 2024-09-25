@@ -1,6 +1,8 @@
-﻿using ElectrumGames.Core.Environment.Configs;
+﻿using System;
+using ElectrumGames.Core.Environment.Configs;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace ElectrumGames.Core.Environment
 {
@@ -9,6 +11,9 @@ namespace ElectrumGames.Core.Environment
         [SerializeField] private Light directionalLight;
         [field: Space]
         [field: SerializeField] public float OutDoorRadiation { get; private set; }
+        
+        public event Action HuntStart;
+        public event Action HuntEnd;
         
         public WeatherConfigData WeatherData { get; protected set; }
         
