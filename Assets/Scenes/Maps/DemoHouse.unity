@@ -351,6 +351,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3659b14570ae453d8040cdcb05b270e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPointAtRoom: {fileID: 0}
+  activityPoints: []
+  sheltersPoints: []
 --- !u!114 &1874944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2046,6 +2049,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3659b14570ae453d8040cdcb05b270e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPointAtRoom: {fileID: 0}
+  activityPoints: []
+  sheltersPoints: []
 --- !u!114 &50092565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2672,6 +2678,7 @@ Transform:
   m_LocalScale: {x: 9, y: 4, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 432080788}
   - {fileID: 1647710371}
   - {fileID: 187858228}
   - {fileID: 1380278459}
@@ -2826,6 +2833,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3659b14570ae453d8040cdcb05b270e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPointAtRoom: {fileID: 812984454}
+  activityPoints:
+  - {fileID: 817241849}
+  - {fileID: 2093493475}
+  - {fileID: 1865995437}
+  - {fileID: 2036282265}
+  sheltersPoints: []
 --- !u!114 &75868217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12233,6 +12247,42 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.261376, y: 1.1229471, z: 0.25566545}
   m_Center: {x: -0.011446059, y: 0.56087846, z: 0.043323185}
+--- !u!1 &432080787
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 432080788}
+  m_Layer: 0
+  m_Name: GhostPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &432080788
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432080787}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 812984454}
+  - {fileID: 817241849}
+  - {fileID: 2093493475}
+  - {fileID: 1865995437}
+  - {fileID: 2036282265}
+  m_Father: {fileID: 75868209}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &434484428
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15494,6 +15544,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3659b14570ae453d8040cdcb05b270e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPointAtRoom: {fileID: 0}
+  activityPoints: []
+  sheltersPoints: []
 --- !u!114 &537240578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21093,6 +21146,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3228216950763890532, guid: 63cc7f1216639194ab7fcae9be21f052, type: 3}
   m_PrefabInstance: {fileID: 810036780}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &812984453
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 812984454}
+  m_Layer: 0
+  m_Name: GhostSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &812984454
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812984453}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.2777778, y: 0, z: 0.08333335}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 432080788}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &813057443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21154,6 +21238,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63cc7f1216639194ab7fcae9be21f052, type: 3}
+--- !u!1 &817241848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 817241849}
+  m_Layer: 0
+  m_Name: GhostActivityPoint (0)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &817241849
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817241848}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.2777778, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 432080788}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &819630031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40808,6 +40923,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3659b14570ae453d8040cdcb05b270e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPointAtRoom: {fileID: 0}
+  activityPoints: []
+  sheltersPoints: []
 --- !u!114 &1595501658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43612,6 +43730,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3659b14570ae453d8040cdcb05b270e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPointAtRoom: {fileID: 0}
+  activityPoints: []
+  sheltersPoints: []
 --- !u!114 &1682551448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44498,6 +44619,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3659b14570ae453d8040cdcb05b270e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPointAtRoom: {fileID: 0}
+  activityPoints: []
+  sheltersPoints: []
 --- !u!114 &1717286428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44736,6 +44860,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3659b14570ae453d8040cdcb05b270e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPointAtRoom: {fileID: 0}
+  activityPoints: []
+  sheltersPoints: []
 --- !u!114 &1726165018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48108,6 +48235,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1914261366860725029, guid: e3916c847f9b87f42a08d8c253b6f3f0, type: 3}
   m_PrefabInstance: {fileID: 1863700543}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1865995436
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1865995437}
+  m_Layer: 0
+  m_Name: GhostActivityPoint (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1865995437
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865995436}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.055555582, y: 0, z: -0.16666667}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 432080788}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1867196261
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51924,6 +52082,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 3.005, z: 0.20000014}
   m_Center: {x: -1.5, y: 1.5025, z: 0.10000007}
+--- !u!1 &2036282264
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2036282265}
+  m_Layer: 0
+  m_Name: GhostActivityPoint (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2036282265
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036282264}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.055555582, y: 0, z: 0.16666667}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 432080788}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2036819874
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53205,6 +53394,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 841099d5e72caf948a17fc2c870ef230, type: 3}
+--- !u!1 &2093493474
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2093493475}
+  m_Layer: 0
+  m_Name: GhostActivityPoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2093493475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093493474}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.055555582, y: 0, z: -0.33333334}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 432080788}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2094594985 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000012614089652, guid: c9f9dd50ef67bab4e92a81ea235a0fc7, type: 3}
@@ -53484,6 +53704,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3659b14570ae453d8040cdcb05b270e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPointAtRoom: {fileID: 0}
+  activityPoints: []
+  sheltersPoints: []
 --- !u!114 &2097932818
 MonoBehaviour:
   m_ObjectHideFlags: 0
