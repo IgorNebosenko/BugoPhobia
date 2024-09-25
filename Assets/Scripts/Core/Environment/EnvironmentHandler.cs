@@ -12,9 +12,6 @@ namespace ElectrumGames.Core.Environment
         [field: Space]
         [field: SerializeField] public float OutDoorRadiation { get; private set; }
         
-        public event Action HuntStart;
-        public event Action HuntEnd;
-        
         public WeatherConfigData WeatherData { get; protected set; }
         
         public float OutDoorTemperature { get; private set; }
