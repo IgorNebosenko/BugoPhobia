@@ -39,7 +39,7 @@ namespace ElectrumGames.Core.Ghost
             
             Debug.Log(GhostVariables);
             Debug.Log(GhostConstants);
-            Debug.Log(GhostRoomId);
+            Debug.Log($"Room id: {GhostRoomId}");
         }
     }
 }
