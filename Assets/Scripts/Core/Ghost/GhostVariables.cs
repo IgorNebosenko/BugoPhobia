@@ -5,6 +5,9 @@ namespace ElectrumGames.Core.Ghost
     public class GhostVariables
     {
         public GhostType ghostType;
+
+        public bool isMale;
+        public int age;
         
         public float throws;
         public float doorsInteractions;
@@ -13,10 +16,12 @@ namespace ElectrumGames.Core.Ghost
 
         public float ghostEvents;
 
-        public GhostVariables(GhostType ghostType, float throws, float doorsInteractions, 
+        public GhostVariables(GhostType ghostType, bool isMale, int age, float throws, float doorsInteractions, 
             float switchesInteractions, float otherInteractions, float ghostEvents)
         {
             this.ghostType = ghostType;
+            this.isMale = isMale;
+            this.age = age;
             this.throws = throws;
             this.doorsInteractions = doorsInteractions;
             this.switchesInteractions = switchesInteractions;
@@ -27,6 +32,9 @@ namespace ElectrumGames.Core.Ghost
         public override string ToString()
         {
             return $"Ghost type: {ghostType}\n" +
+                   "-----\n" +
+                   "Is male :" + $"{isMale}\n" +
+                   "Age: " + $"{age}\n" +
                    "-----\n" +
                    "Throws: " + $"{throws}\n" +
                    "Doors interactions: " + $"{doorsInteractions}\n" +

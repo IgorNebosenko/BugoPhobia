@@ -1,5 +1,6 @@
 using ElectrumGames.Configs;
 using ElectrumGames.Core.Environment.Configs;
+using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Journal;
 using ElectrumGames.Core.Lobby;
@@ -13,6 +14,7 @@ public class ProjectInstaller : MonoInstaller
     [SerializeField] private ActivityConfig activityConfig;
     [SerializeField] private EvidenceConfig evidenceConfig;
     [SerializeField] private DescriptionConfig descriptionConfig;
+    [SerializeField] private GhostModelsList ghostModelsList;
     [SerializeField] private LevelsConfig levelsConfig;
     [SerializeField] private DefaultMissionItems defaultMissionItems;
     [Space]
@@ -30,6 +32,7 @@ public class ProjectInstaller : MonoInstaller
         Container.BindInstance(activityConfig).AsSingle();
         Container.BindInstance(evidenceConfig).AsSingle();
         Container.BindInstance(descriptionConfig).AsSingle();
+        Container.BindInstance(ghostModelsList).AsSingle();
         Container.BindInstance(levelsConfig).AsSingle();
         Container.BindInstance(defaultMissionItems).AsSingle();
         Container.BindInstance(weatherConfig).AsSingle();
