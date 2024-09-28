@@ -74,6 +74,11 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 8987352417269127782, guid: ec9d7d80a3ced5c47994bff028b5b46d, type: 3}
   m_PrefabInstance: {fileID: 3863199410738921636}
   m_PrefabAsset: {fileID: 0}
+--- !u!137 &5270805913115386882 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8987352417273308326, guid: ec9d7d80a3ced5c47994bff028b5b46d, type: 3}
+  m_PrefabInstance: {fileID: 3863199410738921636}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5270805913120663838 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8987352417259645370, guid: ec9d7d80a3ced5c47994bff028b5b46d, type: 3}
@@ -92,3 +97,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5270805913111141058}
+  skinnedMeshRenderer: {fileID: 5270805913115386882}

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using ElectrumGames.Core.Environment.Enums;
 using ElectrumGames.Core.Ghost;
 using ElectrumGames.Core.Rooms;
@@ -24,6 +25,7 @@ namespace ElectrumGames.Core.Environment.House
         public bool IsKeyPicked { get; private set; }
         
         public bool IsEnterDoorOpened { get; set; }
+        public IReadOnlyList<Room> Rooms => rooms;
 
         [Inject]
         private void Construct(GhostEnvironmentHandler ghostEnvironmentHandler)

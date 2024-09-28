@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using ElectrumGames.Core.Environment;
+using ElectrumGames.Core.Environment.House;
 using ElectrumGames.Core.Ghost;
 using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Player;
@@ -15,7 +16,10 @@ namespace ElectrumGames.Injection
         [SerializeField] private EnvironmentHandler environmentHandler;
         [Space]
         [SerializeField] private PlayersFactory playersFactory;
+        [SerializeField] private GhostFactory ghostFactory;
         [SerializeField] private ItemsFactory itemsFactory;
+        [Space]
+        [SerializeField] private HouseController houseController;
         [Space]
         [SerializeField] private Camera injectedCamera;
         [Space]
@@ -31,7 +35,10 @@ namespace ElectrumGames.Injection
             Container.BindInstance(environmentHandler).AsSingle();
 
             Container.BindInstance(playersFactory).AsSingle();
+            Container.BindInstance(ghostFactory).AsSingle();
             Container.BindInstance(itemsFactory).AsSingle();
+            
+            Container.BindInstance(houseController).AsSingle();
 
             Container.BindInstance(injectedCamera).AsSingle();
 

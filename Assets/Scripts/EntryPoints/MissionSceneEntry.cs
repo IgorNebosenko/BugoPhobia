@@ -1,4 +1,6 @@
 ﻿using ElectrumGames.Configs;
+using ElectrumGames.Core.Environment.House;
+using ElectrumGames.Core.Ghost;
 using ElectrumGames.Core.Player;
 using ElectrumGames.MVP.Managers;
 using ElectrumGames.UI.Presenters;
@@ -12,17 +14,24 @@ namespace ElectrumGames.EntryPoints
         [SerializeField] protected Transform[] playerSpawnPoints;
         
         private PlayersFactory _playersFactory;
+        private GhostFactory _ghostFactory;
         
         private ViewManager _viewManager;
         private ConfigService _configService;
+
+        private HouseController _houseController;
         
         [Inject]
-        private void Construct(PlayersFactory playersFactory, ViewManager viewManager, ConfigService configService)
+        private void Construct(PlayersFactory playersFactory, GhostFactory ghostFactory,
+            ViewManager viewManager, ConfigService configService, HouseController houseController)
         {
             _playersFactory = playersFactory;
+            _ghostFactory = ghostFactory;
             
             _viewManager = viewManager;
             _configService = configService;
+
+            _houseController = houseController;
         }
         
         private void Start()
@@ -31,6 +40,8 @@ namespace ElectrumGames.EntryPoints
             
             _playersFactory.CreatePlayer(
                 true, playerSpawnPoints[0].position, playerSpawnPoints[0].rotation);
+
+            _ghostFactory.CreateGhost(_houseController.Rooms);
 
             _viewManager.ShowView<InGamePresenter>();
         }

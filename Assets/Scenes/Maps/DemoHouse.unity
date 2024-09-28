@@ -6834,7 +6834,9 @@ MonoBehaviour:
   popupContainer: {fileID: 1121904502}
   environmentHandler: {fileID: 108762923}
   playersFactory: {fileID: 136909457}
+  ghostFactory: {fileID: 2055078833}
   itemsFactory: {fileID: 1824887459}
+  houseController: {fileID: 152224061}
   injectedCamera: {fileID: 25882424}
   itemMarkers: {fileID: 1059138453}
 --- !u!1001 &167510034
@@ -30003,7 +30005,6 @@ Transform:
   - {fileID: 5300579165163717181}
   - {fileID: 3902096689738428677}
   - {fileID: 2003613738}
-  - {fileID: 1989753044}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &860109796
@@ -60344,9 +60345,9 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3177203199472917370, guid: 4f2c41b4b7434614eae88bbd102497e2, type: 3}
 --- !u!1001 &1745968229
@@ -68903,12 +68904,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989753043}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 858933238}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1989753045
 MonoBehaviour:
@@ -68939,7 +68940,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.05
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: afa95ca258f6e31428b419f8771cb2d4, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 07cd254a01578924a8e7bf2f2ef9ba17, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1001 &1990635094
 PrefabInstance:
@@ -70604,6 +70605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 658a7a544d974ee9899df43fe82c6fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ghostControllerTemplate: {fileID: -7591501530740543211, guid: 0d2656fb93ea3d14b960f2d12e763f30, type: 3}
 --- !u!4 &2055866996 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3228216950763890532, guid: 63cc7f1216639194ab7fcae9be21f052, type: 3}
@@ -73957,3 +73959,4 @@ SceneRoots:
   - {fileID: 757355615}
   - {fileID: 108762927}
   - {fileID: 830587812}
+  - {fileID: 1989753044}

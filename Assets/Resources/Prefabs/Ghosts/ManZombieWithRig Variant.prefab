@@ -83,6 +83,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5259509266839674646}
+  skinnedMeshRenderer: {fileID: 5259509266835530198}
+--- !u!137 &5259509266835530198 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3796591504292402, guid: 0500be279870c344e8576280af7525ca, type: 3}
+  m_PrefabInstance: {fileID: 5255976971021786084}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &5259509266839674646 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3796591500166386, guid: 0500be279870c344e8576280af7525ca, type: 3}
