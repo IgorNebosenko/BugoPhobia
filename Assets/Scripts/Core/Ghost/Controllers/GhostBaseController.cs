@@ -2,6 +2,7 @@
 using ElectrumGames.CommonInterfaces;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Extensions;
+using ElectrumGames.GlobalEnums;
 using UnityEngine;
 using Zenject;
 
@@ -12,7 +13,6 @@ namespace ElectrumGames.Core.Ghost.Controllers
         [SerializeField] protected Transform modelRoot;
 
         private GhostModelController _ghostModelController;
-        protected GhostEnvironmentHandler ghostEnvironmentHandler;
         
         public int NetId { get; private set; }
         public int OwnerId { get; private set; }
@@ -21,13 +21,14 @@ namespace ElectrumGames.Core.Ghost.Controllers
         public GhostLookController GhostLookController { get; private set; }
         public GhostHuntController GhostHuntController { get; private set; }
         public GhostInteractionController GhostInteractionController { get; private set; }
+        public GhostEnvironmentHandler GhostEnvironmentHandler { get; private set; }
 
         private IReadOnlyList<IGhostController> _ghostControllers;
         
         public void Init(GhostEnvironmentHandler environmentHandler, GhostModelsList modelsList)
         {
-            ghostEnvironmentHandler = environmentHandler;
-            GhostBehaviourController = new GhostBehaviourController(ghostEnvironmentHandler);
+            GhostEnvironmentHandler = environmentHandler;
+            GhostBehaviourController = new GhostBehaviourController(GhostEnvironmentHandler);
             GhostLookController = new GhostLookController();
             GhostHuntController = new GhostHuntController();
             GhostInteractionController = new GhostInteractionController();

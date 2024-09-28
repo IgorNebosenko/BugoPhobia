@@ -2,7 +2,12 @@
 using ElectrumGames.CommonInterfaces;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Controllers;
+using ElectrumGames.Core.Ghost.Logic;
+using ElectrumGames.Core.Ghost.Logic.GhostEvents;
+using ElectrumGames.Core.Ghost.Logic.Hunt;
+using ElectrumGames.Core.Ghost.Logic.NonHunt;
 using ElectrumGames.Core.Rooms;
+using ElectrumGames.GlobalEnums;
 using ElectrumGames.Network;
 using UnityEngine;
 using Zenject;
@@ -54,7 +59,32 @@ namespace ElectrumGames.Core.Ghost
             ghost.SetSpeed(1.8f);
             ghost.MoveTo(new Vector3(27, 0, -9));
             
+            SetLogic(ghost, _ghostEnvironmentHandler);
+            
             return ghost;
+        }
+
+        private void SetLogic(GhostController controller, GhostEnvironmentHandler environmentHandler)
+        {
+            INonHuntLogic nonHuntLogic = null;
+            IGhostEventLogic ghostEventLogic = null;
+            IHuntLogic huntLogic = null;
+            
+            switch (controller.GhostEnvironmentHandler.GhostVariables.ghostType)
+            {
+                case GhostType.Blaze:
+                    nonHuntLogic = new BlazeNonHuntLogic(controller);
+                    ghostEventLogic = new BlazeGhostEventLogic(controller);
+                    huntLogic = new BlazeHuntLogic(controller);
+                    break;
+            }
+            
+            nonHuntLogic?.Setup(environmentHandler.GhostVariables, environmentHandler.GhostConstants);
+            ghostEventLogic?.Setup(environmentHandler.GhostVariables, environmentHandler.GhostConstants);
+            huntLogic?.Setup(environmentHandler.GhostVariables, environmentHandler.GhostConstants);
+            
+            
+            controller.SetLogic(nonHuntLogic, ghostEventLogic, huntLogic);
         }
     }
 }

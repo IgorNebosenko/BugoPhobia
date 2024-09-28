@@ -12,9 +12,9 @@ namespace ElectrumGames.Core.Ghost.Controllers
     {
         [SerializeField] private NavMeshAgent navmeshAgent;
         
-        private INonHuntLogic _nonHuntLogic;
-        private IGhostEventLogic _ghostEventLogic;
-        private IHuntLogic _huntLogic;
+        protected INonHuntLogic _nonHuntLogic;
+        protected IGhostEventLogic _ghostEventLogic;
+        protected IHuntLogic _huntLogic;
 
         private IReadOnlyList<Room> _rooms;
 
@@ -25,7 +25,7 @@ namespace ElectrumGames.Core.Ghost.Controllers
         
         public void TeleportToSpawnPoint()
         {
-            var currentRoom = _rooms[ghostEnvironmentHandler.GhostRoomId];
+            var currentRoom = _rooms[GhostEnvironmentHandler.GhostRoomId];
 
             transform.position = currentRoom.GhostRoomHandler.SpawnPointAtRoom.position;
             transform.rotation = currentRoom.GhostRoomHandler.SpawnPointAtRoom.rotation;
