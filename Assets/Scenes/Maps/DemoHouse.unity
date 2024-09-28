@@ -10961,6 +10961,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rug-checker
       objectReference: {fileID: 0}
+    - target: {fileID: 5138145399920907988, guid: c4a7f03c14135874390c0e86c8689072, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5477939175957695598, guid: c4a7f03c14135874390c0e86c8689072, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.614897
@@ -29891,6 +29895,7 @@ Transform:
   - {fileID: 5300579165163717181}
   - {fileID: 3902096689738428677}
   - {fileID: 2003613738}
+  - {fileID: 1989753044}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &860109796
@@ -56027,6 +56032,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 5138145399920907988, guid: c4a7f03c14135874390c0e86c8689072, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5477939175957695598, guid: c4a7f03c14135874390c0e86c8689072, type: 3}
       propertyPath: m_LocalPosition.x
       value: 17.33
@@ -58780,7 +58789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74271eabcaff2d74d9e44c4743d4ff85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <RoomId>k__BackingField: 0
+  <RoomId>k__BackingField: 8
   boxCollider: {fileID: 1717286422}
   <LightRoomHandler>k__BackingField: {fileID: 1717286429}
   <TemperatureRoom>k__BackingField: {fileID: 1717286428}
@@ -60271,6 +60280,10 @@ PrefabInstance:
     - target: {fileID: 1018846311968998, guid: 1e212581da1d146fca5233289052a32f, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1018846311968998, guid: 1e212581da1d146fca5233289052a32f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4942520803145756, guid: 1e212581da1d146fca5233289052a32f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -68647,6 +68660,69 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <ItemType>k__BackingField: 70
+--- !u!1 &1989753043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1989753044}
+  - component: {fileID: 1989753045}
+  m_Layer: 0
+  m_Name: NavMeshSurface
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1989753044
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989753043}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 858933238}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1989753045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989753043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 1918
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 1
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.05
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: afa95ca258f6e31428b419f8771cb2d4, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1001 &1990635094
 PrefabInstance:
   m_ObjectHideFlags: 0
