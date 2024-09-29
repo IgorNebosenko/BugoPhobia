@@ -12,7 +12,7 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
             _ghostController = ghostController;
         }
 
-        public void Setup(GhostVariables variables, GhostConstants constants)
+        public void Setup(GhostVariables variables, GhostConstants constants, int roomId)
         {
         }
 

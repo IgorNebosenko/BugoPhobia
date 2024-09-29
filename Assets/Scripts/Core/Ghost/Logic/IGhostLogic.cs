@@ -2,7 +2,7 @@
 {
     public interface IGhostLogic
     {
-        void Setup(GhostVariables variables, GhostConstants constants);
+        void Setup(GhostVariables variables, GhostConstants constants, int roomId);
 
         void FixedSimulate();
     }

@@ -2,7 +2,7 @@
 {
     public class PlaceholderGhostAbility : IGhostAbility
     {
-        public void Setup(GhostVariables variables, GhostConstants constants)
+        public void Setup(GhostVariables variables, GhostConstants constants, int roomId)
         {
         }
 

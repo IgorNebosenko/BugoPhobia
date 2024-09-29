@@ -82,10 +82,10 @@ namespace ElectrumGames.Core.Ghost
                     break;
             }
             
-            nonHuntLogic?.Setup(environmentHandler.GhostVariables, environmentHandler.GhostConstants);
-            ghostEventLogic?.Setup(environmentHandler.GhostVariables, environmentHandler.GhostConstants);
-            huntLogic?.Setup(environmentHandler.GhostVariables, environmentHandler.GhostConstants);
-            ghostAbility?.Setup(environmentHandler.GhostVariables, environmentHandler.GhostConstants);
+            nonHuntLogic?.Setup(environmentHandler.GhostVariables, environmentHandler.GhostConstants, environmentHandler.GhostRoomId);
+            ghostEventLogic?.Setup(environmentHandler.GhostVariables, environmentHandler.GhostConstants, environmentHandler.GhostRoomId);
+            huntLogic?.Setup(environmentHandler.GhostVariables, environmentHandler.GhostConstants, environmentHandler.GhostRoomId);
+            ghostAbility?.Setup(environmentHandler.GhostVariables, environmentHandler.GhostConstants, environmentHandler.GhostRoomId);
             
             
             controller.SetLogic(nonHuntLogic, ghostEventLogic, huntLogic, ghostAbility);

@@ -11,7 +11,7 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
             _ghostController = ghostController;
         }
 
-        public void Setup(GhostVariables variables, GhostConstants constants)
+        public void Setup(GhostVariables variables, GhostConstants constants, int roomId)
         {
         }
 
