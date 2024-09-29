@@ -13,12 +13,20 @@ namespace ElectrumGames.Core.Ghost.Controllers
     {
         [SerializeField] private NavMeshAgent navmeshAgent;
         
-        protected INonHuntLogic _nonHuntLogic;
-        protected IGhostEventLogic _ghostEventLogic;
-        protected IHuntLogic _huntLogic;
-        protected IGhostAbility _ghostAbility;
+        public INonHuntLogic NonHuntLogic { get; private set; }
+        public IGhostEventLogic GhostEventLogic { get; private set; }
+        public IHuntLogic HuntLogic { get; private set; }
+        public IGhostAbility GhostAbility { get; private set; }
 
         private IReadOnlyList<Room> _rooms;
+
+        private void FixedUpdate()
+        {
+            NonHuntLogic?.FixedSimulate();
+            GhostEventLogic?.FixedSimulate();
+            HuntLogic?.FixedSimulate();
+            GhostAbility?.FixedSimulate();
+        }
 
         public void SetRoomsData(IReadOnlyList<Room> rooms)
         {
@@ -51,10 +59,10 @@ namespace ElectrumGames.Core.Ghost.Controllers
         public void SetLogic(INonHuntLogic nonHuntLogic, IGhostEventLogic ghostEventLogic, IHuntLogic huntLogic, 
             IGhostAbility ghostAbility)
         {
-            _nonHuntLogic = nonHuntLogic;
-            _ghostEventLogic = ghostEventLogic;
-            _huntLogic = huntLogic;
-            _ghostAbility = ghostAbility;
+            NonHuntLogic = nonHuntLogic;
+            GhostEventLogic = ghostEventLogic;
+            HuntLogic = huntLogic;
+            GhostAbility = ghostAbility;
         }
     }
 }

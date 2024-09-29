@@ -28,6 +28,7 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
 
         public void FixedSimulate()
         {
+            Debug.Log("BlazeNonHuntLogic FixedSimulate");
         }
 
         public void MoveToPoint(Transform point)
