@@ -2,6 +2,8 @@
 {
     public class PlaceholderGhostAbility : IGhostAbility
     {
+        public bool IsInterrupt { get; private set; }
+        
         public void Setup(GhostVariables variables, GhostConstants constants, int roomId)
         {
         }

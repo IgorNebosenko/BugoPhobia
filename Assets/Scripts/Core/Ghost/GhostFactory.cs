@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using ElectrumGames.CommonInterfaces;
+using ElectrumGames.Configs;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Controllers;
 using ElectrumGames.Core.Ghost.Logic;
@@ -26,15 +28,17 @@ namespace ElectrumGames.Core.Ghost
         private GhostEnvironmentHandler _ghostEnvironmentHandler;
         private GhostModelsList _modelsList;
         private GhostDifficultyList _ghostDifficultyList;
+        private ActivityConfig _activityConfig;
 
         [Inject]
         private void Construct(NetIdFactory netIdFactory, GhostEnvironmentHandler ghostEnvironmentHandler, GhostModelsList modelsList,
-            GhostDifficultyList ghostDifficultyList)
+            GhostDifficultyList ghostDifficultyList, ActivityConfig activityConfig)
         {
             _netIdFactory = netIdFactory;
             _ghostEnvironmentHandler = ghostEnvironmentHandler;
             _modelsList = modelsList;
             _ghostDifficultyList = ghostDifficultyList;
+            _activityConfig = activityConfig;
 
             _netIdFactory.Initialize(this);
         }
@@ -78,7 +82,8 @@ namespace ElectrumGames.Core.Ghost
             {
                 case GhostType.Blaze:
                     Debug.Log("Difficulty must read from data!!");
-                    nonHuntLogic = new BlazeNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[0]);
+                    nonHuntLogic = new BlazeNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[0], 
+                        _activityConfig.GhostActivities.First(x => x.GhostType == GhostType.Blaze));
                     ghostEventLogic = new BlazeGhostEventLogic(controller);
                     huntLogic = new BlazeHuntLogic(controller);
                     ghostAbility = new PlaceholderGhostAbility();

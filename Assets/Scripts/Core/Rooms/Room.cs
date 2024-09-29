@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using ElectrumGames.Core.Common;
 using UnityEngine;
 
@@ -18,6 +19,8 @@ namespace ElectrumGames.Core.Rooms
         [SerializeField] private Room[] neighborRooms;
 
         public bool IsElectricityOn => LightRoomHandler.IsLightOn;
+        public IReadOnlyList<Room> NeighborRooms => neighborRooms;
+        
         public void OnGhostInteractionStay()
         {
             LightRoomHandler.DoFlick();

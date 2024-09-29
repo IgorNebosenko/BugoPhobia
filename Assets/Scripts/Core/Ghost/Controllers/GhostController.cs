@@ -17,6 +17,7 @@ namespace ElectrumGames.Core.Ghost.Controllers
         public IGhostEventLogic GhostEventLogic { get; private set; }
         public IHuntLogic HuntLogic { get; private set; }
         public IGhostAbility GhostAbility { get; private set; }
+        public IReadOnlyList<Room> Rooms => _rooms;
 
         private IReadOnlyList<Room> _rooms;
 

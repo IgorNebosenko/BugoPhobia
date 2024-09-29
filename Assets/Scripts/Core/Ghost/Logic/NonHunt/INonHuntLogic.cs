@@ -4,7 +4,7 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
 {
     public interface INonHuntLogic : IGhostLogic
     {
-        void MoveToPoint(Transform point);
+        void MoveToPoint(Vector3 point);
 
         bool TryThrowItem();
         bool TryUseDoor();

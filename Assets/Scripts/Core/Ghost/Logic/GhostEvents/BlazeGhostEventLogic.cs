@@ -5,6 +5,8 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
     public class BlazeGhostEventLogic : IGhostEventLogic
     {
         private readonly GhostController _ghostController;
+        
+        public bool IsInterrupt { get; private set; }
 
         public BlazeGhostEventLogic(GhostController ghostController)
         {

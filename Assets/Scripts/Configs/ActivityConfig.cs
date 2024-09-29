@@ -20,6 +20,8 @@ namespace ElectrumGames.Configs
         [SerializeField, MinMaxSlider(0, 1, true)] private Vector2 ghostEvents;
         [field: Space]
         [field: SerializeField] public DistanceMoving DistanceMoving { get; private set; }
+        [field: SerializeField] public float DefaultNonHuntSpeed { get; private set; } = 1.8f;
+        [field: SerializeField] public float MaxGhostSpeed { get; private set; } = 3f;
         [field: Space]
         [field: SerializeField, Range(0, 100)] public float DefaultSanityStartHunting { get; private set; }
         [field: SerializeField, Range(0, 100)] public float ModifiedSanityStartHunting { get; private set; }
