@@ -16,7 +16,7 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
         private readonly GhostDifficultyData _ghostDifficultyData;
         private readonly GhostActivityData _ghostActivityData;
         
-        private const float DistanceTolerance = 0.01f;
+        private const float DistanceTolerance = 0.1f;
         
         private GhostVariables _ghostVariables;
         private GhostConstants _ghostConstants;
@@ -24,7 +24,7 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
 
         private bool _isMoving;
         private float _stayTime;
-        private Vector3 _targetPosition;
+        private Vector2 _targetPosition;
         
         public bool IsInterrupt { get; private set; }
 
@@ -52,10 +52,12 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
 
             if (_isMoving)
             {
-                if (Vector3.Distance(_ghostController.transform.position, _targetPosition) < DistanceTolerance)
+                if (Vector2.Distance(new Vector2(_ghostController.transform.position.x, 
+                    _ghostController.transform.position.z), _targetPosition) < DistanceTolerance)
                 {
                     _isMoving = false;
                     _ghostController.SetSpeed(0f);
+                    _ghostController.SetGhostAnimationSpeed(0f);
                 }
 
                 return;
@@ -141,8 +143,10 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
 
         public void MoveToPoint(Vector3 point)
         {
-            _targetPosition = point;
-            _ghostController.SetSpeed(_ghostActivityData.DefaultNonHuntSpeed / _ghostActivityData.MaxGhostSpeed);
+            _targetPosition = new Vector2(point.x, point.z);
+            _ghostController.SetSpeed(_ghostActivityData.DefaultNonHuntSpeed);
+            _ghostController.SetGhostAnimationSpeed(_ghostActivityData.DefaultNonHuntSpeed /
+                                                    _ghostActivityData.MaxGhostSpeed);
             _ghostController.MoveTo(point);
         }
 
