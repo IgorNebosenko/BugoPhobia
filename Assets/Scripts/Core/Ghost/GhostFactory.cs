@@ -25,13 +25,16 @@ namespace ElectrumGames.Core.Ghost
         private NetIdFactory _netIdFactory;
         private GhostEnvironmentHandler _ghostEnvironmentHandler;
         private GhostModelsList _modelsList;
+        private GhostDifficultyList _ghostDifficultyList;
 
         [Inject]
-        private void Construct(NetIdFactory netIdFactory, GhostEnvironmentHandler ghostEnvironmentHandler, GhostModelsList modelsList)
+        private void Construct(NetIdFactory netIdFactory, GhostEnvironmentHandler ghostEnvironmentHandler, GhostModelsList modelsList,
+            GhostDifficultyList ghostDifficultyList)
         {
             _netIdFactory = netIdFactory;
             _ghostEnvironmentHandler = ghostEnvironmentHandler;
             _modelsList = modelsList;
+            _ghostDifficultyList = ghostDifficultyList;
 
             _netIdFactory.Initialize(this);
         }
@@ -56,9 +59,8 @@ namespace ElectrumGames.Core.Ghost
             
             ghost.ActivateAgent();
             
-            Debug.LogWarning("Ghost move is Debug!!!");
+            Debug.LogWarning("Ghost move is Debug need to set speed and max speed!!!");
             ghost.SetSpeed(1.8f);
-            ghost.MoveTo(new Vector3(27, 0, -9));
             
             SetLogic(ghost, _ghostEnvironmentHandler);
             
@@ -75,7 +77,8 @@ namespace ElectrumGames.Core.Ghost
             switch (controller.GhostEnvironmentHandler.GhostVariables.ghostType)
             {
                 case GhostType.Blaze:
-                    nonHuntLogic = new BlazeNonHuntLogic(controller);
+                    Debug.Log("Difficulty must read from data!!");
+                    nonHuntLogic = new BlazeNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[0]);
                     ghostEventLogic = new BlazeGhostEventLogic(controller);
                     huntLogic = new BlazeHuntLogic(controller);
                     ghostAbility = new PlaceholderGhostAbility();
