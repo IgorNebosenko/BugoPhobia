@@ -2,22 +2,22 @@
 
 namespace ElectrumGames.Core.Ghost
 {
-    public class GhostConstants
+    public readonly struct GhostConstants
     {
-        public DistanceMoving distanceMoving;
+        public readonly DistanceMoving distanceMoving;
         
-        public float defaultSanityStartHunting;
-        public float modifiedSanityStartHunting;
+        public readonly float defaultSanityStartHunting;
+        public readonly float modifiedSanityStartHunting;
 
-        public float defaultHuntingSpeed;
-        public bool hasSpeedUp;
+        public readonly float defaultHuntingSpeed;
+        public readonly bool hasSpeedUp;
 
-        public GhostVisibility ghostVisibility;
-        public float huntCooldown;
-        public float ghostEventCooldown;
-        public float abilityCooldown;
+        public readonly GhostVisibility ghostVisibility;
+        public readonly float huntCooldown;
+        public readonly float ghostEventCooldown;
+        public readonly float abilityCooldown;
 
-        public float abilityChance;
+        public readonly float abilityChance;
 
         public GhostConstants(DistanceMoving distanceMoving, float defaultSanityStartHunting, float modifiedSanityStartHunting, 
             float defaultHuntingSpeed, bool hasSpeedUp, GhostVisibility ghostVisibility, float huntCooldown, 

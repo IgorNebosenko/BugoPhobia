@@ -3,6 +3,7 @@ using ElectrumGames.CommonInterfaces;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Controllers;
 using ElectrumGames.Core.Ghost.Logic;
+using ElectrumGames.Core.Ghost.Logic.Abilities;
 using ElectrumGames.Core.Ghost.Logic.GhostEvents;
 using ElectrumGames.Core.Ghost.Logic.Hunt;
 using ElectrumGames.Core.Ghost.Logic.NonHunt;
@@ -69,6 +70,7 @@ namespace ElectrumGames.Core.Ghost
             INonHuntLogic nonHuntLogic = null;
             IGhostEventLogic ghostEventLogic = null;
             IHuntLogic huntLogic = null;
+            IGhostAbility ghostAbility = null;
             
             switch (controller.GhostEnvironmentHandler.GhostVariables.ghostType)
             {
@@ -76,15 +78,17 @@ namespace ElectrumGames.Core.Ghost
                     nonHuntLogic = new BlazeNonHuntLogic(controller);
                     ghostEventLogic = new BlazeGhostEventLogic(controller);
                     huntLogic = new BlazeHuntLogic(controller);
+                    ghostAbility = new PlaceholderGhostAbility();
                     break;
             }
             
             nonHuntLogic?.Setup(environmentHandler.GhostVariables, environmentHandler.GhostConstants);
             ghostEventLogic?.Setup(environmentHandler.GhostVariables, environmentHandler.GhostConstants);
             huntLogic?.Setup(environmentHandler.GhostVariables, environmentHandler.GhostConstants);
+            ghostAbility?.Setup(environmentHandler.GhostVariables, environmentHandler.GhostConstants);
             
             
-            controller.SetLogic(nonHuntLogic, ghostEventLogic, huntLogic);
+            controller.SetLogic(nonHuntLogic, ghostEventLogic, huntLogic, ghostAbility);
         }
     }
 }

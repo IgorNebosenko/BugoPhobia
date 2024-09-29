@@ -2,19 +2,19 @@
 
 namespace ElectrumGames.Core.Ghost
 {
-    public class GhostVariables
+    public readonly struct GhostVariables
     {
-        public GhostType ghostType;
+        public readonly GhostType ghostType;
 
-        public bool isMale;
-        public int age;
+        public readonly bool isMale;
+        public readonly int age;
         
-        public float throws;
-        public float doorsInteractions;
-        public float switchesInteractions;
-        public float otherInteractions;
+        public readonly float throws;
+        public readonly float doorsInteractions;
+        public readonly float switchesInteractions;
+        public readonly float otherInteractions;
 
-        public float ghostEvents;
+        public readonly float ghostEvents;
 
         public GhostVariables(GhostType ghostType, bool isMale, int age, float throws, float doorsInteractions, 
             float switchesInteractions, float otherInteractions, float ghostEvents)

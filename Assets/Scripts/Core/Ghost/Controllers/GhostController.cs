@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ElectrumGames.Core.Ghost.Logic.Abilities;
 using ElectrumGames.Core.Ghost.Logic.GhostEvents;
 using ElectrumGames.Core.Ghost.Logic.Hunt;
 using ElectrumGames.Core.Ghost.Logic.NonHunt;
@@ -15,6 +16,7 @@ namespace ElectrumGames.Core.Ghost.Controllers
         protected INonHuntLogic _nonHuntLogic;
         protected IGhostEventLogic _ghostEventLogic;
         protected IHuntLogic _huntLogic;
+        protected IGhostAbility _ghostAbility;
 
         private IReadOnlyList<Room> _rooms;
 
@@ -46,11 +48,13 @@ namespace ElectrumGames.Core.Ghost.Controllers
             navmeshAgent.speed = speed;
         }
 
-        public void SetLogic(INonHuntLogic nonHuntLogic, IGhostEventLogic ghostEventLogic, IHuntLogic huntLogic)
+        public void SetLogic(INonHuntLogic nonHuntLogic, IGhostEventLogic ghostEventLogic, IHuntLogic huntLogic, 
+            IGhostAbility ghostAbility)
         {
             _nonHuntLogic = nonHuntLogic;
             _ghostEventLogic = ghostEventLogic;
             _huntLogic = huntLogic;
+            _ghostAbility = ghostAbility;
         }
     }
 }
