@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ElectrumGames.Core.Ghost.Interactions;
 using ElectrumGames.Core.Ghost.Logic.Abilities;
 using ElectrumGames.Core.Ghost.Logic.GhostEvents;
 using ElectrumGames.Core.Ghost.Logic.Hunt;
@@ -12,6 +13,10 @@ namespace ElectrumGames.Core.Ghost.Controllers
     public class GhostController : GhostBaseController
     {
         [SerializeField] private NavMeshAgent navmeshAgent;
+        [field: Space]
+        [field: SerializeField] public PlayerContactAura ContactAura { get; private set; }
+        [field: SerializeField] public InteractionAura InteractionAura { get; private set; }
+        [field: SerializeField] public GhostHuntAura HuntAura { get; private set; }
         
         public INonHuntLogic NonHuntLogic { get; private set; }
         public IGhostEventLogic GhostEventLogic { get; private set; }
