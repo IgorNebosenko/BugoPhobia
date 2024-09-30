@@ -111,18 +111,25 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
                     break;
             }
 
-            for (var i = 0; i < _ghostController.Rooms[_roomId].NeighborRooms.Count; i++)
+            if (_ghostActivityData.DistanceMoving != DistanceMoving.Minimal)
             {
-                for (var j = 0; j < _ghostController.Rooms[_roomId].NeighborRooms[i].GhostRoomHandler.ActivityPoints.Count; j++)
+                for (var i = 0; i < _ghostController.Rooms[_roomId].NeighborRooms.Count; i++)
                 {
-                    listData.Add((_ghostController.Rooms[_roomId].NeighborRooms[i].GhostRoomHandler.ActivityPoints[j].position,
+                    for (var j = 0;
+                         j < _ghostController.Rooms[_roomId].NeighborRooms[i].GhostRoomHandler.ActivityPoints.Count;
+                         j++)
+                    {
+                        listData.Add((
+                            _ghostController.Rooms[_roomId].NeighborRooms[i].GhostRoomHandler.ActivityPoints[j]
+                                .position,
                             _ghostDifficultyData.NeighborRoomWeightPoint * modifierMoving));
-                }
+                    }
 
-                hashRoomsIds.Add(_ghostController.Rooms[_roomId].NeighborRooms[i].RoomId);
+                    hashRoomsIds.Add(_ghostController.Rooms[_roomId].NeighborRooms[i].RoomId);
+                }
             }
 
-            if (_ghostActivityData.DistanceMoving == DistanceMoving.Extreme)
+            if (_ghostActivityData.DistanceMoving is DistanceMoving.Extreme or DistanceMoving.High)
             {
                 for (var i = 0; i < _ghostController.Rooms.Count; i++)
                 {
