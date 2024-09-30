@@ -36,10 +36,11 @@ namespace ElectrumGames.Configs
         [field: SerializeField] public float AbilityCooldown { get; private set; }
         [field: Space]
         [field: SerializeField, Range(0f, 1f)] public float AbilityChance { get; private set; }
-
         [field: Space] 
         [SerializeField, MinMaxSlider(0f, 45f, true)] private Vector2 doorAngle;
         [SerializeField, MinMaxSlider(0f, 3f, true)] private Vector2 doorTouchTime;
+        [field: Space]
+        [field: SerializeField, Range(0f, 1f)] public float ChanceOnSwitch { get; private set; }
 
         public float ThrowsMin => throws.x;
         public float ThrowsMax => throws.y;

@@ -2,6 +2,7 @@
 {
     public interface ISwitchInteractable
     {
-        void Switch();
+        void SwitchOn();
+        void SwitchOff();
     }
 }

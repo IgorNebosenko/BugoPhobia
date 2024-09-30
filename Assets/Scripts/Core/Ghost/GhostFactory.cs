@@ -63,9 +63,6 @@ namespace ElectrumGames.Core.Ghost
             
             ghost.ActivateAgent();
             
-            Debug.LogWarning("Ghost move is Debug need to set speed and max speed!!!");
-            ghost.SetSpeed(1.8f);
-            
             SetLogic(ghost, _ghostEnvironmentHandler);
             
             return ghost;

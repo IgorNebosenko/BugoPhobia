@@ -6,11 +6,34 @@ namespace ElectrumGames.Core.Ghost.Interactions
 {
     public class InteractionAura : MonoBehaviour
     {
-        public IReadOnlyList<IDoorInteractable> DoorsInTrigger { get; private set; }
-        
-        public void OnTriggerStay(Collider other)
+        private List<IDoorInteractable> doorsInTrigger = new ();
+        private List<ISwitchInteractable> switchesInTrigger = new ();
+
+        public IReadOnlyList<IDoorInteractable> DoorsInTrigger => doorsInTrigger;
+        public IReadOnlyList<ISwitchInteractable> SwitchesInTrigger => switchesInTrigger;
+
+        private void OnTriggerEnter(Collider other)
         {
-            DoorsInTrigger = other.GetComponents<IDoorInteractable>();
+            if (other.TryGetComponent<IDoorInteractable>(out var door))
+            {
+                doorsInTrigger.Add(door);
+            }
+            if (other.TryGetComponent<ISwitchInteractable>(out var switchItem))
+            {
+                switchesInTrigger.Add(switchItem);
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.TryGetComponent<IDoorInteractable>(out var door))
+            {
+                doorsInTrigger.Remove(door);
+            }
+            if (other.TryGetComponent<ISwitchInteractable>(out var switchItem))
+            {
+                switchesInTrigger.Remove(switchItem);
+            }
         }
     }
 }

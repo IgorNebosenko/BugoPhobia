@@ -21,6 +21,7 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
         private int _roomId;
 
         private float _doorInteractionTime;
+        private float _switchesInteractionTime;
         
         private bool _isMoving;
         private float _stayTime;
@@ -47,11 +48,16 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
 
         public void FixedSimulate()
         {
+            TryInteract();
+            
+            MoveProcess();
+        }
+
+        protected virtual void MoveProcess()
+        {
             if (IsInterrupt)
                 return;
             
-            TryInteract();
-
             if (_isMoving)
             {
                 if (_ghostController.NavmeshRemainingDistance < DistanceTolerance)
@@ -80,6 +86,14 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
 
         private void TryInteract()
         {
+            DoorsInteract();
+            SwitchesInteract();
+            ThrowsInteract();
+            OtherInteract();
+        }
+
+        protected virtual void DoorsInteract()
+        {
             if (IsInterrupt)
                 return;
 
@@ -94,10 +108,45 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
                 {
                     var randomDoor = _ghostController.InteractionAura.DoorsInTrigger.PickRandom();
                     if (!randomDoor.DoorWithLock)
+                    {
                         randomDoor.TouchDoor(Random.Range(_ghostConstants.minDoorAngle, _ghostConstants.maxDoorAngle),
                             Random.Range(_ghostConstants.minDoorTouchTime, _ghostConstants.maxDoorTouchTime));
+                    }
                 }
             }
+        }
+
+        protected virtual void SwitchesInteract()
+        {
+            if (IsInterrupt)
+                return;
+
+            _switchesInteractionTime += Time.fixedDeltaTime;
+
+            if (_switchesInteractionTime >= _ghostDifficultyData.SwitchesInteractionCooldown &&
+                _ghostController.InteractionAura.SwitchesInTrigger is {Count: > 0})
+            {
+                _switchesInteractionTime = 0f;
+
+                var randomSwitch = _ghostController.InteractionAura.SwitchesInTrigger.PickRandom();
+                
+                if (Random.Range(0f, 1f) < _ghostVariables.switchesInteractions)
+                    randomSwitch.SwitchOn();
+                else
+                    randomSwitch.SwitchOff();
+            }
+        }
+
+        protected virtual void ThrowsInteract()
+        {
+            if (IsInterrupt)
+                return;
+        }
+
+        protected virtual void OtherInteract()
+        {
+            if (IsInterrupt)
+                return;
         }
 
         private Vector3 GetTargetPoint()
