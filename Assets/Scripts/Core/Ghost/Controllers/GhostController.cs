@@ -18,6 +18,7 @@ namespace ElectrumGames.Core.Ghost.Controllers
         public IHuntLogic HuntLogic { get; private set; }
         public IGhostAbility GhostAbility { get; private set; }
         public IReadOnlyList<Room> Rooms => _rooms;
+        public float NavmeshRemainingDistance => navmeshAgent.remainingDistance;
 
         private IReadOnlyList<Room> _rooms;
 

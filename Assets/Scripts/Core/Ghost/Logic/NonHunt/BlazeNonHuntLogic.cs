@@ -52,8 +52,7 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
 
             if (_isMoving)
             {
-                if (Vector2.Distance(new Vector2(_ghostController.transform.position.x, 
-                    _ghostController.transform.position.z), _targetPosition) < DistanceTolerance)
+                if (_ghostController.NavmeshRemainingDistance < DistanceTolerance)
                 {
                     _isMoving = false;
                     _ghostController.SetSpeed(0f);
