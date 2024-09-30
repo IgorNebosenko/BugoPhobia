@@ -37,6 +37,10 @@ namespace ElectrumGames.Configs
         [field: Space]
         [field: SerializeField, Range(0f, 1f)] public float AbilityChance { get; private set; }
 
+        [field: Space] 
+        [SerializeField, MinMaxSlider(0f, 45f, true)] private Vector2 doorAngle;
+        [SerializeField, MinMaxSlider(0f, 3f, true)] private Vector2 doorTouchTime;
+
         public float ThrowsMin => throws.x;
         public float ThrowsMax => throws.y;
         
@@ -51,6 +55,12 @@ namespace ElectrumGames.Configs
         
         public float GhostEventsMin => ghostEvents.x;
         public float GhostEventsMax => ghostEvents.y;
+
+        public float MinDoorAngle => doorAngle.x;
+        public float MaxDoorAngle => doorAngle.y;
+
+        public float MinDoorTouchTime => doorTouchTime.x;
+        public float MaxDoorTouchTime => doorTouchTime.y;
     }
 
     [CreateAssetMenu(fileName = "ActivityConfig", menuName = "Ghosts configs/Activity Config")]

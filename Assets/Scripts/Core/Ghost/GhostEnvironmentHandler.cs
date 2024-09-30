@@ -36,7 +36,8 @@ namespace ElectrumGames.Core.Ghost
             GhostConstants = new GhostConstants(activityData.DistanceMoving, activityData.DefaultSanityStartHunting,
                 activityData.ModifiedSanityStartHunting, activityData.DefaultHuntingSpeed, activityData.HasSpeedUp,
                 activityData.GhostVisibility, activityData.HuntCooldown, activityData.GhostEventCooldown,
-                activityData.AbilityCooldown, activityData.AbilityChance);
+                activityData.AbilityCooldown, activityData.AbilityChance, activityData.MinDoorAngle,
+                activityData.MaxDoorAngle, activityData.MinDoorTouchTime, activityData.MaxDoorTouchTime);
             
             GhostRoomId = Random.Range(minRoomId, maxRoomId);
             

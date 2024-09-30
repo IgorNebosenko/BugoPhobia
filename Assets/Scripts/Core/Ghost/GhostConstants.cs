@@ -18,10 +18,16 @@ namespace ElectrumGames.Core.Ghost
         public readonly float abilityCooldown;
 
         public readonly float abilityChance;
+        
+        public readonly float minDoorAngle;
+        public readonly float maxDoorAngle;
+        public readonly float minDoorTouchTime;
+        public readonly float maxDoorTouchTime;
 
-        public GhostConstants(DistanceMoving distanceMoving, float defaultSanityStartHunting, float modifiedSanityStartHunting, 
-            float defaultHuntingSpeed, bool hasSpeedUp, GhostVisibility ghostVisibility, float huntCooldown, 
-            float ghostEventCooldown, float abilityCooldown, float abilityChance)
+        public GhostConstants(DistanceMoving distanceMoving, float defaultSanityStartHunting, float modifiedSanityStartHunting,
+            float defaultHuntingSpeed, bool hasSpeedUp, GhostVisibility ghostVisibility,
+            float huntCooldown, float ghostEventCooldown, float abilityCooldown, float abilityChance,
+            float minDoorAngle, float maxDoorAngle, float minDoorTouchTime, float maxDoorTouchTime)
         {
             this.distanceMoving = distanceMoving;
             this.defaultSanityStartHunting = defaultSanityStartHunting;
@@ -33,7 +39,12 @@ namespace ElectrumGames.Core.Ghost
             this.ghostEventCooldown = ghostEventCooldown;
             this.abilityCooldown = abilityCooldown;
             this.abilityChance = abilityChance;
+            this.minDoorAngle = minDoorAngle;
+            this.maxDoorAngle = maxDoorAngle;
+            this.minDoorTouchTime = minDoorTouchTime;
+            this.maxDoorTouchTime = maxDoorTouchTime;
         }
+
 
         public override string ToString()
         {

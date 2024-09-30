@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 533318246672577565}
   - component: {fileID: 1774532431903750137}
   - component: {fileID: 1713490269747958503}
+  - component: {fileID: 1313704069127954908}
   m_Layer: 3
   m_Name: PlayerContactZone
   m_TagString: Untagged
@@ -122,6 +123,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5a2125b2dda4b21b9bcdd0b28fe3d9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &1313704069127954908
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982191795599064605}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6934675742400980190
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,6 +163,7 @@ GameObject:
   - component: {fileID: 8900680484510628575}
   - component: {fileID: 1599445725013957605}
   - component: {fileID: 1731156326520605473}
+  - component: {fileID: 8969681640909796026}
   m_Layer: 3
   m_Name: InteractionZone
   m_TagString: Untagged
@@ -244,6 +273,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d9c7430462a417bb8e9221a9f3ed446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &8969681640909796026
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6934675742400980190}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8295653016489212846
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,6 +313,7 @@ GameObject:
   - component: {fileID: 7878200202833345023}
   - component: {fileID: 2253392251396524158}
   - component: {fileID: 2979942955657217602}
+  - component: {fileID: 1838253902188780866}
   m_Layer: 3
   m_Name: HuntZone
   m_TagString: Untagged
@@ -366,6 +423,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22bc9eba5fd3fa5478a75197010a546c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &1838253902188780866
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8295653016489212846}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8528196984003094281
 GameObject:
   m_ObjectHideFlags: 0

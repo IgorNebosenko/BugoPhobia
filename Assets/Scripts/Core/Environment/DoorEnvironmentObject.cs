@@ -1,9 +1,10 @@
 ﻿using DG.Tweening;
+using ElectrumGames.Core.Common;
 using UnityEngine;
 
 namespace ElectrumGames.Core.Environment
 {
-    public class DoorEnvironmentObject : EnvironmentObjectBase
+    public class DoorEnvironmentObject : EnvironmentObjectBase, IDoorInteractable
     {
         [SerializeField] private float minAngle = 0f;
         [SerializeField] private float maxAngle = 90f;
@@ -18,10 +19,6 @@ namespace ElectrumGames.Core.Environment
         private void Start()
         {
             _isLocked = DoorWithLock;
-        }
-
-        public override void OnInteract()
-        {
         }
 
         public void SetCameraAngleAndInteract(Vector2 inputLook)
@@ -57,6 +54,30 @@ namespace ElectrumGames.Core.Environment
         public void OpenDoor()
         {
             _isLocked = false;
+        }
+
+        public override void OnInteract()
+        {
+        }
+
+        public void TouchDoor(float angle, float time)
+        {
+            Debug.LogWarning("Add UV print if this evidence exists");
+            
+            var canOpen = CurrentAngle + angle < maxAngle;
+            var canClose = CurrentAngle - angle > minAngle;
+
+            if (canOpen && canClose)
+            {
+                canOpen = Random.Range(0, 2) != 0;
+            }
+
+            if (canOpen)
+                CurrentAngle += angle;
+            else
+                CurrentAngle -= angle;
+
+            transform.DOLocalRotate(Vector3.up * CurrentAngle, time);
         }
     }
 }

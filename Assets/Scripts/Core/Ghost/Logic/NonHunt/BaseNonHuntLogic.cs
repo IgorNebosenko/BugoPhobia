@@ -20,6 +20,8 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
         private GhostConstants _ghostConstants;
         private int _roomId;
 
+        private float _doorInteractionTime;
+        
         private bool _isMoving;
         private float _stayTime;
         private Vector2 _targetPosition;
@@ -39,6 +41,8 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
             _ghostVariables = variables;
             _ghostConstants = constants;
             _roomId = roomId;
+            
+            _ghostController.InteractionAura.gameObject.SetActive(true);
         }
 
         public void FixedSimulate()
@@ -46,7 +50,7 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
             if (IsInterrupt)
                 return;
             
-            //ToDo insert logic of interact
+            TryInteract();
 
             if (_isMoving)
             {
@@ -71,6 +75,28 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
                 
                 _isMoving = true;
                 MoveToPoint(GetTargetPoint());
+            }
+        }
+
+        private void TryInteract()
+        {
+            if (IsInterrupt)
+                return;
+
+            _doorInteractionTime += Time.fixedDeltaTime;
+
+            if (_doorInteractionTime >= _ghostDifficultyData.DoorsInteractionCooldown &&
+                _ghostController.InteractionAura.DoorsInTrigger is {Count: > 0})
+            {
+                _doorInteractionTime = 0f;
+
+                if (Random.Range(0f, 1f) < _ghostVariables.doorsInteractions)
+                {
+                    var randomDoor = _ghostController.InteractionAura.DoorsInTrigger.PickRandom();
+                    if (!randomDoor.DoorWithLock)
+                        randomDoor.TouchDoor(Random.Range(_ghostConstants.minDoorAngle, _ghostConstants.maxDoorAngle),
+                            Random.Range(_ghostConstants.minDoorTouchTime, _ghostConstants.maxDoorTouchTime));
+                }
             }
         }
 
