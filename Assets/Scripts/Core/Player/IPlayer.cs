@@ -11,7 +11,8 @@ namespace ElectrumGames.Core.Player
     public interface IPlayer : IHaveNetId, IHavePosition
     {
         IInventory Inventory { get; }
-        void Spawn(PlayerConfig config, ConfigService configService, bool isHost, InputActions inputActions, ItemsConfig itemsConfig, Camera injectedCamera);
+        void Spawn(PlayerConfig config, ConfigService configService, bool isHost, InputActions inputActions, 
+            ItemsConfig itemsConfig, Camera injectedCamera);
         void Despawn();
     }
 }
