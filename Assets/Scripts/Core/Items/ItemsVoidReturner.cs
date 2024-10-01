@@ -19,6 +19,9 @@ namespace ElectrumGames.Core.Items
             {
                 var spawnData = _itemMarkers.ItemSpawnPoints[instance.SpawnerId];
                 
+                instance.PhysicObject.linearVelocity = Vector3.zero;
+                instance.PhysicObject.angularVelocity = Vector3.zero;
+                
                 instance.transform.position = spawnData.Position;
                 instance.transform.rotation = spawnData.Rotation;
             }

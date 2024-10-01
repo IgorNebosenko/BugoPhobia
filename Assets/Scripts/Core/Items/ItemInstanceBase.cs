@@ -15,10 +15,17 @@ namespace ElectrumGames.Core.Items
         private PlayerConfig _playerConfig;
         private ItemsFactory _itemsFactory;
         protected IInventory inventoryReference;
+
+        public Vector3 LocalScale { get; private set; }
         
         public int NetId { get; private set; }
         public int OwnerId { get; private set; }
         public int SpawnerId { get; private set; }
+
+        private void Awake()
+        {
+            LocalScale = transform.localScale;
+        }
 
         public void SetInventory(IInventory inventory)
         {
@@ -55,7 +62,7 @@ namespace ElectrumGames.Core.Items
             PhysicObject.AddForce(playerTransform.forward * dropForce);
             
             transform.parent = _itemsFactory.transform;
-            transform.localScale = Vector3.one;
+            transform.localScale = LocalScale;
             
             OnAfterDrop();
         }

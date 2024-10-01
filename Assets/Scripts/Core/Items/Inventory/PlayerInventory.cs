@@ -42,7 +42,7 @@ namespace ElectrumGames.Core.Items.Inventory
             item.transform.parent = _parent;
             item.transform.localPosition = Vector3.zero;
             item.transform.localRotation = Quaternion.identity;
-            item.transform.localScale = Vector3.one;
+            item.transform.localScale = item.LocalScale;
             item.gameObject.SetActive(false);
             item.SetNetId(item.NetId, _playerNetId);
             item.SetInventory(this);

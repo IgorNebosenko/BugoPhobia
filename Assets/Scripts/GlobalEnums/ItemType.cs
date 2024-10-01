@@ -42,5 +42,8 @@
         IncenseSimple = 120,
         IncenseNormal,
         IncenseAdvanced,
+        
+        PlateRoundWhite = 1000,
+        PlateRoundBrown
     }
 }
