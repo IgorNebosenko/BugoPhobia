@@ -263,25 +263,5 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
                                                     _ghostActivityData.MaxGhostSpeed);
             _ghostController.MoveTo(point);
         }
-
-        public bool TryThrowItem()
-        {
-            return false;
-        }
-
-        public bool TryUseDoor()
-        {
-            return false;
-        }
-
-        public bool TrySwitchInteract()
-        {
-            return false;
-        }
-
-        public bool TryOtherInteraction()
-        {
-            return false;
-        }
     }
 }
