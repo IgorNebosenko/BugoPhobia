@@ -19,6 +19,7 @@ namespace ElectrumGames.Core.Items
         [SerializeField] private float stepAngle = 12.5f;
         
         private bool _isOn;
+        private int _lastEmfLevel;
         public bool IsElectricityOn => _isOn;
         
         public override void OnMainInteraction()
@@ -40,11 +41,15 @@ namespace ElectrumGames.Core.Items
             if (!_isOn || level < 0 || level >= emfMeshes.Length)
                 return;
             
+            if  (_lastEmfLevel > level && level != 0)
+                return;
 
             for (var i = 0; i < emfMeshes.Length; i++)
             {
                 emfMeshes[i].material = i <= level ? emissionMaterial : nonEmissionMaterial;
             }
+
+            _lastEmfLevel = level;
 
             arrowEmf.DOLocalRotate(Vector3.forward * (startAngle + level * stepAngle), arrowMoveDuration);
         }
