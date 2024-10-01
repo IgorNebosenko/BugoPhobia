@@ -31,7 +31,6 @@ namespace ElectrumGames.Core.Environment
             if (IsOn)
                 return;
             
-            Debug.LogWarning("Add UV print if this evidence exists. Switch On!");
             OnInteract();
         }
 
@@ -41,7 +40,6 @@ namespace ElectrumGames.Core.Environment
             if (!IsOn)
                 return;
             
-            Debug.LogWarning("Add UV print if this evidence exists. Switch Off!");
             OnInteract();
         }
     }

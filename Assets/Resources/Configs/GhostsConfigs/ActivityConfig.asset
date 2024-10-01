@@ -34,6 +34,7 @@ MonoBehaviour:
     doorAngle: {x: 10, y: 30}
     doorTouchTime: {x: 0.2, y: 2}
     <ChanceOnSwitch>k__BackingField: 0.33
+    <ThrownForce>k__BackingField: 10
   - <GhostType>k__BackingField: 1
     throws: {x: 0.325, y: 0.65}
     doorsInteractions: {x: 0.35, y: 0.55}
@@ -55,6 +56,7 @@ MonoBehaviour:
     doorAngle: {x: 0, y: 0}
     doorTouchTime: {x: 0, y: 0}
     <ChanceOnSwitch>k__BackingField: 0
+    <ThrownForce>k__BackingField: 0
   - <GhostType>k__BackingField: 2
     throws: {x: 0.2875, y: 0.55}
     doorsInteractions: {x: 0.25, y: 0.45}
@@ -76,6 +78,7 @@ MonoBehaviour:
     doorAngle: {x: 0, y: 0}
     doorTouchTime: {x: 0, y: 0}
     <ChanceOnSwitch>k__BackingField: 0
+    <ThrownForce>k__BackingField: 0
   - <GhostType>k__BackingField: 3
     throws: {x: 0.375, y: 0.7}
     doorsInteractions: {x: 0.3, y: 0.5}
@@ -97,6 +100,7 @@ MonoBehaviour:
     doorAngle: {x: 0, y: 0}
     doorTouchTime: {x: 0, y: 0}
     <ChanceOnSwitch>k__BackingField: 0
+    <ThrownForce>k__BackingField: 0
   - <GhostType>k__BackingField: 4
     throws: {x: 0.35, y: 0.65}
     doorsInteractions: {x: 0.45, y: 0.75}
@@ -118,6 +122,7 @@ MonoBehaviour:
     doorAngle: {x: 0, y: 0}
     doorTouchTime: {x: 0, y: 0}
     <ChanceOnSwitch>k__BackingField: 0
+    <ThrownForce>k__BackingField: 0
   - <GhostType>k__BackingField: 5
     throws: {x: 0.285, y: 0.55}
     doorsInteractions: {x: 0.35, y: 0.625}
@@ -139,6 +144,7 @@ MonoBehaviour:
     doorAngle: {x: 0, y: 0}
     doorTouchTime: {x: 0, y: 0}
     <ChanceOnSwitch>k__BackingField: 0
+    <ThrownForce>k__BackingField: 0
   - <GhostType>k__BackingField: 6
     throws: {x: 0.3, y: 0.55}
     doorsInteractions: {x: 0.5, y: 0.8}
@@ -160,6 +166,7 @@ MonoBehaviour:
     doorAngle: {x: 0, y: 0}
     doorTouchTime: {x: 0, y: 0}
     <ChanceOnSwitch>k__BackingField: 0
+    <ThrownForce>k__BackingField: 0
   - <GhostType>k__BackingField: 7
     throws: {x: 0, y: 1}
     doorsInteractions: {x: 0, y: 1}
@@ -181,6 +188,7 @@ MonoBehaviour:
     doorAngle: {x: 0, y: 0}
     doorTouchTime: {x: 0, y: 0}
     <ChanceOnSwitch>k__BackingField: 0
+    <ThrownForce>k__BackingField: 0
   - <GhostType>k__BackingField: 8
     throws: {x: 0.3, y: 0.55}
     doorsInteractions: {x: 0.3, y: 0.6}
@@ -202,6 +210,7 @@ MonoBehaviour:
     doorAngle: {x: 0, y: 0}
     doorTouchTime: {x: 0, y: 0}
     <ChanceOnSwitch>k__BackingField: 0
+    <ThrownForce>k__BackingField: 0
   - <GhostType>k__BackingField: 9
     throws: {x: 0.35, y: 0.65}
     doorsInteractions: {x: 0.3, y: 0.585}
@@ -223,6 +232,7 @@ MonoBehaviour:
     doorAngle: {x: 0, y: 0}
     doorTouchTime: {x: 0, y: 0}
     <ChanceOnSwitch>k__BackingField: 0
+    <ThrownForce>k__BackingField: 0
   - <GhostType>k__BackingField: 10
     throws: {x: 0.3, y: 0.55}
     doorsInteractions: {x: 0.3, y: 0.575}
@@ -244,6 +254,7 @@ MonoBehaviour:
     doorAngle: {x: 0, y: 0}
     doorTouchTime: {x: 0, y: 0}
     <ChanceOnSwitch>k__BackingField: 0
+    <ThrownForce>k__BackingField: 0
   - <GhostType>k__BackingField: 11
     throws: {x: 0.33, y: 0.55}
     doorsInteractions: {x: 0.425, y: 0.615}
@@ -265,6 +276,7 @@ MonoBehaviour:
     doorAngle: {x: 0, y: 0}
     doorTouchTime: {x: 0, y: 0}
     <ChanceOnSwitch>k__BackingField: 0
+    <ThrownForce>k__BackingField: 0
   - <GhostType>k__BackingField: 12
     throws: {x: 0.325, y: 0.625}
     doorsInteractions: {x: 0.33, y: 0.615}
@@ -286,6 +298,7 @@ MonoBehaviour:
     doorAngle: {x: 0, y: 0}
     doorTouchTime: {x: 0, y: 0}
     <ChanceOnSwitch>k__BackingField: 0
+    <ThrownForce>k__BackingField: 0
   - <GhostType>k__BackingField: 13
     throws: {x: 0.33, y: 0.6}
     doorsInteractions: {x: 0.35, y: 0.625}
@@ -307,6 +320,7 @@ MonoBehaviour:
     doorAngle: {x: 0, y: 0}
     doorTouchTime: {x: 0, y: 0}
     <ChanceOnSwitch>k__BackingField: 0
+    <ThrownForce>k__BackingField: 0
   - <GhostType>k__BackingField: 14
     throws: {x: 0.415, y: 0.7125}
     doorsInteractions: {x: 0.25, y: 0.515}
@@ -328,6 +342,7 @@ MonoBehaviour:
     doorAngle: {x: 0, y: 0}
     doorTouchTime: {x: 0, y: 0}
     <ChanceOnSwitch>k__BackingField: 0
+    <ThrownForce>k__BackingField: 0
   - <GhostType>k__BackingField: 15
     throws: {x: 0.315, y: 0.525}
     doorsInteractions: {x: 0.235, y: 0.5}
@@ -349,6 +364,7 @@ MonoBehaviour:
     doorAngle: {x: 0, y: 0}
     doorTouchTime: {x: 0, y: 0}
     <ChanceOnSwitch>k__BackingField: 0
+    <ThrownForce>k__BackingField: 0
   - <GhostType>k__BackingField: 16
     throws: {x: 0.33, y: 0.63}
     doorsInteractions: {x: 0.225, y: 0.485}
@@ -370,6 +386,7 @@ MonoBehaviour:
     doorAngle: {x: 0, y: 0}
     doorTouchTime: {x: 0, y: 0}
     <ChanceOnSwitch>k__BackingField: 0
+    <ThrownForce>k__BackingField: 0
   - <GhostType>k__BackingField: 17
     throws: {x: 0.55, y: 0.755}
     doorsInteractions: {x: 0.4, y: 0.665}
@@ -391,6 +408,7 @@ MonoBehaviour:
     doorAngle: {x: 0, y: 0}
     doorTouchTime: {x: 0, y: 0}
     <ChanceOnSwitch>k__BackingField: 0
+    <ThrownForce>k__BackingField: 0
   - <GhostType>k__BackingField: 18
     throws: {x: 0.33, y: 0.525}
     doorsInteractions: {x: 0.235, y: 0.5}
@@ -412,6 +430,7 @@ MonoBehaviour:
     doorAngle: {x: 0, y: 0}
     doorTouchTime: {x: 0, y: 0}
     <ChanceOnSwitch>k__BackingField: 0
+    <ThrownForce>k__BackingField: 0
   - <GhostType>k__BackingField: 19
     throws: {x: 0.35, y: 0.675}
     doorsInteractions: {x: 0.325, y: 0.715}
@@ -433,3 +452,4 @@ MonoBehaviour:
     doorAngle: {x: 0, y: 0}
     doorTouchTime: {x: 0, y: 0}
     <ChanceOnSwitch>k__BackingField: 0
+    <ThrownForce>k__BackingField: 0

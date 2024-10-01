@@ -20,9 +20,8 @@ namespace ElectrumGames.Core.Ghost
 
         public void InitGhost(int minGhostType, int maxGhostType, int minRoomId, int maxRoomId)
         {
-            //var ghostType = (GhostType)Random.Range(minGhostType, maxGhostType);
-            var ghostType = GhostType.Blaze;
-            Debug.LogWarning("Ghost type set as explicit Blaze!");
+            var ghostType = GhostType.Blaze; //(GhostType)Random.Range(minGhostType, maxGhostType);
+            Debug.LogWarning($"Ghost type set as explicit {ghostType}!");
             
             var activityData = _activityConfig.GhostActivities.First(x => x.GhostType == ghostType);
             
@@ -38,8 +37,9 @@ namespace ElectrumGames.Core.Ghost
                 activityData.GhostVisibility, activityData.HuntCooldown, activityData.GhostEventCooldown,
                 activityData.AbilityCooldown, activityData.AbilityChance, activityData.MinDoorAngle,
                 activityData.MaxDoorAngle, activityData.MinDoorTouchTime, activityData.MaxDoorTouchTime);
-            
-            GhostRoomId = Random.Range(minRoomId, maxRoomId);
+
+            GhostRoomId = 0;//Random.Range(minRoomId, maxRoomId);
+            Debug.LogWarning($"Room id explicit set on {GhostRoomId}");
             
             Debug.Log(GhostVariables);
             Debug.Log(GhostConstants);

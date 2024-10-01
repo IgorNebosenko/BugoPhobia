@@ -22,6 +22,8 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
 
         private float _doorInteractionTime;
         private float _switchesInteractionTime;
+        private float _thrownInteractionTime;
+        private float _otherInteractionTime;
         
         private bool _isMoving;
         private float _stayTime;
@@ -107,6 +109,7 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
                 if (Random.Range(0f, 1f) < _ghostVariables.doorsInteractions)
                 {
                     var randomDoor = _ghostController.InteractionAura.DoorsInTrigger.PickRandom();
+                    
                     if (!randomDoor.DoorWithLock)
                     {
                         randomDoor.TouchDoor(Random.Range(_ghostConstants.minDoorAngle, _ghostConstants.maxDoorAngle),
@@ -128,12 +131,15 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
             {
                 _switchesInteractionTime = 0f;
 
-                var randomSwitch = _ghostController.InteractionAura.SwitchesInTrigger.PickRandom();
-                
                 if (Random.Range(0f, 1f) < _ghostVariables.switchesInteractions)
-                    randomSwitch.SwitchOn();
-                else
-                    randomSwitch.SwitchOff();
+                {
+                    var randomSwitch = _ghostController.InteractionAura.SwitchesInTrigger.PickRandom();
+                    
+                    if (Random.Range(0f, 1f) < _ghostActivityData.ChanceOnSwitch)
+                        randomSwitch.SwitchOn();
+                    else
+                        randomSwitch.SwitchOff();
+                }
             }
         }
 
@@ -141,6 +147,21 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
         {
             if (IsInterrupt)
                 return;
+
+            _thrownInteractionTime += Time.fixedDeltaTime;
+
+            if (_thrownInteractionTime >= _ghostDifficultyData.ThrowCooldown &&
+                _ghostController.InteractionAura.ThrownInTrigger is {Count: > 0})
+            {
+                _thrownInteractionTime = 0f;
+                
+                if (Random.Range(0f, 1f) < _ghostVariables.throws)
+                {
+                    var randomThrown = _ghostController.InteractionAura.ThrownInTrigger.PickRandom();
+                    
+                    randomThrown.ThrowItem(_ghostActivityData.ThrownForce);
+                }
+            }
         }
 
         protected virtual void OtherInteract()

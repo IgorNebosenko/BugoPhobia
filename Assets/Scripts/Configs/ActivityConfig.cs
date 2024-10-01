@@ -41,6 +41,8 @@ namespace ElectrumGames.Configs
         [SerializeField, MinMaxSlider(0f, 3f, true)] private Vector2 doorTouchTime;
         [field: Space]
         [field: SerializeField, Range(0f, 1f)] public float ChanceOnSwitch { get; private set; }
+        [field: Space]
+        [field: SerializeField] public float ThrownForce { get; private set; }
 
         public float ThrowsMin => throws.x;
         public float ThrowsMax => throws.y;
