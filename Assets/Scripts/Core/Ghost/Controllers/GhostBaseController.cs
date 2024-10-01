@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using ElectrumGames.CommonInterfaces;
 using ElectrumGames.Core.Ghost.Configs;
+using ElectrumGames.Core.Missions;
 using ElectrumGames.Extensions;
 using ElectrumGames.GlobalEnums;
 using UnityEngine;
@@ -17,6 +18,7 @@ namespace ElectrumGames.Core.Ghost.Controllers
         public int NetId { get; private set; }
         public int OwnerId { get; private set; }
         
+        public EvidenceController EvidenceController { get; private set; }
         public GhostBehaviourController GhostBehaviourController { get; protected set; }
         public GhostLookController GhostLookController { get; private set; }
         public GhostHuntController GhostHuntController { get; private set; }
@@ -25,7 +27,8 @@ namespace ElectrumGames.Core.Ghost.Controllers
 
         private IReadOnlyList<IGhostController> _ghostControllers;
         
-        public void Init(GhostEnvironmentHandler environmentHandler, GhostModelsList modelsList)
+        public void Init(GhostEnvironmentHandler environmentHandler, GhostModelsList modelsList, 
+            EvidenceController evidenceController)
         {
             GhostEnvironmentHandler = environmentHandler;
             GhostBehaviourController = new GhostBehaviourController(GhostEnvironmentHandler);
@@ -40,6 +43,8 @@ namespace ElectrumGames.Core.Ghost.Controllers
                 GhostHuntController,
                 GhostInteractionController
             };
+            
+            EvidenceController = evidenceController;
 
             var ghostModel = environmentHandler.GhostVariables.isMale
                 ? modelsList.MaleModels.PickRandom()

@@ -1,5 +1,6 @@
 using ElectrumGames.Configs;
 using ElectrumGames.Core.Environment.Configs;
+using ElectrumGames.Core.Ghost;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Journal;

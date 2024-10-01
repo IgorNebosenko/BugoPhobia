@@ -4,6 +4,7 @@ using ElectrumGames.Core.Environment.House;
 using ElectrumGames.Core.Ghost;
 using ElectrumGames.Core.Ghost.Interactions.Pools;
 using ElectrumGames.Core.Items;
+using ElectrumGames.Core.Missions;
 using ElectrumGames.Core.Player;
 using ElectrumGames.UI;
 using ElectrumGames.UI.UiEvents;
@@ -51,6 +52,7 @@ namespace ElectrumGames.Injection
             
             Container.Bind<EnvironmentData>().AsSingle();
             Container.Bind<GhostEnvironmentHandler>().AsSingle();
+            Container.Bind<EvidenceController>().AsSingle();
             
             Container.Bind<UiEventsHandler>().AsSingle().NonLazy();
         }

@@ -10,6 +10,7 @@ using ElectrumGames.Core.Ghost.Logic.Abilities;
 using ElectrumGames.Core.Ghost.Logic.GhostEvents;
 using ElectrumGames.Core.Ghost.Logic.Hunt;
 using ElectrumGames.Core.Ghost.Logic.NonHunt;
+using ElectrumGames.Core.Missions;
 using ElectrumGames.Core.Rooms;
 using ElectrumGames.GlobalEnums;
 using ElectrumGames.Network;
@@ -32,10 +33,12 @@ namespace ElectrumGames.Core.Ghost
         private ActivityConfig _activityConfig;
         private GhostEmfZonePool _ghostEmfZonePool;
         private EmfData _emfData;
+        private EvidenceController _evidenceController;
 
         [Inject]
         private void Construct(NetIdFactory netIdFactory, GhostEnvironmentHandler ghostEnvironmentHandler, GhostModelsList modelsList,
-            GhostDifficultyList ghostDifficultyList, ActivityConfig activityConfig, GhostEmfZonePool ghostEmfZonePool, EmfData emfData)
+            GhostDifficultyList ghostDifficultyList, ActivityConfig activityConfig, GhostEmfZonePool ghostEmfZonePool, EmfData emfData,
+            EvidenceController evidenceController)
         {
             _netIdFactory = netIdFactory;
             _ghostEnvironmentHandler = ghostEnvironmentHandler;
@@ -44,6 +47,7 @@ namespace ElectrumGames.Core.Ghost
             _activityConfig = activityConfig;
             _ghostEmfZonePool = ghostEmfZonePool;
             _emfData = emfData;
+            _evidenceController = evidenceController;
 
             _netIdFactory.Initialize(this);
         }
@@ -59,7 +63,7 @@ namespace ElectrumGames.Core.Ghost
             var ghost = Instantiate(ghostControllerTemplate, transform);
             _netIdFactory.Initialize(ghost);
             
-            ghost.Init(_ghostEnvironmentHandler, _modelsList);
+            ghost.Init(_ghostEnvironmentHandler, _modelsList, _evidenceController);
             ghost.SetGhostAnimationSpeed(0f);
             Debug.LogWarning("Ghost is visible!!!");
             //ghost.SetGhostVisibility(false);

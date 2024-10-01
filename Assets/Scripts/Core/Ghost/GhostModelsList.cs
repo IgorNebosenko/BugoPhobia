@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Controllers;
 using UnityEngine;
 
-namespace ElectrumGames.Core.Ghost.Configs
+namespace ElectrumGames.Core.Ghost
 {
     [Serializable]
     public class GhostModelData

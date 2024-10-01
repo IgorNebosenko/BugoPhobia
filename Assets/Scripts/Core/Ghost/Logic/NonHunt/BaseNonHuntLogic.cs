@@ -33,7 +33,6 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
         
         private bool _isMoving;
         private float _stayTime;
-        private Vector2 _targetPosition;
         
         public bool IsInterrupt { get; private set; }
 
@@ -120,11 +119,11 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
                     
                     if (!randomDoor.DoorWithLock)
                     {
-                        var item = _emfZonesPool.SpawnCylinder(randomDoor.Transform, _emfData.DoorHeightOffset, 
-                            _emfData.DoorCylinderSize, _emfData.DoorDefaultEmf);
+                        var emfZone = _emfZonesPool.Spawn(randomDoor.Transform, _emfData.DoorHeightOffset, 
+                            _emfData.DoorCylinderSize, _ghostController.EvidenceController.GetEmfInteractDoor());
 
                         Observable.Timer(TimeSpan.FromSeconds(_emfData.TimeEmfInteraction))
-                            .Subscribe(_ => _emfZonesPool.DespawnCylinder(item));
+                            .Subscribe(_ => _emfZonesPool.Despawn(emfZone));
                         
                         randomDoor.TouchDoor(Random.Range(_ghostConstants.minDoorAngle, _ghostConstants.maxDoorAngle),
                             Random.Range(_ghostConstants.minDoorTouchTime, _ghostConstants.maxDoorTouchTime));
@@ -148,6 +147,12 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
                 if (Random.Range(0f, 1f) < _ghostVariables.switchesInteractions)
                 {
                     var randomSwitch = _ghostController.InteractionAura.SwitchesInTrigger.PickRandom();
+
+                    var emfZone = _emfZonesPool.Spawn(randomSwitch.Transform, _emfData.SwitchHeightOffset,
+                        _emfData.SwitchCylinderSize, _ghostController.EvidenceController.GetEmfInteractSwitch());
+
+                    Observable.Timer(TimeSpan.FromSeconds(_emfData.TimeEmfInteraction))
+                        .Subscribe(_ => _emfZonesPool.Despawn(emfZone));
                     
                     if (Random.Range(0f, 1f) < _ghostActivityData.ChanceOnSwitch)
                         randomSwitch.SwitchOn();
@@ -172,6 +177,12 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
                 if (Random.Range(0f, 1f) < _ghostVariables.throws)
                 {
                     var randomThrown = _ghostController.InteractionAura.ThrownInTrigger.PickRandom();
+
+                    var emfZone = _emfZonesPool.Spawn(randomThrown.Transform, _emfData.ThrowHeightOffset,
+                        _emfData.ThrowCylinderSize, 3);//_ghostController.EvidenceController.OnThrowInteract());
+
+                    Observable.Timer(TimeSpan.FromSeconds(_emfData.TimeEmfInteraction))
+                        .Subscribe(_ => _emfZonesPool.Despawn(emfZone));
                     
                     randomThrown.ThrowItem(_ghostActivityData.ThrownForce);
                 }
@@ -271,7 +282,6 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
 
         public void MoveToPoint(Vector3 point)
         {
-            _targetPosition = new Vector2(point.x, point.z);
             _ghostController.SetSpeed(_ghostActivityData.DefaultNonHuntSpeed);
             _ghostController.SetGhostAnimationSpeed(_ghostActivityData.DefaultNonHuntSpeed /
                                                     _ghostActivityData.MaxGhostSpeed);

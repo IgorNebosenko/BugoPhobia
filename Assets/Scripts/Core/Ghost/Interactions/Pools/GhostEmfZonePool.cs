@@ -15,11 +15,11 @@ namespace ElectrumGames.Core.Ghost.Interactions.Pools
         {
             for (var i = 0; i < initialSize; i++)
             {
-                AddCylinderItem();
+                AddItem();
             }
         }
 
-        private void AddCylinderItem()
+        private void AddItem()
         {
             var item = Instantiate(cylinderZoneTemplate, transform);
             item.gameObject.SetActive(false);
@@ -27,12 +27,12 @@ namespace ElectrumGames.Core.Ghost.Interactions.Pools
         }
 
 
-        public GhostEmfZone SpawnCylinder(Transform parent, float heightOffset, Vector3 scale, int emfLevel)
+        public GhostEmfZone Spawn(Transform parent, float heightOffset, Vector3 scale, int emfLevel)
         {
             Debug.Log("Spawn!");
             if (zones.Count == 0)
             {
-                AddCylinderItem();
+                AddItem();
             }
 
             var zone = zones.First();
@@ -48,7 +48,7 @@ namespace ElectrumGames.Core.Ghost.Interactions.Pools
             return zone;
         }
 
-        public void DespawnCylinder(GhostEmfZone zone)
+        public void Despawn(GhostEmfZone zone)
         {
             Debug.Log("Despawn!");
             zone.transform.position = Vector3.zero;
