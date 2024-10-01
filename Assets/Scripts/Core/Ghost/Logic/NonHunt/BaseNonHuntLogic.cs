@@ -168,6 +168,20 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
         {
             if (IsInterrupt)
                 return;
+
+            _otherInteractionTime += Time.fixedDeltaTime;
+
+            if (_otherInteractionTime >= _ghostDifficultyData.OtherInteractionCooldown &&
+                _ghostController.InteractionAura.OtherInteractionsInTrigger is {Count: > 0})
+            {
+                if (Random.Range(0f, 1f) < _ghostVariables.otherInteractions)
+                {
+                    var randomOtherInteraction =
+                        _ghostController.InteractionAura.OtherInteractionsInTrigger.PickRandom();
+                    
+                    randomOtherInteraction.Interact();
+                }
+            }
         }
 
         private Vector3 GetTargetPoint()
