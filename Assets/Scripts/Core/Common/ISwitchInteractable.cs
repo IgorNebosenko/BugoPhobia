@@ -1,6 +1,6 @@
 ﻿namespace ElectrumGames.Core.Common
 {
-    public interface ISwitchInteractable
+    public interface ISwitchInteractable : IGhostInteractable
     {
         void SwitchOn();
         void SwitchOff();

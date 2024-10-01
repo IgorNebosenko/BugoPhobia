@@ -12,7 +12,8 @@ namespace ElectrumGames.Core.Environment
         [SerializeField] private float openSpeed = 0.1f;
         
         private bool _isLocked;
-        
+
+        public Transform Transform => transform;
         [field: SerializeField] public bool DoorWithLock { get; private set; }
         [field: SerializeField] public float CurrentAngle { get; private set; }
 

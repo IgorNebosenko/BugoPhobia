@@ -1,10 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ElectrumGames.Configs;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Controllers;
+using ElectrumGames.Core.Ghost.Interactions.Pools;
 using ElectrumGames.Extensions;
 using ElectrumGames.GlobalEnums;
+using UniRx;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace ElectrumGames.Core.Ghost.Logic.NonHunt
 {
@@ -13,6 +17,8 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
         private readonly GhostController _ghostController;
         private readonly GhostDifficultyData _ghostDifficultyData;
         private readonly GhostActivityData _ghostActivityData;
+        private readonly GhostEmfZonePool _emfZonesPool;
+        private readonly EmfData _emfData;
         
         private const float DistanceTolerance = 0.1f;
         
@@ -32,11 +38,13 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
         public bool IsInterrupt { get; private set; }
 
         public BaseNonHuntLogic(GhostController ghostController, GhostDifficultyData ghostDifficultyData, 
-            GhostActivityData activityData)
+            GhostActivityData activityData, GhostEmfZonePool emfZonesPool, EmfData emfData)
         {
             _ghostController = ghostController;
             _ghostDifficultyData = ghostDifficultyData;
             _ghostActivityData = activityData;
+            _emfZonesPool = emfZonesPool;
+            _emfData = emfData;
         }
         
         public void Setup(GhostVariables variables, GhostConstants constants, int roomId)
@@ -112,6 +120,12 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
                     
                     if (!randomDoor.DoorWithLock)
                     {
+                        var item = _emfZonesPool.SpawnCylinder(randomDoor.Transform, _emfData.DoorHeightOffset, 
+                            _emfData.DoorCylinderSize, _emfData.DoorDefaultEmf);
+
+                        Observable.Timer(TimeSpan.FromSeconds(_emfData.TimeEmfInteraction))
+                            .Subscribe(_ => _emfZonesPool.DespawnCylinder(item));
+                        
                         randomDoor.TouchDoor(Random.Range(_ghostConstants.minDoorAngle, _ghostConstants.maxDoorAngle),
                             Random.Range(_ghostConstants.minDoorTouchTime, _ghostConstants.maxDoorTouchTime));
                     }

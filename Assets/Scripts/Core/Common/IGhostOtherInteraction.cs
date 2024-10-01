@@ -1,6 +1,6 @@
 ﻿namespace ElectrumGames.Core.Common
 {
-    public interface IGhostOtherInteraction
+    public interface IGhostOtherInteraction : IGhostInteractable
     {
         void Interact();
     }

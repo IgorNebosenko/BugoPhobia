@@ -2,6 +2,7 @@
 using ElectrumGames.Core.Environment;
 using ElectrumGames.Core.Environment.House;
 using ElectrumGames.Core.Ghost;
+using ElectrumGames.Core.Ghost.Interactions.Pools;
 using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Player;
 using ElectrumGames.UI;
@@ -14,6 +15,8 @@ namespace ElectrumGames.Injection
     {
         [Space]
         [SerializeField] private EnvironmentHandler environmentHandler;
+        [Space]
+        [SerializeField] private GhostEmfZonePool ghostEmfZonePool;
         [Space]
         [SerializeField] private PlayersFactory playersFactory;
         [SerializeField] private GhostFactory ghostFactory;
@@ -33,6 +36,8 @@ namespace ElectrumGames.Injection
             base.InstallBindings();
 
             Container.BindInstance(environmentHandler).AsSingle();
+
+            Container.BindInstance(ghostEmfZonePool).AsSingle();
 
             Container.BindInstance(playersFactory).AsSingle();
             Container.BindInstance(ghostFactory).AsSingle();

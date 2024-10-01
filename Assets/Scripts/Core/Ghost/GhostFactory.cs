@@ -4,6 +4,7 @@ using ElectrumGames.CommonInterfaces;
 using ElectrumGames.Configs;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Controllers;
+using ElectrumGames.Core.Ghost.Interactions.Pools;
 using ElectrumGames.Core.Ghost.Logic;
 using ElectrumGames.Core.Ghost.Logic.Abilities;
 using ElectrumGames.Core.Ghost.Logic.GhostEvents;
@@ -29,16 +30,20 @@ namespace ElectrumGames.Core.Ghost
         private GhostModelsList _modelsList;
         private GhostDifficultyList _ghostDifficultyList;
         private ActivityConfig _activityConfig;
+        private GhostEmfZonePool _ghostEmfZonePool;
+        private EmfData _emfData;
 
         [Inject]
         private void Construct(NetIdFactory netIdFactory, GhostEnvironmentHandler ghostEnvironmentHandler, GhostModelsList modelsList,
-            GhostDifficultyList ghostDifficultyList, ActivityConfig activityConfig)
+            GhostDifficultyList ghostDifficultyList, ActivityConfig activityConfig, GhostEmfZonePool ghostEmfZonePool, EmfData emfData)
         {
             _netIdFactory = netIdFactory;
             _ghostEnvironmentHandler = ghostEnvironmentHandler;
             _modelsList = modelsList;
             _ghostDifficultyList = ghostDifficultyList;
             _activityConfig = activityConfig;
+            _ghostEmfZonePool = ghostEmfZonePool;
+            _emfData = emfData;
 
             _netIdFactory.Initialize(this);
         }
@@ -80,7 +85,8 @@ namespace ElectrumGames.Core.Ghost
                 case GhostType.Blaze:
                     Debug.Log("Difficulty must read from data!!");
                     nonHuntLogic = new BlazeNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[0], 
-                        _activityConfig.GhostActivities.First(x => x.GhostType == GhostType.Blaze));
+                        _activityConfig.GhostActivities.First(x => x.GhostType == GhostType.Blaze),
+                        _ghostEmfZonePool, _emfData);
                     ghostEventLogic = new BlazeGhostEventLogic(controller);
                     huntLogic = new BlazeHuntLogic(controller);
                     ghostAbility = new PlaceholderGhostAbility();

@@ -2,7 +2,7 @@
 
 namespace ElectrumGames.Core.Common
 {
-    public interface IGhostThrowable
+    public interface IGhostThrowable : IGhostInteractable
     {
         void ThrowItem(float force);
     }

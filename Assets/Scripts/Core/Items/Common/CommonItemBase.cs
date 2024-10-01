@@ -5,6 +5,8 @@ namespace ElectrumGames.Core.Items
 {
     public class CommonItemBase : ItemInstanceBase, IGhostThrowable
     {
+        public Transform Transform => transform;
+        
         public override void OnMainInteraction()
         {
         }
@@ -17,7 +19,7 @@ namespace ElectrumGames.Core.Items
         {
             var direction = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
             
-            Debug.Log($"TryThrowItem on {direction * force}");
+            Debug.Log("Try Throw Item");
             PhysicObject.AddForce(direction * force, ForceMode.Impulse);
         }
     }

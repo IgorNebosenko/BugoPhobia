@@ -11,6 +11,8 @@ namespace ElectrumGames.Core.Environment
         [SerializeField] private Transform switchTransform;
         
         [field: SerializeField] public bool IsOn { get; private set; }
+        
+        public Transform Transform => transform;
 
         public bool IsElectricityOn => IsOn;
 

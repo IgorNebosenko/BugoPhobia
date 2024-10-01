@@ -16,6 +16,7 @@ public class ProjectInstaller : MonoInstaller
     [SerializeField] private DescriptionConfig descriptionConfig;
     [SerializeField] private GhostModelsList ghostModelsList;
     [SerializeField] private GhostDifficultyList ghostDifficultyList;
+    [SerializeField] private EmfData emfData;
     [SerializeField] private LevelsConfig levelsConfig;
     [SerializeField] private DefaultMissionItems defaultMissionItems;
     [Space]
@@ -35,6 +36,7 @@ public class ProjectInstaller : MonoInstaller
         Container.BindInstance(descriptionConfig).AsSingle();
         Container.BindInstance(ghostModelsList).AsSingle();
         Container.BindInstance(ghostDifficultyList).AsSingle();
+        Container.BindInstance(emfData).AsSingle();
         Container.BindInstance(levelsConfig).AsSingle();
         Container.BindInstance(defaultMissionItems).AsSingle();
         Container.BindInstance(weatherConfig).AsSingle();
