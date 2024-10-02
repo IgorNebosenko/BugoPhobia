@@ -119,11 +119,11 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
                     
                     if (!randomDoor.DoorWithLock)
                     {
-                        var emfZone = _emfZonesPool.Spawn(randomDoor.Transform, _emfData.DoorHeightOffset, 
+                        var emfZone = _emfZonesPool.SpawnCylinderZone(randomDoor.Transform, _emfData.DoorHeightOffset, 
                             _emfData.DoorCylinderSize, _ghostController.EvidenceController.GetEmfInteractDoor());
 
                         Observable.Timer(TimeSpan.FromSeconds(_emfData.TimeEmfInteraction))
-                            .Subscribe(_ => _emfZonesPool.Despawn(emfZone));
+                            .Subscribe(_ => _emfZonesPool.DespawnCylinderZone(emfZone));
                         
                         randomDoor.TouchDoor(Random.Range(_ghostConstants.minDoorAngle, _ghostConstants.maxDoorAngle),
                             Random.Range(_ghostConstants.minDoorTouchTime, _ghostConstants.maxDoorTouchTime));
@@ -148,11 +148,11 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
                 {
                     var randomSwitch = _ghostController.InteractionAura.SwitchesInTrigger.PickRandom();
 
-                    var emfZone = _emfZonesPool.Spawn(randomSwitch.Transform, _emfData.SwitchHeightOffset,
+                    var emfZone = _emfZonesPool.SpawnCylinderZone(randomSwitch.Transform, _emfData.SwitchHeightOffset,
                         _emfData.SwitchCylinderSize, _ghostController.EvidenceController.GetEmfInteractSwitch());
 
                     Observable.Timer(TimeSpan.FromSeconds(_emfData.TimeEmfInteraction))
-                        .Subscribe(_ => _emfZonesPool.Despawn(emfZone));
+                        .Subscribe(_ => _emfZonesPool.DespawnCylinderZone(emfZone));
                     
                     if (Random.Range(0f, 1f) < _ghostActivityData.ChanceOnSwitch)
                         randomSwitch.SwitchOn();
@@ -178,11 +178,11 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
                 {
                     var randomThrown = _ghostController.InteractionAura.ThrownInTrigger.PickRandom();
 
-                    var emfZone = _emfZonesPool.Spawn(randomThrown.Transform, _emfData.ThrowHeightOffset,
+                    var emfZone = _emfZonesPool.SpawnSphereZone(randomThrown.Transform, _emfData.ThrowHeightOffset,
                         _emfData.ThrowCylinderSize, 3);//_ghostController.EvidenceController.OnThrowInteract());
 
                     Observable.Timer(TimeSpan.FromSeconds(_emfData.TimeEmfInteraction))
-                        .Subscribe(_ => _emfZonesPool.Despawn(emfZone));
+                        .Subscribe(_ => _emfZonesPool.DespawnSphereZone(emfZone));
                     
                     randomThrown.ThrowItem(_ghostActivityData.ThrownForce);
                 }

@@ -12899,6 +12899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cylinderZoneTemplate: {fileID: 4473479056289998647, guid: a1f46e7190d3c80448b9b910e29c5410, type: 3}
+  sphereZoneTemplate: {fileID: 3137316416401091561, guid: ef3b6d73332b0c84f962a02aacf70bd7, type: 3}
   initialSize: 8
 --- !u!1001 &353165164
 PrefabInstance:
@@ -62270,9 +62271,9 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3177203199472917370, guid: 4f2c41b4b7434614eae88bbd102497e2, type: 3}
 --- !u!1001 &1745968229
