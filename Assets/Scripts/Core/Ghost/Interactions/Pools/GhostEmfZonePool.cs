@@ -82,11 +82,11 @@ namespace ElectrumGames.Core.Ghost.Interactions.Pools
         public void DespawnCylinderZone(GhostEmfZone zone)
         {
             Debug.Log("DespawnCylinderZone!");
+            zone.SetLevel(0);
+            zone.gameObject.SetActive(false);
             zone.transform.position = Vector3.zero;
             zone.transform.localScale = Vector3.one;
             zone.transform.parent = transform;
-            zone.SetLevel(0);
-            zone.gameObject.SetActive(false);
             
             _cylinderZones.Add(zone);
         }
@@ -94,11 +94,11 @@ namespace ElectrumGames.Core.Ghost.Interactions.Pools
         public void DespawnSphereZone(GhostEmfZone zone)
         {
             Debug.Log("DespawnSphereZone!");
+            zone.SetLevel(0);
+            zone.gameObject.SetActive(false);
             zone.transform.position = Vector3.zero;
             zone.transform.localScale = Vector3.one;
             zone.transform.parent = transform;
-            zone.SetLevel(0);
-            zone.gameObject.SetActive(false);
             
             _sphereZones.Add(zone);
         }
