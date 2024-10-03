@@ -25,7 +25,7 @@ namespace ElectrumGames.Core.Missions
 
         public int GetEmfInteractDoor()
         {
-            if (Random.Range(0f, 1f) < _emfData.ChanceEvidence || !_evidences.Contains(EvidenceType.EMF5))
+            if (Random.Range(0f, 1f) > _emfData.ChanceEvidence || !_evidences.Contains(EvidenceType.EMF5))
                 return _emfData.DoorDefaultEmf;
 
             return _emfData.EvidenceLevel;
@@ -33,7 +33,7 @@ namespace ElectrumGames.Core.Missions
 
         public int GetEmfInteractSwitch()
         {
-            if (Random.Range(0f, 1f) < _emfData.ChanceEvidence || !_evidences.Contains(EvidenceType.EMF5))
+            if (Random.Range(0f, 1f) > _emfData.ChanceEvidence || !_evidences.Contains(EvidenceType.EMF5))
                 return _emfData.SwitchDefaultEmf;
 
             return _emfData.EvidenceLevel;
@@ -41,8 +41,16 @@ namespace ElectrumGames.Core.Missions
 
         public int OnThrowInteract()
         {
-            if (Random.Range(0f, 1f) < _emfData.ChanceEvidence || !_evidences.Contains(EvidenceType.EMF5))
+            if (Random.Range(0f, 1f) > _emfData.ChanceEvidence || !_evidences.Contains(EvidenceType.EMF5))
                 return _emfData.ThrowDefaultEmf;
+
+            return _emfData.EvidenceLevel;
+        }
+        
+        public int GetEmfOtherInteract()
+        {
+            if (Random.Range(0f, 1f) > _emfData.ChanceEvidence || !_evidences.Contains(EvidenceType.EMF5))
+                return _emfData.OtherInteractionDefaultEmf;
 
             return _emfData.EvidenceLevel;
         }

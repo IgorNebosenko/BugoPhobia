@@ -201,8 +201,16 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
             {
                 if (Random.Range(0f, 1f) < _ghostVariables.otherInteractions)
                 {
+                    _otherInteractionTime = 0f;
+                    
                     var randomOtherInteraction =
                         _ghostController.InteractionAura.OtherInteractionsInTrigger.PickRandom();
+                    
+                    var emfZone = _emfZonesPool.SpawnCylinderZone(randomOtherInteraction.Transform, _emfData.OtherInteractionHeightOffset,
+                        _emfData.OtherInteractionCylinderSize, _ghostController.EvidenceController.GetEmfOtherInteract());
+
+                    Observable.Timer(TimeSpan.FromSeconds(_emfData.TimeEmfInteraction))
+                        .Subscribe(_ => _emfZonesPool.DespawnCylinderZone(emfZone));
                     
                     randomOtherInteraction.Interact();
                 }
