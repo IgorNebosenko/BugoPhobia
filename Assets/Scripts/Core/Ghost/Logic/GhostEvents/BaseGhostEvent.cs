@@ -1,18 +1,18 @@
 ﻿using ElectrumGames.Core.Ghost.Controllers;
+using ElectrumGames.Extensions.CommonInterfaces;
 
 namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
 {
-    public class BlazeGhostEventLogic : IGhostEventLogic
+    public abstract class BaseGhostEvent : IGhostEventLogic
     {
         private readonly GhostController _ghostController;
         
         public bool IsInterrupt { get; private set; }
 
-        public BlazeGhostEventLogic(GhostController ghostController)
+        public BaseGhostEvent(GhostController ghostController)
         {
             _ghostController = ghostController;
         }
-
         public void Setup(GhostVariables variables, GhostConstants constants, int roomId)
         {
         }
@@ -21,9 +21,12 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
         {
         }
 
-        public bool TryGhostEvent()
+        public void GhostEventAppear(GhostAppearType appearType, bool redLight)
         {
-            return false;
+        }
+
+        public void GhostChasePlayer(IHavePosition player, bool isByCloud)
+        {
         }
     }
 }

@@ -91,7 +91,7 @@ namespace ElectrumGames.Core.Ghost
                     nonHuntLogic = new BlazeNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[0], 
                         _activityConfig.GhostActivities.First(x => x.GhostType == GhostType.Blaze),
                         _ghostEmfZonePool, _emfData);
-                    ghostEventLogic = new BlazeGhostEventLogic(controller);
+                    ghostEventLogic = new BlazeBaseGhostEventLogic(controller);
                     huntLogic = new BlazeHuntLogic(controller);
                     ghostAbility = new PlaceholderGhostAbility();
                     break;
