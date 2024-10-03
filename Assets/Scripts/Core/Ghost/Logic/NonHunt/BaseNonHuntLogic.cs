@@ -179,7 +179,7 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
                     var randomThrown = _ghostController.InteractionAura.ThrownInTrigger.PickRandom();
 
                     var emfZone = _emfZonesPool.SpawnSphereZone(randomThrown.Transform, _emfData.ThrowHeightOffset,
-                        _emfData.ThrowCylinderSize, 3);//_ghostController.EvidenceController.OnThrowInteract());
+                        _emfData.ThrowCylinderSize, _ghostController.EvidenceController.OnThrowInteract());
 
                     Observable.Timer(TimeSpan.FromSeconds(_emfData.TimeEmfInteraction))
                         .Subscribe(_ => _emfZonesPool.DespawnSphereZone(emfZone));
