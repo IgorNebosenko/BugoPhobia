@@ -1,10 +1,12 @@
-﻿using ElectrumGames.Core.Ghost.Controllers;
+﻿using ElectrumGames.Core.Ghost.Configs;
+using ElectrumGames.Core.Ghost.Controllers;
 
 namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
 {
     public class BlazeBaseGhostEventLogic : BaseGhostEvent
     {
-        public BlazeBaseGhostEventLogic(GhostController ghostController) : base(ghostController)
+        public BlazeBaseGhostEventLogic(GhostController ghostController, GhostDifficultyData difficultyData) :
+            base(ghostController, difficultyData)
         {
         }
     }

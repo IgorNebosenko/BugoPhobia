@@ -19,12 +19,12 @@ namespace ElectrumGames.Core.Ghost.Configs
         [field: SerializeField, Range(0f, 1f)] public float MovingToPointChance { get; private set; }
         [field: Space]
         [field: SerializeField] public float GhostEventsCooldownModifier { get; private set; }
-        [field: SerializeField] public float MobGhostEventsCooldownModifier { get; private set; }
+        [field: SerializeField] public float MinGhostEventTime { get; private set; } = 1f;
+        [field: SerializeField] public float MaxGhostEventTime { get; private set; } = 10f;
         [field: Space]
         [field: SerializeField] public float InRoomWeightPoint { get; private set; }
         [field: SerializeField] public float NeighborRoomWeightPoint { get; private set; }
         [field: SerializeField] public float OtherWeightPoint { get; private set; }
-        
     }
 
     [CreateAssetMenu(fileName = "GhostDifficultyList", menuName = "Ghosts configs/Ghost difficulty list")]

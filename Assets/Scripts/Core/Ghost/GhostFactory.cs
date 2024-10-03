@@ -65,8 +65,7 @@ namespace ElectrumGames.Core.Ghost
             
             ghost.Init(_ghostEnvironmentHandler, _modelsList, _evidenceController);
             ghost.SetGhostAnimationSpeed(0f);
-            Debug.LogWarning("Ghost is visible!!!");
-            //ghost.SetGhostVisibility(false);
+            ghost.SetGhostVisibility(false);
             ghost.SetRoomsData(rooms);
             ghost.TeleportToSpawnPoint();
             
@@ -91,7 +90,8 @@ namespace ElectrumGames.Core.Ghost
                     nonHuntLogic = new BlazeNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[0], 
                         _activityConfig.GhostActivities.First(x => x.GhostType == GhostType.Blaze),
                         _ghostEmfZonePool, _emfData);
-                    ghostEventLogic = new BlazeBaseGhostEventLogic(controller);
+                    Debug.Log("Difficulty must read from data!!");
+                    ghostEventLogic = new BlazeBaseGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[0]);
                     huntLogic = new BlazeHuntLogic(controller);
                     ghostAbility = new PlaceholderGhostAbility();
                     break;
