@@ -29,7 +29,6 @@ namespace ElectrumGames.Core.Environment
 
         public void SwitchOn()
         {
-            Debug.Log("Switch On");
             if (IsOn)
                 return;
             
@@ -38,7 +37,6 @@ namespace ElectrumGames.Core.Environment
 
         public void SwitchOff()
         {
-            Debug.Log("Switch Off");
             if (!IsOn)
                 return;
             

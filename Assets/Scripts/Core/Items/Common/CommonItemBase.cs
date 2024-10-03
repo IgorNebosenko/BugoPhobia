@@ -19,7 +19,6 @@ namespace ElectrumGames.Core.Items
         {
             var direction = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
             
-            Debug.Log("Try Throw Item");
             PhysicObject.AddForce(direction * force, ForceMode.Impulse);
         }
     }
