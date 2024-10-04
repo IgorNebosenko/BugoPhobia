@@ -41,7 +41,17 @@ namespace ElectrumGames.Core.Ghost.Controllers
         {
             _rooms = rooms;
         }
-        
+
+        public void SetEnabledLogic(GhostLogicSelector logicSelector)
+        {
+            Debug.Log($"Set logic as {logicSelector}");
+            
+            NonHuntLogic.IsInterrupt = logicSelector != GhostLogicSelector.All && logicSelector != GhostLogicSelector.NonHunt;
+            GhostEventLogic.IsInterrupt = logicSelector != GhostLogicSelector.All && logicSelector != GhostLogicSelector.GhostEvent;
+            HuntLogic.IsInterrupt = logicSelector != GhostLogicSelector.All && logicSelector != GhostLogicSelector.Hunt;
+            GhostAbility.IsInterrupt = logicSelector != GhostLogicSelector.All && logicSelector != GhostLogicSelector.Ability;
+        }
+
         public void TeleportToSpawnPoint()
         {
             var currentRoom = _rooms[GhostEnvironmentHandler.GhostRoomId];

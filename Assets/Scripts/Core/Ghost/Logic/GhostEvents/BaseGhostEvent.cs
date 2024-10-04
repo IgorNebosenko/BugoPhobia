@@ -1,5 +1,6 @@
 ﻿using System;
 using ElectrumGames.Configs;
+using ElectrumGames.Core.Common;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Controllers;
 using ElectrumGames.Core.Rooms;
@@ -25,8 +26,9 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
         private Room _currentRoom;
 
         private float _ghostEventTime;
+        private bool _isGhostEvent;
         
-        public bool IsInterrupt { get; private set; }
+        public bool IsInterrupt { get; set; }
 
         public BaseGhostEvent(GhostController ghostController, GhostDifficultyData difficultyData)
         {
@@ -49,7 +51,9 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
 
             _ghostEventTime += Time.fixedDeltaTime;
 
-            if (_ghostEventTime <= _ghostConstants.ghostEventCooldown * _ghostDifficultyData.GhostEventsCooldownModifier
+            Debug.Log(_ghostConstants.ghostEventCooldown * _ghostDifficultyData.GhostEventsCooldownModifier);
+            
+            if (_ghostEventTime >= _ghostConstants.ghostEventCooldown * _ghostDifficultyData.GhostEventsCooldownModifier
                 && CheckIsPlayerNear())
             {
                 _ghostEventTime = 0f;
@@ -60,6 +64,36 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
                         GhostEventAppear((GhostAppearType)Random.Range(0, 3), Random.Range(0, 2) != 0);
                     else
                         GhostChasePlayer(_player, Random.Range(0, 2) != 0);
+                }
+            }
+
+            if (_isGhostEvent)
+            {
+                for (var i = 0; i < _ghostController.GhostEventAura.PlayersInAura.Count; i++)
+                {
+                    for (var j = 0; j < _ghostController.GhostEventAura.PlayersInAura[i].Inventory.Items.Count; j++)
+                    {
+                        if (_ghostController.GhostEventAura.PlayersInAura[i].Inventory.Items[j]
+                            is IGhostHuntingInteractableStay ghostHuntingInteractableStay)
+                        {
+                            ghostHuntingInteractableStay.OnGhostInteractionStay();
+                        }
+                    }
+                }
+                
+                for (var i = 0; i < _ghostController.GhostEventAura.GhostHuntingInteractableStay.Count; i++)
+                {
+                    _ghostController.GhostEventAura.GhostHuntingInteractableStay[i].OnGhostInteractionStay();
+                }
+
+                if (_ghostController.GhostEventAura.GhostHuntingInteractableExit.Count > 0)
+                {
+                    for (var i = 0; i < _ghostController.GhostEventAura.GhostHuntingInteractableExit.Count; i++)
+                    {
+                        _ghostController.GhostEventAura.GhostHuntingInteractableExit[i].OnGhostInteractionExit();
+                    }
+
+                    _ghostController.GhostEventAura.ResetGhostInteractableExit();
                 }
             }
         }
@@ -73,9 +107,11 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
         {
             StopGhostEvent();
 
-            _ghostController.SetGhostVisibility(true); // Todo Switch by appear type
+            _isGhostEvent = true;
+            _ghostController.SetEnabledLogic(GhostLogicSelector.GhostEvent);
 
-            //Todo add lock process
+            _ghostController.SetGhostVisibility(true); // Todo Switch by appear type
+            
             _ghostEventDisposable = Observable.Timer(TimeSpan.FromSeconds(
                     Random.Range(_ghostDifficultyData.MinGhostEventTime,
                         _ghostDifficultyData.MaxGhostEventTime)))
@@ -83,17 +119,24 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
                     _ =>
                     {
                         _ghostController.SetGhostVisibility(false);
-                        StopGhostEvent(); 
+                        StopGhostEvent();
                     });
             
         }
 
         protected virtual void GhostChasePlayer(IHavePosition player, bool isByCloud)
         {
+            StopGhostEvent();
+
+            _isGhostEvent = true;
+            _ghostController.SetEnabledLogic(GhostLogicSelector.GhostEvent);
         }
 
         protected void StopGhostEvent()
         {
+            _isGhostEvent = false;
+            _ghostController.SetEnabledLogic(GhostLogicSelector.All);
+            
             _ghostEventDisposable?.Dispose();
         }
     }

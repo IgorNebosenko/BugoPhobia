@@ -2,7 +2,7 @@
 {
     public interface IGhostLogic
     {
-        bool IsInterrupt { get; }
+        bool IsInterrupt { get; set; }
         void Setup(GhostVariables variables, GhostConstants constants, int roomId);
 
         void FixedSimulate();

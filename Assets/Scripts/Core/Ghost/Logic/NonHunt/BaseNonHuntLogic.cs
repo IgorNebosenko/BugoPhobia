@@ -34,7 +34,7 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
         private bool _isMoving;
         private float _stayTime;
         
-        public bool IsInterrupt { get; private set; }
+        public bool IsInterrupt { get; set; }
 
         public BaseNonHuntLogic(GhostController ghostController, GhostDifficultyData ghostDifficultyData, 
             GhostActivityData activityData, GhostEmfZonePool emfZonesPool, EmfData emfData)

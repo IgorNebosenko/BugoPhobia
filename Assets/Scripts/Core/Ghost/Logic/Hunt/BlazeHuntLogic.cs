@@ -6,7 +6,7 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
     {
         private readonly GhostController _ghostController;
         
-        public bool IsInterrupt { get; private set; }
+        public bool IsInterrupt { get; set; }
 
         public BlazeHuntLogic(GhostController ghostController)
         {
