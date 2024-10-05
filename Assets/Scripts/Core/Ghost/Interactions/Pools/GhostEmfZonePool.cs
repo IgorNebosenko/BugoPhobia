@@ -56,7 +56,26 @@ namespace ElectrumGames.Core.Ghost.Interactions.Pools
 
             return zone;
         }
-        
+
+        public GhostEmfZone SpawnCylinderZone(Vector3 position, float heightOffset, Vector3 scale, int emfLevel)
+        {
+            if (_cylinderZones.Count == 0)
+            {
+                AddCylinderItem();
+            }
+
+            var zone = _cylinderZones.First();
+
+            _cylinderZones.Remove(zone);
+            zone.gameObject.SetActive(true);
+
+            zone.transform.localPosition = position + Vector3.up * heightOffset;
+            zone.transform.localScale = scale;
+            zone.SetLevel(emfLevel);
+
+            return zone;
+        }
+
         public GhostEmfZone SpawnSphereZone(Transform parent, float heightOffset, float scale, int emfLevel)
         {
             if (_sphereZones.Count == 0)

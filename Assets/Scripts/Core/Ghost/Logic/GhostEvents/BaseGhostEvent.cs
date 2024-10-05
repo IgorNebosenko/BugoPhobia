@@ -2,6 +2,7 @@
 using ElectrumGames.Core.Common;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Controllers;
+using ElectrumGames.Core.Ghost.Interactions.Pools;
 using ElectrumGames.Core.Rooms;
 using ElectrumGames.Extensions;
 using ElectrumGames.Extensions.CommonInterfaces;
@@ -15,6 +16,8 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
     {
         private readonly GhostController _ghostController;
         private readonly GhostDifficultyData _ghostDifficultyData;
+        private readonly GhostEmfZonePool _emfZonesPool;
+        private readonly EmfData _emfData;
         
         private GhostVariables _ghostVariables;
         private GhostConstants _ghostConstants;
@@ -30,10 +33,13 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
         
         public bool IsInterrupt { get; set; }
 
-        public BaseGhostEvent(GhostController ghostController, GhostDifficultyData difficultyData)
+        public BaseGhostEvent(GhostController ghostController, GhostDifficultyData difficultyData, 
+            GhostEmfZonePool emfZonesPool, EmfData emfData)
         {
             _ghostController = ghostController;
             _ghostDifficultyData = difficultyData;
+            _emfZonesPool = emfZonesPool;
+            _emfData = emfData;
         }
         public void Setup(GhostVariables variables, GhostConstants constants, int roomId)
         {
@@ -58,6 +64,12 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
 
                 if (Random.Range(0f, 1f) < _ghostVariables.ghostEvents)
                 {
+                    var emfZone = _emfZonesPool.SpawnCylinderZone(_ghostController.transform.position, _emfData.GhostEventHeightOffset, 
+                        _emfData.GhostEventCylinderSize, _emfData.GhostEventDefaultEmf);
+                
+                    Observable.Timer(TimeSpan.FromSeconds(_emfData.TimeEmfInteraction))
+                        .Subscribe(_ => _emfZonesPool.DespawnCylinderZone(emfZone));
+                    
                     if (Random.Range(0, 2) != 0)
                         GhostEventAppear((GhostAppearType)Random.Range(0, (int)GhostAppearType.Transparent), 
                             Random.Range(0, 2) != 0);
@@ -117,8 +129,8 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
             _ghostController.transform.LookAt(targetPlayer.Position);
             
             _ghostEventDisposable = Observable.Timer(TimeSpan.FromSeconds(
-                    Random.Range(_ghostDifficultyData.MinGhostEventTime,
-                        _ghostDifficultyData.MaxGhostEventTime)))
+                    Random.Range(_ghostDifficultyData.MinStayGhostEventTime,
+                        _ghostDifficultyData.MaxStayGhostEventTime)))
                 .Subscribe(
                     _ =>
                     {
