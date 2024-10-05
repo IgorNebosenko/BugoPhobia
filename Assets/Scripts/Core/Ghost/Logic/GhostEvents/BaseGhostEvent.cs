@@ -72,41 +72,18 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
                     
                     if (Random.Range(0, 2) != 0)
                         GhostEventAppear((GhostAppearType)Random.Range(0, (int)GhostAppearType.Transparent), 
-                            Random.Range(0, 2) != 0);
+                            Random.Range(0f, 1f) < _ghostDifficultyData.RedLightChance);
                     else
-                        GhostChasePlayer(_player, Random.Range(0, 2) != 0);
+                        GhostChasePlayer(_player, Random.Range(0f, 1f) < _ghostDifficultyData.RedLightChance);
                 }
             }
 
             if (_isGhostEvent)
             {
-                for (var i = 0; i < _ghostController.GhostEventAura.PlayersInAura.Count; i++)
-                {
-                    for (var j = 0; j < _ghostController.GhostEventAura.PlayersInAura[i].Inventory.Items.Count; j++)
-                    {
-                        if (_ghostController.GhostEventAura.PlayersInAura[i].Inventory.Items[j]
-                            is IGhostHuntingInteractableStay ghostHuntingInteractableStay)
-                        {
-                            ghostHuntingInteractableStay.OnGhostInteractionStay();
-                        }
-                    }
-                }
-                
-                for (var i = 0; i < _ghostController.GhostEventAura.GhostHuntingInteractableStay.Count; i++)
-                {
-                    _ghostController.GhostEventAura.GhostHuntingInteractableStay[i].OnGhostInteractionStay();
-                }
-
-                if (_ghostController.GhostEventAura.GhostHuntingInteractableExit.Count > 0)
-                {
-                    for (var i = 0; i < _ghostController.GhostEventAura.GhostHuntingInteractableExit.Count; i++)
-                    {
-                        _ghostController.GhostEventAura.GhostHuntingInteractableExit[i].OnGhostInteractionExit();
-                    }
-
-                    _ghostController.GhostEventAura.ResetGhostInteractableExit();
-                }
+                AppearInterference();
             }
+
+
         }
 
         public bool CheckIsPlayerNear()
@@ -148,6 +125,36 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
             _ghostController.SetEnabledLogic(GhostLogicSelector.GhostEvent);
             
             StopGhostEvent();
+        }
+
+        protected virtual void AppearInterference()
+        {
+            for (var i = 0; i < _ghostController.GhostEventAura.PlayersInAura.Count; i++)
+            {
+                for (var j = 0; j < _ghostController.GhostEventAura.PlayersInAura[i].Inventory.Items.Count; j++)
+                {
+                    if (_ghostController.GhostEventAura.PlayersInAura[i].Inventory.Items[j]
+                        is IGhostHuntingInteractableStay ghostHuntingInteractableStay)
+                    {
+                        ghostHuntingInteractableStay.OnGhostInteractionStay();
+                    }
+                }
+            }
+                
+            for (var i = 0; i < _ghostController.GhostEventAura.GhostHuntingInteractableStay.Count; i++)
+            {
+                _ghostController.GhostEventAura.GhostHuntingInteractableStay[i].OnGhostInteractionStay();
+            }
+
+            if (_ghostController.GhostEventAura.GhostHuntingInteractableExit.Count > 0)
+            {
+                for (var i = 0; i < _ghostController.GhostEventAura.GhostHuntingInteractableExit.Count; i++)
+                {
+                    _ghostController.GhostEventAura.GhostHuntingInteractableExit[i].OnGhostInteractionExit();
+                }
+
+                _ghostController.GhostEventAura.ResetGhostInteractableExit();
+            }
         }
 
         protected void StopGhostEvent()

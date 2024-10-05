@@ -21,6 +21,7 @@ namespace ElectrumGames.Core.Ghost.Configs
         [field: SerializeField] public float GhostEventsCooldownModifier { get; private set; }
         [field: SerializeField] public float MinStayGhostEventTime { get; private set; } = 3f;
         [field: SerializeField] public float MaxStayGhostEventTime { get; private set; } = 4f;
+        [field: SerializeField] public float RedLightChance { get; private set; } = 0.2f;
         [field: Space]
         [field: SerializeField] public float InRoomWeightPoint { get; private set; }
         [field: SerializeField] public float NeighborRoomWeightPoint { get; private set; }
