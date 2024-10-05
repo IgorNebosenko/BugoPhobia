@@ -1,9 +1,9 @@
 ﻿using System;
-using ElectrumGames.Configs;
 using ElectrumGames.Core.Common;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Controllers;
 using ElectrumGames.Core.Rooms;
+using ElectrumGames.Extensions;
 using ElectrumGames.Extensions.CommonInterfaces;
 using UniRx;
 using UnityEngine;
@@ -50,8 +50,6 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
                 return;
 
             _ghostEventTime += Time.fixedDeltaTime;
-
-            Debug.Log(_ghostConstants.ghostEventCooldown * _ghostDifficultyData.GhostEventsCooldownModifier);
             
             if (_ghostEventTime >= _ghostConstants.ghostEventCooldown * _ghostDifficultyData.GhostEventsCooldownModifier
                 && CheckIsPlayerNear())
@@ -107,10 +105,15 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
         {
             StopGhostEvent();
 
+            Debug.Log("Start Ghost Appear");
             _isGhostEvent = true;
             _ghostController.SetEnabledLogic(GhostLogicSelector.GhostEvent);
 
+            var targetPlayer = _ghostController.GhostEventAura.PlayersInAura.PickRandom();
+
             _ghostController.SetGhostVisibility(true); // Todo Switch by appear type
+            _ghostController.IsStopped(true);
+            _ghostController.transform.LookAt(targetPlayer.Position);
             
             _ghostEventDisposable = Observable.Timer(TimeSpan.FromSeconds(
                     Random.Range(_ghostDifficultyData.MinGhostEventTime,
@@ -118,7 +121,6 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
                 .Subscribe(
                     _ =>
                     {
-                        _ghostController.SetGhostVisibility(false);
                         StopGhostEvent();
                     });
             
@@ -128,13 +130,19 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
         {
             StopGhostEvent();
 
+            Debug.Log("Start Ghost Chase");
             _isGhostEvent = true;
             _ghostController.SetEnabledLogic(GhostLogicSelector.GhostEvent);
+            
+            StopGhostEvent();
         }
 
         protected void StopGhostEvent()
         {
+            Debug.Log("Stop Ghost Event");
             _isGhostEvent = false;
+            _ghostController.IsStopped(false);
+            _ghostController.SetGhostVisibility(false);
             _ghostController.SetEnabledLogic(GhostLogicSelector.All);
             
             _ghostEventDisposable?.Dispose();

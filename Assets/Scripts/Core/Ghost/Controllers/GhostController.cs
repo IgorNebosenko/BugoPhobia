@@ -75,6 +75,15 @@ namespace ElectrumGames.Core.Ghost.Controllers
             navmeshAgent.speed = speed;
         }
 
+        public void IsStopped(bool isStopped)
+        {
+            navmeshAgent.isStopped = isStopped;
+            
+            if (isStopped)
+                SetGhostAnimationSpeed(0f);
+        }
+        
+
         public void SetLogic(INonHuntLogic nonHuntLogic, IGhostEventLogic ghostEventLogic, IHuntLogic huntLogic, 
             IGhostAbility ghostAbility)
         {
