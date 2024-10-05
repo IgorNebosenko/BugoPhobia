@@ -23,6 +23,12 @@ namespace ElectrumGames.Core.Ghost.Configs
         [field: SerializeField] public float MaxStayGhostEventTime { get; private set; } = 4f;
         [field: SerializeField] public float RedLightChance { get; private set; } = 0.2f;
         [field: Space]
+        [field: SerializeField] public float MinChaseGhostEventTime { get; private set; } = 6f;
+        [field: SerializeField] public float MaxChaseGhostEventTime { get; private set; } = 7f;
+        [field: Space]
+        [field: SerializeField] public float MinSingingGhostEventTime { get; private set; } = 8f;
+        [field: SerializeField] public float MaxSingingGhostEventTime { get; private set; } = 11f;
+        [field: Space]
         [field: SerializeField] public float InRoomWeightPoint { get; private set; }
         [field: SerializeField] public float NeighborRoomWeightPoint { get; private set; }
         [field: SerializeField] public float OtherWeightPoint { get; private set; }

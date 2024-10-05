@@ -64,17 +64,26 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
 
                 if (Random.Range(0f, 1f) < _ghostVariables.ghostEvents)
                 {
-                    var emfZone = _emfZonesPool.SpawnCylinderZone(_ghostController.transform.position, _emfData.GhostEventHeightOffset, 
-                        _emfData.GhostEventCylinderSize, _emfData.GhostEventDefaultEmf);
-                
-                    Observable.Timer(TimeSpan.FromSeconds(_emfData.TimeEmfInteraction))
-                        .Subscribe(_ => _emfZonesPool.DespawnCylinderZone(emfZone));
-                    
-                    if (Random.Range(0, 2) != 0)
-                        GhostEventAppear((GhostAppearType)Random.Range(0, (int)GhostAppearType.Transparent), 
-                            Random.Range(0f, 1f) < _ghostDifficultyData.RedLightChance);
-                    else
-                        GhostChasePlayer(_player, Random.Range(0f, 1f) < _ghostDifficultyData.RedLightChance);
+                    var ghostEventType = SelectGhostEventType();
+
+                    switch (ghostEventType)
+                    {
+                        case GhostEventType.Appear:
+                            GhostEventAppear(SelectAppearType(), 
+                                Random.Range(0f, 1f) < _ghostDifficultyData.RedLightChance);
+                            break;
+                        case GhostEventType.Chase:
+                            GhostChasePlayer(_player, IsGhostByCloud());
+                            break;
+                        case GhostEventType.Singing:
+                            GhostSingingEvent(SelectAppearType());
+                            break;
+                        case GhostEventType.AppearThanChase:
+                            AppearThanChasePlayer(_player);
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
                 }
             }
 
@@ -86,10 +95,36 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
 
         }
 
+        protected void CreateGhostEventZone()
+        {
+            var emfZone = _emfZonesPool.SpawnCylinderZone(_ghostController.transform.position, _emfData.GhostEventHeightOffset, 
+                _emfData.GhostEventCylinderSize, _emfData.GhostEventDefaultEmf);
+                
+            Observable.Timer(TimeSpan.FromSeconds(_emfData.TimeEmfInteraction))
+                .Subscribe(_ => _emfZonesPool.DespawnCylinderZone(emfZone));
+        }
+
+        protected virtual GhostEventType SelectGhostEventType()
+        {
+            return (GhostEventType) Random.Range(0, (int) GhostEventType.AppearThanChase);
+        }
+
+        protected virtual GhostAppearType SelectAppearType()
+        {
+            return (GhostAppearType) Random.Range(0, (int) GhostAppearType.Transparent);
+        }
+
+        protected virtual bool IsGhostByCloud()
+        {
+            return Random.Range(0, 2) != 0;
+        }
+        
+
         public bool CheckIsPlayerNear()
         {
             return _ghostController.GhostEventAura.PlayersInAura.Count > 0;
         }
+        
 
         protected virtual void GhostEventAppear(GhostAppearType appearType, bool redLight)
         {
@@ -112,6 +147,7 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
                     _ =>
                     {
                         StopGhostEvent();
+                        CreateGhostEventZone();
                     });
             
         }
@@ -121,6 +157,42 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
             StopGhostEvent();
 
             Debug.Log("Start Ghost Chase");
+            _isGhostEvent = true;
+            _ghostController.SetEnabledLogic(GhostLogicSelector.GhostEvent);
+            
+            StopGhostEvent();
+        }
+
+        protected virtual void GhostSingingEvent(GhostAppearType appearType)
+        {
+            StopGhostEvent();
+
+            Debug.Log("Start Ghost Singing");
+            _isGhostEvent = true;
+            _ghostController.SetEnabledLogic(GhostLogicSelector.GhostEvent);
+
+            var targetPlayer = _ghostController.GhostEventAura.PlayersInAura.PickRandom();
+
+            _ghostController.SetGhostVisibility(true); // Todo Switch by appear type
+            _ghostController.IsStopped(true);
+            _ghostController.transform.LookAt(targetPlayer.Position);
+            
+            _ghostEventDisposable = Observable.Timer(TimeSpan.FromSeconds(
+                    Random.Range(_ghostDifficultyData.MinSingingGhostEventTime,
+                        _ghostDifficultyData.MaxSingingGhostEventTime)))
+                .Subscribe(
+                    _ =>
+                    {
+                        StopGhostEvent();
+                        CreateGhostEventZone();
+                    });
+        }
+
+        protected virtual void AppearThanChasePlayer(IHavePosition player)
+        {
+            StopGhostEvent();
+
+            Debug.Log("Start Ghost Appear Than Chase");
             _isGhostEvent = true;
             _ghostController.SetEnabledLogic(GhostLogicSelector.GhostEvent);
             
