@@ -1,4 +1,5 @@
 ﻿using System;
+using ElectrumGames.Configs;
 using ElectrumGames.Core.Common;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Controllers;
@@ -16,6 +17,7 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
     {
         private readonly GhostController _ghostController;
         private readonly GhostDifficultyData _ghostDifficultyData;
+        private readonly GhostActivityData _ghostActivityData;
         private readonly GhostEmfZonePool _emfZonesPool;
         private readonly EmfData _emfData;
         
@@ -24,6 +26,7 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
         private int _roomId;
         
         private IDisposable _ghostEventDisposable;
+        private IDisposable _chaseProcess;
         
         private IHavePosition _player;
         private Room _currentRoom;
@@ -34,10 +37,11 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
         public bool IsInterrupt { get; set; }
 
         public BaseGhostEvent(GhostController ghostController, GhostDifficultyData difficultyData, 
-            GhostEmfZonePool emfZonesPool, EmfData emfData)
+            GhostActivityData activityData, GhostEmfZonePool emfZonesPool, EmfData emfData)
         {
             _ghostController = ghostController;
             _ghostDifficultyData = difficultyData;
+            _ghostActivityData = activityData;
             _emfZonesPool = emfZonesPool;
             _emfData = emfData;
         }
@@ -160,7 +164,25 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
             _isGhostEvent = true;
             _ghostController.SetEnabledLogic(GhostLogicSelector.GhostEvent);
             
-            StopGhostEvent();
+            var targetPlayer = _ghostController.GhostEventAura.PlayersInAura.PickRandom();
+            
+            _ghostController.SetGhostVisibility(true); // Todo Switch by appear type
+            _ghostController.transform.LookAt(targetPlayer.Position);
+
+            MoveToPoint(targetPlayer.Position);
+
+            _chaseProcess = Observable.EveryFixedUpdate()
+                .Subscribe(_ => MoveToPoint(targetPlayer.Position));
+            
+            _ghostEventDisposable = Observable.Timer(TimeSpan.FromSeconds(
+                    Random.Range(_ghostDifficultyData.MinChaseGhostEventTime,
+                        _ghostDifficultyData.MaxChaseGhostEventTime)))
+                .Subscribe(
+                    _ =>
+                    {
+                        StopGhostEvent();
+                        CreateGhostEventZone();
+                    });
         }
 
         protected virtual void GhostSingingEvent(GhostAppearType appearType)
@@ -237,7 +259,16 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
             _ghostController.SetGhostVisibility(false);
             _ghostController.SetEnabledLogic(GhostLogicSelector.All);
             
+            _chaseProcess?.Dispose();
             _ghostEventDisposable?.Dispose();
+        }
+        
+        public void MoveToPoint(Vector3 point)
+        {
+            _ghostController.SetSpeed(_ghostActivityData.DefaultNonHuntSpeed);
+            _ghostController.SetGhostAnimationSpeed(_ghostActivityData.DefaultNonHuntSpeed /
+                                                    _ghostActivityData.MaxGhostSpeed);
+            _ghostController.MoveTo(point);
         }
     }
 }

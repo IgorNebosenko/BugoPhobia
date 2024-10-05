@@ -92,6 +92,7 @@ namespace ElectrumGames.Core.Ghost
                         _ghostEmfZonePool, _emfData);
                     Debug.Log("Difficulty must read from data!!");
                     ghostEventLogic = new BlazeBaseGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[0],
+                        _activityConfig.GhostActivities.First(x => x.GhostType == GhostType.Blaze),
                         _ghostEmfZonePool, _emfData);
                     huntLogic = new BlazeHuntLogic(controller);
                     ghostAbility = new PlaceholderGhostAbility();
