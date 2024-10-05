@@ -59,7 +59,8 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
                 if (Random.Range(0f, 1f) < _ghostVariables.ghostEvents)
                 {
                     if (Random.Range(0, 2) != 0)
-                        GhostEventAppear((GhostAppearType)Random.Range(0, 3), Random.Range(0, 2) != 0);
+                        GhostEventAppear((GhostAppearType)Random.Range(0, (int)GhostAppearType.Transparent), 
+                            Random.Range(0, 2) != 0);
                     else
                         GhostChasePlayer(_player, Random.Range(0, 2) != 0);
                 }
