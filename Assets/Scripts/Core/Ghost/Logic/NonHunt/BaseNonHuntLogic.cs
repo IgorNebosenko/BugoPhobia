@@ -232,6 +232,7 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
 
             var modifierMoving = 0f;
 
+            //ToDO refactor this!
             switch (_ghostActivityData.DistanceMoving)
             {
                 case DistanceMoving.Minimal:

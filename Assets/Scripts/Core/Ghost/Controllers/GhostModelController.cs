@@ -9,6 +9,11 @@ namespace ElectrumGames.Core.Ghost.Controllers
         
         private static readonly int MovingSpeed = Animator.StringToHash("MovingSpeed");
 
+        private void Update()
+        {
+            transform.forward = transform.parent.forward;
+        }
+
         public void SetSpeed(float speed)
         {
             animator.SetFloat(MovingSpeed, speed);

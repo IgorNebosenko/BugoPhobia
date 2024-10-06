@@ -32,6 +32,8 @@ namespace ElectrumGames.Core.Ghost.Configs
         [field: SerializeField] public float InRoomWeightPoint { get; private set; }
         [field: SerializeField] public float NeighborRoomWeightPoint { get; private set; }
         [field: SerializeField] public float OtherWeightPoint { get; private set; }
+        [field: Space]
+        [field: SerializeField] public float SafeHuntTime { get; private set; } = 3f;
     }
 
     [CreateAssetMenu(fileName = "GhostDifficultyList", menuName = "Ghosts configs/Ghost difficulty list")]

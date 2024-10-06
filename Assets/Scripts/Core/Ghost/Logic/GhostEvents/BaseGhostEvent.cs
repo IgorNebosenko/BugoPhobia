@@ -27,6 +27,7 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
         
         private IDisposable _ghostEventDisposable;
         private IDisposable _chaseProcess;
+        private IDisposable _appearAndChaseProcess;
         
         private IHavePosition _player;
         private Room _currentRoom;
@@ -95,8 +96,6 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
             {
                 AppearInterference();
             }
-
-
         }
 
         protected void CreateGhostEventZone()
@@ -110,6 +109,7 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
 
         protected virtual GhostEventType SelectGhostEventType()
         {
+            return GhostEventType.AppearThanChase;
             return (GhostEventType) Random.Range(0, (int) GhostEventType.AppearThanChase);
         }
 
@@ -217,8 +217,31 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
             Debug.Log("Start Ghost Appear Than Chase");
             _isGhostEvent = true;
             _ghostController.SetEnabledLogic(GhostLogicSelector.GhostEvent);
+
+            var targetPlayer = _ghostController.GhostEventAura.PlayersInAura.PickRandom();
             
-            StopGhostEvent();
+            _ghostController.SetGhostVisibility(true); // Todo Switch by appear type
+            _ghostController.IsStopped(true);
+            _ghostController.transform.LookAt(targetPlayer.Position);
+
+            _ghostEventDisposable = Observable.Timer(TimeSpan.FromSeconds(_ghostDifficultyData.SafeHuntTime)).Subscribe(
+                _ =>
+                {
+                    _ghostController.IsStopped(false);
+
+                    _chaseProcess = Observable.EveryUpdate()
+                        .Subscribe(_ => MoveToPoint(targetPlayer.Position));
+                    
+                    _appearAndChaseProcess = Observable.Timer(TimeSpan.FromSeconds(
+                            Random.Range(_ghostDifficultyData.MinSingingGhostEventTime,
+                                _ghostDifficultyData.MaxSingingGhostEventTime)))
+                        .Subscribe(
+                            _ =>
+                            {
+                                StopGhostEvent();
+                                CreateGhostEventZone();
+                            });
+                });
         }
 
         protected virtual void AppearInterference()
@@ -261,6 +284,7 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
             
             _chaseProcess?.Dispose();
             _ghostEventDisposable?.Dispose();
+            _appearAndChaseProcess?.Dispose();
         }
         
         public void MoveToPoint(Vector3 point)
