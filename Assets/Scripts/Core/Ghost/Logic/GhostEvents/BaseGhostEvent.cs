@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using ElectrumGames.Configs;
 using ElectrumGames.Core.Common;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Controllers;
 using ElectrumGames.Core.Ghost.Interactions.Pools;
+using ElectrumGames.Core.Player;
 using ElectrumGames.Core.Rooms;
 using ElectrumGames.Extensions;
 using ElectrumGames.Extensions.CommonInterfaces;
@@ -63,32 +66,35 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
 
             _ghostEventTime += Time.fixedDeltaTime;
             
-            if (_ghostEventTime >= _ghostConstants.ghostEventCooldown * _ghostDifficultyData.GhostEventsCooldownModifier
-                && CheckIsPlayerNear())
+            if (_ghostEventTime >= _ghostConstants.ghostEventCooldown * _ghostDifficultyData.GhostEventsCooldownModifier)
             {
-                _ghostEventTime = 0f;
-
-                if (Random.Range(0f, 1f) < _ghostVariables.ghostEvents)
+                var nearPlayer = GetNearPlayer();
+                if (nearPlayer != null)
                 {
-                    var ghostEventType = SelectGhostEventType();
+                    _ghostEventTime = 0f;
 
-                    switch (ghostEventType)
+                    if (Random.Range(0f, 1f) < _ghostVariables.ghostEvents)
                     {
-                        case GhostEventType.Appear:
-                            GhostEventAppear(SelectAppearType(), 
-                                Random.Range(0f, 1f) < _ghostDifficultyData.RedLightChance);
-                            break;
-                        case GhostEventType.Chase:
-                            GhostChasePlayer(_player, IsGhostByCloud());
-                            break;
-                        case GhostEventType.Singing:
-                            GhostSingingEvent(SelectAppearType());
-                            break;
-                        case GhostEventType.AppearThanChase:
-                            AppearThanChasePlayer(_player);
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException();
+                        var ghostEventType = SelectGhostEventType();
+
+                        switch (ghostEventType)
+                        {
+                            case GhostEventType.Appear:
+                                GhostEventAppear(nearPlayer, SelectAppearType(),
+                                    Random.Range(0f, 1f) < _ghostDifficultyData.RedLightChance);
+                                break;
+                            case GhostEventType.Chase:
+                                GhostChasePlayer(nearPlayer, IsGhostByCloud());
+                                break;
+                            case GhostEventType.Singing:
+                                GhostSingingEvent(nearPlayer, SelectAppearType());
+                                break;
+                            case GhostEventType.AppearThanChase:
+                                AppearThanChasePlayer(nearPlayer);
+                                break;
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
                     }
                 }
             }
@@ -127,22 +133,33 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
         }
         
 
-        public bool CheckIsPlayerNear()
+        public IPlayer GetNearPlayer()
         {
-            //ToDo is in one room && roomId == current room
-            return _ghostController.GhostEventAura.PlayersInAura.Count > 0;
+            if (_ghostController.GhostEventAura.PlayersInAura.Count == 0)
+                return null;
+            
+            var ghostRoom = _ghostController.GetCurrentRoom();
+            var listAvailableIds = ghostRoom.NeighborRooms.Select(x => x.RoomId).ToList();
+            listAvailableIds.Add(ghostRoom.RoomId);
+
+            for (var i = 0; i < _ghostController.GhostEventAura.PlayersInAura.Count; i++)
+            {
+                var playerRoomId = _ghostController.GhostEventAura.PlayersInAura[i].GetCurrentStayRoom();
+                if (listAvailableIds.Any(x => x == playerRoomId))
+                    return _ghostController.GhostEventAura.PlayersInAura[i];
+            }
+
+            return null;
         }
         
 
-        protected virtual void GhostEventAppear(GhostAppearType appearType, bool redLight)
+        protected virtual void GhostEventAppear(IPlayer targetPlayer, GhostAppearType appearType, bool redLight)
         {
             StopGhostEvent();
 
             Debug.Log("Start Ghost Appear");
             _isGhostEvent = true;
             _ghostController.SetEnabledLogic(GhostLogicSelector.GhostEvent);
-
-            var targetPlayer = _ghostController.GhostEventAura.PlayersInAura.PickRandom();
 
             _ghostController.SetGhostVisibility(true); // Todo Switch by appear type
             _ghostController.IsStopped(true);
@@ -160,15 +177,13 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
             
         }
 
-        protected virtual void GhostChasePlayer(IHavePosition player, bool isByCloud)
+        protected virtual void GhostChasePlayer(IPlayer targetPlayer, bool isByCloud)
         {
             StopGhostEvent();
 
             Debug.Log("Start Ghost Chase");
             _isGhostEvent = true;
             _ghostController.SetEnabledLogic(GhostLogicSelector.GhostEvent);
-            
-            var targetPlayer = _ghostController.GhostEventAura.PlayersInAura.PickRandom();
             
             _ghostController.SetGhostVisibility(true); // Todo Switch by appear type
             _ghostController.transform.LookAt(targetPlayer.Position);
@@ -189,15 +204,13 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
                     });
         }
 
-        protected virtual void GhostSingingEvent(GhostAppearType appearType)
+        protected virtual void GhostSingingEvent(IPlayer targetPlayer, GhostAppearType appearType)
         {
             StopGhostEvent();
 
             Debug.Log("Start Ghost Singing");
             _isGhostEvent = true;
             _ghostController.SetEnabledLogic(GhostLogicSelector.GhostEvent);
-
-            var targetPlayer = _ghostController.GhostEventAura.PlayersInAura.PickRandom();
 
             _ghostController.SetGhostVisibility(true); // Todo Switch by appear type
             _ghostController.IsStopped(true);
@@ -214,15 +227,13 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
                     });
         }
 
-        protected virtual void AppearThanChasePlayer(IHavePosition player)
+        protected virtual void AppearThanChasePlayer(IPlayer targetPlayer)
         {
             StopGhostEvent();
 
             Debug.Log("Start Ghost Appear Than Chase");
             _isGhostEvent = true;
             _ghostController.SetEnabledLogic(GhostLogicSelector.GhostEvent);
-
-            var targetPlayer = _ghostController.GhostEventAura.PlayersInAura.PickRandom();
             
             _ghostController.SetGhostVisibility(true); // Todo Switch by appear type
             _ghostController.IsStopped(true);

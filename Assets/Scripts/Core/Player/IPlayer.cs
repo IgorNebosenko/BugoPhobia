@@ -14,5 +14,7 @@ namespace ElectrumGames.Core.Player
         void Spawn(PlayerConfig config, ConfigService configService, bool isHost, InputActions inputActions, 
             ItemsConfig itemsConfig, Camera injectedCamera);
         void Despawn();
+
+        int GetCurrentStayRoom();
     }
 }

@@ -5,6 +5,7 @@ using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Items.Inventory;
 using ElectrumGames.Core.Player.Movement;
 using ElectrumGames.Core.PlayerVisuals;
+using ElectrumGames.Core.Rooms;
 using UnityEngine;
 
 namespace ElectrumGames.Core.Player
@@ -16,6 +17,8 @@ namespace ElectrumGames.Core.Player
         [SerializeField] private Transform headBob;
         [SerializeField] private Transform stayCameraTransform;
         [SerializeField] private Transform sitCameraTransform;
+        [Space]
+        [SerializeField] private float sphereRoomCastRadius = 0.5f;
 
         protected Camera playerCamera;
 
@@ -120,6 +123,23 @@ namespace ElectrumGames.Core.Player
 
         public void Despawn()
         {
+        }
+
+        public int GetCurrentStayRoom()
+        {
+            var origin = transform.position;
+            var colliders = Physics.OverlapSphere(origin, sphereRoomCastRadius);
+
+            for (var i = 0; i < colliders.Length; i++)
+            {
+                var room = colliders[i].GetComponent<Room>();
+                if (room != null)
+                {
+                    return room.RoomId;
+                }
+            }
+
+            return -1;
         }
     }
 }
