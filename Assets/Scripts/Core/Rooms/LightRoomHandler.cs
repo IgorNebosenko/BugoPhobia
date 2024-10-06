@@ -23,6 +23,11 @@ namespace ElectrumGames.Core.Rooms
         {
             IsLightOn = state;
             
+            if (IsLightOn)
+                roomSwitch.SwitchOn();
+            else
+                roomSwitch.SwitchOff();
+            
             for (var i = 0; i < lightEnvironmentObjects.Length; i++)
             {
                 lightEnvironmentObjects[i].SwitchStateTo(IsLightOn);
@@ -45,6 +50,11 @@ namespace ElectrumGames.Core.Rooms
             {
                 switchableLamps[i]?.DoFlick(flickerSpeedMin, flickerSpeedMax);
             }
+        }
+
+        public void SwitchOffLight()
+        {
+            ChangeState(false, true);
         }
     }
 }
