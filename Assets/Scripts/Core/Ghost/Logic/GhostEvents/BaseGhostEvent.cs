@@ -125,6 +125,7 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
 
         public bool CheckIsPlayerNear()
         {
+            //ToDo is in one room && roomId == current room
             return _ghostController.GhostEventAura.PlayersInAura.Count > 0;
         }
         

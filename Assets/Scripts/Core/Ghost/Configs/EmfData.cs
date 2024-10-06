@@ -18,7 +18,7 @@ namespace ElectrumGames.Core.Ghost.Configs
         [field: SerializeField] public float SwitchHeightOffset { get; private set; } = 0f;
         [field: Space]
         [field: SerializeField] public int ThrowDefaultEmf { get; private set; } = 2;
-        [field: SerializeField] public float ThrowCylinderSize { get; private set; } = 1.5f;
+        [field: SerializeField] public float ThrowSphereSize { get; private set; } = 1.5f;
         [field: SerializeField] public float ThrowHeightOffset { get; private set; } = 0f;
         [field: Space]
         [field: SerializeField] public int OtherInteractionDefaultEmf { get; private set; } = 1;
