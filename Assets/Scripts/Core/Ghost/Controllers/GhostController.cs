@@ -16,7 +16,7 @@ namespace ElectrumGames.Core.Ghost.Controllers
         [field: Space]
         [field: SerializeField] public InteractionAura InteractionAura { get; private set; }
         [field: SerializeField] public GhostEventAura GhostEventAura { get; private set; }
-        [field: SerializeField] public PlayerContactAura ContactAura { get; private set; }
+        [field: SerializeField] public ContactAura ContactAura { get; private set; }
 
         
         public INonHuntLogic NonHuntLogic { get; private set; }

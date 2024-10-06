@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ElectrumGames.Core.Ghost.Interactions
 {
-    public class PlayerContactAura : MonoBehaviour
+    public class ContactAura : MonoBehaviour
     {
         private List<IPlayer> _playersInAura = new();
         
