@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8342064594487394111}
   - component: {fileID: 533318246672577565}
   - component: {fileID: 1774532431903750137}
-  - component: {fileID: 1713490269747958503}
   - component: {fileID: 1313704069127954908}
+  - component: {fileID: 1713490269747958503}
   m_Layer: 0
   m_Name: PlayerContactZone
   m_TagString: Untagged
@@ -111,18 +111,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1713490269747958503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1982191795599064605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5a2125b2dda4b21b9bcdd0b28fe3d9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &1313704069127954908
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -150,6 +138,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1713490269747958503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982191795599064605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5a2125b2dda4b21b9bcdd0b28fe3d9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6934675742400980190
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,7 +462,6 @@ GameObject:
   - component: {fileID: 2207264959035768440}
   - component: {fileID: 7878200202833345023}
   - component: {fileID: 2253392251396524158}
-  - component: {fileID: 2979942955657217602}
   - component: {fileID: 1838253902188780866}
   m_Layer: 0
   m_Name: HuntZone
@@ -561,18 +560,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &2979942955657217602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8295653016489212846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22bc9eba5fd3fa5478a75197010a546c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &1838253902188780866
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -654,7 +641,6 @@ MonoBehaviour:
   <InteractionAura>k__BackingField: {fileID: 1731156326520605473}
   <GhostEventAura>k__BackingField: {fileID: 8875337757896709072}
   <ContactAura>k__BackingField: {fileID: 1713490269747958503}
-  <HuntAura>k__BackingField: {fileID: 2979942955657217602}
 --- !u!195 &8057804841556221538
 NavMeshAgent:
   m_ObjectHideFlags: 0

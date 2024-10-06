@@ -53,6 +53,7 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
             _roomId = roomId;
             
             _ghostController.GhostEventAura.gameObject.SetActive(true);
+            _ghostController.ContactAura.gameObject.SetActive(true);
         }
 
         public void FixedSimulate()
@@ -95,6 +96,9 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
             if (_isGhostEvent)
             {
                 AppearInterference();
+                
+                if (_ghostController.ContactAura.PlayersInAura.Count > 0)
+                    StopGhostEvent();
             }
         }
 
