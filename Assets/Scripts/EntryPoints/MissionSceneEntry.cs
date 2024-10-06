@@ -43,7 +43,11 @@ namespace ElectrumGames.EntryPoints
 
             _ghostFactory.CreateGhost(_houseController.Rooms);
 
+#if UNITY_EDITOR || UNITY_STANDALONE
             _viewManager.ShowView<InGamePresenter>();
+#elif UNITY_ANDROID
+            _viewManager.ShowView<InGameAndroidPresenter>();
+#endif
         }
     }
 }

@@ -19,7 +19,11 @@ namespace ElectrumGames.UI.Presenters
 
         public void OnContinueButtonClicked()
         {
+#if UNITY_EDITOR || UNITY_STANDALONE
             _viewManager.ShowView<InGamePresenter>();
+#elif UNITY_ANDROID
+            _viewManager.ShowView<InGameAndroidPresenter>();
+#endif
         }
 
         public void OnSettingsButtonClicked()
