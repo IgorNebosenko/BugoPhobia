@@ -17,6 +17,19 @@ namespace ElectrumGames.Core.Environment
         private float[] _defaultLightIntensity;
         private bool _isFlick;
 
+        public void SetRedState(bool isRed)
+        {
+            Debug.Log(isRed);
+            
+            for (var i = 0; i < lightSources.Length; i++)
+            {
+                if (isRed)
+                    lightSources[i].color = redLightColor;
+                else
+                    lightSources[i].colorTemperature = normalTemperature;
+            }
+        }
+
         private void Awake()
         {
             _defaultLightIntensity = new float[lightSources.Length];

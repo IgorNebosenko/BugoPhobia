@@ -12,8 +12,27 @@ namespace ElectrumGames.Core.Rooms
         [SerializeField] private float flickerSpeedMin = 0.1f;
         [SerializeField] private float flickerSpeedMax = 0.25f;
 
-        public bool IsLightOn { get; private set; }
+        private bool _redLight;
         
+        public bool IsLightOn { get; private set; }
+        public bool RedLight
+        {
+            set
+            {
+                for (var i = 0; i < lightEnvironmentObjects.Length; i++)
+                {
+                    lightEnvironmentObjects[i].SetRedState(value);
+                }
+
+                for (var i = 0; i < switchableLamps.Length; i++)
+                {
+                    switchableLamps[i].SetRedState(value);
+                }
+                
+                _redLight = value;
+            }
+        }
+
         private void OnEnable()
         {
             roomSwitch.Switch += ChangeState;
@@ -44,12 +63,17 @@ namespace ElectrumGames.Core.Rooms
         {
             for (var i = 0; i < lightEnvironmentObjects.Length; i++)
             {
-                lightEnvironmentObjects[i]?.DoFlick(flickerSpeedMin, flickerSpeedMax);
+                lightEnvironmentObjects[i]?.DoFlick(flickerSpeedMin, flickerSpeedMax, _redLight);
             }
             for (var i = 0; i < switchableLamps.Length; i++)
             {
-                switchableLamps[i]?.DoFlick(flickerSpeedMin, flickerSpeedMax);
+                switchableLamps[i]?.DoFlick(flickerSpeedMin, flickerSpeedMax, _redLight);
             }
+        }
+
+        public void SwitchOnLight()
+        {
+            ChangeState(true, false);
         }
 
         public void SwitchOffLight()

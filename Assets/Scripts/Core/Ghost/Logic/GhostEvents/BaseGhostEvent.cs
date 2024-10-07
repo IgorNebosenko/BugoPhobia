@@ -77,11 +77,19 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
                     {
                         var ghostRoom = _ghostController.GetCurrentRoom();
                     
-                        ghostRoom.LightRoomHandler.SwitchOffLight();
-                    
                         if (Random.Range(0f, 1f) < _ghostDifficultyData.DoorcCloseChance)
                             ghostRoom.DoorsRoomHandler.CloseDoors();
-                        
+
+                        if (Random.Range(0f, 1f) < _ghostDifficultyData.RedLightChance || true)
+                        {
+                            ghostRoom.LightRoomHandler.RedLight = true;
+                            ghostRoom.LightRoomHandler.SwitchOnLight();
+                        }
+                        else
+                        {
+                            ghostRoom.LightRoomHandler.SwitchOffLight();
+                        }
+
                         var ghostEventType = SelectGhostEventType();
 
                         switch (ghostEventType)
@@ -109,9 +117,9 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
             if (_isGhostEvent)
             {
                 AppearInterference();
-                
+
                 if (_ghostController.ContactAura.PlayersInAura.Count > 0)
-                    StopGhostEvent();
+                    OnGhostEventEnded(0);
             }
         }
 
@@ -175,12 +183,7 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
             _ghostEventDisposable = Observable.Timer(TimeSpan.FromSeconds(
                     Random.Range(_ghostDifficultyData.MinStayGhostEventTime,
                         _ghostDifficultyData.MaxStayGhostEventTime)))
-                .Subscribe(
-                    _ =>
-                    {
-                        StopGhostEvent();
-                        CreateGhostEventZone();
-                    });
+                .Subscribe(OnGhostEventEnded);
             
         }
 
@@ -203,12 +206,7 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
             _ghostEventDisposable = Observable.Timer(TimeSpan.FromSeconds(
                     Random.Range(_ghostDifficultyData.MinChaseGhostEventTime,
                         _ghostDifficultyData.MaxChaseGhostEventTime)))
-                .Subscribe(
-                    _ =>
-                    {
-                        StopGhostEvent();
-                        CreateGhostEventZone();
-                    });
+                .Subscribe(OnGhostEventEnded);
         }
 
         protected virtual void GhostSingingEvent(IPlayer targetPlayer, GhostAppearType appearType)
@@ -226,12 +224,7 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
             _ghostEventDisposable = Observable.Timer(TimeSpan.FromSeconds(
                     Random.Range(_ghostDifficultyData.MinSingingGhostEventTime,
                         _ghostDifficultyData.MaxSingingGhostEventTime)))
-                .Subscribe(
-                    _ =>
-                    {
-                        StopGhostEvent();
-                        CreateGhostEventZone();
-                    });
+                .Subscribe(OnGhostEventEnded);
         }
 
         protected virtual void AppearThanChasePlayer(IPlayer targetPlayer)
@@ -257,12 +250,7 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
                     _appearAndChaseProcess = Observable.Timer(TimeSpan.FromSeconds(
                             Random.Range(_ghostDifficultyData.MinSingingGhostEventTime,
                                 _ghostDifficultyData.MaxSingingGhostEventTime)))
-                        .Subscribe(
-                            _ =>
-                            {
-                                StopGhostEvent();
-                                CreateGhostEventZone();
-                            });
+                        .Subscribe(OnGhostEventEnded);
                 });
         }
 
@@ -294,6 +282,16 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
 
                 _ghostController.GhostEventAura.ResetGhostInteractableExit();
             }
+        }
+
+        protected virtual void OnGhostEventEnded(long _)
+        {
+            StopGhostEvent();
+            CreateGhostEventZone();
+                                
+            var ghostRoom = _ghostController.GetCurrentRoom();
+            ghostRoom.LightRoomHandler.RedLight = false;
+            ghostRoom.LightRoomHandler.SwitchOffLight();
         }
 
         protected void StopGhostEvent()
