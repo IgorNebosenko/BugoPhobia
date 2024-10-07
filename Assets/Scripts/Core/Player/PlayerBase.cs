@@ -4,6 +4,7 @@ using ElectrumGames.Configs;
 using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Items.Inventory;
 using ElectrumGames.Core.Player.Movement;
+using ElectrumGames.Core.Player.Sanity;
 using ElectrumGames.Core.PlayerVisuals;
 using ElectrumGames.Core.Rooms;
 using UnityEngine;
@@ -42,6 +43,7 @@ namespace ElectrumGames.Core.Player
         public int NetId { get; protected set; }
         public int OwnerId { get; protected set; }
         public IInventory Inventory { get; private set; }
+        public ISanity Sanity { get; private set; }
 
         public Vector3 Position => transform.position;
 
@@ -95,6 +97,8 @@ namespace ElectrumGames.Core.Player
 
             Inventory = new PlayerInventory();
             Inventory.Init(playerConfig.InventorySlots, transform, NetId);
+
+            Sanity = new PlayerSanity();
 
             IsHost = isHost;
 
