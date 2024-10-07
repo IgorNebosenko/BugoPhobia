@@ -79,24 +79,15 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
                     
                         if (Random.Range(0f, 1f) < _ghostDifficultyData.DoorcCloseChance)
                             ghostRoom.DoorsRoomHandler.CloseDoors();
-
-                        if (Random.Range(0f, 1f) < _ghostDifficultyData.RedLightChance || true)
-                        {
-                            ghostRoom.LightRoomHandler.RedLight = true;
-                            ghostRoom.LightRoomHandler.SwitchOnLight();
-                        }
-                        else
-                        {
-                            ghostRoom.LightRoomHandler.SwitchOffLight();
-                        }
-
+                        
+                        ghostRoom.LightRoomHandler.SwitchOffLight();
+                        
                         var ghostEventType = SelectGhostEventType();
 
                         switch (ghostEventType)
                         {
                             case GhostEventType.Appear:
-                                GhostEventAppear(nearPlayer, SelectAppearType(),
-                                    Random.Range(0f, 1f) < _ghostDifficultyData.RedLightChance);
+                                GhostEventAppear(nearPlayer, SelectAppearType(), ghostRoom);
                                 break;
                             case GhostEventType.Chase:
                                 GhostChasePlayer(nearPlayer, IsGhostByCloud());
@@ -168,9 +159,15 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
         }
         
 
-        protected virtual void GhostEventAppear(IPlayer targetPlayer, GhostAppearType appearType, bool redLight)
+        protected virtual void GhostEventAppear(IPlayer targetPlayer, GhostAppearType appearType, Room ghostRoom)
         {
             StopGhostEvent();
+            
+            if (Random.Range(0f, 1f) < _ghostDifficultyData.RedLightChance)
+            {
+                ghostRoom.LightRoomHandler.RedLight = true;
+                ghostRoom.LightRoomHandler.SwitchOnLight();
+            }
 
             Debug.Log("Start Ghost Appear");
             _isGhostEvent = true;
