@@ -72,16 +72,16 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
                 if (nearPlayer != null)
                 {
                     _ghostEventTime = 0f;
-                    
-                    var ghostRoom = _ghostController.GetCurrentRoom();
-                    
-                    ghostRoom.LightRoomHandler.SwitchOffLight();
-                    
-                    if (Random.Range(0f, 1f) < _ghostDifficultyData.DoorcCloseChance)
-                        ghostRoom.DoorsRoomHandler.CloseDoors();
 
                     if (Random.Range(0f, 1f) < _ghostVariables.ghostEvents)
                     {
+                        var ghostRoom = _ghostController.GetCurrentRoom();
+                    
+                        ghostRoom.LightRoomHandler.SwitchOffLight();
+                    
+                        if (Random.Range(0f, 1f) < _ghostDifficultyData.DoorcCloseChance)
+                            ghostRoom.DoorsRoomHandler.CloseDoors();
+                        
                         var ghostEventType = SelectGhostEventType();
 
                         switch (ghostEventType)
