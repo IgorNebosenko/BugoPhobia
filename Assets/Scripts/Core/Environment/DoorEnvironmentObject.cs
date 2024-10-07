@@ -52,9 +52,9 @@ namespace ElectrumGames.Core.Environment
             _isLocked = false;
         }
 
-        public void OpenDoor()
+        public void CloseDoor()
         {
-            _isLocked = false;
+            TouchDoor(minAngle, openSpeed);
         }
 
         public override void OnInteract()

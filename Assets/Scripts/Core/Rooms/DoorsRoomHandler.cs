@@ -8,10 +8,16 @@ namespace ElectrumGames.Core.Rooms
         [SerializeField] private DoorEnvironmentObject[] doors;
 
 
-        public void OpenDoors()
+        public void UnlockDoors()
         {
             for (var i = 0; i < doors.Length; i++)
-                doors[i].OpenDoor();
+                doors[i].UnlockDoor();
+        }
+
+        public void CloseDoors()
+        {
+            for (var i = 0; i < doors.Length; i++)
+                doors[i].CloseDoor();
         }
     }
 }

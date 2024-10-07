@@ -46,7 +46,7 @@ namespace ElectrumGames.Core.Environment.House
             IsKeyPicked = true;
 
             for (var i = 0; i < rooms.Length; i++)
-                rooms[i].DoorsRoomHandler.OpenDoors();
+                rooms[i].DoorsRoomHandler.UnlockDoors();
         }
 
         private void OnEnable()
