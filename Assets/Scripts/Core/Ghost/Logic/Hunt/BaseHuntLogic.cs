@@ -1,8 +1,10 @@
-﻿using ElectrumGames.Configs;
+﻿using System;
+using ElectrumGames.Configs;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Controllers;
 using ElectrumGames.Core.Missions;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace ElectrumGames.Core.Ghost.Logic.Hunt
 {
@@ -15,6 +17,9 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
 
         private float _huntCooldownTime;
         private bool _isHunt;
+
+        private IDisposable _flickProcess;
+        private IDisposable _huntProcess;
         
         public bool IsInterrupt { get; set; }
 
@@ -75,6 +80,9 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
         {
             _isHunt = false;
             _ghostController.SetEnabledLogic(GhostLogicSelector.All);
+            
+            _flickProcess?.Dispose();
+            _huntProcess?.Dispose();
         }
     }
 }
