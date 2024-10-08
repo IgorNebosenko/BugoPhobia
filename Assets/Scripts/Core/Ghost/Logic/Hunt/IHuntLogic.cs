@@ -1,7 +1,10 @@
-﻿namespace ElectrumGames.Core.Ghost.Logic.Hunt
+﻿using UnityEngine;
+
+namespace ElectrumGames.Core.Ghost.Logic.Hunt
 {
     public interface IHuntLogic : IGhostLogic
     {
-        bool TryHunt();
+        bool IsSeePlayer();
+        void MoveToPoint(Vector3 point);
     }
 }
