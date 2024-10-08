@@ -24,6 +24,9 @@ namespace ElectrumGames.Core.Items
         
         private bool _isOn;
         private bool _ghostInteractionOn;
+
+        private Collider[] _colliders = new Collider[CollidersCount];
+        private const int CollidersCount = 16;
         
         public bool IsElectricityOn => _isOn;
 
@@ -39,11 +42,13 @@ namespace ElectrumGames.Core.Items
             if (_ghostInteractionOn || !_isOn)
                 return;
             
-            var colliders = Physics.OverlapSphere(transform.position, radiusOverlapDetection);
+            var size = Physics.OverlapSphereNonAlloc(transform.position, radiusOverlapDetection, _colliders);
 
-            for (var i = 0; i < colliders.Length; i++)
+            var isRoomFounded = false;
+            
+            for (var i = 0; i < size; i++)
             {
-                if (colliders[i].TryGetComponent<Room>(out var room))
+                if (_colliders[i].TryGetComponent<Room>(out var room))
                 {
                     var minTemp = room.TemperatureRoom.AverageTemperature - differenceTemperature;
                     var maxTemp = room.TemperatureRoom.AverageTemperature + differenceTemperature;
@@ -52,11 +57,13 @@ namespace ElectrumGames.Core.Items
                         minTemp = 0.1f;
                     
                     DisplayTemperature(Random.Range(minTemp, maxTemp));
+                    
+                    isRoomFounded = true;
                     break;
                 }
             }
 
-            if (colliders.Length == 0)
+            if (!isRoomFounded)
                 thermometerText.text = textOn;
         }
 

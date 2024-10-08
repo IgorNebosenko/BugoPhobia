@@ -7,7 +7,7 @@ namespace ElectrumGames.Core.Environment
     public class LightEnvironmentObject : EnvironmentObjectBase
     {
         [SerializeField] private float normalTemperature;
-        [SerializeField] private Color redLightColor = Color.red;
+        [SerializeField] private float redLightTemperature = 1500f;
         [Space]
         [SerializeField] private Light[] lightSources;
         
@@ -16,6 +16,17 @@ namespace ElectrumGames.Core.Environment
 
         private float[] _defaultLightIntensity;
         private bool _isFlick;
+
+        public void SetRedState(bool isRed)
+        {
+            for (var i = 0; i < lightSources.Length; i++)
+            {
+                if (isRed)
+                    lightSources[i].colorTemperature = redLightTemperature;
+                else
+                    lightSources[i].colorTemperature = normalTemperature;
+            }
+        }
 
         private void Awake()
         {
@@ -56,7 +67,7 @@ namespace ElectrumGames.Core.Environment
                 var j = i;
                 
                 if (isRed)
-                    lightSources[j].color = redLightColor;
+                    lightSources[i].colorTemperature = redLightTemperature;
                 else
                     lightSources[j].colorTemperature = normalTemperature;
                 

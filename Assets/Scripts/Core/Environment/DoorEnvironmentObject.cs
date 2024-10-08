@@ -12,6 +12,7 @@ namespace ElectrumGames.Core.Environment
         [SerializeField] private float openSpeed = 0.1f;
         
         private bool _isLocked;
+        private float _initialAngle;
 
         public Transform Transform => transform;
         [field: SerializeField] public bool DoorWithLock { get; private set; }
@@ -20,6 +21,7 @@ namespace ElectrumGames.Core.Environment
         private void Start()
         {
             _isLocked = DoorWithLock;
+            _initialAngle = transform.localEulerAngles.y;
         }
 
         public void SetCameraAngleAndInteract(Vector2 inputLook)
@@ -42,9 +44,7 @@ namespace ElectrumGames.Core.Environment
         public void LockDoor()
         {
             _isLocked = true;
-            CurrentAngle = minAngle;
-
-            transform.DOLocalRotate(Vector3.up * CurrentAngle, openSpeed);
+            CloseDoor();
         }
 
         public void UnlockDoor()
@@ -52,9 +52,11 @@ namespace ElectrumGames.Core.Environment
             _isLocked = false;
         }
 
-        public void OpenDoor()
+        public void CloseDoor()
         {
-            _isLocked = false;
+            CurrentAngle = _initialAngle;
+            
+            transform.DOLocalRotate(Vector3.up * CurrentAngle, openSpeed);
         }
 
         public override void OnInteract()

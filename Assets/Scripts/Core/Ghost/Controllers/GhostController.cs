@@ -16,8 +16,12 @@ namespace ElectrumGames.Core.Ghost.Controllers
         [field: Space]
         [field: SerializeField] public InteractionAura InteractionAura { get; private set; }
         [field: SerializeField] public GhostEventAura GhostEventAura { get; private set; }
-        [field: SerializeField] public PlayerContactAura ContactAura { get; private set; }
+        [field: SerializeField] public ContactAura ContactAura { get; private set; }
 
+        [SerializeField] private float sphereRoomCastRadius = 0.5f;
+
+        private Collider[] _colliders = new Collider[CollidersCount];
+        private const int CollidersCount = 16;
         
         public INonHuntLogic NonHuntLogic { get; private set; }
         public IGhostEventLogic GhostEventLogic { get; private set; }
@@ -90,6 +94,19 @@ namespace ElectrumGames.Core.Ghost.Controllers
             GhostEventLogic = ghostEventLogic;
             HuntLogic = huntLogic;
             GhostAbility = ghostAbility;
+        }
+
+        public Room GetCurrentRoom()
+        {
+            var size = Physics.OverlapSphereNonAlloc(transform.position, sphereRoomCastRadius, _colliders);
+
+            for (var i = 0; i < size; i++)
+            {
+                if (_colliders[i].TryGetComponent<Room>(out var room))
+                    return room;
+            }
+
+            return null;
         }
     }
 }

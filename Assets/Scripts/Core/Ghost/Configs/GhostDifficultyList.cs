@@ -21,7 +21,8 @@ namespace ElectrumGames.Core.Ghost.Configs
         [field: SerializeField] public float GhostEventsCooldownModifier { get; private set; }
         [field: SerializeField] public float MinStayGhostEventTime { get; private set; } = 3f;
         [field: SerializeField] public float MaxStayGhostEventTime { get; private set; } = 4f;
-        [field: SerializeField] public float RedLightChance { get; private set; } = 0.2f;
+        [field: SerializeField, Range(0f, 1f)] public float RedLightChance { get; private set; } = 0.2f;
+        [field: SerializeField, Range(0f, 1f)] public float DoorcCloseChance { get; private set; } = 0.3f;
         [field: Space]
         [field: SerializeField] public float MinChaseGhostEventTime { get; private set; } = 6f;
         [field: SerializeField] public float MaxChaseGhostEventTime { get; private set; } = 7f;
@@ -34,6 +35,11 @@ namespace ElectrumGames.Core.Ghost.Configs
         [field: SerializeField] public float OtherWeightPoint { get; private set; }
         [field: Space]
         [field: SerializeField] public float SafeHuntTime { get; private set; } = 3f;
+        [field: Space]
+        [field: SerializeField] public float DefaultSanity { get; private set; } = 100f;
+        [field: SerializeField] public float DefaultDrainSanity { get; private set; } = -0.25f;
+        [field: SerializeField] public float MinGhostEventDrainSanity { get; private set; } = -10f;
+        [field: SerializeField] public float MaxGhostEventDrainSanity { get; private set; } = -15f;
     }
 
     [CreateAssetMenu(fileName = "GhostDifficultyList", menuName = "Ghosts configs/Ghost difficulty list")]

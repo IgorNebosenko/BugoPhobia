@@ -1,10 +1,14 @@
 ﻿using System.Collections.Generic;
 using Core.Player.Interactions;
 using ElectrumGames.Configs;
+using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Items.Inventory;
 using ElectrumGames.Core.Player.Movement;
+using ElectrumGames.Core.Player.Sanity;
 using ElectrumGames.Core.PlayerVisuals;
+using ElectrumGames.Core.Rooms;
+using ElectrumGames.Extensions;
 using UnityEngine;
 
 namespace ElectrumGames.Core.Player
@@ -16,15 +20,19 @@ namespace ElectrumGames.Core.Player
         [SerializeField] private Transform headBob;
         [SerializeField] private Transform stayCameraTransform;
         [SerializeField] private Transform sitCameraTransform;
+        [Space]
+        [SerializeField] private float sphereRoomCastRadius = 0.5f;
 
         protected Camera playerCamera;
 
         protected InputActions inputActions;
         protected ItemsConfig itemsConfig;
+
+        protected GhostDifficultyData ghostDifficultyData;
         
         protected IInput input;
-        protected IMotor motor;
-        protected CameraLifter cameraLifter;
+        private IMotor _motor;
+        private CameraLifter _cameraLifter;
 
         protected IInteraction interaction;
 
@@ -35,10 +43,14 @@ namespace ElectrumGames.Core.Player
         protected PlayerConfig playerConfig;
         protected ConfigService configService;
 
+        private Collider[] _colliders = new Collider[CollidersArraySize];
+        private const int CollidersArraySize = 40;
+
         public bool IsHost { get; protected set; }
         public int NetId { get; protected set; }
         public int OwnerId { get; protected set; }
         public IInventory Inventory { get; private set; }
+        public ISanity Sanity { get; private set; }
 
         public Vector3 Position => transform.position;
 
@@ -56,9 +68,9 @@ namespace ElectrumGames.Core.Player
             var deltaTime = Time.deltaTime;
 
             input.Update(deltaTime);
-            motor.Simulate(input, deltaTime);
+            _motor.Simulate(input, deltaTime);
             
-            cameraLifter.UpdateInput(input);
+            _cameraLifter.UpdateInput(input);
 
             foreach (var simulateVisual in simulateVisuals)
             {
@@ -71,27 +83,42 @@ namespace ElectrumGames.Core.Player
             if (!_isInited)
                 return;
 
-            motor.FixedSimulate(input, Time.fixedDeltaTime);
+            _motor.FixedSimulate(input, Time.fixedDeltaTime);
+            SanityDrainProcess();
             OnInteractionSimulate(Time.fixedDeltaTime);
         }
-        
+
+        protected virtual void SanityDrainProcess()
+        {
+            var currentRoom = GetCurrentRoom();
+            
+            if (currentRoom.UnityNullCheck() || currentRoom.IsElectricityOn)
+                return;
+            
+            Sanity.ChangeSanity(ghostDifficultyData.DefaultDrainSanity * Time.fixedDeltaTime, -1);
+        }
+
         protected virtual void OnInteractionSimulate(float deltaTime)
         {}
 
         public void Spawn(PlayerConfig config, ConfigService configSrv, bool isHost, InputActions inputActions, 
-            ItemsConfig itemsConfig, Camera injectedCamera)
+            ItemsConfig itemsConfig, GhostDifficultyData difficultyData, Camera injectedCamera)
         {
             playerConfig = config;
             configService = configSrv;
 
             this.inputActions = inputActions;
             this.itemsConfig = itemsConfig;
+
+            ghostDifficultyData = difficultyData;
             
             input = new PlayerInput(inputActions);
             input.Init();
 
             Inventory = new PlayerInventory();
             Inventory.Init(playerConfig.InventorySlots, transform, NetId);
+            
+            Sanity = new PlayerSanity(ghostDifficultyData.DefaultSanity, NetId);
 
             IsHost = isHost;
 
@@ -102,8 +129,8 @@ namespace ElectrumGames.Core.Player
                 playerCamera.transform.localPosition = Vector3.zero;
             }
 
-            motor = new PlayerMovementMotor(characterController, playerCamera, config, configService);
-            cameraLifter = new CameraLifter(playerConfig, headBob, stayCameraTransform.localPosition,
+            _motor = new PlayerMovementMotor(characterController, playerCamera, config, configService);
+            _cameraLifter = new CameraLifter(playerConfig, headBob, stayCameraTransform.localPosition,
                 sitCameraTransform.localPosition);
 
             playerCamera.fieldOfView = configService.FOV;
@@ -120,6 +147,32 @@ namespace ElectrumGames.Core.Player
 
         public void Despawn()
         {
+        }
+
+        public int GetCurrentStayRoom()
+        {
+            var size = Physics.OverlapSphereNonAlloc(transform.position, sphereRoomCastRadius, _colliders);
+            
+            for (var i = 0; i < size; i++)
+            {
+                if (_colliders[i].TryGetComponent<Room>(out var room))
+                    return room.RoomId;
+            }
+
+            return -1;
+        }
+
+        private Room GetCurrentRoom()
+        {
+            var size = Physics.OverlapSphereNonAlloc(transform.position, sphereRoomCastRadius, _colliders);
+            
+            for (var i = 0; i < size; i++)
+            {
+                if (_colliders[i].TryGetComponent<Room>(out var room))
+                    return room;
+            }
+
+            return null;
         }
     }
 }
