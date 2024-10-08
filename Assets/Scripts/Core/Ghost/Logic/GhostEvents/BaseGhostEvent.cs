@@ -37,6 +37,8 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
 
         private float _ghostEventTime;
         private bool _isGhostEvent;
+
+        private bool _isDecreaseSanityByTouch;
         
         public bool IsInterrupt { get; set; }
 
@@ -110,7 +112,18 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
                 AppearInterference();
 
                 if (_ghostController.ContactAura.PlayersInAura.Count > 0)
+                {
+                    if (_isDecreaseSanityByTouch)
+                    {
+                        _ghostController.ContactAura.PlayersInAura[0].Sanity.GetGhostEvent(
+                            _ghostDifficultyData.MinGhostEventDrainSanity,
+                            _ghostDifficultyData.MaxGhostEventDrainSanity, _ghostController.NetId);
+                    }
+
+                    _isDecreaseSanityByTouch = false;
+                    
                     OnGhostEventEnded(0);
+                }
             }
         }
 
@@ -163,6 +176,10 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
         {
             StopGhostEvent();
             
+            targetPlayer.Sanity.GetGhostEvent(
+                _ghostDifficultyData.MinGhostEventDrainSanity,
+                _ghostDifficultyData.MaxGhostEventDrainSanity, _ghostController.NetId);
+            
             if (Random.Range(0f, 1f) < _ghostDifficultyData.RedLightChance)
             {
                 ghostRoom.LightRoomHandler.RedLight = true;
@@ -188,6 +205,8 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
         {
             StopGhostEvent();
 
+            _isDecreaseSanityByTouch = true;
+            
             Debug.Log("Start Ghost Chase");
             _isGhostEvent = true;
             _ghostController.SetEnabledLogic(GhostLogicSelector.GhostEvent);
@@ -209,6 +228,10 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
         protected virtual void GhostSingingEvent(IPlayer targetPlayer, GhostAppearType appearType)
         {
             StopGhostEvent();
+            
+            targetPlayer.Sanity.GetGhostEvent(
+                _ghostDifficultyData.MinGhostEventDrainSanity,
+                _ghostDifficultyData.MaxGhostEventDrainSanity, _ghostController.NetId);
 
             Debug.Log("Start Ghost Singing");
             _isGhostEvent = true;
@@ -227,6 +250,8 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
         protected virtual void AppearThanChasePlayer(IPlayer targetPlayer)
         {
             StopGhostEvent();
+
+            _isDecreaseSanityByTouch = true;
 
             Debug.Log("Start Ghost Appear Than Chase");
             _isGhostEvent = true;

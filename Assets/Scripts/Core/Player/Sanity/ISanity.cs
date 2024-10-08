@@ -5,5 +5,6 @@ namespace ElectrumGames.Core.Player.Sanity
         float Sanity { get; }
         
         void ChangeSanity(float value, int ownerId);
+        void GetGhostEvent(float minGhostEventDrainSanity, float maxGhostEventDrainSanity, int ownerId);
     }
 }

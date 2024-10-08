@@ -27,5 +27,12 @@ namespace ElectrumGames.Core.Player.Sanity
             
             Debug.Log($"Current sanity is: {Sanity}");
         }
+
+        public void GetGhostEvent(float minGhostEventDrainSanity, float maxGhostEventDrainSanity, int ownerId)
+        {
+            var decreaseSanity = Random.Range(maxGhostEventDrainSanity, minGhostEventDrainSanity);
+            
+            ChangeSanity(decreaseSanity, ownerId);
+        }
     }
 }
