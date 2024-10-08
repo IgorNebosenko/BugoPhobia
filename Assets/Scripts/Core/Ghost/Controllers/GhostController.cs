@@ -20,6 +20,8 @@ namespace ElectrumGames.Core.Ghost.Controllers
 
         [SerializeField] private float sphereRoomCastRadius = 0.5f;
 
+        private Collider[] _colliders = new Collider[CollidersCount];
+        private const int CollidersCount = 16;
         
         public INonHuntLogic NonHuntLogic { get; private set; }
         public IGhostEventLogic GhostEventLogic { get; private set; }
@@ -96,16 +98,12 @@ namespace ElectrumGames.Core.Ghost.Controllers
 
         public Room GetCurrentRoom()
         {
-            var origin = transform.position;
-            var colliders = Physics.OverlapSphere(origin, sphereRoomCastRadius);
+            var size = Physics.OverlapSphereNonAlloc(transform.position, sphereRoomCastRadius, _colliders);
 
-            for (var i = 0; i < colliders.Length; i++)
+            for (var i = 0; i < size; i++)
             {
-                var room = colliders[i].GetComponent<Room>();
-                if (room != null)
-                {
+                if (_colliders[i].TryGetComponent<Room>(out var room))
                     return room;
-                }
             }
 
             return null;

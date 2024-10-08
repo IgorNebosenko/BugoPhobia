@@ -35,6 +35,9 @@ namespace ElectrumGames.Core.Items
 
         private float _lastValue;
         
+        private Collider[] _colliders = new Collider[CollidersCount];
+        private const int CollidersCount = 16;
+        
         public bool IsElectricityOn => _isOn;
 
         private void Start()
@@ -47,11 +50,11 @@ namespace ElectrumGames.Core.Items
             if (_ghostInteractionOn || !_isOn)
                 return;
             
-            var colliders = Physics.OverlapSphere(transform.position, radiusOverlapDetection);
+            var size = Physics.OverlapSphereNonAlloc(transform.position, radiusOverlapDetection, _colliders);
 
-            for (var i = 0; i < colliders.Length; i++)
+            for (var i = 0; i < size; i++)
             {
-                if (colliders[i].TryGetComponent<Room>(out var room))
+                if (_colliders[i].TryGetComponent<Room>(out var room))
                 {
                     var minRad = room.RadiationRoomHandler.Radiation - differenceRadiation;
                     var maxRad = room.RadiationRoomHandler.Radiation + differenceRadiation;
