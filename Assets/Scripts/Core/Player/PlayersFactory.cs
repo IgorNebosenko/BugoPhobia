@@ -1,5 +1,6 @@
 ﻿using ElectrumGames.CommonInterfaces;
 using ElectrumGames.Configs;
+using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Player.Movement;
 using ElectrumGames.Network;
@@ -17,6 +18,7 @@ namespace ElectrumGames.Core.Player
         private InputActions _inputActions;
         private ConfigService _configService;
         private ItemsConfig _itemsConfig;
+        private GhostDifficultyList _difficultyList;
 
         private Camera _playerCamera;
         
@@ -30,13 +32,14 @@ namespace ElectrumGames.Core.Player
         
         [Inject]
         private void Construct(NetIdFactory netIdFactory, PlayerConfig playerConfig, InputActions inputActions,
-            ConfigService configService, ItemsConfig itemsConfig, Camera playerCamera)
+            ConfigService configService, ItemsConfig itemsConfig, GhostDifficultyList difficultyList, Camera playerCamera)
         {
             _netIdFactory = netIdFactory;
             _playerConfig = playerConfig;
             _inputActions = inputActions;
             _configService = configService;
             _itemsConfig = itemsConfig;
+            _difficultyList = difficultyList;
 
             _playerCamera = playerCamera;
 
@@ -46,7 +49,9 @@ namespace ElectrumGames.Core.Player
         public IPlayer CreatePlayer(bool isHost, Vector3 position, Quaternion rotation)
         {
             var player = Instantiate(playerTemplate, position, rotation, transform);
-            player.Spawn(_playerConfig, _configService, isHost, _inputActions, _itemsConfig, _playerCamera);
+            Debug.LogWarning("Set difficulty from list by config!");
+            player.Spawn(_playerConfig, _configService, isHost, _inputActions, _itemsConfig, 
+                _difficultyList.GhostDifficultyData[0], _playerCamera);
             
             return (Player)_netIdFactory.Initialize(player, NetId);
         }

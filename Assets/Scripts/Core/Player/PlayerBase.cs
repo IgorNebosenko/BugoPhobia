@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Core.Player.Interactions;
 using ElectrumGames.Configs;
+using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Items.Inventory;
 using ElectrumGames.Core.Player.Movement;
@@ -26,6 +27,8 @@ namespace ElectrumGames.Core.Player
 
         protected InputActions inputActions;
         protected ItemsConfig itemsConfig;
+
+        protected GhostDifficultyData ghostDifficultyData;
         
         protected IInput input;
         private IMotor _motor;
@@ -92,30 +95,30 @@ namespace ElectrumGames.Core.Player
             if (currentRoom.UnityNullCheck() || currentRoom.IsElectricityOn)
                 return;
             
-            Debug.LogWarning("Value of drain sanity must be read from difficulty!");
-            Sanity.ChangeSanity(-0.25f * Time.fixedDeltaTime, -1);
+            Sanity.ChangeSanity(ghostDifficultyData.DefaultDrainSanity * Time.fixedDeltaTime, -1);
         }
 
         protected virtual void OnInteractionSimulate(float deltaTime)
         {}
 
         public void Spawn(PlayerConfig config, ConfigService configSrv, bool isHost, InputActions inputActions, 
-            ItemsConfig itemsConfig, Camera injectedCamera)
+            ItemsConfig itemsConfig, GhostDifficultyData difficultyData, Camera injectedCamera)
         {
             playerConfig = config;
             configService = configSrv;
 
             this.inputActions = inputActions;
             this.itemsConfig = itemsConfig;
+
+            ghostDifficultyData = difficultyData;
             
             input = new PlayerInput(inputActions);
             input.Init();
 
             Inventory = new PlayerInventory();
             Inventory.Init(playerConfig.InventorySlots, transform, NetId);
-
-            Debug.LogWarning("Sanity must be read from difficulty config!");
-            Sanity = new PlayerSanity(100, NetId);
+            
+            Sanity = new PlayerSanity(ghostDifficultyData.DefaultSanity, NetId);
 
             IsHost = isHost;
 
