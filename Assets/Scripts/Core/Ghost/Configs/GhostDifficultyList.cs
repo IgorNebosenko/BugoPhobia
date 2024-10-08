@@ -34,6 +34,7 @@ namespace ElectrumGames.Core.Ghost.Configs
         [field: SerializeField] public float NeighborRoomWeightPoint { get; private set; }
         [field: SerializeField] public float OtherWeightPoint { get; private set; }
         [field: Space]
+        [field: SerializeField] public float HuntChance { get; private set; } = 0.7f;
         [field: SerializeField] public float SafeHuntTime { get; private set; } = 3f;
         [field: Space]
         [field: SerializeField] public float DefaultSanity { get; private set; } = 100f;
