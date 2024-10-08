@@ -1,6 +1,7 @@
 ﻿using ElectrumGames.Configs;
 using ElectrumGames.Core.Environment.House;
 using ElectrumGames.Core.Ghost;
+using ElectrumGames.Core.Missions;
 using ElectrumGames.Core.Player;
 using ElectrumGames.MVP.Managers;
 using ElectrumGames.UI.Presenters;
@@ -20,10 +21,13 @@ namespace ElectrumGames.EntryPoints
         private ConfigService _configService;
 
         private HouseController _houseController;
+
+        private MissionPlayersHandler _missionPlayersHandler;
         
         [Inject]
         private void Construct(PlayersFactory playersFactory, GhostFactory ghostFactory,
-            ViewManager viewManager, ConfigService configService, HouseController houseController)
+            ViewManager viewManager, ConfigService configService, HouseController houseController, 
+            MissionPlayersHandler missionPlayersHandler)
         {
             _playersFactory = playersFactory;
             _ghostFactory = ghostFactory;
@@ -32,14 +36,18 @@ namespace ElectrumGames.EntryPoints
             _configService = configService;
 
             _houseController = houseController;
+
+            _missionPlayersHandler = missionPlayersHandler;
         }
         
         private void Start()
         {
             _configService.FpsConfig = _configService.FpsConfig;
             
-            _playersFactory.CreatePlayer(
+            var player = _playersFactory.CreatePlayer(
                 true, playerSpawnPoints[0].position, playerSpawnPoints[0].rotation);
+
+            _missionPlayersHandler.ConnectPlayer(player);
 
             _ghostFactory.CreateGhost(_houseController.Rooms);
 

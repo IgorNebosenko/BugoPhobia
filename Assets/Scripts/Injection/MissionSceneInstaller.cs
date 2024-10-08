@@ -53,6 +53,8 @@ namespace ElectrumGames.Injection
             Container.Bind<EnvironmentData>().AsSingle();
             Container.Bind<GhostEnvironmentHandler>().AsSingle();
             Container.Bind<EvidenceController>().AsSingle();
+
+            Container.Bind<MissionPlayersHandler>().AsSingle();
             
             Container.Bind<UiEventsHandler>().AsSingle().NonLazy();
         }
