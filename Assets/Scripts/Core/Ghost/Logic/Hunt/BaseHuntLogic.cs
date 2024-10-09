@@ -1,8 +1,13 @@
 ﻿using System;
+using System.Collections;
+using System.Threading;
+using System.Threading.Tasks;
 using ElectrumGames.Configs;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Controllers;
 using ElectrumGames.Core.Missions;
+using ElectrumGames.GlobalEnums;
+using UniRx;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -15,11 +20,18 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
         private readonly GhostActivityData _activityData;
         private readonly MissionPlayersHandler _missionPlayersHandler;
 
+        private GhostVariables _ghostVariables;
+        private GhostConstants _ghostConstants;
+        private int _roomId;
+
         private float _huntCooldownTime;
         private bool _isHunt;
 
-        private IDisposable _flickProcess;
+        private CancellationTokenSource _huntCancellationTokenSource;
+        private CancellationTokenSource _flickCancellationTokenSource;
+        private IDisposable _appearProcess;
         private IDisposable _huntProcess;
+        private IDisposable _flickProcess;
         
         public bool IsInterrupt { get; set; }
 
@@ -31,8 +43,12 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
             _activityData = activityData;
             _missionPlayersHandler = missionPlayersHandler;
         }
+
         public void Setup(GhostVariables variables, GhostConstants constants, int roomId)
         {
+            _ghostVariables = variables;
+            _ghostConstants = constants;
+            _roomId = roomId;
         }
 
         public void FixedSimulate()
@@ -51,8 +67,11 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                     _isHunt = true;
                     _ghostController.SetEnabledLogic(GhostLogicSelector.Hunt);
                     
-                    Debug.LogAssertion("HUNT!");
-                    StopHunt();
+                    _ghostController.SetGhostVisibility(true);
+                    _ghostController.IsStopped(true);
+
+                    _appearProcess = Observable.Timer(TimeSpan.FromSeconds(_ghostDifficultyData.SafeHuntTime))
+                        .Subscribe(StartHuntProcess);
                 }
             }
         }
@@ -67,6 +86,83 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
             return Random.Range(0f, 1f) < _ghostDifficultyData.HuntChance;
         }
 
+        protected virtual void StartHuntProcess(long _)
+        {
+            _ghostController.IsStopped(false);
+
+            _huntCancellationTokenSource?.Cancel();
+            _huntCancellationTokenSource = new CancellationTokenSource();
+            var huntToken = _huntCancellationTokenSource.Token;
+
+            _flickCancellationTokenSource?.Cancel();
+            _flickCancellationTokenSource = new CancellationTokenSource();
+            var flickToken = _flickCancellationTokenSource.Token;
+
+            _huntProcess = Observable.Start(() => Hunt(huntToken)).Subscribe();
+            _flickProcess = Observable.Start(() => Flick(flickToken)).Subscribe();
+        }
+
+        protected virtual async Task Hunt(CancellationToken token)
+        {
+            Debug.LogAssertion("HUNT!");
+
+            try
+            {
+                await Task.Delay(5000, token);
+                StopHunt();
+            }
+            catch (TaskCanceledException)
+            {
+                Debug.Log("Hunt was cancelled.");
+            }
+        }
+
+        protected virtual void Flick(CancellationToken token)
+        {
+            _flickCancellationTokenSource?.Cancel();
+            _flickCancellationTokenSource = new CancellationTokenSource();
+            token = _flickCancellationTokenSource.Token;
+
+            switch (_ghostConstants.ghostVisibility)
+            {
+                case GhostVisibility.Invisible:
+                    _ghostController.SetGhostVisibility(false);
+                    break;
+
+                case GhostVisibility.LessVisible:
+                    Observable.FromCoroutine(() => FlickLessVisibleAsync(token)).Subscribe();
+                    break;
+
+                case GhostVisibility.MoreVisible:
+                    Observable.FromCoroutine(() => FlickMoreVisibleAsync(token)).Subscribe();
+                    break;
+            }
+        }
+
+        private IEnumerator FlickLessVisibleAsync(CancellationToken token)
+        {
+            while (!token.IsCancellationRequested)
+            {
+                _ghostController.SetGhostVisibility(true);
+                yield return new WaitForSeconds(0.5f);
+
+                _ghostController.SetGhostVisibility(false);
+                yield return new WaitForSeconds(1.2f);
+            }
+        }
+
+        private IEnumerator FlickMoreVisibleAsync(CancellationToken token)
+        {
+            while (!token.IsCancellationRequested)
+            {
+                _ghostController.SetGhostVisibility(true);
+                yield return new WaitForSeconds(1.0f);
+
+                _ghostController.SetGhostVisibility(false);
+                yield return new WaitForSeconds(0.8f);
+            }
+        }
+
         public bool IsSeePlayer()
         {
             return false;
@@ -78,11 +174,19 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
 
         protected void StopHunt()
         {
+            Debug.LogError("StopHunt");
+            
             _isHunt = false;
             _ghostController.SetEnabledLogic(GhostLogicSelector.All);
             
-            _flickProcess?.Dispose();
+            _appearProcess?.Dispose();
             _huntProcess?.Dispose();
+            _flickProcess?.Dispose();
+            
+            _huntCancellationTokenSource?.Cancel();
+            _flickCancellationTokenSource?.Cancel();
+            
+            _ghostController.SetGhostVisibility(false);
         }
     }
 }
