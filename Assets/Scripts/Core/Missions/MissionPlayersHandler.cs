@@ -13,6 +13,7 @@ namespace ElectrumGames.Core.Missions
         private List<IPlayer> _players = new();
 
         public float AverageSanity => _players.Average(x => x.Sanity.CurrentSanity);
+        public bool IsAnyPlayerInHouse => _players.Any(x => x.GetCurrentStayRoom() != -1);
 
         public MissionPlayersHandler(GhostDifficultyList difficultyList)
         {
