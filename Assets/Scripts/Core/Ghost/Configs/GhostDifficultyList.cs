@@ -36,6 +36,7 @@ namespace ElectrumGames.Core.Ghost.Configs
         [field: Space]
         [field: SerializeField] public float HuntChance { get; private set; } = 0.7f;
         [field: SerializeField] public float SafeHuntTime { get; private set; } = 3f;
+        [field: SerializeField] public float HuntDuration { get; private set; } = 35f;
         [field: Space]
         [field: SerializeField] public float DefaultSanity { get; private set; } = 100f;
         [field: SerializeField] public float DefaultDrainSanity { get; private set; } = -0.25f;

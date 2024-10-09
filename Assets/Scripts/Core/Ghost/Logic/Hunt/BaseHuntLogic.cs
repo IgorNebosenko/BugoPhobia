@@ -104,16 +104,19 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
 
         protected virtual async Task Hunt(CancellationToken token)
         {
-            Debug.LogAssertion("HUNT!");
-
             try
             {
-                await Task.Delay(5000, token);
-                StopHunt();
+                Debug.Log("Hunt normally started");
+                await Task.Delay(TimeSpan.FromSeconds(_ghostDifficultyData.HuntDuration), token);
+                Debug.Log("Hunt normally ended!");
             }
             catch (TaskCanceledException)
             {
-                Debug.Log("Hunt was cancelled.");
+                Debug.Log("Hunt was cancelled or other issue");
+            }
+            finally
+            {
+                StopHunt();
             }
         }
 
@@ -144,10 +147,10 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
             while (!token.IsCancellationRequested)
             {
                 _ghostController.SetGhostVisibility(true);
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(Random.Range(0.2f, 0.5f));
 
                 _ghostController.SetGhostVisibility(false);
-                yield return new WaitForSeconds(1.2f);
+                yield return new WaitForSeconds(Random.Range(1.2f, 2f));
             }
         }
 
@@ -156,10 +159,10 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
             while (!token.IsCancellationRequested)
             {
                 _ghostController.SetGhostVisibility(true);
-                yield return new WaitForSeconds(1.0f);
+                yield return new WaitForSeconds(Random.Range(0.8f, 1.5f));
 
                 _ghostController.SetGhostVisibility(false);
-                yield return new WaitForSeconds(0.8f);
+                yield return new WaitForSeconds(Random.Range(0.4f, 0.8f));
             }
         }
 
