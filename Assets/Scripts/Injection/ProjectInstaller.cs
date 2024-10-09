@@ -20,6 +20,7 @@ public class ProjectInstaller : MonoInstaller
     [SerializeField] private EmfData emfData;
     [SerializeField] private LevelsConfig levelsConfig;
     [SerializeField] private DefaultMissionItems defaultMissionItems;
+    [SerializeField] private GhostFlickConfig ghostFlickConfig;
     [Space]
     [SerializeField] private WeatherConfig weatherConfig;
     [Space]
@@ -40,6 +41,7 @@ public class ProjectInstaller : MonoInstaller
         Container.BindInstance(emfData).AsSingle();
         Container.BindInstance(levelsConfig).AsSingle();
         Container.BindInstance(defaultMissionItems).AsSingle();
+        Container.BindInstance(ghostFlickConfig).AsSingle();
         Container.BindInstance(weatherConfig).AsSingle();
         
         Container.BindInstance(playerConfig).AsSingle();

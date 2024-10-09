@@ -19,6 +19,7 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
         private readonly GhostDifficultyData _ghostDifficultyData;
         private readonly GhostActivityData _activityData;
         private readonly MissionPlayersHandler _missionPlayersHandler;
+        private readonly GhostFlickConfig _ghostFlickConfig;
 
         private GhostVariables _ghostVariables;
         private GhostConstants _ghostConstants;
@@ -36,12 +37,13 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
         public bool IsInterrupt { get; set; }
 
         public BaseHuntLogic(GhostController ghostController, GhostDifficultyData ghostDifficultyData, 
-            GhostActivityData activityData, MissionPlayersHandler missionPlayersHandler)
+            GhostActivityData activityData, MissionPlayersHandler missionPlayersHandler, GhostFlickConfig ghostFlickConfig)
         {
             _ghostController = ghostController;
             _ghostDifficultyData = ghostDifficultyData;
             _activityData = activityData;
             _missionPlayersHandler = missionPlayersHandler;
+            _ghostFlickConfig = ghostFlickConfig;
         }
 
         public void Setup(GhostVariables variables, GhostConstants constants, int roomId)
@@ -147,10 +149,14 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
             while (!token.IsCancellationRequested)
             {
                 _ghostController.SetGhostVisibility(true);
-                yield return new WaitForSeconds(Random.Range(0.2f, 0.5f));
+                yield return new WaitForSeconds(Random.Range(
+                    _ghostFlickConfig.FlickLessVisibilityVisibleMin, 
+                    _ghostFlickConfig.FlickLessVisibilityVisibleMax));
 
                 _ghostController.SetGhostVisibility(false);
-                yield return new WaitForSeconds(Random.Range(1.2f, 2f));
+                yield return new WaitForSeconds(Random.Range(
+                    _ghostFlickConfig.FlickLessVisibilityInvisibleMin,
+                    _ghostFlickConfig.FlickLessVisibilityInvisibleMax));
             }
         }
 
@@ -159,10 +165,14 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
             while (!token.IsCancellationRequested)
             {
                 _ghostController.SetGhostVisibility(true);
-                yield return new WaitForSeconds(Random.Range(0.8f, 1.5f));
+                yield return new WaitForSeconds(Random.Range(
+                    _ghostFlickConfig.FlickMoreVisibilityVisibleMin, 
+                    _ghostFlickConfig.FlickMoreVisibilityVisibleMax));
 
                 _ghostController.SetGhostVisibility(false);
-                yield return new WaitForSeconds(Random.Range(0.4f, 0.8f));
+                yield return new WaitForSeconds(Random.Range(
+                    _ghostFlickConfig.FlickMoreVisibilityInvisibleMin,
+                    _ghostFlickConfig.FlickMoreVisibilityInvisibleMax));
             }
         }
 
