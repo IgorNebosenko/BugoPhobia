@@ -24,6 +24,7 @@ MonoBehaviour:
     <MinStayGhostEventTime>k__BackingField: 3
     <MaxStayGhostEventTime>k__BackingField: 4
     <RedLightChance>k__BackingField: 0.2
+    <DoorcCloseChance>k__BackingField: 0.3
     <MinChaseGhostEventTime>k__BackingField: 6
     <MaxChaseGhostEventTime>k__BackingField: 7
     <MinSingingGhostEventTime>k__BackingField: 8
@@ -31,4 +32,10 @@ MonoBehaviour:
     <InRoomWeightPoint>k__BackingField: 10
     <NeighborRoomWeightPoint>k__BackingField: 3
     <OtherWeightPoint>k__BackingField: 1
+    <HuntChance>k__BackingField: 0.7
     <SafeHuntTime>k__BackingField: 3
+    <DefaultSanity>k__BackingField: 50
+    <DefaultDrainSanity>k__BackingField: -0.25
+    <MinGhostEventDrainSanity>k__BackingField: -10
+    <MaxGhostEventDrainSanity>k__BackingField: -15
+    <GhostEventDrainOnKillOrDisconnectMate>k__BackingField: -15
