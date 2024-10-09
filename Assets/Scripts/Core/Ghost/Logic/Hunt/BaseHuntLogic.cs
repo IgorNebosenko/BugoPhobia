@@ -55,8 +55,13 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
 
         public void FixedSimulate()
         {
-            if (IsInterrupt)
+            if (IsInterrupt || !_missionPlayersHandler.IsAnyPlayerInHouse)
+            {
+                if (_isHunt)
+                    StopHunt();
+                
                 return;
+            }
             
             _huntCooldownTime += Time.fixedDeltaTime;
 
@@ -187,7 +192,7 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
 
         protected void StopHunt()
         {
-            Debug.LogError("StopHunt");
+            Debug.Log("StopHunt");
             
             _isHunt = false;
             _ghostController.SetEnabledLogic(GhostLogicSelector.All);

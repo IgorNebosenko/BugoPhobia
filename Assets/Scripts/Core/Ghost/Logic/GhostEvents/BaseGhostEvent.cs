@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using ElectrumGames.Configs;
 using ElectrumGames.Core.Common;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Controllers;
 using ElectrumGames.Core.Ghost.Interactions.Pools;
+using ElectrumGames.Core.Missions;
 using ElectrumGames.Core.Player;
 using ElectrumGames.Core.Rooms;
-using ElectrumGames.Extensions;
 using ElectrumGames.Extensions.CommonInterfaces;
 using UniRx;
 using UnityEngine;
@@ -23,6 +22,7 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
         private readonly GhostActivityData _ghostActivityData;
         private readonly GhostEmfZonePool _emfZonesPool;
         private readonly EmfData _emfData;
+        private readonly MissionPlayersHandler _missionPlayersHandler;
         
         private GhostVariables _ghostVariables;
         private GhostConstants _ghostConstants;
@@ -43,13 +43,14 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
         public bool IsInterrupt { get; set; }
 
         public BaseGhostEvent(GhostController ghostController, GhostDifficultyData difficultyData, 
-            GhostActivityData activityData, GhostEmfZonePool emfZonesPool, EmfData emfData)
+            GhostActivityData activityData, GhostEmfZonePool emfZonesPool, EmfData emfData, MissionPlayersHandler missionPlayersHandler)
         {
             _ghostController = ghostController;
             _ghostDifficultyData = difficultyData;
             _ghostActivityData = activityData;
             _emfZonesPool = emfZonesPool;
             _emfData = emfData;
+            _missionPlayersHandler = missionPlayersHandler;
         }
         public void Setup(GhostVariables variables, GhostConstants constants, int roomId)
         {
@@ -63,8 +64,13 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
 
         public void FixedSimulate()
         {
-            if (IsInterrupt)
+            if (IsInterrupt || !_missionPlayersHandler.IsAnyPlayerInHouse)
+            {
+                if (_isGhostEvent)
+                    StopGhostEvent();
+                
                 return;
+            }
 
             _ghostEventTime += Time.fixedDeltaTime;
             
