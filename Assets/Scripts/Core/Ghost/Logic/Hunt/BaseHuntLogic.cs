@@ -140,16 +140,16 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                     {
                         isMoving = false;
                     }
-                    else
-                    {
-                        CheckPlayerOnVisual();
-                        CheckPlayerOnElectronic();
-                    }
 
                     ThrowItemsOnHunt();
                     TouchDoorsOnHunt();
 
-                    await UniTask.Delay(TimeSpan.FromMilliseconds(500), cancellationToken: token);
+                    CheckPlayerOnVisual();
+                    CheckPlayerOnElectronic();
+                    await UniTask.Delay(TimeSpan.FromMilliseconds(250), cancellationToken: token);
+                    CheckPlayerOnVisual();
+                    CheckPlayerOnElectronic();
+                    await UniTask.Delay(TimeSpan.FromMilliseconds(250), cancellationToken: token);
                 }
             }
             catch (OperationCanceledException)
