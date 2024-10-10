@@ -35,11 +35,13 @@ namespace ElectrumGames.Core.Ghost
         private EvidenceController _evidenceController;
         private MissionPlayersHandler _missionPlayersHandler;
         private GhostFlickConfig _flickConfig;
+        private HuntPoints _huntPoints;
 
         [Inject]
         private void Construct(NetIdFactory netIdFactory, GhostEnvironmentHandler ghostEnvironmentHandler, GhostModelsList modelsList,
             GhostDifficultyList ghostDifficultyList, ActivityConfig activityConfig, GhostEmfZonePool ghostEmfZonePool, EmfData emfData,
-            EvidenceController evidenceController, MissionPlayersHandler missionPlayersHandler, GhostFlickConfig flickConfig)
+            EvidenceController evidenceController, MissionPlayersHandler missionPlayersHandler, GhostFlickConfig flickConfig,
+            HuntPoints huntPoints)
         {
             _netIdFactory = netIdFactory;
             _ghostEnvironmentHandler = ghostEnvironmentHandler;
@@ -51,6 +53,7 @@ namespace ElectrumGames.Core.Ghost
             _evidenceController = evidenceController;
             _missionPlayersHandler = missionPlayersHandler;
             _flickConfig = flickConfig;
+            _huntPoints = huntPoints;
 
             _netIdFactory.Initialize(this);
         }
@@ -98,7 +101,7 @@ namespace ElectrumGames.Core.Ghost
                     ghostEventLogic = new BlazeBaseGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[0],
                         activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
                     huntLogic = new BlazeHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[0], activityData,
-                        _missionPlayersHandler, _flickConfig);
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
                     ghostAbility = new PlaceholderGhostAbility();
                     break;
             }

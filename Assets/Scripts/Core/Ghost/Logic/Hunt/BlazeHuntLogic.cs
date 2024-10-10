@@ -2,14 +2,16 @@
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Controllers;
 using ElectrumGames.Core.Missions;
+using ElectrumGames.Core.Rooms;
 
 namespace ElectrumGames.Core.Ghost.Logic.Hunt
 {
     public class BlazeHuntLogic : BaseHuntLogic
     {
         public BlazeHuntLogic(GhostController ghostController, GhostDifficultyData ghostDifficultyData, 
-            GhostActivityData activityData, MissionPlayersHandler missionPlayersHandler, GhostFlickConfig flickConfig) : 
-            base(ghostController, ghostDifficultyData, activityData, missionPlayersHandler, flickConfig)
+            GhostActivityData activityData, MissionPlayersHandler missionPlayersHandler, GhostFlickConfig flickConfig,
+            HuntPoints huntPoints) : 
+            base(ghostController, ghostDifficultyData, activityData, missionPlayersHandler, flickConfig, huntPoints)
         {
         }
     }

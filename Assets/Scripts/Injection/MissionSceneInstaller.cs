@@ -6,6 +6,7 @@ using ElectrumGames.Core.Ghost.Interactions.Pools;
 using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Missions;
 using ElectrumGames.Core.Player;
+using ElectrumGames.Core.Rooms;
 using ElectrumGames.UI;
 using ElectrumGames.UI.UiEvents;
 using UnityEngine;
@@ -24,6 +25,8 @@ namespace ElectrumGames.Injection
         [SerializeField] private ItemsFactory itemsFactory;
         [Space]
         [SerializeField] private HouseController houseController;
+        [Space]
+        [SerializeField] private HuntPoints huntPoints;
         [Space]
         [SerializeField] private Camera injectedCamera;
         [Space]
@@ -45,6 +48,8 @@ namespace ElectrumGames.Injection
             Container.BindInstance(itemsFactory).AsSingle();
             
             Container.BindInstance(houseController).AsSingle();
+
+            Container.BindInstance(huntPoints).AsSingle();
 
             Container.BindInstance(injectedCamera).AsSingle();
 

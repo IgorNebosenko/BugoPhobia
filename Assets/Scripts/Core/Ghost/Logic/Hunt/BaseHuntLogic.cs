@@ -6,6 +6,7 @@ using ElectrumGames.Configs;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Controllers;
 using ElectrumGames.Core.Missions;
+using ElectrumGames.Core.Rooms;
 using ElectrumGames.GlobalEnums;
 using UniRx;
 using UnityEngine;
@@ -20,6 +21,7 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
         private readonly GhostActivityData _activityData;
         private readonly MissionPlayersHandler _missionPlayersHandler;
         private readonly GhostFlickConfig _ghostFlickConfig;
+        private readonly HuntPoints _huntPoints;
 
         private GhostVariables _ghostVariables;
         private GhostConstants _ghostConstants;
@@ -37,13 +39,15 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
         public bool IsInterrupt { get; set; }
 
         public BaseHuntLogic(GhostController ghostController, GhostDifficultyData ghostDifficultyData, 
-            GhostActivityData activityData, MissionPlayersHandler missionPlayersHandler, GhostFlickConfig ghostFlickConfig)
+            GhostActivityData activityData, MissionPlayersHandler missionPlayersHandler, GhostFlickConfig ghostFlickConfig,
+            HuntPoints huntPoints)
         {
             _ghostController = ghostController;
             _ghostDifficultyData = ghostDifficultyData;
             _activityData = activityData;
             _missionPlayersHandler = missionPlayersHandler;
             _ghostFlickConfig = ghostFlickConfig;
+            _huntPoints = huntPoints;
         }
 
         public void Setup(GhostVariables variables, GhostConstants constants, int roomId)
