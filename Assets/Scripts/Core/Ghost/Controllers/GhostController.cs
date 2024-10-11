@@ -15,8 +15,9 @@ namespace ElectrumGames.Core.Ghost.Controllers
         [SerializeField] private NavMeshAgent navmeshAgent;
         [field: Space]
         [field: SerializeField] public InteractionAura InteractionAura { get; private set; }
-        [field: SerializeField] public GhostEventAura GhostEventAura { get; private set; }
+        [field: SerializeField] public GhostAppearAura GhostEventAura { get; private set; }
         [field: SerializeField] public ContactAura ContactAura { get; private set; }
+        [field: SerializeField] public GhostAppearAura GhostHuntAura { get; private set; }
 
         [SerializeField] private float sphereRoomCastRadius = 0.5f;
 

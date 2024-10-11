@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace ElectrumGames.Core.Ghost.Interactions
 {
-    public class GhostEventAura : MonoBehaviour
+    public class GhostAppearAura : MonoBehaviour
     {
         private List<IPlayer> _playersInAura = new();
         private List<IGhostHuntingInteractableStay> _ghostHuntingInteractableStay = new();

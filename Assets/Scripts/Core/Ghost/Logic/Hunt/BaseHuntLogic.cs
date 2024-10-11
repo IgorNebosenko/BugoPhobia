@@ -172,10 +172,35 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
 
         protected virtual void ThrowItemsOnHunt()
         {
+            if (_ghostController.InteractionAura.ThrownInTrigger is {Count: > 0})
+            {
+                for (var i = 0; i < _ghostController.InteractionAura.ThrownInTrigger.Count; i++)
+                {
+                    Debug.LogWarning("Read chance of throw during hunt from config!");
+                    if (Random.Range(0f, 1f) > 0.5f)
+                        continue;
+                    
+                    _ghostController.InteractionAura.ThrownInTrigger[i].ThrowItem(_activityData.ThrownForce);
+                }
+            }
+                
         }
 
         protected virtual void TouchDoorsOnHunt()
         {
+            if (_ghostController.InteractionAura.DoorsInTrigger is {Count: > 0})
+            {
+                for (var i = 0; i < _ghostController.InteractionAura.DoorsInTrigger.Count; i++)
+                {
+                    Debug.LogWarning("Read chance of door interact during hunt from config!");
+                    if (Random.Range(0f, 1f) > 0.5f)
+                        continue;
+                    
+                    _ghostController.InteractionAura.DoorsInTrigger[i].TouchDoor(
+                        Random.Range(_ghostConstants.minDoorAngle, _ghostConstants.maxDoorAngle),
+                        Random.Range(_ghostConstants.minDoorTouchTime, _ghostConstants.maxDoorTouchTime));
+                }
+            }
         }
 
         protected virtual async UniTask Flick(CancellationToken token)
