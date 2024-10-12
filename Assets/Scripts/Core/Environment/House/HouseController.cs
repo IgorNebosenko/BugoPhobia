@@ -60,5 +60,13 @@ namespace ElectrumGames.Core.Environment.House
             fuseBox.FuseBoxChanged -= OnFuseBoxStateChanged;
             HouseKeyEnvironmentObject.PickUpKey -= OnPickUpKey;
         }
+
+        public void SwitchOffAllLight()
+        {
+            for (var i = 0; i < rooms.Length; i++)
+            {
+                rooms[i].LightRoomHandler.SwitchOffLight();
+            }
+        }
     }
 }
