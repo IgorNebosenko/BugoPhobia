@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Core.Items.Inventory;
 using Core.Player.Interactions;
 using ElectrumGames.Configs;
 using ElectrumGames.Core.Ghost.Configs;
@@ -50,6 +51,7 @@ namespace ElectrumGames.Core.Player
         public int NetId { get; protected set; }
         public int OwnerId { get; protected set; }
         public IInventory Inventory { get; private set; }
+        public InventoryIndexHandler InventoryIndexHandler { get; protected set; }
         public ISanity Sanity { get; private set; }
 
         public Vector3 Position => transform.position;

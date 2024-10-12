@@ -1,3 +1,4 @@
+using Core.Items.Inventory;
 using ElectrumGames.CommonInterfaces;
 using ElectrumGames.Configs;
 using ElectrumGames.Core.Ghost.Configs;
@@ -13,6 +14,7 @@ namespace ElectrumGames.Core.Player
     public interface IPlayer : IHaveNetId, IHavePosition
     {
         IInventory Inventory { get; }
+        InventoryIndexHandler InventoryIndexHandler { get; }
         ISanity Sanity { get; }
         void Spawn(PlayerConfig config, ConfigService configService, bool isHost, InputActions inputActions, 
             ItemsConfig itemsConfig, GhostDifficultyData difficultyData, Camera injectedCamera);

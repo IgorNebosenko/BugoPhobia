@@ -177,7 +177,7 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
         {
             if (_ghostController.GhostHuntAura.PlayersInAura is {Count: > 0})
             {
-                const int layerToExclude = ~(1 << 2);
+                const int layerToExclude = ~(1 << 2); //Exclude Ignore raycast layer
                 for (var i = 0; i < _ghostController.GhostHuntAura.PlayersInAura.Count; i++)
                 {
                     var directionToPlayer = _ghostController.GhostHuntAura.PlayersInAura[i].Position -
@@ -191,6 +191,14 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
 
         protected virtual void CheckPlayerOnElectronic()
         {
+            if (_ghostController.GhostHuntAura.PlayersInAura is {Count: > 0})
+            {
+                for (var i = 0; i < _ghostController.GhostHuntAura.PlayersInAura.Count; i++)
+                {
+                    if (IsSeeElectronic(_ghostController.GhostHuntAura.PlayersInAura[i]))
+                        MoveToPoint(_ghostController.GhostHuntAura.PlayersInAura[i].Position, true);
+                }
+            }
         }
 
         protected virtual void ThrowItemsOnHunt()
@@ -316,9 +324,12 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
             return false;
         }
 
-        public bool IsSeeElectronic()
+        public bool IsSeeElectronic(IPlayer player)
         {
-            return false;
+            var electricalObject = player.Inventory.Items[player.InventoryIndexHandler.CurrentIndex] as 
+                IGhostHuntingHasElectricity;
+
+            return electricalObject is {IsElectricityOn: true};
         }
 
         public bool IsHearPlayer()
