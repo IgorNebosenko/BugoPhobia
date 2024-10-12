@@ -183,7 +183,7 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                     var directionToPlayer = _ghostController.GhostHuntAura.PlayersInAura[i].Position -
                                             _ghostController.transform.position;
 
-                    if (IsSeePlayer(directionToPlayer, layerToExclude))
+                    if (IsSeePlayer(directionToPlayer, layerToExclude)) //Todo check is chase player by isMoveToPlayer
                         MoveToPoint(_ghostController.GhostHuntAura.PlayersInAura[i].Position, true);
                 }
             }
