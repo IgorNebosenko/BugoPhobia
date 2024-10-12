@@ -10,6 +10,7 @@ using ElectrumGames.Core.Rooms;
 using ElectrumGames.Extensions;
 using ElectrumGames.GlobalEnums;
 using Cysharp.Threading.Tasks;
+using ElectrumGames.Core.Common;
 using UniRx;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
@@ -88,6 +89,11 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                     _appearProcess = Observable.Timer(TimeSpan.FromSeconds(_ghostDifficultyData.SafeHuntTime))
                         .Subscribe(StartHuntProcess);
                 }
+            }
+
+            if (_isHunt)
+            {
+                HuntInterference();
             }
         }
 
@@ -250,6 +256,36 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                 await UniTask.Delay(TimeSpan.FromSeconds(Random.Range(
                     _ghostFlickConfig.FlickMoreVisibilityInvisibleMin,
                     _ghostFlickConfig.FlickMoreVisibilityInvisibleMax)), cancellationToken: token);
+            }
+        }
+        
+        protected virtual void HuntInterference()
+        {
+            for (var i = 0; i < _ghostController.GhostEventAura.PlayersInAura.Count; i++)
+            {
+                for (var j = 0; j < _ghostController.GhostEventAura.PlayersInAura[i].Inventory.Items.Count; j++)
+                {
+                    if (_ghostController.GhostEventAura.PlayersInAura[i].Inventory.Items[j]
+                        is IGhostHuntingInteractableStay ghostHuntingInteractableStay)
+                    {
+                        ghostHuntingInteractableStay.OnGhostInteractionStay();
+                    }
+                }
+            }
+                
+            for (var i = 0; i < _ghostController.GhostEventAura.GhostHuntingInteractableStay.Count; i++)
+            {
+                _ghostController.GhostEventAura.GhostHuntingInteractableStay[i].OnGhostInteractionStay();
+            }
+
+            if (_ghostController.GhostEventAura.GhostHuntingInteractableExit.Count > 0)
+            {
+                for (var i = 0; i < _ghostController.GhostEventAura.GhostHuntingInteractableExit.Count; i++)
+                {
+                    _ghostController.GhostEventAura.GhostHuntingInteractableExit[i].OnGhostInteractionExit();
+                }
+
+                _ghostController.GhostEventAura.ResetGhostInteractableExit();
             }
         }
 
