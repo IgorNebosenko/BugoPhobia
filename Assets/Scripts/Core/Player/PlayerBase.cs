@@ -11,6 +11,7 @@ using ElectrumGames.Core.PlayerVisuals;
 using ElectrumGames.Core.Rooms;
 using ElectrumGames.Extensions;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace ElectrumGames.Core.Player
 {
@@ -162,6 +163,13 @@ namespace ElectrumGames.Core.Player
             }
 
             return -1;
+        }
+
+        public void Death()
+        {
+            //ToDo write this for multiplayer
+            Debug.LogWarning("Player is dead! Loading zero scene, need to check index what to load!");
+            SceneManager.LoadSceneAsync(0);
         }
 
         private Room GetCurrentRoom()

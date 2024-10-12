@@ -21,5 +21,6 @@ namespace ElectrumGames.Core.Player
         void Despawn();
 
         int GetCurrentStayRoom();
+        void Death();
     }
 }
