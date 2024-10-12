@@ -11,6 +11,7 @@ using ElectrumGames.Extensions;
 using ElectrumGames.GlobalEnums;
 using Cysharp.Threading.Tasks;
 using ElectrumGames.Core.Common;
+using ElectrumGames.Core.Player;
 using UniRx;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
@@ -33,7 +34,9 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
 
         private float _huntCooldownTime;
         private bool _isHunt;
+        
         protected float huntingSpeed;
+        protected bool isMoveToPlayer;
 
         private CancellationTokenSource _huntCancellationTokenSource;
         private CancellationTokenSource _flickCancellationTokenSource;
@@ -60,6 +63,8 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
             _ghostVariables = variables;
             _ghostConstants = constants;
             _roomId = roomId;
+            
+            _ghostController.GhostHuntAura.gameObject.SetActive(true);
         }
 
         public void FixedSimulate()
@@ -140,7 +145,7 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                     {
                         isMoving = true;
                         var randomPosition = _huntPoints.Positions.PickRandom().position;
-                        MoveToPoint(randomPosition);
+                        MoveToPoint(randomPosition, false);
                     }
                     else if (_ghostController.NavmeshRemainingDistance < distanceTolerance)
                     {
@@ -170,6 +175,18 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
 
         protected virtual void CheckPlayerOnVisual()
         {
+            if (_ghostController.GhostHuntAura.PlayersInAura is {Count: > 0})
+            {
+                const int layerToExclude = ~(1 << 2);
+                for (var i = 0; i < _ghostController.GhostHuntAura.PlayersInAura.Count; i++)
+                {
+                    var directionToPlayer = _ghostController.GhostHuntAura.PlayersInAura[i].Position -
+                                            _ghostController.transform.position;
+
+                    if (IsSeePlayer(directionToPlayer, layerToExclude))
+                        MoveToPoint(_ghostController.GhostHuntAura.PlayersInAura[i].Position, true);
+                }
+            }
         }
 
         protected virtual void CheckPlayerOnElectronic()
@@ -289,13 +306,25 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
             }
         }
 
-        public bool IsSeePlayer()
+        public bool IsSeePlayer(Vector3 direction, int layerToExclude)
+        {
+            if (Physics.Raycast(_ghostController.transform.position, direction,
+                    out var hit, Mathf.Infinity, layerToExclude))
+            {
+                return hit.collider.TryGetComponent<IPlayer>(out var _);
+            }
+            return false;
+        }
+
+        public bool IsSeeElectronic()
         {
             return false;
         }
 
-        public void MoveToPoint(Vector3 point)
+        public void MoveToPoint(Vector3 point, bool toPlayer )
         {
+            isMoveToPlayer = toPlayer;
+            
             _ghostController.SetSpeed(huntingSpeed);
             _ghostController.SetGhostAnimationSpeed(huntingSpeed / _activityData.MaxGhostSpeed);
             _ghostController.MoveTo(point);
