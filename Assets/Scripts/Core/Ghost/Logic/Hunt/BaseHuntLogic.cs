@@ -321,6 +321,11 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
             return false;
         }
 
+        public bool IsHearPlayer()
+        {
+            return false;
+        }
+
         public void MoveToPoint(Vector3 point, bool toPlayer )
         {
             isMoveToPlayer = toPlayer;
