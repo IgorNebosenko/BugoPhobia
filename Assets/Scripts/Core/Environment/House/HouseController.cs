@@ -20,7 +20,7 @@ namespace ElectrumGames.Core.Environment.House
         [Space]
         [SerializeField] private Room[] rooms;
         
-        public SwitchState SwitchState { get; private set; }
+        public FuseBoxState FuseBoxState { get; private set; }
         
         public bool IsKeyPicked { get; private set; }
         
@@ -33,12 +33,12 @@ namespace ElectrumGames.Core.Environment.House
             ghostEnvironmentHandler.InitGhost(minGhostId, maxGhostId, minRoomId, maxRoomId);
         }
 
-        public void OnSwitchStateChanged(bool state)
+        public void OnFuseBoxStateChanged(bool state)
         {
-            if (SwitchState == SwitchState.Broken)
+            if (FuseBoxState == FuseBoxState.Broken)
                 return;
 
-            SwitchState = state ? SwitchState.Enabled : SwitchState.Disabled;
+            FuseBoxState = state ? FuseBoxState.Enabled : FuseBoxState.Disabled;
         }
 
         public void OnPickUpKey()
@@ -51,13 +51,13 @@ namespace ElectrumGames.Core.Environment.House
 
         private void OnEnable()
         {
-            fuseBox.SwitchChanged += OnSwitchStateChanged;
+            fuseBox.FuseBoxChanged += OnFuseBoxStateChanged;
             HouseKeyEnvironmentObject.PickUpKey += OnPickUpKey;
         }
 
         private void OnDisable()
         {
-            fuseBox.SwitchChanged -= OnSwitchStateChanged;
+            fuseBox.FuseBoxChanged -= OnFuseBoxStateChanged;
             HouseKeyEnvironmentObject.PickUpKey -= OnPickUpKey;
         }
     }

@@ -348,8 +348,12 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
 
         protected void StopHunt()
         {
+            Debug.Log("STOP HUNTING");
             _isHunt = false;
             _ghostController.SetGhostVisibility(false);
+            
+            
+            
             _ghostController.SetEnabledLogic(GhostLogicSelector.All);
             
             _appearProcess?.Dispose();
