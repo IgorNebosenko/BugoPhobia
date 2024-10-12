@@ -51,6 +51,8 @@ namespace ElectrumGames.Core.Player
         public bool IsHost { get; protected set; }
         public int NetId { get; protected set; }
         public int OwnerId { get; protected set; }
+        
+        public bool IsAlive { get; protected set; } = true;
         public IInventory Inventory { get; private set; }
         public InventoryIndexHandler InventoryIndexHandler { get; protected set; }
         public ISanity Sanity { get; private set; }
@@ -169,6 +171,11 @@ namespace ElectrumGames.Core.Player
         {
             //ToDo write this for multiplayer
             Debug.LogWarning("Player is dead! Loading zero scene, need to check index what to load!");
+            
+            if (!IsAlive)
+                return;
+
+            IsAlive = false;
             SceneManager.LoadSceneAsync(0);
         }
 

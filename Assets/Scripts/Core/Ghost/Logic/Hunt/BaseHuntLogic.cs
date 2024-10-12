@@ -99,6 +99,12 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
             if (_isHunt)
             {
                 HuntInterference();
+
+                if (_ghostController.ContactAura.PlayersInAura is {Count: > 0})
+                {
+                    for (var i = 0; i < _ghostController.ContactAura.PlayersInAura.Count; i++)
+                        _ghostController.ContactAura.PlayersInAura[i].Death();
+                }
             }
         }
 

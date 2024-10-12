@@ -14,6 +14,7 @@ namespace ElectrumGames.Core.Missions
 
         public float AverageSanity => _players.Average(x => x.Sanity.CurrentSanity);
         public bool IsAnyPlayerInHouse => _players.Any(x => x.GetCurrentStayRoom() != -1);
+        public bool IsAnyPlayerAlive => _players.Any(x => x.IsAlive);
 
         public MissionPlayersHandler(GhostDifficultyList difficultyList)
         {
