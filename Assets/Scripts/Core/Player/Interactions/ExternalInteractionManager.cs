@@ -7,6 +7,8 @@ namespace Core.Player.Interactions
 {
     public class ExternalInteractionManager : IInteractionItemsManager
     {
+        private const int RayCastIgnoreMask = ~(1 << 2);
+        
         private readonly IInteraction _interactions;
         private readonly IInput _input;
         private readonly Camera _targetCamera;
@@ -33,7 +35,7 @@ namespace Core.Player.Interactions
                 {
                     var ray = _targetCamera.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f));
 
-                    if (Physics.Raycast(ray, out var hit, _playerConfig.RayCastDistance))
+                    if (Physics.Raycast(ray, out var hit, _playerConfig.RayCastDistance, RayCastIgnoreMask))
                     {
                         if (hit.collider.TryGetComponent<EnvironmentObjectBase>(out var environmentObject))
                         {
@@ -47,7 +49,7 @@ namespace Core.Player.Interactions
             {
                 var ray = _targetCamera.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f));
 
-                if (Physics.Raycast(ray, out var hit, _playerConfig.RayCastDistance))
+                if (Physics.Raycast(ray, out var hit, _playerConfig.RayCastDistance, RayCastIgnoreMask))
                 {
                     if (hit.collider.TryGetComponent<DoorEnvironmentObject>(out var door))
                     {
