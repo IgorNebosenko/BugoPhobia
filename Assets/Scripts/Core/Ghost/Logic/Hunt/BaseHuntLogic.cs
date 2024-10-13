@@ -49,6 +49,7 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
         
         public bool IsInterrupt { get; set; }
 
+        public event Action HuntStarted;
         public event Action HuntEnded;
 
         public BaseHuntLogic(GhostController ghostController, GhostDifficultyData ghostDifficultyData, 
@@ -91,6 +92,8 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                 if (CanHuntBySanity() && CanHuntByChanceHunt())
                 {
                     _isHunt = true;
+                    HuntEnded?.Invoke();
+                    
                     _ghostController.SetEnabledLogic(GhostLogicSelector.Hunt);
                     
                     _ghostController.SetGhostVisibility(true);
