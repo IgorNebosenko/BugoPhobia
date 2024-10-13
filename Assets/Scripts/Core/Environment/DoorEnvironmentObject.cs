@@ -12,6 +12,7 @@ namespace ElectrumGames.Core.Environment
         [SerializeField] private float openSpeed = 0.1f;
         
         private bool _isLocked;
+        private bool _isBlocked;
         private float _initialAngle;
 
         public Transform Transform => transform;
@@ -26,7 +27,7 @@ namespace ElectrumGames.Core.Environment
 
         public void SetCameraAngleAndInteract(Vector2 inputLook)
         {
-            if (_isLocked)
+            if (_isLocked || _isBlocked)
                 return;
             
             var inputForce = inputLook.x * openedForce * -1;
@@ -39,6 +40,23 @@ namespace ElectrumGames.Core.Environment
                 CurrentAngle = maxAngle;
 
             transform.DOLocalRotate(Vector3.up * CurrentAngle, openSpeed);
+        }
+
+        public void BlockDoor()
+        {
+            if (!DoorWithLock)
+                return;
+            
+            _isBlocked = true;
+            CloseDoor();
+        }
+
+        public void UnBlockDoor()
+        {
+            if (!DoorWithLock)
+                return;
+
+            _isBlocked = false;
         }
 
         public void LockDoor()

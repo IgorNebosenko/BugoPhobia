@@ -162,8 +162,8 @@ GameObject:
   - component: {fileID: 4013102858982446901}
   - component: {fileID: 8900680484510628575}
   - component: {fileID: 1599445725013957605}
-  - component: {fileID: 1731156326520605473}
   - component: {fileID: 8969681640909796026}
+  - component: {fileID: 1731156326520605473}
   m_Layer: 0
   m_Name: InteractionZone
   m_TagString: Untagged
@@ -261,18 +261,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1731156326520605473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6934675742400980190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d9c7430462a417bb8e9221a9f3ed446, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &8969681640909796026
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -300,6 +288,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1731156326520605473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6934675742400980190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d9c7430462a417bb8e9221a9f3ed446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8187171832811594654
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,6 +463,7 @@ GameObject:
   - component: {fileID: 7878200202833345023}
   - component: {fileID: 2253392251396524158}
   - component: {fileID: 1838253902188780866}
+  - component: {fileID: 5184558765853940452}
   m_Layer: 0
   m_Name: HuntZone
   m_TagString: Untagged
@@ -480,7 +481,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 9, y: 1, z: 9}
+  m_LocalScale: {x: 30, y: 1, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4632784405828909184}
@@ -587,6 +588,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5184558765853940452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8295653016489212846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d77b0662531143c3a4a96911256fe22f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8528196984003094281
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,6 +654,8 @@ MonoBehaviour:
   <InteractionAura>k__BackingField: {fileID: 1731156326520605473}
   <GhostEventAura>k__BackingField: {fileID: 8875337757896709072}
   <ContactAura>k__BackingField: {fileID: 1713490269747958503}
+  <GhostHuntAura>k__BackingField: {fileID: 5184558765853940452}
+  sphereRoomCastRadius: 0.5
 --- !u!195 &8057804841556221538
 NavMeshAgent:
   m_ObjectHideFlags: 0

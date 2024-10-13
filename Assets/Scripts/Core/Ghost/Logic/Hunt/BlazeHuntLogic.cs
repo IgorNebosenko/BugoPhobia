@@ -1,29 +1,18 @@
-﻿using ElectrumGames.Core.Ghost.Controllers;
+﻿using ElectrumGames.Configs;
+using ElectrumGames.Core.Ghost.Configs;
+using ElectrumGames.Core.Ghost.Controllers;
+using ElectrumGames.Core.Missions;
+using ElectrumGames.Core.Rooms;
 
 namespace ElectrumGames.Core.Ghost.Logic.Hunt
 {
-    public class BlazeHuntLogic : IHuntLogic
+    public class BlazeHuntLogic : BaseHuntLogic
     {
-        private readonly GhostController _ghostController;
-        
-        public bool IsInterrupt { get; set; }
-
-        public BlazeHuntLogic(GhostController ghostController)
+        public BlazeHuntLogic(GhostController ghostController, GhostDifficultyData ghostDifficultyData, 
+            GhostActivityData activityData, MissionPlayersHandler missionPlayersHandler, GhostFlickConfig flickConfig,
+            HuntPoints huntPoints) : 
+            base(ghostController, ghostDifficultyData, activityData, missionPlayersHandler, flickConfig, huntPoints)
         {
-            _ghostController = ghostController;
-        }
-
-        public void Setup(GhostVariables variables, GhostConstants constants, int roomId)
-        {
-        }
-
-        public void FixedSimulate()
-        {
-        }
-
-        public bool TryHunt()
-        {
-            return false;
         }
     }
 }

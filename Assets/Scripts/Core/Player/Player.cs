@@ -17,27 +17,25 @@ namespace ElectrumGames.Core.Player
         private ItemInteractionHandler _interactionHandler;
         private ExternalInteractionManager _externalInteractionManager;
         
-        private InventoryIndexHandler _inventoryIndexHandler;
-        
         protected override void OnAfterSpawn()
         {
-            _inventoryIndexHandler = new InventoryIndexHandler(playerConfig);
+            InventoryIndexHandler = new InventoryIndexHandler(playerConfig);
             
-            interaction = new PlayerInteraction(inputActions, _inventoryIndexHandler);
+            interaction = new PlayerInteraction(inputActions, InventoryIndexHandler);
             interaction.Init();
             
-            _itemInteractionVisual = new ItemInteractionVisual(Inventory, _inventoryIndexHandler, itemsConfig, 
+            _itemInteractionVisual = new ItemInteractionVisual(Inventory, InventoryIndexHandler, itemsConfig, 
                 transform, playerCamera.transform);
             
             _putInteractionHandler = new PutInteractionHandler(interaction, playerCamera, playerConfig, 
-                Inventory, _inventoryIndexHandler, _itemInteractionVisual);
+                Inventory, InventoryIndexHandler, _itemInteractionVisual);
 
             _dropInteractionHandler =
-                new DropInteractionHandler(interaction, playerCamera.transform, Inventory, _inventoryIndexHandler);
+                new DropInteractionHandler(interaction, playerCamera.transform, Inventory, InventoryIndexHandler);
 
-            _selectInventorySlotHandler = new SelectInventorySlotHandler(interaction, _inventoryIndexHandler);
+            _selectInventorySlotHandler = new SelectInventorySlotHandler(interaction, InventoryIndexHandler);
 
-            _interactionHandler = new ItemInteractionHandler(interaction, Inventory, _inventoryIndexHandler);
+            _interactionHandler = new ItemInteractionHandler(interaction, Inventory, InventoryIndexHandler);
 
             _externalInteractionManager = new ExternalInteractionManager(interaction, input, playerCamera, playerConfig);
 

@@ -15,18 +15,15 @@ namespace ElectrumGames.Core.Ghost.Controllers
         [SerializeField] private NavMeshAgent navmeshAgent;
         [field: Space]
         [field: SerializeField] public InteractionAura InteractionAura { get; private set; }
-        [field: SerializeField] public GhostEventAura GhostEventAura { get; private set; }
+        [field: SerializeField] public GhostAppearAura GhostEventAura { get; private set; }
         [field: SerializeField] public ContactAura ContactAura { get; private set; }
+        [field: SerializeField] public GhostAppearAura GhostHuntAura { get; private set; }
 
         [SerializeField] private float sphereRoomCastRadius = 0.5f;
 
         private Collider[] _colliders = new Collider[CollidersCount];
         private const int CollidersCount = 16;
         
-        public INonHuntLogic NonHuntLogic { get; private set; }
-        public IGhostEventLogic GhostEventLogic { get; private set; }
-        public IHuntLogic HuntLogic { get; private set; }
-        public IGhostAbility GhostAbility { get; private set; }
         public IReadOnlyList<Room> Rooms => _rooms;
         public float NavmeshRemainingDistance => navmeshAgent.remainingDistance;
 

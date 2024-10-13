@@ -12,7 +12,7 @@ namespace ElectrumGames.Core.Environment
         [SerializeField] private Vector3 eulerHandleOff;
         [SerializeField] private float switchTime = 0.5f;
 
-        public event Action<bool> SwitchChanged;
+        public event Action<bool> FuseBoxChanged;
 
         private bool _lockState;
         private bool _state;
@@ -27,7 +27,7 @@ namespace ElectrumGames.Core.Environment
             
             handle.DOLocalRotate(_state ? eulerHandleOn : eulerHandleOff, switchTime).OnComplete(() =>
             {
-                SwitchChanged?.Invoke(_state);
+                FuseBoxChanged?.Invoke(_state);
                 _lockState = false;
             });
         }

@@ -1,6 +1,6 @@
 ﻿namespace ElectrumGames.Core.Environment.Enums
 {
-    public enum SwitchState
+    public enum FuseBoxState
     {
         Disabled,
         Enabled,

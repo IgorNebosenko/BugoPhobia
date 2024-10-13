@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Core.Items.Inventory;
 using Core.Player.Interactions;
 using ElectrumGames.Configs;
 using ElectrumGames.Core.Ghost.Configs;
@@ -10,6 +11,7 @@ using ElectrumGames.Core.PlayerVisuals;
 using ElectrumGames.Core.Rooms;
 using ElectrumGames.Extensions;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace ElectrumGames.Core.Player
 {
@@ -49,7 +51,10 @@ namespace ElectrumGames.Core.Player
         public bool IsHost { get; protected set; }
         public int NetId { get; protected set; }
         public int OwnerId { get; protected set; }
+        
+        public bool IsAlive { get; protected set; } = true;
         public IInventory Inventory { get; private set; }
+        public InventoryIndexHandler InventoryIndexHandler { get; protected set; }
         public ISanity Sanity { get; private set; }
 
         public Vector3 Position => transform.position;
@@ -160,6 +165,18 @@ namespace ElectrumGames.Core.Player
             }
 
             return -1;
+        }
+
+        public void Death()
+        {
+            //ToDo write this for multiplayer
+            Debug.LogWarning("Player is dead! Loading zero scene, need to check index what to load!");
+            
+            if (!IsAlive)
+                return;
+
+            IsAlive = false;
+            SceneManager.LoadSceneAsync(0);
         }
 
         private Room GetCurrentRoom()

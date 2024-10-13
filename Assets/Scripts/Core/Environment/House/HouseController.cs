@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ElectrumGames.Core.Environment.Enums;
 using ElectrumGames.Core.Ghost;
+using ElectrumGames.Core.Ghost.Controllers;
 using ElectrumGames.Core.Rooms;
 using UnityEngine;
 using Zenject;
@@ -19,8 +20,10 @@ namespace ElectrumGames.Core.Environment.House
         [SerializeField] private int maxRoomId = 0;
         [Space]
         [SerializeField] private Room[] rooms;
+
+        private GhostFactory _ghostFactory;
         
-        public SwitchState SwitchState { get; private set; }
+        public FuseBoxState FuseBoxState { get; private set; }
         
         public bool IsKeyPicked { get; private set; }
         
@@ -28,17 +31,18 @@ namespace ElectrumGames.Core.Environment.House
         public IReadOnlyList<Room> Rooms => rooms;
 
         [Inject]
-        private void Construct(GhostEnvironmentHandler ghostEnvironmentHandler)
+        private void Construct(GhostEnvironmentHandler ghostEnvironmentHandler, GhostFactory ghostFactory)
         {
             ghostEnvironmentHandler.InitGhost(minGhostId, maxGhostId, minRoomId, maxRoomId);
+            _ghostFactory = ghostFactory;
         }
 
-        public void OnSwitchStateChanged(bool state)
+        public void OnFuseBoxStateChanged(bool state)
         {
-            if (SwitchState == SwitchState.Broken)
+            if (FuseBoxState == FuseBoxState.Broken)
                 return;
 
-            SwitchState = state ? SwitchState.Enabled : SwitchState.Disabled;
+            FuseBoxState = state ? FuseBoxState.Enabled : FuseBoxState.Disabled;
         }
 
         public void OnPickUpKey()
@@ -51,14 +55,48 @@ namespace ElectrumGames.Core.Environment.House
 
         private void OnEnable()
         {
-            fuseBox.SwitchChanged += OnSwitchStateChanged;
+            fuseBox.FuseBoxChanged += OnFuseBoxStateChanged;
+            _ghostFactory.GhostCreated += OnGhostCreated;
             HouseKeyEnvironmentObject.PickUpKey += OnPickUpKey;
         }
 
         private void OnDisable()
         {
-            fuseBox.SwitchChanged -= OnSwitchStateChanged;
+            fuseBox.FuseBoxChanged -= OnFuseBoxStateChanged;
+            _ghostFactory.GhostCreated -= OnGhostCreated;
             HouseKeyEnvironmentObject.PickUpKey -= OnPickUpKey;
+        }
+        
+        private void OnGhostCreated(GhostBaseController ghost)
+        {
+            ghost.HuntLogic.HuntStarted += CloseAllClosableDoors;
+            ghost.HuntLogic.HuntEnded += OpenAllClosableDoors;
+            
+            ghost.HuntLogic.HuntEnded += SwitchOffAllLight;
+        }
+
+        private void CloseAllClosableDoors()
+        {
+            for (var i = 0; i < rooms.Length; i++)
+            {
+                rooms[i].DoorsRoomHandler.BlockDoors();
+            }
+        }
+
+        private void OpenAllClosableDoors()
+        {
+            for (var i = 0; i < rooms.Length; i++)
+            {
+                rooms[i].DoorsRoomHandler.UnBlockDoors();
+            }
+        }
+
+        private void SwitchOffAllLight()
+        {
+            for (var i = 0; i < rooms.Length; i++)
+            {
+                rooms[i].LightRoomHandler.SwitchOffLight();
+            }
         }
     }
 }

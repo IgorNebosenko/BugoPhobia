@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using ElectrumGames.Extensions;
+using UnityEngine;
 
 namespace ElectrumGames.Core.Ghost.Controllers
 {
@@ -21,7 +22,8 @@ namespace ElectrumGames.Core.Ghost.Controllers
 
         public void SetVisibility(bool isOn)
         {
-            skinnedMeshRenderer.enabled = isOn;
+            if (!skinnedMeshRenderer.UnityNullCheck())
+                skinnedMeshRenderer.enabled = isOn;
         }
     }
 }
