@@ -92,7 +92,7 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                 if (CanHuntBySanity() && CanHuntByChanceHunt())
                 {
                     _isHunt = true;
-                    HuntEnded?.Invoke();
+                    HuntStarted?.Invoke();
                     
                     _ghostController.SetEnabledLogic(GhostLogicSelector.Hunt);
                     
@@ -423,8 +423,6 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
         {
             _isHunt = false;
             _ghostController.SetGhostVisibility(false);
-            
-            
             
             _ghostController.SetEnabledLogic(GhostLogicSelector.All);
             
