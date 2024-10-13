@@ -92,7 +92,10 @@ namespace ElectrumGames.Core.Ghost
             
             switch (controller.GhostEnvironmentHandler.GhostVariables.ghostType)
             {
+                case GhostType.Yrka:
                 case GhostType.Blaze:
+                    Debug.LogWarning("Yrka has same logic with blaze!");
+                    
                     activityData = _activityConfig.GhostActivities.First(x => x.GhostType == GhostType.Blaze);
                     
                     Debug.Log("Difficulty must read from data!!");
