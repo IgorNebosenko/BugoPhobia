@@ -5,7 +5,7 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
 {
     public interface IHuntLogic : IGhostLogic
     {
-        bool IsSeePlayer(Vector3 direction, int layerToExclude);
+        bool IsSeePlayer(Vector3 direction);
         bool IsSeeElectronic(IPlayer player);
         bool IsHearPlayer();
         void MoveToPoint(Vector3 point, bool toPlayer);

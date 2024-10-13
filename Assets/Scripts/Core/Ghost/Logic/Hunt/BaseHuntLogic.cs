@@ -27,12 +27,15 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
         private readonly MissionPlayersHandler _missionPlayersHandler;
         private readonly GhostFlickConfig _ghostFlickConfig;
         private readonly HuntPoints _huntPoints;
+        
+        private const int LayerToExclude = ~(1 << 2);
 
         private GhostVariables _ghostVariables;
         private GhostConstants _ghostConstants;
         private int _roomId;
 
         private float _huntCooldownTime;
+        private bool _isSafeTime;
         private bool _isHunt;
         
         protected float huntingSpeed;
@@ -91,6 +94,8 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                     _ghostController.SetGhostVisibility(true);
                     _ghostController.IsStopped(true);
 
+                    _isSafeTime = true;
+                    
                     _appearProcess = Observable.Timer(TimeSpan.FromSeconds(_ghostDifficultyData.SafeHuntTime))
                         .Subscribe(StartHuntProcess);
                 }
@@ -99,8 +104,8 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
             if (_isHunt)
             {
                 HuntInterference();
-
-                if (_ghostController.ContactAura.PlayersInAura is {Count: > 0})
+                
+                if (!_isSafeTime && _ghostController.ContactAura.PlayersInAura is {Count: > 0})
                 {
                     for (var i = 0; i < _ghostController.ContactAura.PlayersInAura.Count; i++)
                         _ghostController.ContactAura.PlayersInAura[i].Death();
@@ -120,6 +125,7 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
 
         protected virtual void StartHuntProcess(long _)
         {
+            _isSafeTime = false;
             _ghostController.IsStopped(false);
 
             _huntCancellationTokenSource?.Cancel();
@@ -141,7 +147,7 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                 var stopWatch = new Stopwatch();
 
                 var isMoving = false;
-                const float distanceTolerance = 1f;
+                const float distanceTolerance = 0.1f;
 
                 huntingSpeed = _ghostConstants.defaultHuntingSpeed;
 
@@ -160,6 +166,8 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
 
                     ThrowItemsOnHunt();
                     TouchDoorsOnHunt();
+                    
+                    SpeedChange();
 
                     CheckPlayerOnVisual();
                     CheckPlayerOnElectronic();
@@ -183,13 +191,13 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
         {
             if (_ghostController.GhostHuntAura.PlayersInAura is {Count: > 0})
             {
-                const int layerToExclude = ~(1 << 2); //Exclude Ignore raycast layer
+                
                 for (var i = 0; i < _ghostController.GhostHuntAura.PlayersInAura.Count; i++)
                 {
                     var directionToPlayer = _ghostController.GhostHuntAura.PlayersInAura[i].Position -
                                             _ghostController.transform.position;
 
-                    if (IsSeePlayer(directionToPlayer, layerToExclude)) //Todo check is chase player by isMoveToPlayer
+                    if (IsSeePlayer(directionToPlayer)) //Todo check is chase player by isMoveToPlayer
                         MoveToPoint(_ghostController.GhostHuntAura.PlayersInAura[i].Position, true);
                 }
             }
@@ -238,6 +246,60 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                         Random.Range(_ghostConstants.minDoorTouchTime, _ghostConstants.maxDoorTouchTime));
                 }
             }
+        }
+
+        protected virtual void SpeedChange()
+        {
+            if (!_ghostConstants.hasSpeedUp)
+                return;
+
+            if (_ghostController.GhostHuntAura.PlayersInAura is {Count: > 0})
+            {
+                //ToDo speed up if any player seen
+                var isSeePlayer = false;
+                
+                for (var i = 0; i < _ghostController.GhostHuntAura.PlayersInAura.Count; i++)
+                {
+                    var directionToPlayer = _ghostController.GhostHuntAura.PlayersInAura[i].Position -
+                                            _ghostController.transform.position;
+                    if (IsSeePlayer(directionToPlayer)) //ToDo need to check is it chased player
+                    {
+                        isSeePlayer = true;
+                        break;
+                    }
+                }
+
+                if (isSeePlayer)
+                    SpeedUp();
+                else 
+                    SpeedDown();
+
+            }
+            else
+            {
+                SpeedDown();
+            }
+        }
+
+        protected virtual void SpeedUp()
+        {
+            huntingSpeed += _ghostDifficultyData.SpeedUpByIteration;
+            
+            Debug.Log("Need read max limit of speed from config!");
+            if (huntingSpeed >= 3f)
+                huntingSpeed = 3f;
+            
+            _ghostController.SetSpeed(huntingSpeed);
+        }
+
+        protected virtual void SpeedDown()
+        {
+            huntingSpeed -= _ghostDifficultyData.SpeedUpByIteration;
+
+            if (huntingSpeed < _ghostConstants.defaultHuntingSpeed)
+                huntingSpeed = _ghostConstants.defaultHuntingSpeed;
+            
+            _ghostController.SetSpeed(huntingSpeed);
         }
 
         protected virtual async UniTask Flick(CancellationToken token)
@@ -320,10 +382,10 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
             }
         }
 
-        public bool IsSeePlayer(Vector3 direction, int layerToExclude)
+        public bool IsSeePlayer(Vector3 direction)
         {
             if (Physics.Raycast(_ghostController.transform.position, direction,
-                    out var hit, Mathf.Infinity, layerToExclude))
+                    out var hit, Mathf.Infinity, LayerToExclude))
             {
                 return hit.collider.TryGetComponent<IPlayer>(out var _);
             }
