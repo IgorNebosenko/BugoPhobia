@@ -114,7 +114,11 @@ namespace ElectrumGames.Core.Boards
             mainBoard.BoardCollider.enabled = true;
             additionalBoard.BoardCollider.enabled = true;
 
+#if UNITY_EDITOR || UNITY_STANDALONE
             _viewManager.ShowView<InGamePresenter>();
+#elif UNITY_ANDROID
+            _viewManager.ShowView<InGameAndroidPresenter>();
+#endif
 
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
