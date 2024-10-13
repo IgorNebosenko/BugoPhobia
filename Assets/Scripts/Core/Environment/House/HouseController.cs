@@ -77,12 +77,18 @@ namespace ElectrumGames.Core.Environment.House
 
         private void CloseAllClosableDoors()
         {
-            Debug.Log("Close all outdoor doors");
+            for (var i = 0; i < rooms.Length; i++)
+            {
+                rooms[i].DoorsRoomHandler.BlockDoors();
+            }
         }
 
         private void OpenAllClosableDoors()
         {
-            Debug.Log("Open all outdoor doors");
+            for (var i = 0; i < rooms.Length; i++)
+            {
+                rooms[i].DoorsRoomHandler.UnBlockDoors();
+            }
         }
 
         private void SwitchOffAllLight()
