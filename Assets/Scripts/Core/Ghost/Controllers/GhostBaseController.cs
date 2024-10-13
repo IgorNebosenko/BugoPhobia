@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
 using ElectrumGames.CommonInterfaces;
 using ElectrumGames.Core.Ghost.Configs;
+using ElectrumGames.Core.Ghost.Logic.Abilities;
+using ElectrumGames.Core.Ghost.Logic.GhostEvents;
+using ElectrumGames.Core.Ghost.Logic.Hunt;
+using ElectrumGames.Core.Ghost.Logic.NonHunt;
 using ElectrumGames.Core.Missions;
 using ElectrumGames.Extensions;
 using ElectrumGames.GlobalEnums;
@@ -17,6 +21,11 @@ namespace ElectrumGames.Core.Ghost.Controllers
         
         public int NetId { get; private set; }
         public int OwnerId { get; private set; }
+        
+        public INonHuntLogic NonHuntLogic { get; protected set; }
+        public IGhostEventLogic GhostEventLogic { get; protected set; }
+        public IHuntLogic HuntLogic { get; protected set; }
+        public IGhostAbility GhostAbility { get; protected set; }
         
         public EvidenceController EvidenceController { get; private set; }
         public GhostBehaviourController GhostBehaviourController { get; protected set; }

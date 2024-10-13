@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ElectrumGames.CommonInterfaces;
 using ElectrumGames.Configs;
@@ -36,6 +37,8 @@ namespace ElectrumGames.Core.Ghost
         private MissionPlayersHandler _missionPlayersHandler;
         private GhostFlickConfig _flickConfig;
         private HuntPoints _huntPoints;
+
+        public event Action<GhostBaseController> GhostCreated;
 
         [Inject]
         private void Construct(NetIdFactory netIdFactory, GhostEnvironmentHandler ghostEnvironmentHandler, GhostModelsList modelsList,
@@ -79,6 +82,7 @@ namespace ElectrumGames.Core.Ghost
             
             SetLogic(ghost, _ghostEnvironmentHandler);
             
+            GhostCreated?.Invoke(ghost);
             return ghost;
         }
 

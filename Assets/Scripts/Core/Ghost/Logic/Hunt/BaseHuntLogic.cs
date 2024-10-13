@@ -49,6 +49,8 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
         
         public bool IsInterrupt { get; set; }
 
+        public event Action HuntEnded;
+
         public BaseHuntLogic(GhostController ghostController, GhostDifficultyData ghostDifficultyData, 
             GhostActivityData activityData, MissionPlayersHandler missionPlayersHandler, GhostFlickConfig ghostFlickConfig,
             HuntPoints huntPoints)
@@ -429,6 +431,8 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
             
             _huntCancellationTokenSource?.Cancel();
             _flickCancellationTokenSource?.Cancel();
+            
+            HuntEnded?.Invoke();
         }
     }
 }

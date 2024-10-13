@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ElectrumGames.Core.Environment.Enums;
 using ElectrumGames.Core.Ghost;
+using ElectrumGames.Core.Ghost.Controllers;
 using ElectrumGames.Core.Rooms;
 using UnityEngine;
 using Zenject;
@@ -19,6 +20,8 @@ namespace ElectrumGames.Core.Environment.House
         [SerializeField] private int maxRoomId = 0;
         [Space]
         [SerializeField] private Room[] rooms;
+
+        private GhostFactory _ghostFactory;
         
         public FuseBoxState FuseBoxState { get; private set; }
         
@@ -28,9 +31,10 @@ namespace ElectrumGames.Core.Environment.House
         public IReadOnlyList<Room> Rooms => rooms;
 
         [Inject]
-        private void Construct(GhostEnvironmentHandler ghostEnvironmentHandler)
+        private void Construct(GhostEnvironmentHandler ghostEnvironmentHandler, GhostFactory ghostFactory)
         {
             ghostEnvironmentHandler.InitGhost(minGhostId, maxGhostId, minRoomId, maxRoomId);
+            _ghostFactory = ghostFactory;
         }
 
         public void OnFuseBoxStateChanged(bool state)
@@ -52,13 +56,20 @@ namespace ElectrumGames.Core.Environment.House
         private void OnEnable()
         {
             fuseBox.FuseBoxChanged += OnFuseBoxStateChanged;
+            _ghostFactory.GhostCreated += OnGhostCreated;
             HouseKeyEnvironmentObject.PickUpKey += OnPickUpKey;
         }
 
         private void OnDisable()
         {
             fuseBox.FuseBoxChanged -= OnFuseBoxStateChanged;
+            _ghostFactory.GhostCreated -= OnGhostCreated;
             HouseKeyEnvironmentObject.PickUpKey -= OnPickUpKey;
+        }
+        
+        private void OnGhostCreated(GhostBaseController ghost)
+        {
+            ghost.HuntLogic.HuntEnded += SwitchOffAllLight;
         }
 
         public void SwitchOffAllLight()

@@ -24,10 +24,6 @@ namespace ElectrumGames.Core.Ghost.Controllers
         private Collider[] _colliders = new Collider[CollidersCount];
         private const int CollidersCount = 16;
         
-        public INonHuntLogic NonHuntLogic { get; private set; }
-        public IGhostEventLogic GhostEventLogic { get; private set; }
-        public IHuntLogic HuntLogic { get; private set; }
-        public IGhostAbility GhostAbility { get; private set; }
         public IReadOnlyList<Room> Rooms => _rooms;
         public float NavmeshRemainingDistance => navmeshAgent.remainingDistance;
 
