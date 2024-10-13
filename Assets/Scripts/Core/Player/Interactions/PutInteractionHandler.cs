@@ -9,6 +9,8 @@ namespace Core.Player.Interactions
 {
     public class PutInteractionHandler : IInteractionItemsManager
     {
+        private const int RayCastIgnoreMask = ~(1 << 2);
+        
         private readonly IInteraction _interactions;
         private readonly Camera _targetCamera;
         private readonly PlayerConfig _playerConfig;
@@ -39,7 +41,7 @@ namespace Core.Player.Interactions
                 {
                     var ray = _targetCamera.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f));
 
-                    if (Physics.Raycast(ray, out var hit, _playerConfig.RayCastDistance))
+                    if (Physics.Raycast(ray, out var hit, _playerConfig.RayCastDistance, RayCastIgnoreMask))
                     {
                         if (hit.collider.TryGetComponent<ItemInstanceBase>(out var item))
                         {
