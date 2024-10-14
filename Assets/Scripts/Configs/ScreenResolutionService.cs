@@ -40,6 +40,7 @@ namespace ElectrumGames.Configs
 #endif
             }
 
+            SetResolutionById(_configService.Resolution);
         }
 
         public void SetResolutionById(int id)
