@@ -29,7 +29,8 @@ public class ProjectInstaller : MonoInstaller
     [Space]
     [SerializeField] private ItemsConfig itemsConfig;
     [Space]
-    [SerializeField] private FpsConfig fpsConfig;
+    [SerializeField] private FpsConfig pcFpsConfig;
+    [SerializeField] private FpsConfig androidFpsConfig;
     
     public override void InstallBindings()
     {
@@ -53,7 +54,11 @@ public class ProjectInstaller : MonoInstaller
         
         Container.BindInstance(itemsConfig).AsSingle();
         
-        Container.BindInstance(fpsConfig).AsSingle();
+#if UNITY_STANDALONE
+        Container.BindInstance(pcFpsConfig).AsSingle();
+#elif UNITY_ANDROID
+        Container.BindInstance(androidFpsConfig).AsSingle();
+#endif
 
         Container.Bind<JournalManager>().AsSingle().NonLazy();
 

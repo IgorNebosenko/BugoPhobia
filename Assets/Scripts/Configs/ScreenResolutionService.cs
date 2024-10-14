@@ -33,7 +33,11 @@ namespace ElectrumGames.Configs
 
             if (_configService.Resolution < 0 || _configService.Resolution >= _resolutions.Count)
             {
-                _configService.Resolution = _resolutions.Count - 1;
+#if UNITY_STANDALONE
+                _configService.Resolution = _resolutions.Count - 1; //Max res
+#elif UNITY_ANDROID
+                _configService.Resolution = _resolutions.Count - 2; // 1920x1080
+#endif
             }
 
         }
