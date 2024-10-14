@@ -17,8 +17,19 @@ namespace ElectrumGames.Configs
         {
             _configService = configService;
             
+#if UNITY_STANDALONE
             _resolutions = Screen.resolutions.Select(x => new Vector2Int(x.width, x.height)).
                 Distinct().ToList();
+#elif UNITY_ANDROID
+            _resolutions = new List<Vector2Int>()
+            {
+                new Vector2Int(640, 480),
+                new Vector2Int(1280, 720),
+                new Vector2Int(1600, 720),
+                new Vector2Int(1920, 1080),
+                new Vector2Int(2340, 1080)
+            };
+#endif
 
             if (_configService.Resolution < 0 || _configService.Resolution >= _resolutions.Count)
             {

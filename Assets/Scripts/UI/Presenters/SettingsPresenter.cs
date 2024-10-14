@@ -1,6 +1,7 @@
 ﻿using ElectrumGames.Configs;
 using ElectrumGames.Core.Player.Movement;
 using ElectrumGames.MVP;
+using ElectrumGames.MVP.Managers;
 using ElectrumGames.UI.Views;
 using UnityEngine;
 
@@ -17,10 +18,12 @@ namespace ElectrumGames.UI.Presenters
         private readonly Camera _injectedCamera;
         
         private readonly InputActions _inputActions;
+
+        private readonly ViewManager _viewManager;
         
         public SettingsPresenter(UserConfig userConfig, PlayerConfig playerConfig, ConfigService configService,
             FpsConfig fpsConfig, InputActions inputActions, SettingsView view, ScreenResolutionService screenResolution,
-            Camera injectedCamera) : base(view)
+            Camera injectedCamera, ViewManager viewManager) : base(view)
         {
             UserConfig = userConfig;
             PlayerConfig = playerConfig;
@@ -31,6 +34,8 @@ namespace ElectrumGames.UI.Presenters
             _injectedCamera = injectedCamera;
             
             _inputActions = inputActions;
+
+            _viewManager = viewManager;
         }
         
         protected override void Init()
@@ -46,6 +51,10 @@ namespace ElectrumGames.UI.Presenters
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             _inputActions.Moving.Enable();
+            
+            _inputActions.UiEvents.Enable();
+            _inputActions.UI.Enable();
+            
             _inputActions.Interactions.Enable();
         }
 
@@ -146,6 +155,17 @@ namespace ElectrumGames.UI.Presenters
 
         public void OnMenuActionChanged()
         {
+        }
+
+        public void OnCloseButtonClicked()
+        {
+            Closing();
+            
+#if UNITY_STANDALONE
+            _viewManager.ShowView<InGamePresenter>();
+#elif UNITY_ANDROID
+            _viewManager.ShowView<InGameAndroidPresenter>();
+#endif
         }
     }
 }

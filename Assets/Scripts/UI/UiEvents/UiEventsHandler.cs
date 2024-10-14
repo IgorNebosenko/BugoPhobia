@@ -47,7 +47,7 @@ namespace ElectrumGames.UI.UiEvents
                     }
                     else
                     {
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_STANDALONE
                         _viewManager.ShowView<InGamePresenter>();
 #elif UNITY_ANDROID
             _viewManager.ShowView<InGameAndroidPresenter>();
@@ -74,10 +74,10 @@ namespace ElectrumGames.UI.UiEvents
                     }
                     else
                     {
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_STANDALONE
                         _viewManager.ShowView<InGamePresenter>();
 #elif UNITY_ANDROID
-            _viewManager.ShowView<InGameAndroidPresenter>();
+                        _viewManager.ShowView<InGameAndroidPresenter>();
 #endif
                         _menuPresenter = null;
                         _journalPresenter = null;

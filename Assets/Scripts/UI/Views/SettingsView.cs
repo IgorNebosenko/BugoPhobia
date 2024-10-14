@@ -39,6 +39,8 @@ namespace ElectrumGames.UI.Views
         [SerializeField, FoldoutGroup("Tabs")] private Transform videoTabContainer;
         [SerializeField, FoldoutGroup("Tabs")] private Transform audioTabContainer;
         [SerializeField, FoldoutGroup("Tabs")] private Transform controlsTabContainer;
+        [Space]
+        [SerializeField, FoldoutGroup("Misc")] private Button closeButton;
 
         private void Start()
         {
@@ -168,6 +170,8 @@ namespace ElectrumGames.UI.Views
             //TODO sounds
             //TODO input device
             //TODO output device
+            
+            closeButton.onClick.AddListener(Presenter.OnCloseButtonClicked);
         }
 
         private void OnDestroy()
@@ -176,6 +180,19 @@ namespace ElectrumGames.UI.Views
             videoButton.onClick.RemoveListener(() => SwitchTab(SettingsTab.Video));
             audioButton.onClick.RemoveListener(() => SwitchTab(SettingsTab.Audio));
             controlsButton.onClick.RemoveListener(() => SwitchTab(SettingsTab.Controls));
+            
+            //TODO Change language
+            //TODO Change voice
+            
+            //TODO resolution
+            //TODO FOV
+            
+            //TODO music
+            //TODO sounds
+            //TODO input device
+            //TODO output device
+            
+            closeButton.onClick.RemoveListener(Presenter.OnCloseButtonClicked);
         }
 
 

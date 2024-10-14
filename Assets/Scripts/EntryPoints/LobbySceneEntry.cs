@@ -32,7 +32,7 @@ namespace ElectrumGames.EntryPoints
             _playersFactory.CreatePlayer(
                 true, playerSpawnPoint.position, playerSpawnPoint.rotation);
 
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_STANDALONE
             _viewManager.ShowView<InGamePresenter>();
 #elif UNITY_ANDROID
             _viewManager.ShowView<InGameAndroidPresenter>();
