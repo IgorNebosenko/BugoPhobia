@@ -2,6 +2,7 @@
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Controllers;
 using ElectrumGames.Core.Missions;
+using ElectrumGames.Core.Player;
 using ElectrumGames.Core.Rooms;
 
 namespace ElectrumGames.Core.Ghost.Logic.Hunt

@@ -11,6 +11,7 @@ using ElectrumGames.Core.Ghost.Logic.GhostEvents;
 using ElectrumGames.Core.Ghost.Logic.Hunt;
 using ElectrumGames.Core.Ghost.Logic.NonHunt;
 using ElectrumGames.Core.Missions;
+using ElectrumGames.Core.Player;
 using ElectrumGames.Core.Rooms;
 using ElectrumGames.GlobalEnums;
 using ElectrumGames.Network;
@@ -37,6 +38,7 @@ namespace ElectrumGames.Core.Ghost
         private MissionPlayersHandler _missionPlayersHandler;
         private GhostFlickConfig _flickConfig;
         private HuntPoints _huntPoints;
+        private MissionDataHandler _missionDataHandler;
 
         public event Action<GhostBaseController> GhostCreated;
 
@@ -44,7 +46,7 @@ namespace ElectrumGames.Core.Ghost
         private void Construct(NetIdFactory netIdFactory, GhostEnvironmentHandler ghostEnvironmentHandler, GhostModelsList modelsList,
             GhostDifficultyList ghostDifficultyList, ActivityConfig activityConfig, GhostEmfZonePool ghostEmfZonePool, EmfData emfData,
             EvidenceController evidenceController, MissionPlayersHandler missionPlayersHandler, GhostFlickConfig flickConfig,
-            HuntPoints huntPoints)
+            HuntPoints huntPoints, MissionDataHandler missionDataHandler)
         {
             _netIdFactory = netIdFactory;
             _ghostEnvironmentHandler = ghostEnvironmentHandler;
@@ -57,6 +59,7 @@ namespace ElectrumGames.Core.Ghost
             _missionPlayersHandler = missionPlayersHandler;
             _flickConfig = flickConfig;
             _huntPoints = huntPoints;
+            _missionDataHandler = missionDataHandler;
 
             _netIdFactory.Initialize(this);
         }
@@ -102,12 +105,13 @@ namespace ElectrumGames.Core.Ghost
                     
                     activityData = _activityConfig.GhostActivities.First(x => x.GhostType == GhostType.Blaze);
                     
-                    Debug.Log("Difficulty must read from data!!");
-                    nonHuntLogic = new BlazeNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[0], 
-                        activityData, _ghostEmfZonePool, _emfData);
-                    ghostEventLogic = new BlazeBaseGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[0],
+                    nonHuntLogic = new BlazeNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int)_missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
+                    ghostEventLogic = new BlazeBaseGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int)_missionDataHandler.MissionDifficulty],
                         activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
-                    huntLogic = new BlazeHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[0], activityData,
+                    huntLogic = new BlazeHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int)_missionDataHandler.MissionDifficulty], activityData, 
                         _missionPlayersHandler, _flickConfig, _huntPoints);
                     ghostAbility = new PlaceholderGhostAbility();
                     break;

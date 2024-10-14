@@ -4,7 +4,7 @@ using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Player;
 using UnityEngine;
 
-namespace ElectrumGames.Core.Missions
+namespace ElectrumGames.Core.Player
 {
     public class MissionPlayersHandler
     {

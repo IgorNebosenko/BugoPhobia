@@ -3,6 +3,7 @@ using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Controllers;
 using ElectrumGames.Core.Ghost.Interactions.Pools;
 using ElectrumGames.Core.Missions;
+using ElectrumGames.Core.Player;
 
 namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
 {
