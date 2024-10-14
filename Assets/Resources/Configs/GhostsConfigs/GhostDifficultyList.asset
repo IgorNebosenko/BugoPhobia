@@ -13,6 +13,34 @@ MonoBehaviour:
   m_Name: GhostDifficultyList
   m_EditorClassIdentifier: 
   ghostDifficultyData:
+  - <GameDifficulty>k__BackingField: 0
+    <ThrowCooldown>k__BackingField: 15
+    <DoorsInteractionCooldown>k__BackingField: 20
+    <SwitchesInteractionCooldown>k__BackingField: 20
+    <OtherInteractionCooldown>k__BackingField: 20
+    <MovingToPointCooldown>k__BackingField: 20
+    <MovingToPointChance>k__BackingField: 0.75
+    <GhostEventsCooldownModifier>k__BackingField: 0.8
+    <MinStayGhostEventTime>k__BackingField: 3
+    <MaxStayGhostEventTime>k__BackingField: 4
+    <RedLightChance>k__BackingField: 0.2
+    <DoorsCloseChance>k__BackingField: 0.3
+    <MinChaseGhostEventTime>k__BackingField: 6
+    <MaxChaseGhostEventTime>k__BackingField: 7
+    <MinSingingGhostEventTime>k__BackingField: 8
+    <MaxSingingGhostEventTime>k__BackingField: 11
+    <InRoomWeightPoint>k__BackingField: 20
+    <NeighborRoomWeightPoint>k__BackingField: 3
+    <OtherWeightPoint>k__BackingField: 1
+    <HuntChance>k__BackingField: 0.6
+    <SafeHuntTime>k__BackingField: 5
+    <HuntDuration>k__BackingField: 25
+    <SpeedUpByIteration>k__BackingField: 0.025
+    <DefaultSanity>k__BackingField: 100
+    <DefaultDrainSanity>k__BackingField: -0.0625
+    <MinGhostEventDrainSanity>k__BackingField: -10
+    <MaxGhostEventDrainSanity>k__BackingField: -15
+    <GhostEventDrainOnKillOrDisconnectMate>k__BackingField: -15
   - <GameDifficulty>k__BackingField: 1
     <ThrowCooldown>k__BackingField: 15
     <DoorsInteractionCooldown>k__BackingField: 20
@@ -37,7 +65,35 @@ MonoBehaviour:
     <HuntDuration>k__BackingField: 35
     <SpeedUpByIteration>k__BackingField: 0.025
     <DefaultSanity>k__BackingField: 100
-    <DefaultDrainSanity>k__BackingField: -0.25
+    <DefaultDrainSanity>k__BackingField: -0.1
+    <MinGhostEventDrainSanity>k__BackingField: -10
+    <MaxGhostEventDrainSanity>k__BackingField: -15
+    <GhostEventDrainOnKillOrDisconnectMate>k__BackingField: -15
+  - <GameDifficulty>k__BackingField: 2
+    <ThrowCooldown>k__BackingField: 25
+    <DoorsInteractionCooldown>k__BackingField: 30
+    <SwitchesInteractionCooldown>k__BackingField: 30
+    <OtherInteractionCooldown>k__BackingField: 25
+    <MovingToPointCooldown>k__BackingField: 10
+    <MovingToPointChance>k__BackingField: 0.9
+    <GhostEventsCooldownModifier>k__BackingField: 1.25
+    <MinStayGhostEventTime>k__BackingField: 3
+    <MaxStayGhostEventTime>k__BackingField: 4
+    <RedLightChance>k__BackingField: 0.2
+    <DoorsCloseChance>k__BackingField: 0.3
+    <MinChaseGhostEventTime>k__BackingField: 6
+    <MaxChaseGhostEventTime>k__BackingField: 7
+    <MinSingingGhostEventTime>k__BackingField: 8
+    <MaxSingingGhostEventTime>k__BackingField: 11
+    <InRoomWeightPoint>k__BackingField: 8
+    <NeighborRoomWeightPoint>k__BackingField: 3
+    <OtherWeightPoint>k__BackingField: 1
+    <HuntChance>k__BackingField: 0.8
+    <SafeHuntTime>k__BackingField: 2
+    <HuntDuration>k__BackingField: 40
+    <SpeedUpByIteration>k__BackingField: 0.025
+    <DefaultSanity>k__BackingField: 100
+    <DefaultDrainSanity>k__BackingField: -0.15
     <MinGhostEventDrainSanity>k__BackingField: -10
     <MaxGhostEventDrainSanity>k__BackingField: -15
     <GhostEventDrainOnKillOrDisconnectMate>k__BackingField: -15

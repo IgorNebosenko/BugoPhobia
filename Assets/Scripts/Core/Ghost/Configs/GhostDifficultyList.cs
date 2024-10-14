@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ElectrumGames.GlobalEnums;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace ElectrumGames.Core.Ghost.Configs
@@ -49,7 +50,7 @@ namespace ElectrumGames.Core.Ghost.Configs
     [CreateAssetMenu(fileName = "GhostDifficultyList", menuName = "Ghosts configs/Ghost difficulty list")]
     public class GhostDifficultyList : ScriptableObject
     {
-        [SerializeField] private GhostDifficultyData[] ghostDifficultyData;
+        [SerializeField, ListDrawerSettings(NumberOfItemsPerPage = 1)] private GhostDifficultyData[] ghostDifficultyData;
 
         public IReadOnlyList<GhostDifficultyData> GhostDifficultyData => ghostDifficultyData;
     }
