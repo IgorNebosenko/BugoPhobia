@@ -26,7 +26,7 @@ namespace ElectrumGames.TestOnly
             var height = Screen.height;
             var style = new GUIStyle();
 
-            var rect = new Rect(0, 0, width, height * 2 / 100);
+            var rect = new Rect(100, 0, width, height * 2 / 100);
             style.alignment = TextAnchor.UpperLeft;
             style.fontSize = height * 2 / 50;
             style.normal.textColor = _fps switch

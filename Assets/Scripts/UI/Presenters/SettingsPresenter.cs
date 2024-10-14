@@ -48,8 +48,10 @@ namespace ElectrumGames.UI.Presenters
 
         protected override void Closing()
         {
+#if UNITY_STANDALONE
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+#endif
             _inputActions.Moving.Enable();
             
             _inputActions.UiEvents.Enable();

@@ -27,8 +27,10 @@ namespace ElectrumGames.UI.Presenters
         
         protected override void Init()
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+#if UNITY_STANDALONE
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+#endif
             _inputActions.Moving.Disable();
             _inputActions.Interactions.Disable();
         }
