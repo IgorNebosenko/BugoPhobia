@@ -14,6 +14,7 @@ namespace ElectrumGames.Core.Player
     public interface IPlayer : IHaveNetId, IHavePosition
     {
         bool IsAlive { get; }
+        Transform PlayerHead { get; }
         IInventory Inventory { get; }
         InventoryIndexHandler InventoryIndexHandler { get; }
         ISanity Sanity { get; }

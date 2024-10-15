@@ -199,11 +199,11 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                 
                 for (var i = 0; i < _ghostController.GhostHuntAura.PlayersInAura.Count; i++)
                 {
-                    var directionToPlayer = _ghostController.GhostHuntAura.PlayersInAura[i].Position -
+                    var directionToPlayer = _ghostController.GhostHuntAura.PlayersInAura[i].PlayerHead.position -
                                             _ghostController.transform.position;
 
                     if (IsSeePlayer(directionToPlayer)) //Todo check is chase player by isMoveToPlayer
-                        MoveToPoint(_ghostController.GhostHuntAura.PlayersInAura[i].Position, true);
+                        MoveToPoint(_ghostController.GhostHuntAura.PlayersInAura[i].PlayerHead.position, true);
                 }
             }
         }
@@ -215,7 +215,7 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                 for (var i = 0; i < _ghostController.GhostHuntAura.PlayersInAura.Count; i++)
                 {
                     if (IsSeeElectronic(_ghostController.GhostHuntAura.PlayersInAura[i]))
-                        MoveToPoint(_ghostController.GhostHuntAura.PlayersInAura[i].Position, true);
+                        MoveToPoint(_ghostController.GhostHuntAura.PlayersInAura[i].PlayerHead.position, true);
                 }
             }
         }
@@ -265,7 +265,7 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                 
                 for (var i = 0; i < _ghostController.GhostHuntAura.PlayersInAura.Count; i++)
                 {
-                    var directionToPlayer = _ghostController.GhostHuntAura.PlayersInAura[i].Position -
+                    var directionToPlayer = _ghostController.GhostHuntAura.PlayersInAura[i].PlayerHead.position -
                                             _ghostController.transform.position;
                     if (IsSeePlayer(directionToPlayer)) //ToDo need to check is it chased player
                     {

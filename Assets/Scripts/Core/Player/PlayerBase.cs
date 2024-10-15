@@ -53,6 +53,7 @@ namespace ElectrumGames.Core.Player
         public int OwnerId { get; protected set; }
         
         public bool IsAlive { get; protected set; } = true;
+        public Transform PlayerHead => headBob;
         public IInventory Inventory { get; private set; }
         public InventoryIndexHandler InventoryIndexHandler { get; protected set; }
         public ISanity Sanity { get; private set; }
