@@ -33,6 +33,11 @@ namespace ElectrumGames.Core.Rooms
             }
         }
 
+        private void Start()
+        {
+            IsLightOn = roomSwitch.IsElectricityOn;
+        }
+
         private void OnEnable()
         {
             roomSwitch.Switch += ChangeState;
