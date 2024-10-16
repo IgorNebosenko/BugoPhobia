@@ -21,7 +21,6 @@ namespace ElectrumGames.Audio
         {
             audioSource.loop = true;
             audioSource.spatialBlend = 0;
-            audioSource.Play();
 
             _noiseSamples = new float[SampleSize];
             GenerateNoiseSamples();
@@ -39,6 +38,14 @@ namespace ElectrumGames.Audio
         {
             lowPassFilter.cutoffFrequency = minFrequency;
             highPassFilter.cutoffFrequency = maxFrequency;
+        }
+
+        public void SetPlayState(bool isPlay)
+        {
+            if (isPlay)
+                audioSource.Play();
+            else
+                audioSource.Stop();
         }
 
         private void OnAudioFilterRead(float[] data, int channels)

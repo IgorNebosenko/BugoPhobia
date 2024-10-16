@@ -1,11 +1,17 @@
-﻿namespace ElectrumGames.Core.Environment
+﻿using UnityEngine;
+
+namespace ElectrumGames.Core.Environment
 {
     public class DemoEnvironmentHandler : EnvironmentHandler
     {
         
         protected override void SetParams()
         {
+            Debug.Log("Weather sets explicit!");
             WeatherData = weatherConfig.Config[0];
+            OutDoorTemperature = WeatherData.OutdoorTemperature;
+
+            SetEnvironmentOutdoor();
         }
     }
 }

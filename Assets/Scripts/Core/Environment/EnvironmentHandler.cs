@@ -1,4 +1,5 @@
 ﻿using System;
+using ElectrumGames.Audio;
 using ElectrumGames.Core.Environment.Configs;
 using UnityEngine;
 using Zenject;
@@ -14,14 +15,16 @@ namespace ElectrumGames.Core.Environment
         
         public WeatherConfigData WeatherData { get; protected set; }
         
-        public float OutDoorTemperature { get; private set; }
+        public float OutDoorTemperature { get; protected set; }
         
         protected WeatherConfig weatherConfig;
+        protected NoiseGenerator noiseGenerator;
 
         [Inject]
-        private void Construct(WeatherConfig weatherConfig)
+        private void Construct(WeatherConfig weatherConfig, NoiseGenerator noiseGenerator)
         {
             this.weatherConfig = weatherConfig;
+            this.noiseGenerator = noiseGenerator;
             
             SetParams();
             ApplyParams();
@@ -31,6 +34,8 @@ namespace ElectrumGames.Core.Environment
         {
             WeatherData = weatherConfig.Config[Random.Range(0, weatherConfig.Config.Count)];
             OutDoorTemperature = WeatherData.OutdoorTemperature;
+
+            SetEnvironmentOutdoor();
         }
 
         private void ApplyParams()
@@ -45,6 +50,18 @@ namespace ElectrumGames.Core.Environment
             RenderSettings.fogColor = WeatherData.FogColor;
             
             RenderSettings.ambientIntensity = WeatherData.AmbientIntensity;
+        }
+
+        public void SetEnvironmentOutdoor()
+        {
+            noiseGenerator.SetPassFrequency(WeatherData.NoiseOutdoorMinFrequency, WeatherData.NoiseOutdoorMaxFrequency);
+            noiseGenerator.SetPlayState(true);
+        }
+
+        public void SetEnvironmentIndoor()
+        {
+            noiseGenerator.SetPassFrequency(WeatherData.NoiseIndoorMinFrequency, WeatherData.NoiseIndoorMaxFrequency);
+            noiseGenerator.SetPlayState(true);
         }
     }
 }

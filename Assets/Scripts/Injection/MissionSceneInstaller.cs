@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using ElectrumGames.Audio;
 using ElectrumGames.Core.Environment;
 using ElectrumGames.Core.Environment.House;
 using ElectrumGames.Core.Ghost;
@@ -31,6 +32,8 @@ namespace ElectrumGames.Injection
         [SerializeField] private Camera injectedCamera;
         [Space]
         [SerializeField] private ItemMarkers itemMarkers;
+        [Space]
+        [SerializeField] private NoiseGenerator noiseGenerator;
         
         
         protected override Assembly UiAssembly => typeof(UiAssemblyReference).Assembly;
@@ -54,6 +57,8 @@ namespace ElectrumGames.Injection
             Container.BindInstance(injectedCamera).AsSingle();
 
             Container.BindInstance(itemMarkers).AsSingle();
+
+            Container.BindInstance(noiseGenerator).AsSingle();
             
             Container.Bind<EnvironmentData>().AsSingle();
             Container.Bind<GhostEnvironmentHandler>().AsSingle();
