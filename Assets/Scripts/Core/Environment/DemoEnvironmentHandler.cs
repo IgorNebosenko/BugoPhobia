@@ -8,7 +8,7 @@ namespace ElectrumGames.Core.Environment
         protected override void SetParams()
         {
             Debug.Log("Weather sets explicit!");
-            WeatherData = weatherConfig.Config[0];
+            WeatherData = weatherConfig.Config[6];
             OutDoorTemperature = WeatherData.OutdoorTemperature;
 
             SetEnvironmentOutdoor();

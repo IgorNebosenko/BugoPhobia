@@ -21,9 +21,6 @@ namespace ElectrumGames.Core.Environment.Configs
         [field: SerializeField] public float FogDistance { get; private set; }
         [field: SerializeField] public Color FogColor { get; private set; }
         [field: Space]
-        [field: SerializeField] public AudioClip OutdoorEnvironmentMusic { get; private set; }
-        [field: SerializeField] public AudioClip IndoorEnvironmentMusic { get; private set; }
-        [field: Space]
         [field: SerializeField] public float NoiseOutdoorMinFrequency { get; private set; }
         [field: SerializeField] public float NoiseOutdoorMaxFrequency { get; private set; }
         [field: SerializeField] public float NoiseIndoorMinFrequency { get; private set; }
