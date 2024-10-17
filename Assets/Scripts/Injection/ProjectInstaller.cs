@@ -8,10 +8,13 @@ using ElectrumGames.Core.Lobby;
 using ElectrumGames.Core.Missions;
 using ElectrumGames.Core.Player.Movement;
 using UnityEngine;
+using UnityEngine.Audio;
 using Zenject;
 
 public class ProjectInstaller : MonoInstaller
 {
+    [SerializeField] private AudioMixer audioMixer;
+    [Space]
     [SerializeField] private ActivityConfig activityConfig;
     [SerializeField] private EvidenceConfig evidenceConfig;
     [SerializeField] private DescriptionConfig descriptionConfig;
@@ -34,6 +37,8 @@ public class ProjectInstaller : MonoInstaller
     
     public override void InstallBindings()
     {
+        Container.BindInstance(audioMixer).AsSingle();
+        
         Container.BindInstance(activityConfig).AsSingle();
         Container.BindInstance(evidenceConfig).AsSingle();
         Container.BindInstance(descriptionConfig).AsSingle();
