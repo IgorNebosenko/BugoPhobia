@@ -1,4 +1,6 @@
 using System.Reflection;
+using ElectrumGames.Audio;
+using ElectrumGames.Core.Environment;
 using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Player;
 using ElectrumGames.UI;
@@ -13,6 +15,9 @@ namespace ElectrumGames. Injection
         [SerializeField] private PlayersFactory playersFactory;
         [SerializeField] private ItemsFactory itemsFactory;
         [Space]
+        [SerializeField] private NoiseGenerator noiseGenerator;
+        [SerializeField] private EnvironmentHandler lobbyEnvironmentHandler;
+        [Space]
         [SerializeField] private Camera injectedCamera;
         [Space]
         [SerializeField] private ItemMarkers itemMarkers;
@@ -25,6 +30,9 @@ namespace ElectrumGames. Injection
             
             Container.BindInstance(playersFactory).AsSingle();
             Container.BindInstance(itemsFactory).AsSingle();
+
+            Container.BindInstance(noiseGenerator).AsSingle();
+            Container.BindInstance(lobbyEnvironmentHandler).AsSingle();
 
             Container.BindInstance(injectedCamera).AsSingle();
 

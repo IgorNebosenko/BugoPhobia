@@ -1,5 +1,4 @@
-﻿using System;
-using ElectrumGames.Audio;
+﻿using ElectrumGames.Audio;
 using ElectrumGames.Core.Environment.Configs;
 using UnityEngine;
 using Zenject;
@@ -38,7 +37,7 @@ namespace ElectrumGames.Core.Environment
             SetEnvironmentOutdoor();
         }
 
-        private void ApplyParams()
+        protected virtual void ApplyParams()
         {
             RenderSettings.skybox = WeatherData.SkyBoxMaterial;
 
@@ -54,12 +53,14 @@ namespace ElectrumGames.Core.Environment
 
         public void SetEnvironmentOutdoor()
         {
+            Debug.Log("Environment outdoor");
             noiseGenerator.SetPassFrequency(WeatherData.NoiseOutdoorMinFrequency, WeatherData.NoiseOutdoorMaxFrequency);
             noiseGenerator.SetPlayState(true);
         }
 
         public void SetEnvironmentIndoor()
         {
+            Debug.Log("Environment indoor");
             noiseGenerator.SetPassFrequency(WeatherData.NoiseIndoorMinFrequency, WeatherData.NoiseIndoorMaxFrequency);
             noiseGenerator.SetPlayState(true);
         }

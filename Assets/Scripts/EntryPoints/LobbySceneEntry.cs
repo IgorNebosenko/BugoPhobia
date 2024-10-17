@@ -29,8 +29,9 @@ namespace ElectrumGames.EntryPoints
         {
             _configService.FpsConfig = _configService.FpsConfig;
             
+            Debug.LogWarning("All player creates as host and playable!");
             _playersFactory.CreatePlayer(
-                true, playerSpawnPoint.position, playerSpawnPoint.rotation);
+                true, true, playerSpawnPoint.position, playerSpawnPoint.rotation);
 
 #if UNITY_STANDALONE
             _viewManager.ShowView<InGamePresenter>();

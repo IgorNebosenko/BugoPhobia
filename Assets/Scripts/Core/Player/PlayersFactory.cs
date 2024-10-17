@@ -1,5 +1,6 @@
 ﻿using ElectrumGames.CommonInterfaces;
 using ElectrumGames.Configs;
+using ElectrumGames.Core.Environment;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Missions;
@@ -20,6 +21,7 @@ namespace ElectrumGames.Core.Player
         private ConfigService _configService;
         private ItemsConfig _itemsConfig;
         private GhostDifficultyList _difficultyList;
+        private EnvironmentHandler _environmentHandler;
 
         private Camera _playerCamera;
 
@@ -36,7 +38,7 @@ namespace ElectrumGames.Core.Player
         [Inject]
         private void Construct(NetIdFactory netIdFactory, PlayerConfig playerConfig, InputActions inputActions,
             ConfigService configService, ItemsConfig itemsConfig, GhostDifficultyList difficultyList, Camera playerCamera,
-            MissionDataHandler missionDataHandler)
+            MissionDataHandler missionDataHandler, EnvironmentHandler environmentHandler)
         {
             _netIdFactory = netIdFactory;
             _playerConfig = playerConfig;
@@ -49,14 +51,17 @@ namespace ElectrumGames.Core.Player
             
             _missionDataHandler = missionDataHandler;
 
+            _environmentHandler = environmentHandler;
+
             _netIdFactory.Initialize(this);
         }
         
-        public IPlayer CreatePlayer(bool isHost, Vector3 position, Quaternion rotation)
+        public IPlayer CreatePlayer(bool isPlayablePlayer, bool isHost, Vector3 position, Quaternion rotation)
         {
             var player = Instantiate(playerTemplate, position, rotation, transform);
-            player.Spawn(_playerConfig, _configService, isHost, _inputActions, _itemsConfig, 
-                _difficultyList.GhostDifficultyData[(int)_missionDataHandler.MissionDifficulty], _playerCamera);
+            player.Spawn(_playerConfig, _configService, isPlayablePlayer, isHost, _inputActions, _itemsConfig, 
+                _difficultyList.GhostDifficultyData[(int)_missionDataHandler.MissionDifficulty], _playerCamera,
+                _environmentHandler);
             
             return (Player)_netIdFactory.Initialize(player, NetId);
         }

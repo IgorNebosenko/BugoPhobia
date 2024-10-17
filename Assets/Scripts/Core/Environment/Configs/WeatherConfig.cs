@@ -25,7 +25,15 @@ namespace ElectrumGames.Core.Environment.Configs
         [field: SerializeField] public float NoiseOutdoorMaxFrequency { get; private set; }
         [field: SerializeField] public float NoiseIndoorMinFrequency { get; private set; }
         [field: SerializeField] public float NoiseIndoorMaxFrequency { get; private set; }
-        
+
+        public static WeatherConfigData CreateForLobby(float indoorMinFrequency, float indoorMaxFrequency)
+        {
+            return new WeatherConfigData
+            {
+                NoiseIndoorMinFrequency = indoorMinFrequency,
+                NoiseIndoorMaxFrequency = indoorMaxFrequency
+            };
+        }
     }
 
     [CreateAssetMenu(fileName = "WeatherConfig", menuName = "Environment/WeatherConfig")]

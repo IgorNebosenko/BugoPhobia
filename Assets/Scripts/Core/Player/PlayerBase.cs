@@ -2,6 +2,7 @@
 using Core.Items.Inventory;
 using Core.Player.Interactions;
 using ElectrumGames.Configs;
+using ElectrumGames.Core.Environment;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Items.Inventory;
@@ -45,9 +46,14 @@ namespace ElectrumGames.Core.Player
         protected PlayerConfig playerConfig;
         protected ConfigService configService;
 
+        protected EnvironmentHandler environmentHandler;
+
+        public bool _isInRoomPreviosState;
+
         private Collider[] _colliders = new Collider[CollidersArraySize];
         private const int CollidersArraySize = 40;
 
+        public bool IsPlayablePlayer { get; protected set; }
         public bool IsHost { get; protected set; }
         public int NetId { get; protected set; }
         public int OwnerId { get; protected set; }
@@ -90,13 +96,23 @@ namespace ElectrumGames.Core.Player
                 return;
 
             _motor.FixedSimulate(input, Time.fixedDeltaTime);
-            SanityDrainProcess();
+            PlayerUpdate();
             OnInteractionSimulate(Time.fixedDeltaTime);
         }
 
-        protected virtual void SanityDrainProcess()
+        protected virtual void PlayerUpdate()
         {
             var currentRoom = GetCurrentRoom();
+
+            if (!currentRoom.UnityNullCheck() != _isInRoomPreviosState)
+            {
+                _isInRoomPreviosState = !_isInRoomPreviosState;
+                
+                if (_isInRoomPreviosState)
+                    environmentHandler.SetEnvironmentIndoor();
+                else
+                    environmentHandler.SetEnvironmentOutdoor();
+            }
             
             if (currentRoom.UnityNullCheck() || currentRoom.IsElectricityOn)
                 return;
@@ -107,8 +123,9 @@ namespace ElectrumGames.Core.Player
         protected virtual void OnInteractionSimulate(float deltaTime)
         {}
 
-        public void Spawn(PlayerConfig config, ConfigService configSrv, bool isHost, InputActions inputActions, 
-            ItemsConfig itemsConfig, GhostDifficultyData difficultyData, Camera injectedCamera)
+        public void Spawn(PlayerConfig config, ConfigService configSrv, bool isPlayablePlayer, bool isHost, 
+            InputActions inputActions, ItemsConfig itemsConfig, GhostDifficultyData difficultyData, 
+            Camera injectedCamera, EnvironmentHandler environmentHandler)
         {
             playerConfig = config;
             configService = configSrv;
@@ -126,6 +143,7 @@ namespace ElectrumGames.Core.Player
             
             Sanity = new PlayerSanity(ghostDifficultyData.DefaultSanity, NetId);
 
+            IsPlayablePlayer = isPlayablePlayer;
             IsHost = isHost;
 
             if (IsHost)
@@ -134,6 +152,8 @@ namespace ElectrumGames.Core.Player
                 playerCamera = injectedCamera;
                 playerCamera.transform.localPosition = Vector3.zero;
             }
+
+            this.environmentHandler = environmentHandler;
 
             _motor = new PlayerMovementMotor(characterController, playerCamera, config, configService);
             _cameraLifter = new CameraLifter(playerConfig, headBob, stayCameraTransform.localPosition,
