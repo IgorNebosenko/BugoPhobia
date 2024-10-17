@@ -28,6 +28,9 @@ namespace ElectrumGames.EntryPoints
         private void Start()
         {
             _configService.FpsConfig = _configService.FpsConfig;
+
+            _configService.MusicVolume = _configService.MusicVolume;
+            _configService.SoundsVolume = _configService.MusicVolume;
             
             Debug.LogWarning("All player creates as host and playable!");
             _playersFactory.CreatePlayer(
