@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Audio;
 
 namespace ElectrumGames.Configs
 {
@@ -18,9 +19,13 @@ namespace ElectrumGames.Configs
 
         private const string ResolutionKey = "ResolutionVariant";
         private const string IsFullScreenKey = "IsFullScreen";
+
+        private const string MusicKey = "Music"; 
+        private const string SoundsKey = "Sounds";
         
         private readonly UserConfig _userConfig;
         private readonly FpsConfig _fpsConfig;
+        private readonly AudioMixer _audioMixer;
 
         public float XSensitivity
         {
@@ -85,10 +90,31 @@ namespace ElectrumGames.Configs
             }
         }
 
-        public ConfigService(UserConfig userConfig, FpsConfig fpsConfig)
+        public float MusicVolume
+        {
+            get => PlayerPrefs.GetFloat(MusicKey, _userConfig.DefaultMusicVolume);
+            set
+            {
+                _audioMixer.SetFloat(MusicKey, value);
+                PlayerPrefs.SetFloat(MusicKey, value);
+            }
+        }
+        
+        public float SoundsVolume
+        {
+            get => PlayerPrefs.GetFloat(SoundsKey, _userConfig.DefaultMusicVolume);
+            set
+            {
+                _audioMixer.SetFloat(SoundsKey, value);
+                PlayerPrefs.SetFloat(SoundsKey, value);
+            }
+        }
+
+        public ConfigService(UserConfig userConfig, FpsConfig fpsConfig, AudioMixer audioMixer)
         {
             _userConfig = userConfig;
             _fpsConfig = fpsConfig;
+            _audioMixer = audioMixer;
             
             CheckUserConfigs();
         }
@@ -133,6 +159,18 @@ namespace ElectrumGames.Configs
             if (!PlayerPrefs.HasKey(FpsKey) || FpsConfig < 0 || FpsConfig >= _fpsConfig.Data.Length)
             {
                 FpsConfig = _fpsConfig.DefaultIndex;
+            }
+
+            if (!PlayerPrefs.HasKey(MusicKey) || MusicVolume < _userConfig.MinAudioVolume || 
+                MusicVolume > _userConfig.MaxAudioVolume)
+            {
+                MusicVolume = _userConfig.DefaultMusicVolume;
+            }
+            
+            if (!PlayerPrefs.HasKey(SoundsKey) || SoundsVolume < _userConfig.MinAudioVolume || 
+                SoundsVolume > _userConfig.MaxAudioVolume)
+            {
+                SoundsVolume = _userConfig.DefaultSoundsVolume;
             }
         }
     }
