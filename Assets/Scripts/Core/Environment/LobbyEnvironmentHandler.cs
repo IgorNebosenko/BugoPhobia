@@ -1,4 +1,5 @@
 ﻿using ElectrumGames.Core.Environment.Configs;
+using UnityEngine;
 
 namespace ElectrumGames.Core.Environment
 {
@@ -6,7 +7,8 @@ namespace ElectrumGames.Core.Environment
     {
         protected override void SetParams()
         {
-            WeatherData = WeatherConfigData.CreateForLobby(200f, 300f);
+            Debug.LogWarning("Weather config for lobby must be read from SO");
+            WeatherData = WeatherConfigData.CreateForLobby(125f, 220f);
             SetEnvironmentIndoor();
         }
 

@@ -22,10 +22,10 @@ MonoBehaviour:
     <AmbientIntensity>k__BackingField: 0.15
     <FogDistance>k__BackingField: 0.02
     <FogColor>k__BackingField: {r: 0.098039225, g: 0.3921569, b: 0.40000004, a: 1}
-    <NoiseOutdoorMinFrequency>k__BackingField: 500
-    <NoiseOutdoorMaxFrequency>k__BackingField: 800
-    <NoiseIndoorMinFrequency>k__BackingField: 200
-    <NoiseIndoorMaxFrequency>k__BackingField: 300
+    <NoiseOutdoorMinFrequency>k__BackingField: 400
+    <NoiseOutdoorMaxFrequency>k__BackingField: 600
+    <NoiseIndoorMinFrequency>k__BackingField: 125
+    <NoiseIndoorMaxFrequency>k__BackingField: 220
   - <Weather>k__BackingField: 1
     <OutdoorTemperature>k__BackingField: 8
     <IndoorTemperature>k__BackingField: 9.5
@@ -35,10 +35,10 @@ MonoBehaviour:
     <AmbientIntensity>k__BackingField: 0.175
     <FogDistance>k__BackingField: 0.0075
     <FogColor>k__BackingField: {r: 0.21176472, g: 0.45098042, b: 0.47450984, a: 1}
-    <NoiseOutdoorMinFrequency>k__BackingField: 1000
-    <NoiseOutdoorMaxFrequency>k__BackingField: 1250
-    <NoiseIndoorMinFrequency>k__BackingField: 250
-    <NoiseIndoorMaxFrequency>k__BackingField: 325
+    <NoiseOutdoorMinFrequency>k__BackingField: 600
+    <NoiseOutdoorMaxFrequency>k__BackingField: 1000
+    <NoiseIndoorMinFrequency>k__BackingField: 150
+    <NoiseIndoorMaxFrequency>k__BackingField: 250
   - <Weather>k__BackingField: 2
     <OutdoorTemperature>k__BackingField: 12
     <IndoorTemperature>k__BackingField: 13.25
@@ -47,11 +47,11 @@ MonoBehaviour:
     <DirectionalLightColor>k__BackingField: {r: 0.1764706, g: 0.27450982, b: 0.30588236, a: 1}
     <AmbientIntensity>k__BackingField: 0.1
     <FogDistance>k__BackingField: 0.2
-    <FogColor>k__BackingField: {r: 0.4867924, g: 0.4867924, b: 0.4867924, a: 1}
+    <FogColor>k__BackingField: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 1}
     <NoiseOutdoorMinFrequency>k__BackingField: 225
     <NoiseOutdoorMaxFrequency>k__BackingField: 350
-    <NoiseIndoorMinFrequency>k__BackingField: 150
-    <NoiseIndoorMaxFrequency>k__BackingField: 225
+    <NoiseIndoorMinFrequency>k__BackingField: 100
+    <NoiseIndoorMaxFrequency>k__BackingField: 180
   - <Weather>k__BackingField: 3
     <OutdoorTemperature>k__BackingField: 9
     <IndoorTemperature>k__BackingField: 10
@@ -61,10 +61,10 @@ MonoBehaviour:
     <AmbientIntensity>k__BackingField: 0.11
     <FogDistance>k__BackingField: 0.02
     <FogColor>k__BackingField: {r: 0.2784314, g: 0.35686275, b: 0.47058827, a: 1}
-    <NoiseOutdoorMinFrequency>k__BackingField: 650
-    <NoiseOutdoorMaxFrequency>k__BackingField: 1000
-    <NoiseIndoorMinFrequency>k__BackingField: 215
-    <NoiseIndoorMaxFrequency>k__BackingField: 320
+    <NoiseOutdoorMinFrequency>k__BackingField: 550
+    <NoiseOutdoorMaxFrequency>k__BackingField: 900
+    <NoiseIndoorMinFrequency>k__BackingField: 140
+    <NoiseIndoorMaxFrequency>k__BackingField: 235
   - <Weather>k__BackingField: 4
     <OutdoorTemperature>k__BackingField: 8
     <IndoorTemperature>k__BackingField: 8.85
@@ -74,10 +74,10 @@ MonoBehaviour:
     <AmbientIntensity>k__BackingField: 0.1
     <FogDistance>k__BackingField: 0.02
     <FogColor>k__BackingField: {r: 0.2784314, g: 0.35686275, b: 0.47058827, a: 1}
-    <NoiseOutdoorMinFrequency>k__BackingField: 700
-    <NoiseOutdoorMaxFrequency>k__BackingField: 1200
-    <NoiseIndoorMinFrequency>k__BackingField: 230
-    <NoiseIndoorMaxFrequency>k__BackingField: 350
+    <NoiseOutdoorMinFrequency>k__BackingField: 600
+    <NoiseOutdoorMaxFrequency>k__BackingField: 1100
+    <NoiseIndoorMinFrequency>k__BackingField: 155
+    <NoiseIndoorMaxFrequency>k__BackingField: 260
   - <Weather>k__BackingField: 5
     <OutdoorTemperature>k__BackingField: 3
     <IndoorTemperature>k__BackingField: 5
@@ -86,7 +86,7 @@ MonoBehaviour:
     <DirectionalLightColor>k__BackingField: {r: 0.4370737, g: 0.5586748, b: 0.5924529, a: 1}
     <AmbientIntensity>k__BackingField: 0.25
     <FogDistance>k__BackingField: 0.02
-    <FogColor>k__BackingField: {r: 0.1254902, g: 0.3372549, b: 0.39607847, a: 1}
+    <FogColor>k__BackingField: {r: 0.32293522, g: 0.50580627, b: 0.5566038, a: 1}
     <NoiseOutdoorMinFrequency>k__BackingField: 100
     <NoiseOutdoorMaxFrequency>k__BackingField: 200
     <NoiseIndoorMinFrequency>k__BackingField: 50
@@ -102,5 +102,5 @@ MonoBehaviour:
     <FogColor>k__BackingField: {r: 0.63529414, g: 0.31764707, b: 0.30588236, a: 1}
     <NoiseOutdoorMinFrequency>k__BackingField: 650
     <NoiseOutdoorMaxFrequency>k__BackingField: 1000
-    <NoiseIndoorMinFrequency>k__BackingField: 220
-    <NoiseIndoorMaxFrequency>k__BackingField: 310
+    <NoiseIndoorMinFrequency>k__BackingField: 150
+    <NoiseIndoorMaxFrequency>k__BackingField: 250
