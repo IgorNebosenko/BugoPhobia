@@ -95,26 +95,71 @@ namespace ElectrumGames.Core.Ghost
             IGhostEventLogic ghostEventLogic = null;
             IHuntLogic huntLogic = null;
             IGhostAbility ghostAbility = null;
-            GhostActivityData activityData;
+            var activityData = _activityConfig.GhostActivities.First(x =>
+                x.GhostType == controller.GhostEnvironmentHandler.GhostVariables.ghostType);
             
             switch (controller.GhostEnvironmentHandler.GhostVariables.ghostType)
             {
-                case GhostType.Yrka:
                 case GhostType.Blaze:
-                    Debug.LogWarning("Yrka has same logic with blaze!");
-                    
-                    activityData = _activityConfig.GhostActivities.First(x => x.GhostType == GhostType.Blaze);
-                    
                     nonHuntLogic = new BlazeNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int)_missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
-                    ghostEventLogic = new BlazeBaseGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                    ghostEventLogic = new BlazeGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int)_missionDataHandler.MissionDifficulty],
                         activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
                     huntLogic = new BlazeHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int)_missionDataHandler.MissionDifficulty], activityData, 
                         _missionPlayersHandler, _flickConfig, _huntPoints);
-                    ghostAbility = new PlaceholderGhostAbility();
+                    ghostAbility = new BlazeAbility();
                     break;
+                case GhostType.Yrka:
+                    nonHuntLogic = new YrkaNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                        (int)_missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
+                    ghostEventLogic = new YrkaGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int)_missionDataHandler.MissionDifficulty],
+                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
+                    huntLogic = new YrkaHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int)_missionDataHandler.MissionDifficulty], activityData, 
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                    ghostAbility = new YrkaAbility();
+                    break;
+                case GhostType.Wraith:
+                    break;
+                case GhostType.Mare:
+                    break;
+                case GhostType.Babaduk:
+                    break;
+                case GhostType.Invisible:
+                    break;
+                case GhostType.Yurei:
+                    break;
+                case GhostType.Glitch:
+                    break;
+                case GhostType.Naamah:
+                    break;
+                case GhostType.ElementalFear:
+                    break;
+                case GhostType.Deogen:
+                    break;
+                case GhostType.LostSoul:
+                    break;
+                case GhostType.Mimic:
+                    break;
+                case GhostType.Polymorph:
+                    break;
+                case GhostType.Imp:
+                    break;
+                case GhostType.Arsonist:
+                    break;
+                case GhostType.Hechman:
+                    break;
+                case GhostType.Poltergeist:
+                    break;
+                case GhostType.Etheral:
+                    break;
+                case GhostType.Lich:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
             
             nonHuntLogic?.Setup(environmentHandler.GhostVariables, environmentHandler.GhostConstants, environmentHandler.GhostRoomId);

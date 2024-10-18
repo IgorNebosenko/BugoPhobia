@@ -2,14 +2,13 @@
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Controllers;
 using ElectrumGames.Core.Ghost.Interactions.Pools;
-using ElectrumGames.Core.Missions;
 using ElectrumGames.Core.Player;
 
 namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
 {
-    public class BlazeBaseGhostEventLogic : BaseGhostEvent
+    public class BlazeGhostEventLogic : BaseGhostEvent
     {
-        public BlazeBaseGhostEventLogic(GhostController ghostController, GhostDifficultyData difficultyData,
+        public BlazeGhostEventLogic(GhostController ghostController, GhostDifficultyData difficultyData,
             GhostActivityData activityData, GhostEmfZonePool emfZonesPool, EmfData emfData, MissionPlayersHandler missionPlayersHandler) :
             base(ghostController, difficultyData, activityData, emfZonesPool, emfData, missionPlayersHandler)
         {
