@@ -101,10 +101,12 @@ namespace ElectrumGames.UI.Presenters
 
         public void OnChangeMusicVolume(float value)
         {
+            ConfigService.MusicVolume = value;
         }
 
         public void OnChangeSoundsVolume(float value)
         {
+            ConfigService.SoundsVolume = value;
         }
 
         public void OnOutputDeviceChanged(int value)

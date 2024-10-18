@@ -36,7 +36,10 @@ namespace ElectrumGames.Configs
 
         [field: SerializeField] public float MaxAudioVolume { get; private set; } = 0f;
         [field: SerializeField] public float MinAudioVolume { get; private set; } = -80f;
-        [field: SerializeField] public float DefaultMusicVolume { get; set; } = 0f;
-        [field: SerializeField] public float DefaultSoundsVolume { get; set; } = 0f;
+
+        [field: SerializeField] public float MinAudioLevel { get; private set; } = 0f;
+        [field: SerializeField] public float MaxAudioLevel { get; private set; } = 1f;
+        [field: SerializeField] public float DefaultMusicLevel { get; set; } = 1f;
+        [field: SerializeField] public float DefaultSoundsLevel { get; set; } = 1f;
     }
 }

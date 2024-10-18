@@ -99,13 +99,13 @@ namespace ElectrumGames.UI.Views
 
             #region Audio
             
-            Instantiate(settingsSliderItem, audioTabContainer).Init("*Music", 
-                0f, 1f, 
-                1f, Presenter.OnChangeMusicVolume, 
+            Instantiate(settingsSliderItem, audioTabContainer).Init("Music", 
+                Presenter.UserConfig.MinAudioLevel, Presenter.UserConfig.MaxAudioLevel, 
+                Presenter.ConfigService.MusicVolume, Presenter.OnChangeMusicVolume, 
                 SettingsSliderItem.DisplayDigitsMode.AsHundredPercents);
-            Instantiate(settingsSliderItem, audioTabContainer).Init("*Sounds", 
-                0f, 1f, 
-                1f, Presenter.OnChangeSoundsVolume, 
+            Instantiate(settingsSliderItem, audioTabContainer).Init("Sounds", 
+                Presenter.UserConfig.MinAudioLevel, Presenter.UserConfig.MaxAudioLevel,
+                Presenter.ConfigService.SoundsVolume, Presenter.OnChangeSoundsVolume, 
                 SettingsSliderItem.DisplayDigitsMode.AsHundredPercents);
             
             Instantiate(settingsSelectableItem, audioTabContainer).Init("*Output device",
