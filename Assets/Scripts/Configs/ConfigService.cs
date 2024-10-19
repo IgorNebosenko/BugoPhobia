@@ -95,28 +95,17 @@ namespace ElectrumGames.Configs
             get => PlayerPrefs.GetFloat(MusicKey, _userConfig.DefaultMusicLevel);
             set
             {
-                value = Mathf.Clamp01(value);
-                
-                var dBValue = Mathf.Lerp(_userConfig.MinAudioVolume, _userConfig.MaxAudioVolume,
-                    Mathf.Log10(1 + 9 * value) / Mathf.Log10(10));
-                
-                _audioMixer.SetFloat(MusicKey, dBValue);
+                _audioMixer.SetFloat(MusicKey, value);
                 PlayerPrefs.SetFloat(MusicKey, value);
             }
         }
         
         public float SoundsVolume
         {
-            get => PlayerPrefs.GetFloat(SoundsKey, _userConfig.DefaultSoundsLevel);
-            
+            get => PlayerPrefs.GetFloat(SoundsKey, _userConfig.DefaultMusicLevel);
             set
             {
-                value = Mathf.Clamp01(value);
-                
-                var dBValue = Mathf.Lerp(_userConfig.MinAudioVolume, _userConfig.MaxAudioVolume,
-                    Mathf.Log10(1 + 9 * value) / Mathf.Log10(10));
-                
-                _audioMixer.SetFloat(SoundsKey, dBValue);
+                _audioMixer.SetFloat(SoundsKey, value);
                 PlayerPrefs.SetFloat(SoundsKey, value);
             }
         }
@@ -172,13 +161,13 @@ namespace ElectrumGames.Configs
                 FpsConfig = _fpsConfig.DefaultIndex;
             }
 
-            if (!PlayerPrefs.HasKey(MusicKey) || MusicVolume < _userConfig.MinAudioLevel || 
-                MusicVolume > _userConfig.MaxAudioLevel)
+            if (!PlayerPrefs.HasKey(MusicKey) || MusicVolume < _userConfig.MinAudioVolume || 
+                MusicVolume > _userConfig.MaxAudioVolume)
             {
                 MusicVolume = _userConfig.DefaultMusicLevel;
             }
             
-            if (!PlayerPrefs.HasKey(SoundsKey) || SoundsVolume < _userConfig.MinAudioLevel || 
+            if (!PlayerPrefs.HasKey(SoundsKey) || SoundsVolume < _userConfig.MinAudioVolume || 
                 SoundsVolume > _userConfig.MaxAudioVolume)
             {
                 SoundsVolume = _userConfig.DefaultSoundsLevel;
