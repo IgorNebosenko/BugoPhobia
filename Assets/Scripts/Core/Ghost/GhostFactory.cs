@@ -167,6 +167,15 @@ namespace ElectrumGames.Core.Ghost
                     ghostAbility = new InvisibleAbilities();
                     break;
                 case GhostType.Yurei:
+                    nonHuntLogic = new YureiNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
+                    ghostEventLogic = new YureiGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty],
+                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
+                    huntLogic = new YureiHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty], activityData,
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                    ghostAbility = new YureiAbility();
                     break;
                 case GhostType.Glitch:
                     break;
