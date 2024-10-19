@@ -200,6 +200,15 @@ namespace ElectrumGames.Core.Ghost
                     ghostAbility = new NaamahAbility();
                     break;
                 case GhostType.ElementalFear:
+                    nonHuntLogic = new ElementalOfFearNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
+                    ghostEventLogic = new ElementalOfFearGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty],
+                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
+                    huntLogic = new ElementalOfFearHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty], activityData,
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                    ghostAbility = new ElementalOfFearAbility();
                     break;
                 case GhostType.Deogen:
                     break;
