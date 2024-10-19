@@ -189,6 +189,15 @@ namespace ElectrumGames.Core.Ghost
                     ghostAbility = new GlitchAbility();
                     break;
                 case GhostType.Naamah:
+                    nonHuntLogic = new NaamahNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
+                    ghostEventLogic = new NaamahGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty],
+                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
+                    huntLogic = new NaamahHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty], activityData,
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                    ghostAbility = new NaamahAbility();
                     break;
                 case GhostType.ElementalFear:
                     break;
