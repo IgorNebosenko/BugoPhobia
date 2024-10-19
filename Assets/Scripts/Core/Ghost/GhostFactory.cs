@@ -211,6 +211,15 @@ namespace ElectrumGames.Core.Ghost
                     ghostAbility = new ElementalOfFearAbility();
                     break;
                 case GhostType.Deogen:
+                    nonHuntLogic = new DeogenNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
+                    ghostEventLogic = new DeogenGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty],
+                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
+                    huntLogic = new DeogenHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty], activityData,
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                    ghostAbility = new DeogenAbility();
                     break;
                 case GhostType.LostSoul:
                     break;
