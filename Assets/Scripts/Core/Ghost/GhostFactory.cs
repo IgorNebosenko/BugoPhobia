@@ -156,6 +156,15 @@ namespace ElectrumGames.Core.Ghost
                     ghostAbility = new BabadukAbility();
                     break;
                 case GhostType.Invisible:
+                    nonHuntLogic = new InvisibleNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
+                    ghostEventLogic = new InvisibleGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty],
+                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
+                    huntLogic = new InvisibleHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty], activityData,
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                    ghostAbility = new InvisibleAbilities();
                     break;
                 case GhostType.Yurei:
                     break;
