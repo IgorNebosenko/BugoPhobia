@@ -134,6 +134,15 @@ namespace ElectrumGames.Core.Ghost
                     ghostAbility = new WraithAbility();
                     break;
                 case GhostType.Mare:
+                    nonHuntLogic = new MareNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
+                    ghostEventLogic = new MareGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty],
+                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
+                    huntLogic = new MareHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty], activityData,
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                    ghostAbility = new MareAbility();
                     break;
                 case GhostType.Babaduk:
                     break;
