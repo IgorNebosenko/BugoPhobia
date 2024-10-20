@@ -165,7 +165,8 @@ namespace ElectrumGames.Core.Ghost
                     return new HenchmanNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                         (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
                 case GhostType.Poltergeist:
-                    return null;
+                    return new PoltergeistNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
                 case GhostType.Ethereal:
                     return null;
                 case GhostType.Lich:
@@ -248,7 +249,9 @@ namespace ElectrumGames.Core.Ghost
                             (int) _missionDataHandler.MissionDifficulty],
                         activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
                 case GhostType.Poltergeist:
-                    return null;
+                    return new PoltergeistGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty],
+                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
                 case GhostType.Ethereal:
                     return null;
                 case GhostType.Lich:
@@ -331,7 +334,9 @@ namespace ElectrumGames.Core.Ghost
                             (int) _missionDataHandler.MissionDifficulty], activityData,
                         _missionPlayersHandler, _flickConfig, _huntPoints);
                 case GhostType.Poltergeist:
-                    return null;
+                    return new PoltergeistHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty], activityData,
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
                 case GhostType.Ethereal:
                     return null;
                 case GhostType.Lich:
@@ -382,7 +387,7 @@ namespace ElectrumGames.Core.Ghost
                 case GhostType.Henchman:
                     return new HenchmanAbility();
                 case GhostType.Poltergeist:
-                    return null;
+                    return new PoltergeistAbility();
                 case GhostType.Ethereal:
                     return null;
                 case GhostType.Lich:
