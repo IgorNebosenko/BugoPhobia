@@ -222,6 +222,15 @@ namespace ElectrumGames.Core.Ghost
                     ghostAbility = new DeogenAbility();
                     break;
                 case GhostType.LostSoul:
+                    nonHuntLogic = new LostSoulNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
+                    ghostEventLogic = new LostSoulGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty],
+                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
+                    huntLogic = new LostSoulHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty], activityData,
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                    ghostAbility = new LostSoulAbility();
                     break;
                 case GhostType.Mimic:
                     break;
