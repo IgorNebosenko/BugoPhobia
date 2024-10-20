@@ -171,7 +171,8 @@ namespace ElectrumGames.Core.Ghost
                     return new EtherealNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                         (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
                 case GhostType.Lich:
-                    return null;
+                    return new LichNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -258,7 +259,9 @@ namespace ElectrumGames.Core.Ghost
                             (int) _missionDataHandler.MissionDifficulty],
                         activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
                 case GhostType.Lich:
-                    return null;
+                    return new LichGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty],
+                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -345,7 +348,9 @@ namespace ElectrumGames.Core.Ghost
                             (int) _missionDataHandler.MissionDifficulty], activityData,
                         _missionPlayersHandler, _flickConfig, _huntPoints);
                 case GhostType.Lich:
-                    return null;
+                    return new LichHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty], activityData,
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -396,7 +401,7 @@ namespace ElectrumGames.Core.Ghost
                 case GhostType.Ethereal:
                     return new EtherealAbility();
                 case GhostType.Lich:
-                    return null;
+                    return new LichAbility();
                 default:
                     throw new ArgumentOutOfRangeException();
             }
