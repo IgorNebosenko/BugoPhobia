@@ -91,174 +91,288 @@ namespace ElectrumGames.Core.Ghost
 
         private void SetLogic(GhostController controller, GhostEnvironmentHandler environmentHandler)
         {
-            INonHuntLogic nonHuntLogic = null;
-            IGhostEventLogic ghostEventLogic = null;
-            IHuntLogic huntLogic = null;
-            IGhostAbility ghostAbility = null;
-            var activityData = _activityConfig.GhostActivities.First(x =>
-                x.GhostType == controller.GhostEnvironmentHandler.GhostVariables.ghostType);
-            
-            switch (controller.GhostEnvironmentHandler.GhostVariables.ghostType)
-            {
-                case GhostType.Blaze:
-                    nonHuntLogic = new BlazeNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                            (int)_missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
-                    ghostEventLogic = new BlazeGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                            (int)_missionDataHandler.MissionDifficulty],
-                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
-                    huntLogic = new BlazeHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                            (int)_missionDataHandler.MissionDifficulty], activityData, 
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
-                    ghostAbility = new BlazeAbility();
-                    break;
-                case GhostType.Yrka:
-                    nonHuntLogic = new YrkaNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                        (int)_missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
-                    ghostEventLogic = new YrkaGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                            (int)_missionDataHandler.MissionDifficulty],
-                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
-                    huntLogic = new YrkaHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                            (int)_missionDataHandler.MissionDifficulty], activityData, 
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
-                    ghostAbility = new YrkaAbility();
-                    break;
-                case GhostType.Wraith:
-                    nonHuntLogic = new WraithNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
-                    ghostEventLogic = new WraithGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                            (int) _missionDataHandler.MissionDifficulty],
-                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
-                    huntLogic = new WraithHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                            (int) _missionDataHandler.MissionDifficulty], activityData,
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
-                    ghostAbility = new WraithAbility();
-                    break;
-                case GhostType.Mare:
-                    nonHuntLogic = new MareNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
-                    ghostEventLogic = new MareGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                            (int) _missionDataHandler.MissionDifficulty],
-                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
-                    huntLogic = new MareHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                            (int) _missionDataHandler.MissionDifficulty], activityData,
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
-                    ghostAbility = new MareAbility();
-                    break;
-                case GhostType.Babaduk:
-                    nonHuntLogic = new BabadukNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
-                    ghostEventLogic = new BabadukGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                            (int) _missionDataHandler.MissionDifficulty],
-                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
-                    huntLogic = new BabadukHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                            (int) _missionDataHandler.MissionDifficulty], activityData,
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
-                    ghostAbility = new BabadukAbility();
-                    break;
-                case GhostType.Invisible:
-                    nonHuntLogic = new InvisibleNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
-                    ghostEventLogic = new InvisibleGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                            (int) _missionDataHandler.MissionDifficulty],
-                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
-                    huntLogic = new InvisibleHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                            (int) _missionDataHandler.MissionDifficulty], activityData,
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
-                    ghostAbility = new InvisibleAbilities();
-                    break;
-                case GhostType.Yurei:
-                    nonHuntLogic = new YureiNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
-                    ghostEventLogic = new YureiGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                            (int) _missionDataHandler.MissionDifficulty],
-                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
-                    huntLogic = new YureiHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                            (int) _missionDataHandler.MissionDifficulty], activityData,
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
-                    ghostAbility = new YureiAbility();
-                    break;
-                case GhostType.Glitch:
-                    nonHuntLogic = new GlitchNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
-                    ghostEventLogic = new GlitchGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                            (int) _missionDataHandler.MissionDifficulty],
-                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
-                    huntLogic = new GlitchHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                            (int) _missionDataHandler.MissionDifficulty], activityData,
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
-                    ghostAbility = new GlitchAbility();
-                    break;
-                case GhostType.Naamah:
-                    nonHuntLogic = new NaamahNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
-                    ghostEventLogic = new NaamahGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                            (int) _missionDataHandler.MissionDifficulty],
-                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
-                    huntLogic = new NaamahHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                            (int) _missionDataHandler.MissionDifficulty], activityData,
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
-                    ghostAbility = new NaamahAbility();
-                    break;
-                case GhostType.ElementalFear:
-                    nonHuntLogic = new ElementalOfFearNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
-                    ghostEventLogic = new ElementalOfFearGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                            (int) _missionDataHandler.MissionDifficulty],
-                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
-                    huntLogic = new ElementalOfFearHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                            (int) _missionDataHandler.MissionDifficulty], activityData,
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
-                    ghostAbility = new ElementalOfFearAbility();
-                    break;
-                case GhostType.Deogen:
-                    nonHuntLogic = new DeogenNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
-                    ghostEventLogic = new DeogenGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                            (int) _missionDataHandler.MissionDifficulty],
-                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
-                    huntLogic = new DeogenHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                            (int) _missionDataHandler.MissionDifficulty], activityData,
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
-                    ghostAbility = new DeogenAbility();
-                    break;
-                case GhostType.LostSoul:
-                    nonHuntLogic = new LostSoulNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
-                    ghostEventLogic = new LostSoulGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                            (int) _missionDataHandler.MissionDifficulty],
-                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
-                    huntLogic = new LostSoulHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
-                            (int) _missionDataHandler.MissionDifficulty], activityData,
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
-                    ghostAbility = new LostSoulAbility();
-                    break;
-                case GhostType.Mimic:
-                    break;
-                case GhostType.Polymorph:
-                    break;
-                case GhostType.Imp:
-                    break;
-                case GhostType.Arsonist:
-                    break;
-                case GhostType.Hechman:
-                    break;
-                case GhostType.Poltergeist:
-                    break;
-                case GhostType.Etheral:
-                    break;
-                case GhostType.Lich:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            var nonHuntLogic = GetNonHuntLogicByGhostType(controller, 
+                controller.GhostEnvironmentHandler.GhostVariables.ghostType);
+            var ghostEventLogic = GetGhostEventLogicByType(controller,
+                controller.GhostEnvironmentHandler.GhostVariables.ghostType);
+            var huntLogic = GetHuntLogicByType(controller, controller.GhostEnvironmentHandler.GhostVariables.ghostType);
+            var ghostAbility = GetGhostAbilityByType(controller, 
+                controller.GhostEnvironmentHandler.GhostVariables.ghostType);
             
             nonHuntLogic?.Setup(environmentHandler.GhostVariables, environmentHandler.GhostConstants, environmentHandler.GhostRoomId);
             ghostEventLogic?.Setup(environmentHandler.GhostVariables, environmentHandler.GhostConstants, environmentHandler.GhostRoomId);
             huntLogic?.Setup(environmentHandler.GhostVariables, environmentHandler.GhostConstants, environmentHandler.GhostRoomId);
             ghostAbility?.Setup(environmentHandler.GhostVariables, environmentHandler.GhostConstants, environmentHandler.GhostRoomId);
             
-            
             controller.SetLogic(nonHuntLogic, ghostEventLogic, huntLogic, ghostAbility);
+        }
+
+        public INonHuntLogic GetNonHuntLogicByGhostType(GhostController controller, GhostType ghostType)
+        {
+            var activityData = _activityConfig.GhostActivities.First(x =>
+                x.GhostType == controller.GhostEnvironmentHandler.GhostVariables.ghostType);
+            
+            switch (ghostType)
+            {
+                case GhostType.Blaze:
+                    return new BlazeNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int)_missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
+                case GhostType.Yrka:
+                    return new YrkaNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                        (int)_missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
+                case GhostType.Wraith:
+                    return new WraithNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
+                case GhostType.Mare:
+                    return new MareNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
+                case GhostType.Babaduk:
+                    return new BabadukNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
+                case GhostType.Invisible:
+                    return new InvisibleNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
+                case GhostType.Yurei:
+                    return new YureiNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
+                case GhostType.Glitch:
+                    return new GlitchNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
+                case GhostType.Naamah:
+                    return new NaamahNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
+                case GhostType.ElementalFear:
+                    return new ElementalOfFearNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
+                case GhostType.Deogen:
+                    return new DeogenNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
+                case GhostType.LostSoul:
+                    return new LostSoulNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
+                case GhostType.Mimic:
+                    return null;
+                case GhostType.Polymorph:
+                    return null;
+                case GhostType.Imp:
+                    return null;
+                case GhostType.Arsonist:
+                    return null;
+                case GhostType.Hechman:
+                    return null;
+                case GhostType.Poltergeist:
+                    return null;
+                case GhostType.Etheral:
+                    return null;
+                case GhostType.Lich:
+                    return null;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        public IGhostEventLogic GetGhostEventLogicByType(GhostController controller, GhostType ghostType)
+        {
+            var activityData = _activityConfig.GhostActivities.First(x =>
+                x.GhostType == controller.GhostEnvironmentHandler.GhostVariables.ghostType);
+            
+            switch (ghostType)
+            {
+                case GhostType.Blaze:
+                    return new BlazeGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int)_missionDataHandler.MissionDifficulty],
+                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
+                case GhostType.Yrka:
+                    return new YrkaGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int)_missionDataHandler.MissionDifficulty],
+                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
+                case GhostType.Wraith:
+                    return new WraithGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty],
+                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
+                case GhostType.Mare:
+                    return new MareGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty],
+                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
+                case GhostType.Babaduk:
+                    return new BabadukGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty],
+                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
+                case GhostType.Invisible:
+                    return new InvisibleGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty],
+                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
+                case GhostType.Yurei:
+                    return new YureiGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty],
+                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
+                case GhostType.Glitch:
+                    return new GlitchGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty],
+                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
+                case GhostType.Naamah:
+                    return new NaamahGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty],
+                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
+                case GhostType.ElementalFear:
+                    return new ElementalOfFearGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty],
+                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
+                case GhostType.Deogen:
+                    return new DeogenGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty],
+                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
+                case GhostType.LostSoul:
+                    return new LostSoulGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty],
+                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
+                case GhostType.Mimic:
+                    return null;
+                case GhostType.Polymorph:
+                    return null;
+                case GhostType.Imp:
+                    return null;
+                case GhostType.Arsonist:
+                    return null;
+                case GhostType.Hechman:
+                    return null;
+                case GhostType.Poltergeist:
+                    return null;
+                case GhostType.Etheral:
+                    return null;
+                case GhostType.Lich:
+                    return null;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        public IHuntLogic GetHuntLogicByType(GhostController controller, GhostType type)
+        {
+            var activityData = _activityConfig.GhostActivities.First(x =>
+                x.GhostType == controller.GhostEnvironmentHandler.GhostVariables.ghostType);
+            
+            switch (type)
+            {
+                case GhostType.Blaze:
+                    return new BlazeHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int)_missionDataHandler.MissionDifficulty], activityData, 
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                case GhostType.Yrka:
+                    return new YrkaHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int)_missionDataHandler.MissionDifficulty], activityData, 
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                case GhostType.Wraith:
+                    return new WraithHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty], activityData,
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                case GhostType.Mare:
+                    return new MareHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty], activityData,
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                case GhostType.Babaduk:
+                    return new BabadukHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty], activityData,
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                case GhostType.Invisible:
+                    return new InvisibleHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty], activityData,
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                case GhostType.Yurei:
+                    return new YureiHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty], activityData,
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                case GhostType.Glitch:
+                    return new GlitchHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty], activityData,
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                case GhostType.Naamah:
+                    return new NaamahHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty], activityData,
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                case GhostType.ElementalFear:
+                    return new ElementalOfFearHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty], activityData,
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                case GhostType.Deogen:
+                    return new DeogenHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty], activityData,
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                case GhostType.LostSoul:
+                    return new LostSoulHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty], activityData,
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                case GhostType.Mimic:
+                    return null;
+                case GhostType.Polymorph:
+                    return null;
+                case GhostType.Imp:
+                    return null;
+                case GhostType.Arsonist:
+                    return null;
+                case GhostType.Hechman:
+                    return null;
+                case GhostType.Poltergeist:
+                    return null;
+                case GhostType.Etheral:
+                    return null;
+                case GhostType.Lich:
+                    return null;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        public IGhostAbility GetGhostAbilityByType(GhostController controller, GhostType type)
+        {
+            var activityData = _activityConfig.GhostActivities.First(x =>
+                x.GhostType == controller.GhostEnvironmentHandler.GhostVariables.ghostType);
+            
+            switch (type)
+            {
+                case GhostType.Blaze:
+                    return new BlazeAbility();
+                case GhostType.Yrka:
+                    return new YrkaAbility();
+                case GhostType.Wraith:
+                    return new WraithAbility();
+                case GhostType.Mare:
+                    return new MareAbility();
+                case GhostType.Babaduk:
+                    return new BabadukAbility();
+                case GhostType.Invisible:
+                    return new InvisibleAbilities();
+                case GhostType.Yurei:
+                    return new YureiAbility();
+                case GhostType.Glitch:
+                    return new GlitchAbility();
+                case GhostType.Naamah:
+                    return new NaamahAbility();
+                case GhostType.ElementalFear:
+                    return new ElementalOfFearAbility();
+                case GhostType.Deogen:
+                    return new DeogenAbility();
+                case GhostType.LostSoul:
+                    return new LostSoulAbility();
+                case GhostType.Mimic:
+                    return null;
+                case GhostType.Polymorph:
+                    return null;
+                case GhostType.Imp:
+                    return null;
+                case GhostType.Arsonist:
+                    return null;
+                case GhostType.Hechman:
+                    return null;
+                case GhostType.Poltergeist:
+                    return null;
+                case GhostType.Etheral:
+                    return null;
+                case GhostType.Lich:
+                    return null;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }
