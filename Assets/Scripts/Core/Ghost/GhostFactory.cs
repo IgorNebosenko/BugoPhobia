@@ -17,6 +17,7 @@ using ElectrumGames.GlobalEnums;
 using ElectrumGames.Network;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace ElectrumGames.Core.Ghost
 {
@@ -109,8 +110,7 @@ namespace ElectrumGames.Core.Ghost
 
         public INonHuntLogic GetNonHuntLogicByGhostType(GhostController controller, GhostType ghostType)
         {
-            var activityData = _activityConfig.GhostActivities.First(x =>
-                x.GhostType == controller.GhostEnvironmentHandler.GhostVariables.ghostType);
+            var activityData = _activityConfig.GhostActivities.First(x => x.GhostType == ghostType);
             
             switch (ghostType)
             {
@@ -154,6 +154,7 @@ namespace ElectrumGames.Core.Ghost
                     return new MimicNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                         (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
                 case GhostType.Polymorph:
+                    GetNonHuntLogicByGhostType(controller, (GhostType) Random.Range(0, (int) GhostType.Lich));
                     return null;
                 case GhostType.Imp:
                     return null;
@@ -174,8 +175,7 @@ namespace ElectrumGames.Core.Ghost
 
         public IGhostEventLogic GetGhostEventLogicByType(GhostController controller, GhostType ghostType)
         {
-            var activityData = _activityConfig.GhostActivities.First(x =>
-                x.GhostType == controller.GhostEnvironmentHandler.GhostVariables.ghostType);
+            var activityData = _activityConfig.GhostActivities.First(x => x.GhostType == ghostType);
             
             switch (ghostType)
             {
@@ -232,7 +232,7 @@ namespace ElectrumGames.Core.Ghost
                             (int) _missionDataHandler.MissionDifficulty],
                         activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
                 case GhostType.Polymorph:
-                    return null;
+                    return GetGhostEventLogicByType(controller, (GhostType) Random.Range(0, (int) GhostType.Lich));
                 case GhostType.Imp:
                     return null;
                 case GhostType.Arsonist:
@@ -252,8 +252,7 @@ namespace ElectrumGames.Core.Ghost
 
         public IHuntLogic GetHuntLogicByType(GhostController controller, GhostType type)
         {
-            var activityData = _activityConfig.GhostActivities.First(x =>
-                x.GhostType == controller.GhostEnvironmentHandler.GhostVariables.ghostType);
+            var activityData = _activityConfig.GhostActivities.First(x => x.GhostType == type);
             
             switch (type)
             {
@@ -310,7 +309,7 @@ namespace ElectrumGames.Core.Ghost
                             (int) _missionDataHandler.MissionDifficulty], activityData,
                         _missionPlayersHandler, _flickConfig, _huntPoints);
                 case GhostType.Polymorph:
-                    return null;
+                    return GetHuntLogicByType(controller, (GhostType) Random.Range(0, (int) GhostType.Lich));
                 case GhostType.Imp:
                     return null;
                 case GhostType.Arsonist:
@@ -328,12 +327,11 @@ namespace ElectrumGames.Core.Ghost
             }
         }
 
-        public IGhostAbility GetGhostAbilityByType(GhostController controller, GhostType type)
+        public IGhostAbility GetGhostAbilityByType(GhostController controller, GhostType ghostType)
         {
-            var activityData = _activityConfig.GhostActivities.First(x =>
-                x.GhostType == controller.GhostEnvironmentHandler.GhostVariables.ghostType);
+            var activityData = _activityConfig.GhostActivities.First(x => x.GhostType == ghostType);
             
-            switch (type)
+            switch (ghostType)
             {
                 case GhostType.Blaze:
                     return new BlazeAbility();
@@ -362,7 +360,7 @@ namespace ElectrumGames.Core.Ghost
                 case GhostType.Mimic:
                     return new MimicAbility();
                 case GhostType.Polymorph:
-                    return null;
+                    return GetGhostAbilityByType(controller, (GhostType) Random.Range(0, (int) GhostType.Lich));
                 case GhostType.Imp:
                     return null;
                 case GhostType.Arsonist:
