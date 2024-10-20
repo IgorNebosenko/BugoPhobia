@@ -159,7 +159,8 @@ namespace ElectrumGames.Core.Ghost
                     return new ImpNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                         (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
                 case GhostType.Arsonist:
-                    return null;
+                    return new ArsonistNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
                 case GhostType.Hechman:
                     return null;
                 case GhostType.Poltergeist:
@@ -238,7 +239,9 @@ namespace ElectrumGames.Core.Ghost
                             (int) _missionDataHandler.MissionDifficulty],
                         activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
                 case GhostType.Arsonist:
-                    return null;
+                    return new ArsonistGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty],
+                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
                 case GhostType.Hechman:
                     return null;
                 case GhostType.Poltergeist:
@@ -317,7 +320,9 @@ namespace ElectrumGames.Core.Ghost
                             (int) _missionDataHandler.MissionDifficulty], activityData,
                         _missionPlayersHandler, _flickConfig, _huntPoints);
                 case GhostType.Arsonist:
-                    return null;
+                    return new ArsonistHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty], activityData,
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
                 case GhostType.Hechman:
                     return null;
                 case GhostType.Poltergeist:
@@ -368,7 +373,7 @@ namespace ElectrumGames.Core.Ghost
                 case GhostType.Imp:
                     return new ImpAbility();
                 case GhostType.Arsonist:
-                    return null;
+                    return new ArsonistAbility();
                 case GhostType.Hechman:
                     return null;
                 case GhostType.Poltergeist:
