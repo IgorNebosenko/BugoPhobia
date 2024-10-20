@@ -168,7 +168,8 @@ namespace ElectrumGames.Core.Ghost
                     return new PoltergeistNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                         (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
                 case GhostType.Ethereal:
-                    return null;
+                    return new EtherealNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
                 case GhostType.Lich:
                     return null;
                 default:
@@ -253,7 +254,9 @@ namespace ElectrumGames.Core.Ghost
                             (int) _missionDataHandler.MissionDifficulty],
                         activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
                 case GhostType.Ethereal:
-                    return null;
+                    return new EtherealGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty],
+                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
                 case GhostType.Lich:
                     return null;
                 default:
@@ -338,7 +341,9 @@ namespace ElectrumGames.Core.Ghost
                             (int) _missionDataHandler.MissionDifficulty], activityData,
                         _missionPlayersHandler, _flickConfig, _huntPoints);
                 case GhostType.Ethereal:
-                    return null;
+                    return new EtherealHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty], activityData,
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
                 case GhostType.Lich:
                     return null;
                 default:
@@ -389,7 +394,7 @@ namespace ElectrumGames.Core.Ghost
                 case GhostType.Poltergeist:
                     return new PoltergeistAbility();
                 case GhostType.Ethereal:
-                    return null;
+                    return new EtherealAbility();
                 case GhostType.Lich:
                     return null;
                 default:
