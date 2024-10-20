@@ -154,10 +154,10 @@ namespace ElectrumGames.Core.Ghost
                     return new MimicNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                         (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
                 case GhostType.Polymorph:
-                    GetNonHuntLogicByGhostType(controller, (GhostType) Random.Range(0, (int) GhostType.Lich));
-                    return null;
+                    return GetNonHuntLogicByGhostType(controller, (GhostType) Random.Range(0, (int) GhostType.Lich));
                 case GhostType.Imp:
-                    return null;
+                    return new ImpNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
                 case GhostType.Arsonist:
                     return null;
                 case GhostType.Hechman:
@@ -234,7 +234,9 @@ namespace ElectrumGames.Core.Ghost
                 case GhostType.Polymorph:
                     return GetGhostEventLogicByType(controller, (GhostType) Random.Range(0, (int) GhostType.Lich));
                 case GhostType.Imp:
-                    return null;
+                    return new ImpGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty],
+                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
                 case GhostType.Arsonist:
                     return null;
                 case GhostType.Hechman:
@@ -311,7 +313,9 @@ namespace ElectrumGames.Core.Ghost
                 case GhostType.Polymorph:
                     return GetHuntLogicByType(controller, (GhostType) Random.Range(0, (int) GhostType.Lich));
                 case GhostType.Imp:
-                    return null;
+                    return new ImpHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty], activityData,
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
                 case GhostType.Arsonist:
                     return null;
                 case GhostType.Hechman:
@@ -362,7 +366,7 @@ namespace ElectrumGames.Core.Ghost
                 case GhostType.Polymorph:
                     return GetGhostAbilityByType(controller, (GhostType) Random.Range(0, (int) GhostType.Lich));
                 case GhostType.Imp:
-                    return null;
+                    return new ImpAbility();
                 case GhostType.Arsonist:
                     return null;
                 case GhostType.Hechman:
