@@ -151,7 +151,8 @@ namespace ElectrumGames.Core.Ghost
                     return new LostSoulNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                         (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
                 case GhostType.Mimic:
-                    return null;
+                    return new MimicNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
                 case GhostType.Polymorph:
                     return null;
                 case GhostType.Imp:
@@ -227,7 +228,9 @@ namespace ElectrumGames.Core.Ghost
                             (int) _missionDataHandler.MissionDifficulty],
                         activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
                 case GhostType.Mimic:
-                    return null;
+                    return new MimicGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty],
+                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
                 case GhostType.Polymorph:
                     return null;
                 case GhostType.Imp:
@@ -303,7 +306,9 @@ namespace ElectrumGames.Core.Ghost
                             (int) _missionDataHandler.MissionDifficulty], activityData,
                         _missionPlayersHandler, _flickConfig, _huntPoints);
                 case GhostType.Mimic:
-                    return null;
+                    return new MimicHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty], activityData,
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
                 case GhostType.Polymorph:
                     return null;
                 case GhostType.Imp:
@@ -355,7 +360,7 @@ namespace ElectrumGames.Core.Ghost
                 case GhostType.LostSoul:
                     return new LostSoulAbility();
                 case GhostType.Mimic:
-                    return null;
+                    return new MimicAbility();
                 case GhostType.Polymorph:
                     return null;
                 case GhostType.Imp:
