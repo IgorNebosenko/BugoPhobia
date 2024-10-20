@@ -20,9 +20,9 @@ namespace ElectrumGames.GlobalEnums
         Polymorph,
         Imp,
         Arsonist,
-        Hechman,
+        Henchman,
         Poltergeist,
-        Etheral,
+        Ethereal,
         Lich,
         
         

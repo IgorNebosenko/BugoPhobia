@@ -161,11 +161,12 @@ namespace ElectrumGames.Core.Ghost
                 case GhostType.Arsonist:
                     return new ArsonistNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                         (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
-                case GhostType.Hechman:
-                    return null;
+                case GhostType.Henchman:
+                    return new HenchmanNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                        (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
                 case GhostType.Poltergeist:
                     return null;
-                case GhostType.Etheral:
+                case GhostType.Ethereal:
                     return null;
                 case GhostType.Lich:
                     return null;
@@ -242,11 +243,13 @@ namespace ElectrumGames.Core.Ghost
                     return new ArsonistGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int) _missionDataHandler.MissionDifficulty],
                         activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
-                case GhostType.Hechman:
-                    return null;
+                case GhostType.Henchman:
+                    return new HenchmanGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty],
+                        activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
                 case GhostType.Poltergeist:
                     return null;
-                case GhostType.Etheral:
+                case GhostType.Ethereal:
                     return null;
                 case GhostType.Lich:
                     return null;
@@ -323,11 +326,13 @@ namespace ElectrumGames.Core.Ghost
                     return new ArsonistHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int) _missionDataHandler.MissionDifficulty], activityData,
                         _missionPlayersHandler, _flickConfig, _huntPoints);
-                case GhostType.Hechman:
-                    return null;
+                case GhostType.Henchman:
+                    return new HenchmanHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                            (int) _missionDataHandler.MissionDifficulty], activityData,
+                        _missionPlayersHandler, _flickConfig, _huntPoints);
                 case GhostType.Poltergeist:
                     return null;
-                case GhostType.Etheral:
+                case GhostType.Ethereal:
                     return null;
                 case GhostType.Lich:
                     return null;
@@ -374,11 +379,11 @@ namespace ElectrumGames.Core.Ghost
                     return new ImpAbility();
                 case GhostType.Arsonist:
                     return new ArsonistAbility();
-                case GhostType.Hechman:
-                    return null;
+                case GhostType.Henchman:
+                    return new HenchmanAbility();
                 case GhostType.Poltergeist:
                     return null;
-                case GhostType.Etheral:
+                case GhostType.Ethereal:
                     return null;
                 case GhostType.Lich:
                     return null;
