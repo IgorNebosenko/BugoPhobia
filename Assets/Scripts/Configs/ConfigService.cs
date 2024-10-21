@@ -95,7 +95,8 @@ namespace ElectrumGames.Configs
             get => PlayerPrefs.GetFloat(MusicKey, _userConfig.DefaultMusicLevel);
             set
             {
-                _audioMixer.SetFloat(MusicKey, value);
+                _audioMixer.SetFloat(MusicKey, Mathf.Lerp(_userConfig.MinAudioVolume, _userConfig.MaxAudioVolume,
+                    Mathf.Log10(1 + 9 * value)));
                 PlayerPrefs.SetFloat(MusicKey, value);
             }
         }
@@ -105,7 +106,8 @@ namespace ElectrumGames.Configs
             get => PlayerPrefs.GetFloat(SoundsKey, _userConfig.DefaultMusicLevel);
             set
             {
-                _audioMixer.SetFloat(SoundsKey, value);
+                _audioMixer.SetFloat(SoundsKey, Mathf.Lerp(_userConfig.MinAudioVolume, _userConfig.MaxAudioVolume,
+                    Mathf.Log10(1 + 9 * value)));
                 PlayerPrefs.SetFloat(SoundsKey, value);
             }
         }
@@ -161,14 +163,14 @@ namespace ElectrumGames.Configs
                 FpsConfig = _fpsConfig.DefaultIndex;
             }
 
-            if (!PlayerPrefs.HasKey(MusicKey) || MusicVolume < _userConfig.MinAudioVolume || 
-                MusicVolume > _userConfig.MaxAudioVolume)
+            if (!PlayerPrefs.HasKey(MusicKey) || MusicVolume < _userConfig.MinAudioLevel || 
+                MusicVolume > _userConfig.MaxAudioLevel)
             {
                 MusicVolume = _userConfig.DefaultMusicLevel;
             }
             
-            if (!PlayerPrefs.HasKey(SoundsKey) || SoundsVolume < _userConfig.MinAudioVolume || 
-                SoundsVolume > _userConfig.MaxAudioVolume)
+            if (!PlayerPrefs.HasKey(SoundsKey) || SoundsVolume < _userConfig.MinAudioLevel || 
+                SoundsVolume > _userConfig.MaxAudioLevel)
             {
                 SoundsVolume = _userConfig.DefaultSoundsLevel;
             }
