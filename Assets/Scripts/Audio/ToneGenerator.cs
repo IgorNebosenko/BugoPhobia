@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -17,7 +18,26 @@ namespace ElectrumGames.Audio
         private const int SampleRate = 44100;
         private const float Duration = 1f;
 
-        public void GenerateSoundSinusoid(float frequency, float volume)
+        public void GenerateSound(WaveForm waveForm, float frequency, float volume)
+        {
+            switch (waveForm)
+            {
+                case WaveForm.Sinusoidal:
+                    GenerateSoundSinusoid(frequency, volume);
+                    break;
+                case WaveForm.Triangular:
+                    GenerateSoundTriangular(frequency, volume);
+                    break;
+                case WaveForm.Meander:
+                    GenerateSoundMeander(frequency, volume);
+                    break;
+                case WaveForm.Saw:
+                    GenerateSoundSaw(frequency, volume);
+                    break;
+            }
+        }
+
+        private void GenerateSoundSinusoid(float frequency, float volume)
         {
             var clip = AudioClip.Create($"GeneratedSoundSinusoid {frequency} Hz",
                 SampleRate * (int)Duration, 1, SampleRate, false);
@@ -41,7 +61,7 @@ namespace ElectrumGames.Audio
             audioSource.Play();
         }
 
-        public void GenerateSoundTriangular(float frequency, float volume)
+        private void GenerateSoundTriangular(float frequency, float volume)
         {
             var clip = AudioClip.Create($"GeneratedSoundTriangular {frequency} Hz",
                 SampleRate * (int)Duration, 1, SampleRate, false);
@@ -71,7 +91,7 @@ namespace ElectrumGames.Audio
             audioSource.Play();
         }
 
-        public void GenerateSoundQuad(float frequency, float volume)
+        private void GenerateSoundMeander(float frequency, float volume)
         {
             var clip = AudioClip.Create($"GeneratedSoundQuad {frequency} Hz",
                 SampleRate * (int)Duration, 1, SampleRate, false);
@@ -99,7 +119,7 @@ namespace ElectrumGames.Audio
             audioSource.Play();
         }
 
-        public void GenerateSoundSaw(float frequency, float volume)
+        private void GenerateSoundSaw(float frequency, float volume)
         {
             var clip = AudioClip.Create($"GeneratedSoundSaw {frequency} Hz",
                 SampleRate * (int)Duration, 1, SampleRate, false);

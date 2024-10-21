@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using ElectrumGames.Audio;
+using UnityEngine;
 
 namespace ElectrumGames.Core.Ghost.Configs
 {
@@ -28,5 +29,14 @@ namespace ElectrumGames.Core.Ghost.Configs
         [field: SerializeField] public int GhostEventDefaultEmf { get; private set; } = 3;
         [field: SerializeField] public Vector3 GhostEventCylinderSize { get; private set; } = new(3f, 1f, 3f);
         [field: SerializeField] public float GhostEventHeightOffset { get; private set; } = 1f;
+        [field: Space]
+        [field: SerializeField] public WaveForm EmfWaveForm { get; private set; } = WaveForm.Meander;
+        [field: SerializeField] public float EmfVolume { get; private set; } = 0.1f;
+        [field: Space]
+        [field: SerializeField] public float Level2Tone { get; private set; } = 200f;
+        [field: SerializeField] public float Level3Tone { get; private set; } = 350f;
+        [field: SerializeField] public float Level4Tone { get; private set; } = 500f;
+        [field: SerializeField] public float Level5Tone { get; private set; } = 700f;
+
     }
 }

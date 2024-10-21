@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using ElectrumGames.Audio;
 using ElectrumGames.Core.Common;
+using ElectrumGames.Core.Ghost.Configs;
 using UnityEngine;
 
 namespace ElectrumGames.Core.Items
@@ -18,7 +19,8 @@ namespace ElectrumGames.Core.Items
         [SerializeField] private float arrowMoveDuration;
         [SerializeField] private float startAngle = -25f;
         [SerializeField] private float stepAngle = 12.5f;
-        [Space]
+        [Space] 
+        [SerializeField] private EmfData emfData;
         [SerializeField] private ToneGenerator toneGenerator;
         
         private bool _isOn;
@@ -54,23 +56,22 @@ namespace ElectrumGames.Core.Items
 
             if (_lastEmfLevel != level)
             {
-                Debug.LogWarning("Sounds must be read from emf data!");
                 switch (level)
                 {
                     case 0:
                         toneGenerator.Stop();
                         break;
                     case 1:
-                        toneGenerator.GenerateSoundSaw(200f, 0.5f);
+                        toneGenerator.GenerateSound(emfData.EmfWaveForm, emfData.Level2Tone, emfData.EmfVolume);
                         break;
                     case 2:
-                        toneGenerator.GenerateSoundSaw(350f, 0.5f);
+                        toneGenerator.GenerateSound(emfData.EmfWaveForm, emfData.Level3Tone, emfData.EmfVolume);
                         break;
                     case 3:
-                        toneGenerator.GenerateSoundSaw(500f, 0.5f);
+                        toneGenerator.GenerateSound(emfData.EmfWaveForm,emfData.Level4Tone, emfData.EmfVolume);
                         break;
                     case 4:
-                        toneGenerator.GenerateSoundSaw(700f, 0.5f);
+                        toneGenerator.GenerateSound(emfData.EmfWaveForm, emfData.Level5Tone, emfData.EmfVolume);
                         break;
                     default:
                         toneGenerator.Stop();
