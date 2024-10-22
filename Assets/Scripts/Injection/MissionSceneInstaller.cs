@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using Core.Player.Interactions;
 using ElectrumGames.Audio;
 using ElectrumGames.Core.Environment;
 using ElectrumGames.Core.Environment.House;
@@ -34,6 +35,8 @@ namespace ElectrumGames.Injection
         [SerializeField] private ItemMarkers itemMarkers;
         [Space]
         [SerializeField] private NoiseGenerator noiseGenerator;
+        [Space]
+        [SerializeField] private FlashLightInteractionHandler flashLightInteractionHandler;
         
         
         protected override Assembly UiAssembly => typeof(UiAssemblyReference).Assembly;
@@ -59,6 +62,8 @@ namespace ElectrumGames.Injection
             Container.BindInstance(itemMarkers).AsSingle();
 
             Container.BindInstance(noiseGenerator).AsSingle();
+
+            Container.BindInstance(flashLightInteractionHandler).AsSingle();
             
             Container.Bind<EnvironmentData>().AsSingle();
             Container.Bind<GhostEnvironmentHandler>().AsSingle();

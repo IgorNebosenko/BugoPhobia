@@ -40,6 +40,9 @@ namespace ElectrumGames.Core.Player
 
             _externalInteractionManager = new ExternalInteractionManager(interaction, input, playerCamera, playerConfig);
 
+            _flashLightInteractionManager = new FlashLightInteractionManager(interaction, flashLightInteractionHandler,
+                Inventory, InventoryIndexHandler);
+
             _interactionItemsManagers = new List<IInteractionItemsManager>
             {
                 _putInteractionHandler,
@@ -47,7 +50,8 @@ namespace ElectrumGames.Core.Player
                 _selectInventorySlotHandler,
                 _itemInteractionVisual,
                 _interactionHandler,
-                _externalInteractionManager
+                _externalInteractionManager,
+                _flashLightInteractionManager
             };
             
             var headBob = new HeadBobVisual();

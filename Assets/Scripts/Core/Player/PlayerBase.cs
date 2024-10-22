@@ -50,7 +50,7 @@ namespace ElectrumGames.Core.Player
         protected EnvironmentHandler environmentHandler;
         protected FlashLightInteractionHandler flashLightInteractionHandler;
 
-        public bool _isInRoomPreviosState;
+        private bool _isInRoomPreviousState;
 
         private Collider[] _colliders = new Collider[CollidersArraySize];
         private const int CollidersArraySize = 40;
@@ -106,11 +106,11 @@ namespace ElectrumGames.Core.Player
         {
             var currentRoom = GetCurrentRoom();
 
-            if (!currentRoom.UnityNullCheck() != _isInRoomPreviosState)
+            if (!currentRoom.UnityNullCheck() != _isInRoomPreviousState)
             {
-                _isInRoomPreviosState = !_isInRoomPreviosState;
+                _isInRoomPreviousState = !_isInRoomPreviousState;
                 
-                if (_isInRoomPreviosState)
+                if (_isInRoomPreviousState)
                     environmentHandler.SetEnvironmentIndoor();
                 else
                     environmentHandler.SetEnvironmentOutdoor();
