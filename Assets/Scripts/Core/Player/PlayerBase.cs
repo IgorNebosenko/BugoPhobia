@@ -13,6 +13,7 @@ using ElectrumGames.Core.Rooms;
 using ElectrumGames.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace ElectrumGames.Core.Player
 {
@@ -47,6 +48,7 @@ namespace ElectrumGames.Core.Player
         protected ConfigService configService;
 
         protected EnvironmentHandler environmentHandler;
+        protected FlashLightInteractionHandler flashLightInteractionHandler;
 
         public bool _isInRoomPreviosState;
 
@@ -123,15 +125,13 @@ namespace ElectrumGames.Core.Player
         protected virtual void OnInteractionSimulate(float deltaTime)
         {}
 
-        public void Spawn(PlayerConfig config, ConfigService configSrv, bool isPlayablePlayer, bool isHost, 
-            InputActions inputActions, ItemsConfig itemsConfig, GhostDifficultyData difficultyData, 
-            Camera injectedCamera, EnvironmentHandler environmentHandler)
+        public void Spawn(DiContainer container, GhostDifficultyData difficultyData, bool isPlayablePlayer, bool isHost)
         {
-            playerConfig = config;
-            configService = configSrv;
+            playerConfig = container.Resolve<PlayerConfig>();
+            configService = container.Resolve<ConfigService>();
 
-            this.inputActions = inputActions;
-            this.itemsConfig = itemsConfig;
+            inputActions = container.Resolve<InputActions>();
+            itemsConfig = container.Resolve<ItemsConfig>();
 
             ghostDifficultyData = difficultyData;
             
@@ -146,6 +146,8 @@ namespace ElectrumGames.Core.Player
             IsPlayablePlayer = isPlayablePlayer;
             IsHost = isHost;
 
+            var injectedCamera = container.Resolve<Camera>();
+
             if (IsHost)
             {
                 injectedCamera.transform.parent = headBob;
@@ -153,9 +155,10 @@ namespace ElectrumGames.Core.Player
                 playerCamera.transform.localPosition = Vector3.zero;
             }
 
-            this.environmentHandler = environmentHandler;
+            environmentHandler = container.Resolve<EnvironmentHandler>();
+            flashLightInteractionHandler = container.Resolve<FlashLightInteractionHandler>();
 
-            _motor = new PlayerMovementMotor(characterController, playerCamera, config, configService);
+            _motor = new PlayerMovementMotor(characterController, playerCamera, playerConfig, configService);
             _cameraLifter = new CameraLifter(playerConfig, headBob, stayCameraTransform.localPosition,
                 sitCameraTransform.localPosition);
 

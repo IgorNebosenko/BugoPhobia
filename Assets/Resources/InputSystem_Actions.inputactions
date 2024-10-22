@@ -326,6 +326,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "FlashLightInteraction",
+                    "type": "Button",
+                    "id": "7fea96bc-1ed0-4b54-9a8d-4243f9cc4e5d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "FirstSlotSelected",
                     "type": "Button",
                     "id": "26815d65-ea32-4881-a44a-a100a1c8de1d",
@@ -576,6 +585,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ExternalInteraction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "83048dba-11a9-404c-a6ad-b41c2212bab0",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FlashLightInteraction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

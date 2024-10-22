@@ -16,6 +16,7 @@ namespace ElectrumGames.Core.Player
         private ItemInteractionVisual _itemInteractionVisual;
         private ItemInteractionHandler _interactionHandler;
         private ExternalInteractionManager _externalInteractionManager;
+        private FlashLightInteractionManager _flashLightInteractionManager;
         
         protected override void OnAfterSpawn()
         {

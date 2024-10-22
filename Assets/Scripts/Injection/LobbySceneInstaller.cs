@@ -1,4 +1,5 @@
 using System.Reflection;
+using Core.Player.Interactions;
 using ElectrumGames.Audio;
 using ElectrumGames.Core.Environment;
 using ElectrumGames.Core.Items;
@@ -21,6 +22,8 @@ namespace ElectrumGames. Injection
         [SerializeField] private Camera injectedCamera;
         [Space]
         [SerializeField] private ItemMarkers itemMarkers;
+        [Space]
+        [SerializeField] private FlashLightInteractionHandler flashLightInteractionHandler;
         
         protected override Assembly UiAssembly => typeof(UiAssemblyReference).Assembly;
 
@@ -37,6 +40,8 @@ namespace ElectrumGames. Injection
             Container.BindInstance(injectedCamera).AsSingle();
 
             Container.BindInstance(itemMarkers).AsSingle();
+
+            Container.BindInstance(flashLightInteractionHandler).AsSingle();
             
             Container.Bind<UiEventsHandler>().AsSingle().NonLazy();
         }

@@ -14,18 +14,10 @@ namespace ElectrumGames.Core.Player
     public class PlayersFactory : MonoBehaviour, IHaveNetId
     {
         [SerializeField] private Player playerTemplate;
+
+        private DiContainer _container;
         
         private NetIdFactory _netIdFactory;
-        private PlayerConfig _playerConfig;
-        private InputActions _inputActions;
-        private ConfigService _configService;
-        private ItemsConfig _itemsConfig;
-        private GhostDifficultyList _difficultyList;
-        private EnvironmentHandler _environmentHandler;
-
-        private Camera _playerCamera;
-
-        private MissionDataHandler _missionDataHandler;
         
         public int NetId { get; private set; }
         public int OwnerId { get; private set; }
@@ -36,22 +28,11 @@ namespace ElectrumGames.Core.Player
         }
         
         [Inject]
-        private void Construct(NetIdFactory netIdFactory, PlayerConfig playerConfig, InputActions inputActions,
-            ConfigService configService, ItemsConfig itemsConfig, GhostDifficultyList difficultyList, Camera playerCamera,
-            MissionDataHandler missionDataHandler, EnvironmentHandler environmentHandler)
+        private void Construct(DiContainer container, NetIdFactory netIdFactory)
         {
-            _netIdFactory = netIdFactory;
-            _playerConfig = playerConfig;
-            _inputActions = inputActions;
-            _configService = configService;
-            _itemsConfig = itemsConfig;
-            _difficultyList = difficultyList;
-
-            _playerCamera = playerCamera;
+            _container = container;
             
-            _missionDataHandler = missionDataHandler;
-
-            _environmentHandler = environmentHandler;
+            _netIdFactory = netIdFactory;
 
             _netIdFactory.Initialize(this);
         }
@@ -59,9 +40,12 @@ namespace ElectrumGames.Core.Player
         public IPlayer CreatePlayer(bool isPlayablePlayer, bool isHost, Vector3 position, Quaternion rotation)
         {
             var player = Instantiate(playerTemplate, position, rotation, transform);
-            player.Spawn(_playerConfig, _configService, isPlayablePlayer, isHost, _inputActions, _itemsConfig, 
-                _difficultyList.GhostDifficultyData[(int)_missionDataHandler.MissionDifficulty], _playerCamera,
-                _environmentHandler);
+
+            var difficultyList = _container.Resolve<GhostDifficultyList>();
+            var missionDataHandler = _container.Resolve<MissionDataHandler>();
+            
+            player.Spawn(_container, difficultyList.GhostDifficultyData[(int)missionDataHandler.MissionDifficulty],
+                isPlayablePlayer, isHost);
             
             return (Player)_netIdFactory.Initialize(player, NetId);
         }

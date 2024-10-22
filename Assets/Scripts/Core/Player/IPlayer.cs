@@ -9,6 +9,7 @@ using ElectrumGames.Core.Player.Movement;
 using ElectrumGames.Core.Player.Sanity;
 using ElectrumGames.Extensions.CommonInterfaces;
 using UnityEngine;
+using Zenject;
 
 namespace ElectrumGames.Core.Player
 {
@@ -20,9 +21,7 @@ namespace ElectrumGames.Core.Player
         IInventory Inventory { get; }
         InventoryIndexHandler InventoryIndexHandler { get; }
         ISanity Sanity { get; }
-        void Spawn(PlayerConfig config, ConfigService configService, bool isPlayablePlayer, bool isHost, 
-            InputActions inputActions, ItemsConfig itemsConfig, GhostDifficultyData difficultyData, 
-            Camera injectedCamera, EnvironmentHandler environmentHandler);
+        void Spawn(DiContainer container, GhostDifficultyData difficultyData, bool isPlayablePlayer, bool isHost);
         void Despawn();
 
         int GetCurrentStayRoom();

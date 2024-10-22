@@ -7,6 +7,7 @@
         bool AlternativeInteraction { get; }
         bool ExternalInteraction { get; }
         bool VoiceActivation { get; }
+        bool FlashLightInteraction { get; }
         
         bool FirstSlotSelected { get; }
         bool SecondSlotSelected { get; }

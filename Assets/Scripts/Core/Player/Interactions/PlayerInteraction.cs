@@ -14,6 +14,7 @@ namespace Core.Player.Interactions
         public bool AlternativeInteraction { get; private set; }
         public bool ExternalInteraction { get; private set; }
         public bool VoiceActivation { get; private set; }
+        public bool FlashLightInteraction { get; private set; }
         public bool FirstSlotSelected { get; private set; }
         public bool SecondSlotSelected { get; private set; }
         public bool ThirdSlotSelected { get; private set; }
@@ -56,6 +57,11 @@ namespace Core.Player.Interactions
         public void OnVoice(InputAction.CallbackContext context)
         {
             VoiceActivation = context.phase != InputActionPhase.Canceled;
+        }
+
+        public void OnFlashLightInteraction(InputAction.CallbackContext context)
+        {
+            FlashLightInteraction = context.phase != InputActionPhase.Canceled;
         }
 
         public void OnFirstSlotSelected(InputAction.CallbackContext context)

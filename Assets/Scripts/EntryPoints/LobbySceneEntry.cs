@@ -1,4 +1,5 @@
-﻿using ElectrumGames.Configs;
+﻿using Core.Player.Interactions;
+using ElectrumGames.Configs;
 using ElectrumGames.Core.Player;
 using ElectrumGames.MVP.Managers;
 using ElectrumGames.UI.Presenters;
@@ -10,7 +11,7 @@ namespace ElectrumGames.EntryPoints
     public class LobbySceneEntry : MonoBehaviour
     {
         [SerializeField] private Transform playerSpawnPoint;
-
+        
         private PlayersFactory _playersFactory;
         
         private ViewManager _viewManager;
