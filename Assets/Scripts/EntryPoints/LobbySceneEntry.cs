@@ -32,6 +32,8 @@ namespace ElectrumGames.EntryPoints
 
             _configService.MusicVolume = _configService.MusicVolume;
             _configService.SoundsVolume = _configService.SoundsVolume;
+
+            Application.runInBackground = true;
             
             Debug.LogWarning("All player creates as host and playable!");
             _playersFactory.CreatePlayer(
