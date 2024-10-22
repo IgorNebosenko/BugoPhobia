@@ -3,7 +3,7 @@ using ElectrumGames.Core.Environment;
 using ElectrumGames.Core.Player.Movement;
 using UnityEngine;
 
-namespace Core.Player.Interactions
+namespace ElectrumGames.Core.Player.Interactions
 {
     public class ExternalInteractionManager : IInteractionItemsManager
     {

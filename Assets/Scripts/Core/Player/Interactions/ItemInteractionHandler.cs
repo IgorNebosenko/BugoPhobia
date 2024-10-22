@@ -1,7 +1,7 @@
 ﻿using Core.Items.Inventory;
 using ElectrumGames.Core.Items.Inventory;
 
-namespace Core.Player.Interactions
+namespace ElectrumGames.Core.Player.Interactions
 {
     public class ItemInteractionHandler : IInteractionItemsManager
     {

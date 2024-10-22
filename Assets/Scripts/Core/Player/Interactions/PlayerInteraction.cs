@@ -2,7 +2,7 @@
 using ElectrumGames.Core.Player.Movement;
 using UnityEngine.InputSystem;
 
-namespace Core.Player.Interactions
+namespace ElectrumGames.Core.Player.Interactions
 {
     public class PlayerInteraction : IInteraction, InputActions.IInteractionsActions
     {

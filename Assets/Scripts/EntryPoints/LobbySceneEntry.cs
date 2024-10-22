@@ -1,5 +1,4 @@
-﻿using Core.Player.Interactions;
-using ElectrumGames.Configs;
+﻿using ElectrumGames.Configs;
 using ElectrumGames.Core.Player;
 using ElectrumGames.MVP.Managers;
 using ElectrumGames.UI.Presenters;

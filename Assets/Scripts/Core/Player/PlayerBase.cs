@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using Core.Items.Inventory;
-using Core.Player.Interactions;
+using ElectrumGames.Core.Player.Interactions.Items;
 using ElectrumGames.Configs;
 using ElectrumGames.Core.Environment;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Items.Inventory;
+using ElectrumGames.Core.Player.Interactions;
 using ElectrumGames.Core.Player.Movement;
 using ElectrumGames.Core.Player.Sanity;
 using ElectrumGames.Core.PlayerVisuals;

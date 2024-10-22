@@ -2,7 +2,7 @@
 using ElectrumGames.Core.Items.Inventory;
 using UnityEngine;
 
-namespace Core.Player.Interactions
+namespace ElectrumGames.Core.Player.Interactions
 {
     public class DropInteractionHandler : IInteractionItemsManager
     {

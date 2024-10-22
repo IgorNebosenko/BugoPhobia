@@ -1,5 +1,4 @@
 ﻿using Core.Items.Inventory;
-using Core.Player.Interactions;
 using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Items.Inventory;
 using UnityEngine;

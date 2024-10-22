@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Core.Items.Inventory;
-using Core.Player.Interactions;
+using ElectrumGames.Core.Player.Interactions;
 using ElectrumGames.Core.Player.Interactions.Items;
 using ElectrumGames.Core.PlayerVisuals;
 

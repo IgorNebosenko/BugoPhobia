@@ -1,4 +1,4 @@
-﻿namespace Core.Player.Interactions
+﻿namespace ElectrumGames.Core.Player.Interactions
 {
     public interface IInteraction
     {

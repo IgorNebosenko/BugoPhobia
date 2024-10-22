@@ -1,6 +1,6 @@
 ﻿using Core.Items.Inventory;
 
-namespace Core.Player.Interactions
+namespace ElectrumGames.Core.Player.Interactions
 {
     public class SelectInventorySlotHandler : IInteractionItemsManager
     {
