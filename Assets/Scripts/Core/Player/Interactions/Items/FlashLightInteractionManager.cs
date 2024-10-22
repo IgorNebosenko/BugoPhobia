@@ -2,7 +2,9 @@
 using Core.Items.Inventory;
 using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Items.Inventory;
+using ElectrumGames.Extensions;
 using ElectrumGames.GlobalEnums;
+using UnityEngine;
 
 namespace ElectrumGames.Core.Player.Interactions.Items
 {
@@ -14,18 +16,29 @@ namespace ElectrumGames.Core.Player.Interactions.Items
         private readonly IInventory _inventory;
         private readonly InventoryIndexHandler _inventoryIndexHandler;
 
+        private readonly ItemInteractionVisual _itemInteractionVisual;
+
         private bool _lastState;
         private bool _flashLightState;
 
         public FlashLightInteractionManager(IInteraction playerInteraction, 
             FlashLightInteractionHandler flashLightInteractionHandler, IInventory inventory,
-            InventoryIndexHandler inventoryIndexHandler)
+            InventoryIndexHandler inventoryIndexHandler, ItemInteractionVisual itemInteractionVisual)
         {
             _interaction = playerInteraction;
             _flashLightInteractionHandler = flashLightInteractionHandler;
             
             _inventory = inventory;
             _inventoryIndexHandler = inventoryIndexHandler;
+
+            _itemInteractionVisual = itemInteractionVisual;
+
+            _itemInteractionVisual.ItemChanged += OnItemChanged;
+        }
+
+        ~FlashLightInteractionManager()
+        {
+            _itemInteractionVisual.ItemChanged -= OnItemChanged;
         }
 
         public void Simulate(float deltaTime)
@@ -46,20 +59,7 @@ namespace ElectrumGames.Core.Player.Interactions.Items
                         }
                         else
                         {
-                            var flashLights = _inventory.Items.Where(x =>
-                                x != null && x.ItemType is ItemType.FlashLightSmall or ItemType.FlashLightMedium
-                                    or ItemType.FlashLightBig).Select(x => x.ItemType).ToArray();
-
-                            if (flashLights.Length != 0)
-                            {
-                                if (flashLights.Any(x => x == ItemType.FlashLightBig))
-                                    _flashLightInteractionHandler.EnableBigLight();
-                                else if (flashLights.Any(x => x == ItemType.FlashLightMedium))
-                                    _flashLightInteractionHandler.EnableMediumLight();
-                                else
-                                    _flashLightInteractionHandler.EnableSmallLight();
-                            }
-                            
+                            SelectMostPowerfulFlashlight(true);
                         }
                     }
                     else
@@ -75,6 +75,39 @@ namespace ElectrumGames.Core.Player.Interactions.Items
                     }
                 }
             }
+        }
+
+        private void SelectMostPowerfulFlashlight(bool isSkipEnabled)
+        {
+            var flashLights = _inventory.Items.Where(x =>
+                x != null && x.ItemType is ItemType.FlashLightSmall or ItemType.FlashLightMedium
+                    or ItemType.FlashLightBig && (isSkipEnabled || ((ItemFlashLight)x).IsElectricityOn)).
+                Select(x => x.ItemType).ToArray();
+
+            if (flashLights.Length != 0)
+            {
+                if (flashLights.Any(x => x == ItemType.FlashLightBig))
+                    _flashLightInteractionHandler.EnableBigLight();
+                else if (flashLights.Any(x => x == ItemType.FlashLightMedium))
+                    _flashLightInteractionHandler.EnableMediumLight();
+                else
+                    _flashLightInteractionHandler.EnableSmallLight();
+            }
+        }
+        
+        private void OnItemChanged(ItemInstanceBase item)
+        {
+            if (item.UnityNullCheck())
+            {
+                SelectMostPowerfulFlashlight(false);
+                return;
+            }
+
+            if (item.ItemType is ItemType.FlashLightSmall or ItemType.FlashLightMedium or ItemType.FlashLightBig)
+                _flashLightInteractionHandler.DisableLight();
+            else
+                SelectMostPowerfulFlashlight(false);
+
         }
     }
 }
