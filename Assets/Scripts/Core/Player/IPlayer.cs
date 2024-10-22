@@ -5,6 +5,7 @@ using ElectrumGames.Core.Environment;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Items.Inventory;
+using ElectrumGames.Core.Player.Interactions.Items;
 using ElectrumGames.Core.Player.Movement;
 using ElectrumGames.Core.Player.Sanity;
 using ElectrumGames.Extensions.CommonInterfaces;
@@ -21,6 +22,7 @@ namespace ElectrumGames.Core.Player
         IInventory Inventory { get; }
         InventoryIndexHandler InventoryIndexHandler { get; }
         ISanity Sanity { get; }
+        FlashLightInteractionHandler FlashLightInteractionHandler { get; }
         void Spawn(DiContainer container, GhostDifficultyData difficultyData, bool isPlayablePlayer, bool isHost);
         void Despawn();
 

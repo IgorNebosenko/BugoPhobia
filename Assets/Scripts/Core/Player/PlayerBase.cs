@@ -49,7 +49,6 @@ namespace ElectrumGames.Core.Player
         protected ConfigService configService;
 
         protected EnvironmentHandler environmentHandler;
-        protected FlashLightInteractionHandler flashLightInteractionHandler;
 
         private bool _isInRoomPreviousState;
 
@@ -66,6 +65,7 @@ namespace ElectrumGames.Core.Player
         public IInventory Inventory { get; private set; }
         public InventoryIndexHandler InventoryIndexHandler { get; protected set; }
         public ISanity Sanity { get; private set; }
+        public FlashLightInteractionHandler FlashLightInteractionHandler { get; protected set; }
 
         public Vector3 Position => transform.position;
 
@@ -157,7 +157,7 @@ namespace ElectrumGames.Core.Player
             }
 
             environmentHandler = container.Resolve<EnvironmentHandler>();
-            flashLightInteractionHandler = container.Resolve<FlashLightInteractionHandler>();
+            FlashLightInteractionHandler = container.Resolve<FlashLightInteractionHandler>();
 
             _motor = new PlayerMovementMotor(characterController, playerCamera, playerConfig, configService);
             _cameraLifter = new CameraLifter(playerConfig, headBob, stayCameraTransform.localPosition,

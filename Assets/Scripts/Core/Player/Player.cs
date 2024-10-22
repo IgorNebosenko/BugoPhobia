@@ -40,7 +40,7 @@ namespace ElectrumGames.Core.Player
 
             _externalInteractionManager = new ExternalInteractionManager(interaction, input, playerCamera, playerConfig);
 
-            _flashLightInteractionManager = new FlashLightInteractionManager(interaction, flashLightInteractionHandler,
+            _flashLightInteractionManager = new FlashLightInteractionManager(interaction, FlashLightInteractionHandler,
                 Inventory, InventoryIndexHandler, _itemInteractionVisual);
 
             _interactionItemsManagers = new List<IInteractionItemsManager>

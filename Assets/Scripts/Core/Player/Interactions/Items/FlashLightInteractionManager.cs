@@ -4,7 +4,6 @@ using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Items.Inventory;
 using ElectrumGames.Extensions;
 using ElectrumGames.GlobalEnums;
-using UnityEngine;
 
 namespace ElectrumGames.Core.Player.Interactions.Items
 {
