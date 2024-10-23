@@ -76,11 +76,11 @@ namespace ElectrumGames.Core.Player.Interactions.Items
             }
         }
 
-<<<<<<< HEAD:Assets/Scripts/Core/Player/Interactions/FlashLightInteractionManager.cs
         public void OnGhostInterferenceStay()
         {
             _flashLightInteractionHandler.OnGhostInterferenceStay();
-=======
+        }
+
         private void SelectMostPowerfulFlashlight(bool isSkipEnabled)
         {
             var flashLights = _inventory.Items.Where(x =>
@@ -111,8 +111,6 @@ namespace ElectrumGames.Core.Player.Interactions.Items
                 _flashLightInteractionHandler.DisableLight();
             else
                 SelectMostPowerfulFlashlight(false);
-
->>>>>>> b3dc64eca3cc6d5155e7acc4108061b0f5dafed5:Assets/Scripts/Core/Player/Interactions/Items/FlashLightInteractionManager.cs
         }
     }
 }

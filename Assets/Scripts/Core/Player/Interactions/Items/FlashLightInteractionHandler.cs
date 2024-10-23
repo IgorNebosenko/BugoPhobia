@@ -1,4 +1,4 @@
-﻿using DG.Tweening;
+using DG.Tweening;
 using UnityEngine;
 
 namespace ElectrumGames.Core.Player.Interactions.Items
@@ -8,7 +8,6 @@ namespace ElectrumGames.Core.Player.Interactions.Items
         [SerializeField] private Light smallLight;
         [SerializeField] private Light mediumLight;
         [SerializeField] private Light bigLight;
-<<<<<<< HEAD:Assets/Scripts/Core/Player/Interactions/FlashLightInteractionHandler.cs
         [Space]
         [SerializeField] private float flickerSpeedMin = 0.1f;
         [SerializeField] private float flickerSpeedMax = 0.3f;
@@ -25,10 +24,8 @@ namespace ElectrumGames.Core.Player.Interactions.Items
             _mediumLightStartIntensity = mediumLight.intensity;
             _bigLightStartIntensity = bigLight.intensity;
         }
-=======
         
         public bool IsElectricityOn { get; private set; }
->>>>>>> b3dc64eca3cc6d5155e7acc4108061b0f5dafed5:Assets/Scripts/Core/Player/Interactions/Items/FlashLightInteractionHandler.cs
 
         public void EnableSmallLight()
         {
