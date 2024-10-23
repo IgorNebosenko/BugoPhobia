@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading;
-using System.Threading.Tasks;
 using ElectrumGames.Configs;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Controllers;
-using ElectrumGames.Core.Missions;
 using ElectrumGames.Core.Rooms;
 using ElectrumGames.Extensions;
 using ElectrumGames.GlobalEnums;
@@ -368,6 +366,8 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                     {
                         ghostHuntingInteractableStay.OnGhostInteractionStay();
                     }
+                    
+                    _ghostController.GhostEventAura.PlayersInAura[i].OnGhostInterferenceStay();
                 }
             }
                 
@@ -402,7 +402,12 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
             var electricalObject = player.Inventory.Items[player.InventoryIndexHandler.CurrentIndex] as 
                 IGhostHuntingHasElectricity;
 
-            return electricalObject is {IsElectricityOn: true};
+            var result = electricalObject is {IsElectricityOn: true};
+
+            if (!result)
+                result = player.FlashLightInteractionHandler.IsElectricityOn;
+            
+            return result;
         }
 
         public bool IsHearPlayer()

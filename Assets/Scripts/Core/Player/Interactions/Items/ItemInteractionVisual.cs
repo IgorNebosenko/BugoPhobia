@@ -1,5 +1,5 @@
-﻿using Core.Items.Inventory;
-using Core.Player.Interactions;
+﻿using System;
+using Core.Items.Inventory;
 using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Items.Inventory;
 using UnityEngine;
@@ -14,6 +14,8 @@ namespace ElectrumGames.Core.Player.Interactions.Items
 
         private readonly Transform _parentPlayer;
         private readonly Transform _parentHand;
+
+        public event Action<ItemInstanceBase> ItemChanged;
 
         private int _lastIndex = -1;
 
@@ -32,6 +34,8 @@ namespace ElectrumGames.Core.Player.Interactions.Items
         {
             if (_lastIndex == _inventoryIndexHandler.CurrentIndex)
                 return;
+            
+            ItemChanged?.Invoke(_inventory.Items[_inventoryIndexHandler.CurrentIndex]);
 
             if (_lastIndex >= 0 && _lastIndex < _inventory.Items.Count && _inventory.Items[_lastIndex] != null)
             {

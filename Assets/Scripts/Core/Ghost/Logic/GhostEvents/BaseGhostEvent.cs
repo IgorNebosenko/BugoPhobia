@@ -293,6 +293,8 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
                     {
                         ghostHuntingInteractableStay.OnGhostInteractionStay();
                     }
+                    
+                    _ghostController.GhostEventAura.PlayersInAura[i].OnGhostInterferenceStay();
                 }
             }
                 

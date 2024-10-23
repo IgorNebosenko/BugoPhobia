@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Core.Items.Inventory;
-using Core.Player.Interactions;
+using ElectrumGames.Core.Player.Interactions;
 using ElectrumGames.Core.Player.Interactions.Items;
 using ElectrumGames.Core.PlayerVisuals;
 
@@ -40,8 +40,8 @@ namespace ElectrumGames.Core.Player
 
             _externalInteractionManager = new ExternalInteractionManager(interaction, input, playerCamera, playerConfig);
 
-            _flashLightInteractionManager = new FlashLightInteractionManager(interaction, flashLightInteractionHandler,
-                Inventory, InventoryIndexHandler);
+            _flashLightInteractionManager = new FlashLightInteractionManager(interaction, FlashLightInteractionHandler,
+                Inventory, InventoryIndexHandler, _itemInteractionVisual);
 
             _interactionItemsManagers = new List<IInteractionItemsManager>
             {
@@ -63,6 +63,11 @@ namespace ElectrumGames.Core.Player
             {
                 simulateVisual.Init(configService, playerConfig);
             }
+        }
+
+        public override void OnGhostInterferenceStay()
+        {
+            _flashLightInteractionManager.OnGhostInterferenceStay();
         }
 
         protected override void OnInteractionSimulate(float deltaTime)

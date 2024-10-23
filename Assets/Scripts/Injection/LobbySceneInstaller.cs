@@ -1,5 +1,5 @@
 using System.Reflection;
-using Core.Player.Interactions;
+using ElectrumGames.Core.Player.Interactions.Items;
 using ElectrumGames.Audio;
 using ElectrumGames.Core.Environment;
 using ElectrumGames.Core.Items;
