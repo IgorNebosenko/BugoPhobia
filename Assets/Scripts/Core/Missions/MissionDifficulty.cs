@@ -2,7 +2,7 @@
 {
     public enum MissionDifficulty
     {
-        None,
+        None = -1,
         Easy,
         Medium,
         Pro,
