@@ -9,11 +9,15 @@ namespace ElectrumGames.UI.Presenters
     public class MenuPresenter : Presenter<MenuView>
     {
         private readonly ViewManager _viewManager;
+        private readonly PopupManager _popupManager;
         private readonly InputActions _inputActions;
         
-        public MenuPresenter(ViewManager viewManager, InputActions inputActions,  MenuView view) : base(view)
+        public MenuPresenter(ViewManager viewManager, PopupManager popupManager, InputActions inputActions,
+            MenuView view) : base(view)
         {
             _viewManager = viewManager;
+            _popupManager = popupManager;
+            
             _inputActions = inputActions;
         }
 
@@ -24,6 +28,11 @@ namespace ElectrumGames.UI.Presenters
 #elif UNITY_ANDROID
             _viewManager.ShowView<InGameAndroidPresenter>();
 #endif
+        }
+        
+        public void OnDebugButtonClicked()
+        {
+            _popupManager.ShowPopup<DebugPopupPresenter>();
         }
 
         public void OnSettingsButtonClicked()

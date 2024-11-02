@@ -50,6 +50,7 @@ namespace ElectrumGames.UI.Presenters
 
         public void OnExitClicked()
         {
+            Close();
         }
     }
 }
