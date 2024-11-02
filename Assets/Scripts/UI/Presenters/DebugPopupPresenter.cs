@@ -32,15 +32,23 @@ namespace ElectrumGames.UI.Presenters
         {
         }
 
-        public void ForceInteractionClicked()
+        public void OnForceInteractionClicked()
         {
         }
 
-        public void ForceGhostEventClicked()
+        public void OnForceGhostEventClicked()
         {
         }
 
-        public void ForceHuntClicked()
+        public void OnForceHuntClicked()
+        {
+        }
+
+        public void OnTeleportToPlayerClicked()
+        {
+        }
+
+        public void OnExitClicked()
         {
         }
     }
