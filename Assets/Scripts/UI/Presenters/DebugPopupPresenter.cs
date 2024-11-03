@@ -44,6 +44,11 @@ namespace ElectrumGames.UI.Presenters
         {
             _player.Sanity.ChangeSanity(-25f, -1);
         }
+        
+        public void OnResetLogicClicked()
+        {
+            _ghostController.SetEnabledLogic(GhostLogicSelector.All);
+        }
 
         public void OnForceInteractionClicked()
         {

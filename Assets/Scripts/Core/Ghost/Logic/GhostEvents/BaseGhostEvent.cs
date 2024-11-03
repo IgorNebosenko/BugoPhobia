@@ -149,7 +149,7 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
 
         protected virtual GhostEventType SelectGhostEventType()
         {
-            return (GhostEventType) Random.Range(0, (int) GhostEventType.AppearThanChase);
+            return (GhostEventType) Random.Range(0, (int)GhostEventType.AppearThanChase + 1);
         }
 
         protected virtual GhostAppearType SelectAppearType()

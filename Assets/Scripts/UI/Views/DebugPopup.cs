@@ -13,6 +13,8 @@ namespace ElectrumGames.UI.Views
         [SerializeField] private Button sanityAddButton;
         [SerializeField] private Button sanityRemoveButton;
         [Space]
+        [SerializeField] private Button resetLogicButton;
+        [Space]
         [SerializeField] private Button forceInteractionButton;
         [SerializeField] private Button forceGhostEventButton;
         [SerializeField] private Button forceHuntButton;
@@ -26,6 +28,8 @@ namespace ElectrumGames.UI.Views
             sanityEmptyButton.onClick.AddListener(Presenter.OnSanityEmptyClicked);
             sanityAddButton.onClick.AddListener(Presenter.OnAddSanityClicked);
             sanityRemoveButton.onClick.AddListener(Presenter.OnRemoveSanityClicked);
+            
+            resetLogicButton.onClick.AddListener(Presenter.OnResetLogicClicked);
             
             forceInteractionButton.onClick.AddListener(Presenter.OnForceInteractionClicked);
             forceGhostEventButton.onClick.AddListener(Presenter.OnForceGhostEventClicked);
@@ -41,6 +45,8 @@ namespace ElectrumGames.UI.Views
             sanityEmptyButton.onClick.RemoveListener(Presenter.OnSanityEmptyClicked);
             sanityAddButton.onClick.RemoveListener(Presenter.OnAddSanityClicked);
             sanityRemoveButton.onClick.RemoveListener(Presenter.OnRemoveSanityClicked);
+            
+            resetLogicButton.onClick.RemoveListener(Presenter.OnResetLogicClicked);
             
             forceInteractionButton.onClick.RemoveListener(Presenter.OnForceInteractionClicked);
             forceGhostEventButton.onClick.RemoveListener(Presenter.OnForceGhostEventClicked);
