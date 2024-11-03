@@ -40,6 +40,7 @@ namespace ElectrumGames.Core.Ghost
         private GhostFlickConfig _flickConfig;
         private HuntPoints _huntPoints;
         private MissionDataHandler _missionDataHandler;
+        private DiContainer _container;
 
         public event Action<GhostBaseController> GhostCreated;
 
@@ -47,7 +48,7 @@ namespace ElectrumGames.Core.Ghost
         private void Construct(NetIdFactory netIdFactory, GhostEnvironmentHandler ghostEnvironmentHandler, GhostModelsList modelsList,
             GhostDifficultyList ghostDifficultyList, ActivityConfig activityConfig, GhostEmfZonePool ghostEmfZonePool, EmfData emfData,
             EvidenceController evidenceController, MissionPlayersHandler missionPlayersHandler, GhostFlickConfig flickConfig,
-            HuntPoints huntPoints, MissionDataHandler missionDataHandler)
+            HuntPoints huntPoints, MissionDataHandler missionDataHandler, DiContainer container)
         {
             _netIdFactory = netIdFactory;
             _ghostEnvironmentHandler = ghostEnvironmentHandler;
@@ -61,6 +62,7 @@ namespace ElectrumGames.Core.Ghost
             _flickConfig = flickConfig;
             _huntPoints = huntPoints;
             _missionDataHandler = missionDataHandler;
+            _container = container;
 
             _netIdFactory.Initialize(this);
         }
@@ -87,6 +89,9 @@ namespace ElectrumGames.Core.Ghost
             SetLogic(ghost, _ghostEnvironmentHandler);
             
             GhostCreated?.Invoke(ghost);
+
+            _container.BindInstance(ghost).AsSingle();
+            
             return ghost;
         }
 

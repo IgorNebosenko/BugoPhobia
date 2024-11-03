@@ -61,6 +61,21 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
             
             MoveProcess();
         }
+        
+        public void ForceInteract()
+        {
+            _doorInteractionTime = Mathf.Infinity;
+            _switchesInteractionTime = Mathf.Infinity;
+            _thrownInteractionTime = Mathf.Infinity;
+            _otherInteractionTime = Mathf.Infinity;
+            
+            TryInteract();
+            
+            _doorInteractionTime = 0f;
+            _switchesInteractionTime = 0f;
+            _thrownInteractionTime = 0f;
+            _otherInteractionTime = 0f;
+        }
 
         protected virtual void MoveProcess()
         {

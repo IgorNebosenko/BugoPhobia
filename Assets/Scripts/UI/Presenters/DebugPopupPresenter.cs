@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ElectrumGames.Core.Ghost.Controllers;
 using ElectrumGames.Core.Player;
 using ElectrumGames.MVP;
 using ElectrumGames.MVP.Utils;
@@ -10,10 +11,13 @@ namespace ElectrumGames.UI.Presenters
     public class DebugPopupPresenter : PopupPresenterCoroutine<DebugPopup, PopupArgs, PopupResult>
     {
         private readonly IPlayer _player;
+        private readonly GhostController _ghostController;
         
-        public DebugPopupPresenter([Inject(Id = "Host")] IPlayer player, DebugPopup view) : base(view)
+        public DebugPopupPresenter([Inject(Id = "Host")] IPlayer player, GhostController ghostController,
+            DebugPopup view) : base(view)
         {
             _player = player;
+            _ghostController = ghostController;
         }
 
         public override IEnumerable<PopupResult> Init(PopupArgs args)
@@ -43,6 +47,7 @@ namespace ElectrumGames.UI.Presenters
 
         public void OnForceInteractionClicked()
         {
+            _ghostController.NonHuntLogic.ForceInteract();
         }
 
         public void OnForceGhostEventClicked()
