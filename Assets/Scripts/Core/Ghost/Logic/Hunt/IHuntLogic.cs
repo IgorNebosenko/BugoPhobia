@@ -12,5 +12,6 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
         bool IsSeeElectronic(IPlayer player);
         bool IsHearPlayer();
         void MoveToPoint(Vector3 point, bool toPlayer);
+        void ForceHunt();
     }
 }

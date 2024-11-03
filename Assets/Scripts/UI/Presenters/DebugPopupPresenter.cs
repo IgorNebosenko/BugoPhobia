@@ -57,10 +57,14 @@ namespace ElectrumGames.UI.Presenters
 
         public void OnForceHuntClicked()
         {
+            _player.Sanity.ChangeSanity(-100f, -1);
+            _ghostController.HuntLogic.ForceHunt();
+
         }
 
         public void OnTeleportToPlayerClicked()
         {
+            _ghostController.transform.position = _player.Position;
         }
 
         public void OnExitClicked()

@@ -424,6 +424,11 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
             _ghostController.MoveTo(point);
         }
 
+        public void ForceHunt()
+        {
+            _huntCooldownTime = Mathf.Infinity;
+        }
+
         protected void StopHunt()
         {
             _isHunt = false;
