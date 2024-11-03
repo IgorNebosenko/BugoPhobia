@@ -133,6 +133,11 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
             }
         }
 
+        public void ForceEvent()
+        {
+            _ghostEventTime = Mathf.Infinity;
+        }
+
         protected void CreateGhostEventZone()
         {
             var emfZone = _emfZonesPool.SpawnCylinderZone(_ghostController.transform.position, _emfData.GhostEventHeightOffset, 

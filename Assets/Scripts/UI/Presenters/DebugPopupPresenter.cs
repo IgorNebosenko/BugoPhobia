@@ -52,6 +52,7 @@ namespace ElectrumGames.UI.Presenters
 
         public void OnForceGhostEventClicked()
         {
+            _ghostController.GhostEventLogic.ForceEvent();
         }
 
         public void OnForceHuntClicked()
