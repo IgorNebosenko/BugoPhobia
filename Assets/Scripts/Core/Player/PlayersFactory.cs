@@ -46,7 +46,14 @@ namespace ElectrumGames.Core.Player
             
             player.Spawn(_container, difficultyList.GhostDifficultyData[(int)missionDataHandler.MissionDifficulty],
                 isPlayablePlayer, isHost);
-            
+
+            if (isHost)
+                _container.BindInstance((IPlayer)player).WithId("Host").AsSingle();
+            else
+            {
+                //Bind player with id Proxy_0/Proxy_1/Proxy_2
+            }
+
             return (Player)_netIdFactory.Initialize(player, NetId);
         }
     }
