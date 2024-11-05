@@ -1,4 +1,4 @@
-﻿using Core.Items.Inventory;
+﻿using ElectrumGames.Core.Items.Inventory;
 using ElectrumGames.Core.Player.Movement;
 using UnityEngine.InputSystem;
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using ElectrumGames.Configs;
 
-namespace Core.Items.Inventory
+namespace ElectrumGames.Core.Items.Inventory
 {
     public class InventoryIndexHandler
     {

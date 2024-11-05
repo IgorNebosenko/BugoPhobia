@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Core.Items.Inventory;
 using ElectrumGames.Core.Player.Interactions.Items;
 using ElectrumGames.Configs;
 using ElectrumGames.Core.Environment;

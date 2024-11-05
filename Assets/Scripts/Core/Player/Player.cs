@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Core.Items.Inventory;
+using ElectrumGames.Core.Items.Inventory;
 using ElectrumGames.Core.Player.Interactions;
 using ElectrumGames.Core.Player.Interactions.Items;
 using ElectrumGames.Core.PlayerVisuals;

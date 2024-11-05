@@ -1,5 +1,4 @@
-﻿using Core.Items.Inventory;
-using ElectrumGames.Core.Items.Inventory;
+﻿using ElectrumGames.Core.Items.Inventory;
 
 namespace ElectrumGames.Core.Player.Interactions
 {

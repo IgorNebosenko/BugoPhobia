@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Core.Items.Inventory;
 using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Items.Inventory;
 using ElectrumGames.Extensions;
