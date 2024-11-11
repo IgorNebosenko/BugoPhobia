@@ -16,16 +16,11 @@ namespace ElectrumGames.Core.Items
         private ItemsFactory _itemsFactory;
         protected IInventory inventoryReference;
 
-        public Vector3 LocalScale { get; private set; }
+        public Vector3 LocalScale => transform.localScale;
         
         public int NetId { get; private set; }
         public int OwnerId { get; private set; }
         public int SpawnerId { get; private set; }
-
-        private void Awake()
-        {
-            LocalScale = transform.localScale;
-        }
 
         public void SetInventory(IInventory inventory)
         {
