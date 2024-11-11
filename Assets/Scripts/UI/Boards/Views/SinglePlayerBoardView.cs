@@ -40,6 +40,8 @@ namespace ElectrumGames.UI.Boards.Views
         private List<EquipmentItemComponent> equipmentItems = new ();
 
         private ItemsConfig _itemsConfig;
+
+        private bool _isInited;
         
         public override DisplayBoardsMenu DisplayBoardsMenu => DisplayBoardsMenu.SinglePlayer;
 
@@ -51,6 +53,9 @@ namespace ElectrumGames.UI.Boards.Views
 
         private void OnEnable()
         {
+            if (_isInited)
+                SetBalanceText(presenter.MoneysHandler.Moneys);
+            
             presenter.MoneysHandler.BalanceUpdated += SetBalanceText;
             backButton.onClick.AddListener(presenter.OnButtonBackClicked);
         }
@@ -75,6 +80,7 @@ namespace ElectrumGames.UI.Boards.Views
             SetItemsList(presenter.LobbyItemsHandler.GetSortedList());
 
             CheckStartState();
+            _isInited = true;
         }
 
         public void SetBalanceText(decimal balance)
