@@ -37,12 +37,8 @@ namespace ElectrumGames.EntryPoints
             Debug.LogWarning("All player creates as host and playable!");
             _playersFactory.CreatePlayer(
                 true, true, playerSpawnPoint.position, playerSpawnPoint.rotation);
-
-#if UNITY_STANDALONE
-            _viewManager.ShowView<InGamePresenter>();
-#elif UNITY_ANDROID
-            _viewManager.ShowView<InGameAndroidPresenter>();
-#endif
+            
+            _viewManager.ShowView<WarningPresenter>();
         }
     }
 }
