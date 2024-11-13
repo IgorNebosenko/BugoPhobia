@@ -33,10 +33,13 @@ namespace ElectrumGames.Core.Items
 
         public ItemInstanceBase Spawn(ItemSpawnPoint spawnPoint, int id)
         {
-            var item = Instantiate(_itemsConfig.GetItemByType(spawnPoint.ItemType).ItemInstance, 
+            var template = _itemsConfig.GetItemByType(spawnPoint.ItemType).ItemInstance;
+            
+            var item = Instantiate(template, 
                 spawnPoint.Position, spawnPoint.Rotation, transform);
             _netIdFactory.Initialize(item);
             item.Init(_playerConfig, this, id);
+            item.LocalScale = template.LocalScale;
             return item;
         }
     }
