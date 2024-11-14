@@ -4,18 +4,18 @@ using ElectrumGames.UI.Views;
 
 namespace ElectrumGames.UI.Presenters
 {
-    public class WarningPresenter : Presenter<WarningView>
+    public class HeadPhonesPresenter : Presenter<HeadPhonesView>
     {
         private readonly ViewManager _viewManager;
         
-        public WarningPresenter(ViewManager viewManager, WarningView view) : base(view)
+        public HeadPhonesPresenter(ViewManager viewManager, HeadPhonesView view) : base(view)
         {
             _viewManager = viewManager;
         }
-
+        
         public void ShowNextView()
         {
-            _viewManager.ShowView<HeadPhonesPresenter>();
+            //_viewManager.ShowView<HeadPhonesPresenter>();
         }
     }
 }

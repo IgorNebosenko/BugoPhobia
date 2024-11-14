@@ -13,7 +13,7 @@ namespace ElectrumGames.UI.Views
     {
         [SerializeField] private float showTime;
         [SerializeField] private float alphaChangeTime;
-
+        [Space]
         [SerializeField] private TMP_Text[] textes;
 
         private void Start()
@@ -23,7 +23,7 @@ namespace ElectrumGames.UI.Views
                 textes[i].alpha = 0f;
 
                 var j = i;
-                var color = textes[i].color;
+                var color = textes[j].color;
 
                 DOTween.To(() => textes[j].color, x => textes[j].color = x,
                         new Color(color.r, color.g, color.b, 1f), alphaChangeTime)
@@ -38,7 +38,7 @@ namespace ElectrumGames.UI.Views
             for (var i = 0; i < textes.Length; i++)
             {
                 var j = i;
-                var color = textes[i].color;
+                var color = textes[j].color;
 
                 DOTween.To(() => textes[j].color, x => textes[j].color = x,
                         new Color(color.r, color.g, color.b, 0f), alphaChangeTime)
