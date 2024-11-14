@@ -1,6 +1,8 @@
-﻿using ElectrumGames.MVP;
+﻿using ElectrumGames.Core.Missions;
+using ElectrumGames.MVP;
 using ElectrumGames.MVP.Managers;
 using ElectrumGames.UI.Views;
+using UnityEngine.SceneManagement;
 
 namespace ElectrumGames.UI.Presenters
 {
@@ -15,7 +17,8 @@ namespace ElectrumGames.UI.Presenters
         
         public void ShowNextView()
         {
-            //_viewManager.ShowView<HeadPhonesPresenter>();
+            _viewManager.ShowView<LoadingPresenter>();
+            SceneManager.LoadSceneAsync((int) MissionMap.LobbyTier0);
         }
     }
 }
