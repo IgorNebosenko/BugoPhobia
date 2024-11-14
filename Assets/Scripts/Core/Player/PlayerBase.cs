@@ -5,6 +5,7 @@ using ElectrumGames.Core.Environment;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Items.Inventory;
+using ElectrumGames.Core.Missions;
 using ElectrumGames.Core.Player.Interactions;
 using ElectrumGames.Core.Player.Movement;
 using ElectrumGames.Core.Player.Sanity;
@@ -202,7 +203,7 @@ namespace ElectrumGames.Core.Player
                 return;
 
             IsAlive = false;
-            SceneManager.LoadSceneAsync(0);
+            SceneManager.LoadSceneAsync((int)MissionMap.LobbyTier0);
         }
 
         private Room GetCurrentRoom()

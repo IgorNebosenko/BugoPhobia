@@ -15,11 +15,6 @@ namespace ElectrumGames.UI.Presenters
 
         public void ShowNextView()
         {
-#if UNITY_STANDALONE
-            _viewManager.ShowView<InGamePresenter>();
-#elif UNITY_ANDROID
-            _viewManager.ShowView<InGameAndroidPresenter>();
-#endif
         }
     }
 }
