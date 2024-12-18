@@ -7,6 +7,11 @@ namespace ElectrumGames.Core.Lobby
     public class MissionResultHandler
     {
         private GhostType _selectedGhost = GhostType.None;
+        private GhostType _correctGhost = GhostType.None;
+
+        private bool _isFirstMissionPassed;
+        private bool _isSecondMissionPassed;
+        private bool _isThirdMissionPassed;
         
         private JournalManager _journalManager;
 
@@ -19,11 +24,16 @@ namespace ElectrumGames.Core.Lobby
             bool isThirdMissionPassed)
         {
             _selectedGhost = _journalManager.PlayerJournalInstance.SelectedGhost;
+            _correctGhost = correctType;
+
+            _isFirstMissionPassed = isFirstMissionPassed;
+            _isSecondMissionPassed = isSecondMissionPassed;
+            _isThirdMissionPassed = isThirdMissionPassed;
             
-            Debug.Log($"Is ghost type correct: {correctType == _selectedGhost}");
-            Debug.Log($"First mission passed {isFirstMissionPassed}");
-            Debug.Log($"Second mission passed {isSecondMissionPassed}");
-            Debug.Log($"Third mission passed {isThirdMissionPassed}");
+            Debug.Log($"Is ghost type correct: {_correctGhost == _selectedGhost}");
+            Debug.Log($"First mission passed {_isFirstMissionPassed}");
+            Debug.Log($"Second mission passed {_isSecondMissionPassed}");
+            Debug.Log($"Third mission passed {_isThirdMissionPassed}");
             
             _journalManager.PlayerJournalInstance.Reset();
             
