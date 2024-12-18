@@ -1,4 +1,5 @@
 ﻿using ElectrumGames.Configs;
+using ElectrumGames.Core.Journal;
 using ElectrumGames.Core.Player;
 using ElectrumGames.MVP.Managers;
 using ElectrumGames.UI.Presenters;
@@ -15,14 +16,17 @@ namespace ElectrumGames.EntryPoints
         
         private ViewManager _viewManager;
         private ConfigService _configService;
+        private JournalManager _journalManager;
         
         [Inject]
-        private void Construct(PlayersFactory playersFactory, ViewManager viewManager, ConfigService configService)
+        private void Construct(PlayersFactory playersFactory, ViewManager viewManager, ConfigService configService, JournalManager journalManager)
         {
             _playersFactory = playersFactory;
             
             _viewManager = viewManager;
             _configService = configService;
+
+            _journalManager = journalManager;
         }
 
         private void Start()
@@ -37,6 +41,12 @@ namespace ElectrumGames.EntryPoints
             Debug.LogWarning("All player creates as host and playable!");
             _playersFactory.CreatePlayer(
                 true, true, playerSpawnPoint.position, playerSpawnPoint.rotation);
+            
+            Debug.LogWarning("Read journal state before reset!");
+            _journalManager.PlayerJournalInstance.Reset();
+            
+            for (var i = 0; i < _journalManager.OtherPlayersJournalInstances.Count; i++)
+                _journalManager.OtherPlayersJournalInstances[i].Reset();
             
 #if UNITY_STANDALONE
             _viewManager.ShowView<InGamePresenter>();
