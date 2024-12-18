@@ -1,6 +1,8 @@
 ﻿using ElectrumGames.Configs;
-using ElectrumGames.Core.Journal;
+using ElectrumGames.Core.Ghost;
+using ElectrumGames.Core.Lobby;
 using ElectrumGames.Core.Player;
+using ElectrumGames.GlobalEnums;
 using ElectrumGames.MVP.Managers;
 using ElectrumGames.UI.Presenters;
 using UnityEngine;
@@ -16,17 +18,21 @@ namespace ElectrumGames.EntryPoints
         
         private ViewManager _viewManager;
         private ConfigService _configService;
-        private JournalManager _journalManager;
+
+        private MissionResultHandler _missionResultHandler;
+        private GhostEnvironmentHandler _ghostEnvironmentHandler;
         
         [Inject]
-        private void Construct(PlayersFactory playersFactory, ViewManager viewManager, ConfigService configService, JournalManager journalManager)
+        private void Construct(PlayersFactory playersFactory, ViewManager viewManager, ConfigService configService, 
+            MissionResultHandler missionResultHandler, GhostEnvironmentHandler ghostEnvironmentHandler)
         {
             _playersFactory = playersFactory;
             
             _viewManager = viewManager;
             _configService = configService;
+            _missionResultHandler = missionResultHandler;
 
-            _journalManager = journalManager;
+            _ghostEnvironmentHandler = ghostEnvironmentHandler;
         }
 
         private void Start()
@@ -42,11 +48,9 @@ namespace ElectrumGames.EntryPoints
             _playersFactory.CreatePlayer(
                 true, true, playerSpawnPoint.position, playerSpawnPoint.rotation);
             
-            Debug.LogWarning("Read journal state before reset!");
-            _journalManager.PlayerJournalInstance.Reset();
-            
-            for (var i = 0; i < _journalManager.OtherPlayersJournalInstances.Count; i++)
-                _journalManager.OtherPlayersJournalInstances[i].Reset();
+            Debug.LogWarning("need to set result of 1-3 missions pass!");
+            _missionResultHandler.OnLobbyEnter(_ghostEnvironmentHandler.GhostVariables.ghostType, 
+                false, false, false);
             
 #if UNITY_STANDALONE
             _viewManager.ShowView<InGamePresenter>();

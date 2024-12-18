@@ -3,6 +3,7 @@ using ElectrumGames.Core.Player.Interactions.Items;
 using ElectrumGames.Audio;
 using ElectrumGames.Core.Environment;
 using ElectrumGames.Core.Items;
+using ElectrumGames.Core.Lobby;
 using ElectrumGames.Core.Player;
 using ElectrumGames.UI;
 using ElectrumGames.UI.UiEvents;
@@ -44,6 +45,8 @@ namespace ElectrumGames. Injection
             Container.BindInstance(flashLightInteractionHandler).AsSingle();
             
             Container.Bind<UiEventsHandler>().AsSingle().NonLazy();
+
+            Container.Bind<MissionResultHandler>().AsSingle();
         }
     }
 }

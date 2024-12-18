@@ -74,5 +74,7 @@ public class ProjectInstaller : MonoInstaller
         Container.Bind<MissionDataHandler>().AsSingle();
 
         Container.Bind<InputActions>().AsSingle();
+        
+        Container.Bind<GhostEnvironmentHandler>().AsSingle();
     }
 }
