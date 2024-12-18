@@ -9,9 +9,7 @@ namespace ElectrumGames.Core.Lobby
         private GhostType _selectedGhost = GhostType.None;
         private GhostType _correctGhost = GhostType.None;
 
-        private bool _isFirstMissionPassed;
-        private bool _isSecondMissionPassed;
-        private bool _isThirdMissionPassed;
+        private MissionsUnion _missionsUnion;
         
         private JournalManager _journalManager;
 
@@ -20,20 +18,17 @@ namespace ElectrumGames.Core.Lobby
             _journalManager = journalManager;
         }
 
-        public void OnLobbyEnter(GhostType correctType, bool isFirstMissionPassed, bool isSecondMissionPassed,
-            bool isThirdMissionPassed)
+        public void OnLobbyEnter(GhostType correctType, MissionsUnion missionsUnion)
         {
             _selectedGhost = _journalManager.PlayerJournalInstance.SelectedGhost;
             _correctGhost = correctType;
 
-            _isFirstMissionPassed = isFirstMissionPassed;
-            _isSecondMissionPassed = isSecondMissionPassed;
-            _isThirdMissionPassed = isThirdMissionPassed;
+            _missionsUnion = missionsUnion;
             
             Debug.Log($"Is ghost type correct: {_correctGhost == _selectedGhost}");
-            Debug.Log($"First mission passed {_isFirstMissionPassed}");
-            Debug.Log($"Second mission passed {_isSecondMissionPassed}");
-            Debug.Log($"Third mission passed {_isThirdMissionPassed}");
+            Debug.Log($"First mission {_missionsUnion.FirstMissionType} passed {_missionsUnion.FirstMissionStatus}");
+            Debug.Log($"Second mission {_missionsUnion.SecondMissionType} passed {_missionsUnion.SecondMissionStatus}");
+            Debug.Log($"Third mission {_missionsUnion.ThirdMissionType} passed {_missionsUnion.ThirdMissionStatus}");
             
             _journalManager.PlayerJournalInstance.Reset();
             

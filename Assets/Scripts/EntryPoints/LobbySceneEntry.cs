@@ -50,7 +50,7 @@ namespace ElectrumGames.EntryPoints
             
             Debug.LogWarning("need to set result of 1-3 missions pass!");
             _missionResultHandler.OnLobbyEnter(_ghostEnvironmentHandler.GhostVariables.ghostType, 
-                false, false, false);
+                new MissionsUnion());
             
 #if UNITY_STANDALONE
             _viewManager.ShowView<InGamePresenter>();
