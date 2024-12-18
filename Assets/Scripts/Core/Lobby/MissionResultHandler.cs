@@ -21,6 +21,9 @@ namespace ElectrumGames.Core.Lobby
             _selectedGhost = _journalManager.PlayerJournalInstance.SelectedGhost;
             
             Debug.Log($"Is ghost type correct: {correctType == _selectedGhost}");
+            Debug.Log($"First mission passed {isFirstMissionPassed}");
+            Debug.Log($"Second mission passed {isSecondMissionPassed}");
+            Debug.Log($"Third mission passed {isThirdMissionPassed}");
             
             _journalManager.PlayerJournalInstance.Reset();
             
