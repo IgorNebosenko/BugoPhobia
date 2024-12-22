@@ -1,5 +1,8 @@
+using ElectrumGames.Core.Lobby;
+using ElectrumGames.GlobalEnums;
 using ElectrumGames.UI.Boards.Views;
 using UnityEngine;
+using Zenject;
 
 namespace ElectrumGames.UI.Boards
 {
@@ -7,9 +10,19 @@ namespace ElectrumGames.UI.Boards
     {
         [SerializeField] private BoardViewBase[] views;
 
+        private MissionResultHandler _resultHandler;
+
+        [Inject]
+        private void Construct(MissionResultHandler resultHandler)
+        {
+            _resultHandler = resultHandler;
+        }
+        
         private void Start()
         {
-            ShowBoardWithType(DisplayBoardsMenu.MainMenu);
+            ShowBoardWithType(_resultHandler.CorrectGhost == GhostType.None
+                ? DisplayBoardsMenu.MainMenu
+                : DisplayBoardsMenu.HuntResult);
         }
 
         public void ShowBoardWithType(DisplayBoardsMenu type)

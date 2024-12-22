@@ -53,8 +53,8 @@ namespace ElectrumGames.UI.Boards.Views
             element.color = _resultHandler.IsGhostCorrect ? activeColor : unActiveColor;
 
             _infoElements.Add(element);
-            Debug.LogError($"TEST {_resultHandler.SelectedGhost} | {_resultHandler.CorrectGhost}");
-
+            
+            ghostType.text = string.Format(ghostTypePattern, _resultHandler.CorrectGhost);
         }
     }
 }
