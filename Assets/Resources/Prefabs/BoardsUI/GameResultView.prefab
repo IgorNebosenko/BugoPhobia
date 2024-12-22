@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.13000001}
   m_AnchorMax: {x: 1, y: 0.8738681}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -1264.5758}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1872364111200992533
 MonoBehaviour:
@@ -410,6 +410,7 @@ MonoBehaviour:
   infoBlockElement: {fileID: 687261299661425326, guid: cd0e5add8f2868344a4aa9f6ff6f1f46, type: 3}
   ghostType: {fileID: 4931488434421995271}
   backButton: {fileID: 6401889808499718032}
+  boardsUiController: {fileID: 0}
 --- !u!1 &7373233698579202200
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1784f53546e491f88068d7aa1ebb099, type: 3}
+  m_Name: Missions Names
+  m_EditorClassIdentifier: 
+  <MissionsNamesPairs>k__BackingField:
+  - <MissionType>k__BackingField: 0
+    <MissionName>k__BackingField: See ghost event
+  - <MissionType>k__BackingField: 1
+    <MissionName>k__BackingField: Escape from ghost during hunt
+  - <MissionType>k__BackingField: 2
+    <MissionName>k__BackingField: Use incense at room of ghost
+  - <MissionType>k__BackingField: 3
+    <MissionName>k__BackingField: Use incense for escape during hunt
+  - <MissionType>k__BackingField: -1
+    <MissionName>k__BackingField: None

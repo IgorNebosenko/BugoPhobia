@@ -34,6 +34,8 @@ public class ProjectInstaller : MonoInstaller
     [Space]
     [SerializeField] private FpsConfig pcFpsConfig;
     [SerializeField] private FpsConfig androidFpsConfig;
+    [Space]
+    [SerializeField] private MissionsNames missionsNames;
     
     public override void InstallBindings()
     {
@@ -64,6 +66,7 @@ public class ProjectInstaller : MonoInstaller
 #elif UNITY_ANDROID
         Container.BindInstance(androidFpsConfig).AsSingle();
 #endif
+        Container.BindInstance(missionsNames).AsSingle();
 
         Container.Bind<JournalManager>().AsSingle().NonLazy();
 
