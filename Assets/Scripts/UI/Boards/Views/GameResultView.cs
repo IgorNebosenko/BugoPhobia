@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ElectrumGames.Core.Lobby;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,17 +23,38 @@ namespace ElectrumGames.UI.Boards.Views
         [SerializeField] private Button backButton;
 
         private List<TMP_Text> _infoElements;
+        private MissionResultHandler _resultHandler;
         
         public override DisplayBoardsMenu DisplayBoardsMenu => DisplayBoardsMenu.HuntResult;
 
         [Inject]
-        private void Construct()
+        private void Construct(MissionResultHandler resultHandler)
         {
+            _resultHandler = resultHandler;
         }
 
         private void Start()
         {
             _infoElements = new List<TMP_Text>();
+            
+            Display();
+        }
+
+        public void Display()
+        {
+            for (var i = 0; i < _infoElements.Count; i++)
+            {
+                Destroy(_infoElements[i].gameObject);
+            }
+            _infoElements.Clear();
+
+            var element = Instantiate(infoBlockElement, infoBlock);
+            element.text = string.Format(elementPattern, "Correct ghost type", _resultHandler.CountCoinsPerGhost);
+            element.color = _resultHandler.IsGhostCorrect ? activeColor : unActiveColor;
+
+            _infoElements.Add(element);
+            Debug.LogError($"TEST {_resultHandler.SelectedGhost} | {_resultHandler.CorrectGhost}");
+
         }
     }
 }

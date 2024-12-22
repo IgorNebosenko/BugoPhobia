@@ -29,6 +29,12 @@ namespace ElectrumGames.Core.Ghost
             this.ghostEvents = ghostEvents;
         }
 
+        public static GhostVariables Empty()
+        {
+            return new GhostVariables(GhostType.None, false, 0, 0, 0, 0,
+                0, 0);
+        }
+
         public override string ToString()
         {
             return $"Ghost type: {ghostType}\n" +

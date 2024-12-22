@@ -45,6 +45,12 @@ namespace ElectrumGames.Core.Ghost
             this.maxDoorTouchTime = maxDoorTouchTime;
         }
 
+        public static GhostConstants Empty()
+        {
+            return new GhostConstants(DistanceMoving.Minimal, 0, 0, 
+                0, false, GhostVisibility.Invisible, 0, 0, 
+                0, 0, 0, 0, 0, 0);
+        }
 
         public override string ToString()
         {

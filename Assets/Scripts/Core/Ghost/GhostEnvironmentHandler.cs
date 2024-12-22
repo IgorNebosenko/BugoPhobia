@@ -7,8 +7,8 @@ namespace ElectrumGames.Core.Ghost
 {
     public class GhostEnvironmentHandler
     {
-        public GhostVariables GhostVariables { get; private set; }
-        public GhostConstants GhostConstants { get; private set; }
+        public GhostVariables GhostVariables { get; private set; } = GhostVariables.Empty();
+        public GhostConstants GhostConstants { get; private set; } = GhostConstants.Empty();
         public int GhostRoomId { get; private set; }
         
         private readonly ActivityConfig _activityConfig;

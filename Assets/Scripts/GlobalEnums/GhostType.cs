@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace ElectrumGames.GlobalEnums
 {
     public enum GhostType
