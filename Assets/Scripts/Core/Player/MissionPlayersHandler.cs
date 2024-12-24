@@ -12,11 +12,11 @@ namespace ElectrumGames.Core.Player
         private readonly GhostDifficultyList _difficultyList;
         private readonly MissionDataHandler _missionDataHandler;
         
-        private List<IPlayer> _players = new();
+        public List<IPlayer> Players { get; private set; }= new();
 
-        public float AverageSanity => _players.Average(x => x.Sanity.CurrentSanity);
-        public bool IsAnyPlayerInHouse => _players.Any(x => x.GetCurrentStayRoom() != -1);
-        public bool IsAnyPlayerAlive => _players.Any(x => x.IsAlive);
+        public float AverageSanity => Players.Average(x => x.Sanity.CurrentSanity);
+        public bool IsAnyPlayerInHouse => Players.Any(x => x.GetCurrentStayRoom() != -1);
+        public bool IsAnyPlayerAlive => Players.Any(x => x.IsAlive);
 
         public MissionPlayersHandler(GhostDifficultyList difficultyList, MissionDataHandler missionDataHandler)
         {
@@ -26,16 +26,16 @@ namespace ElectrumGames.Core.Player
 
         public void ConnectPlayer(IPlayer player)
         {
-            _players.Add(player);
+            Players.Add(player);
         }
 
         public void DisconnectPlayer(IPlayer player)
         {
-            _players.Remove(player);
+            Players.Remove(player);
             
-            for (var i = 0; i < _players.Count; i++)
+            for (var i = 0; i < Players.Count; i++)
             {
-                _players[i].Sanity.ChangeSanity(
+                Players[i].Sanity.ChangeSanity(
                     _difficultyList.GhostDifficultyData[(int)_missionDataHandler.MissionDifficulty].
                         GhostEventDrainOnKillOrDisconnectMate, player.NetId);
             }

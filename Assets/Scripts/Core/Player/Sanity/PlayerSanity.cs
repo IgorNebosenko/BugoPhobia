@@ -24,8 +24,6 @@ namespace ElectrumGames.Core.Player.Sanity
                 CurrentSanity = MaxSanity;
             else
                 CurrentSanity = newValue;
-            
-            Debug.Log($"Current sanity is: {(int)CurrentSanity}");
         }
 
         public void GetGhostEvent(float minGhostEventDrainSanity, float maxGhostEventDrainSanity, int ownerId)
