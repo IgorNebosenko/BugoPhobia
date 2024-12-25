@@ -203,6 +203,12 @@ namespace ElectrumGames.Core.Player
                 return;
 
             IsAlive = false;
+
+            for (var i = 0; i < Inventory.Items.Count; i++)
+            {
+                Inventory.Items[i]?.OnDropItem(transform);
+            }
+
             SceneManager.LoadSceneAsync((int)MissionMap.LobbyTier0);
         }
 
