@@ -42,7 +42,7 @@ namespace ElectrumGames.UI.Boards
             for (var i = 0; i < _playersHandler.Players.Count; i++)
             {
                 var playerElement = Instantiate(sanityComponentTemplate, sanityComponentsRoot);
-                playerElement.Init(_playersHandler.Players[0]);
+                playerElement.Init(_playersHandler.Players[0], Color.red);
                 _sanityComponents.Add(playerElement);
             }
             

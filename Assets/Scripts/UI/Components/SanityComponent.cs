@@ -18,11 +18,12 @@ namespace ElectrumGames.UI.Components
 
         private IPlayer _player;
         
-        public void Init(IPlayer player)
+        public void Init(IPlayer player, Color progressColor)
         {
             _player = player;
 
             playerName.text = player.IsPlayablePlayer ? "You" : "CrewMate";
+            sanityProgressbar.color = progressColor;
         }
 
         public void UpdateSanity()
