@@ -89,6 +89,9 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
 
                 if (CanHuntBySanity() && CanHuntByChanceHunt())
                 {
+                    //ToDo Check is crucifix in hands
+                    //ToDo Check is crucifix on radius
+                    
                     _isHunt = true;
                     HuntStarted?.Invoke();
                     
