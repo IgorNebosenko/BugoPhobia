@@ -6,6 +6,9 @@ namespace ElectrumGames.Core.Items
     public class ItemCrucifix : ItemInstanceBase, IStartHuntInteractable
     {
         [SerializeField] private int countUses = 2;
+        [Space]
+        [SerializeField] private AudioSource firstUseSource;
+        [SerializeField] private AudioSource secondUseSource;
 
         public int CountUsesRemain => countUses;
         
@@ -19,10 +22,15 @@ namespace ElectrumGames.Core.Items
 
         public bool OnHuntInteraction()
         {
-            //ToDo make sfx & vfx
+            //ToDo make vfx
             
             if (countUses > 0)
             {
+                if (countUses == 2)
+                    firstUseSource.Play();
+                else
+                    secondUseSource.Play();
+                
                 --countUses;
                 return true;
             }
