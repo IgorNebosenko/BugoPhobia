@@ -89,7 +89,27 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
 
                 if (CanHuntBySanity() && CanHuntByChanceHunt())
                 {
-                    //ToDo Check is crucifix in hands
+                    if (_ghostController.GhostHuntAura.PlayersInAura.Count != 0)
+                    {
+                        for (var i = 0; i < _ghostController.GhostHuntAura.PlayersInAura.Count; i++)
+                        {
+                            if (_ghostController.GhostHuntAura.PlayersInAura[i].Inventory.Items[
+                                    _ghostController.GhostHuntAura.PlayersInAura[i].InventoryIndexHandler.CurrentIndex] is
+                                IStartHuntInteractable startHuntInteractable)
+                            {
+                                if (startHuntInteractable.CountUsesRemain > 0)
+                                {
+                                    if (startHuntInteractable.OnHuntInteraction())
+                                    {
+                                        Debug.Log($"Hunt interrupted by crucifix in hands of player! Uses remain: {startHuntInteractable.CountUsesRemain}");
+                                        StopHunt();
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
                     //ToDo Check is crucifix on radius
                     
                     _isHunt = true;

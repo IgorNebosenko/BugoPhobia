@@ -8,10 +8,13 @@ namespace ElectrumGames.Core.Ghost.Interactions
     public class GhostAppearAura : MonoBehaviour
     {
         private List<IPlayer> _playersInAura = new();
+        private List<IStartHuntInteractable> _startHuntInteractableList = new();
+        
         private List<IGhostHuntingInteractableStay> _ghostHuntingInteractableStay = new();
         private List<IGhostHuntingInteractableExit> _ghostHuntingInteractableExit = new();
         
         public IReadOnlyList<IPlayer> PlayersInAura => _playersInAura;
+        public IReadOnlyList<IStartHuntInteractable> StartHuntInteractableList => _startHuntInteractableList;
 
         public IReadOnlyList<IGhostHuntingInteractableStay> GhostHuntingInteractableStay =>
             _ghostHuntingInteractableStay;
@@ -23,6 +26,9 @@ namespace ElectrumGames.Core.Ghost.Interactions
         {
             if (other.TryGetComponent<IPlayer>(out var player))
                 _playersInAura.Add(player);
+            if (other.TryGetComponent<IStartHuntInteractable>(out var startHuntInteractable))
+                _startHuntInteractableList.Add(startHuntInteractable);
+            
             if (other.TryGetComponent<IGhostHuntingInteractableStay>(out var ghostHuntingInteractableStay))
                 _ghostHuntingInteractableStay.Add(ghostHuntingInteractableStay);
         }
@@ -31,6 +37,9 @@ namespace ElectrumGames.Core.Ghost.Interactions
         {
             if (other.TryGetComponent<IPlayer>(out var player))
                 _playersInAura.Remove(player);
+            if (other.TryGetComponent<IStartHuntInteractable>(out var startHuntInteractable))
+                _startHuntInteractableList.Remove(startHuntInteractable);
+            
             if (other.TryGetComponent<IGhostHuntingInteractableStay>(out var ghostHuntingInteractableStay))
                 _ghostHuntingInteractableStay.Remove(ghostHuntingInteractableStay);
             if (other.TryGetComponent<IGhostHuntingInteractableExit>(out var ghostHuntingInteractableExit))
