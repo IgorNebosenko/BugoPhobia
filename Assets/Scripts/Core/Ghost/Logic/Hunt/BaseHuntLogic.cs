@@ -94,23 +94,36 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                         for (var i = 0; i < _ghostController.GhostHuntAura.PlayersInAura.Count; i++)
                         {
                             if (_ghostController.GhostHuntAura.PlayersInAura[i].Inventory.Items[
-                                    _ghostController.GhostHuntAura.PlayersInAura[i].InventoryIndexHandler.CurrentIndex] is
+                                    _ghostController.GhostHuntAura.PlayersInAura[i].InventoryIndexHandler
+                                        .CurrentIndex] is
                                 IStartHuntInteractable startHuntInteractable)
                             {
-                                if (startHuntInteractable.CountUsesRemain > 0)
+
+                                if (startHuntInteractable.OnHuntInteraction())
                                 {
-                                    if (startHuntInteractable.OnHuntInteraction())
-                                    {
-                                        Debug.Log($"Hunt interrupted by crucifix in hands of player! Uses remain: {startHuntInteractable.CountUsesRemain}");
-                                        StopHunt();
-                                        return;
-                                    }
+                                    Debug.Log(
+                                        $"Hunt interrupted by crucifix in hands of player! Uses remain: {startHuntInteractable.CountUsesRemain}");
+                                    StopHunt();
+                                    return;
                                 }
                             }
                         }
                     }
-                    
-                    //ToDo Check is crucifix on radius
+
+                    if (_ghostController.GhostHuntAura.StartHuntInteractableList.Count > 0)
+                    {
+                        for (var i = 0; i < _ghostController.GhostHuntAura.StartHuntInteractableList.Count; i++)
+                        {
+                            if (_ghostController.GhostHuntAura.StartHuntInteractableList[i].OnHuntInteraction())
+                            {
+                                Debug.Log(
+                                    $"Hunt interrupted by crucifix in ground! Uses remain: " +
+                                    $"{_ghostController.GhostHuntAura.StartHuntInteractableList[i].CountUsesRemain}");
+                                StopHunt();
+                                return;
+                            }
+                        }
+                    }
                     
                     _isHunt = true;
                     HuntStarted?.Invoke();
