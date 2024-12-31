@@ -1,5 +1,6 @@
 ﻿using ElectrumGames.Core.Environment;
 using UnityEngine;
+using Zenject;
 
 namespace ElectrumGames.Core.Rooms
 {
@@ -13,6 +14,8 @@ namespace ElectrumGames.Core.Rooms
         [SerializeField] private float flickerSpeedMax = 0.25f;
 
         private bool _redLight;
+
+        private FuseBoxEnvironmentObject _boxEnvironmentObject;
         
         public bool IsLightOn { get; private set; }
         public bool RedLight
@@ -33,6 +36,12 @@ namespace ElectrumGames.Core.Rooms
             }
         }
 
+        [Inject]
+        private void Construct(FuseBoxEnvironmentObject boxEnvironmentObject)
+        {
+            _boxEnvironmentObject = boxEnvironmentObject;
+        }
+        
         private void Start()
         {
             IsLightOn = roomSwitch.IsElectricityOn;

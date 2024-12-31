@@ -23,8 +23,6 @@ namespace ElectrumGames.Core.Environment.House
 
         private GhostFactory _ghostFactory;
         
-        public FuseBoxState FuseBoxState { get; private set; }
-        
         public bool IsKeyPicked { get; private set; }
         
         public bool IsEnterDoorOpened { get; set; }
@@ -37,14 +35,6 @@ namespace ElectrumGames.Core.Environment.House
             _ghostFactory = ghostFactory;
         }
 
-        public void OnFuseBoxStateChanged(bool state)
-        {
-            if (FuseBoxState == FuseBoxState.Broken)
-                return;
-
-            FuseBoxState = state ? FuseBoxState.Enabled : FuseBoxState.Disabled;
-        }
-
         public void OnPickUpKey()
         {
             IsKeyPicked = true;
@@ -55,14 +45,12 @@ namespace ElectrumGames.Core.Environment.House
 
         private void OnEnable()
         {
-            fuseBox.FuseBoxChanged += OnFuseBoxStateChanged;
             _ghostFactory.GhostCreated += OnGhostCreated;
             HouseKeyEnvironmentObject.PickUpKey += OnPickUpKey;
         }
 
         private void OnDisable()
         {
-            fuseBox.FuseBoxChanged -= OnFuseBoxStateChanged;
             _ghostFactory.GhostCreated -= OnGhostCreated;
             HouseKeyEnvironmentObject.PickUpKey -= OnPickUpKey;
         }

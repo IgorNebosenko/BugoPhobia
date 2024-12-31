@@ -27,6 +27,7 @@ namespace ElectrumGames.Injection
         [SerializeField] private ItemsFactory itemsFactory;
         [Space]
         [SerializeField] private HouseController houseController;
+        [SerializeField] private FuseBoxEnvironmentObject fuseBoxEnvironmentObject;
         [Space]
         [SerializeField] private HuntPoints huntPoints;
         [Space]
@@ -54,6 +55,7 @@ namespace ElectrumGames.Injection
             Container.BindInstance(itemsFactory).AsSingle();
             
             Container.BindInstance(houseController).AsSingle();
+            Container.BindInstance(fuseBoxEnvironmentObject).AsSingle();
 
             Container.BindInstance(huntPoints).AsSingle();
 

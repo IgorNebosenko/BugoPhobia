@@ -25,6 +25,8 @@ namespace ElectrumGames. Injection
         [SerializeField] private ItemMarkers itemMarkers;
         [Space]
         [SerializeField] private FlashLightInteractionHandler flashLightInteractionHandler;
+        [Space]
+        [SerializeField] private FuseBoxEnvironmentObject fuseBoxEnvironmentObject;
         
         protected override Assembly UiAssembly => typeof(UiAssemblyReference).Assembly;
 
@@ -43,6 +45,8 @@ namespace ElectrumGames. Injection
             Container.BindInstance(itemMarkers).AsSingle();
 
             Container.BindInstance(flashLightInteractionHandler).AsSingle();
+
+            Container.BindInstance(fuseBoxEnvironmentObject).AsSingle();
             
             Container.Bind<UiEventsHandler>().AsSingle().NonLazy();
 
