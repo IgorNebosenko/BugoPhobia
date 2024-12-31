@@ -18,6 +18,7 @@ namespace ElectrumGames.Core.Rooms
         private FuseBoxEnvironmentObject _boxEnvironmentObject;
         
         public bool IsLightOn { get; private set; }
+        public bool IsElectricityOn { get; private set; }
         public bool RedLight
         {
             set
@@ -50,6 +51,11 @@ namespace ElectrumGames.Core.Rooms
         private void OnEnable()
         {
             roomSwitch.Switch += ChangeState;
+        }
+
+        private void OnDisable()
+        {
+            roomSwitch.Switch -= ChangeState;
         }
 
         private void ChangeState(bool state, bool includeSwitchableLamps = false)

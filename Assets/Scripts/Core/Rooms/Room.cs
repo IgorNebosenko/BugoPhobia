@@ -18,7 +18,7 @@ namespace ElectrumGames.Core.Rooms
         [Space]
         [SerializeField] private Room[] neighborRooms;
 
-        public bool IsElectricityOn => LightRoomHandler.IsLightOn;
+        public bool IsElectricityOn => LightRoomHandler.IsElectricityOn;
         public IReadOnlyList<Room> NeighborRooms => neighborRooms;
         
         public void OnGhostInteractionStay()
