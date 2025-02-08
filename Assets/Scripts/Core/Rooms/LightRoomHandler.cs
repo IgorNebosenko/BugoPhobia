@@ -1,4 +1,5 @@
-﻿using ElectrumGames.Core.Environment;
+﻿using System;
+using ElectrumGames.Core.Environment;
 using UnityEngine;
 using Zenject;
 
@@ -41,6 +42,16 @@ namespace ElectrumGames.Core.Rooms
         private void Construct(FuseBoxEnvironmentObject boxEnvironmentObject)
         {
             _boxEnvironmentObject = boxEnvironmentObject;
+
+            for (var i = 0; i < lightEnvironmentObjects.Length; i++)
+            {
+                lightEnvironmentObjects[i].FuseBoxConnect(_boxEnvironmentObject);
+            }
+
+            for (var i = 0; i < switchableLamps.Length; i++)
+            {
+                switchableLamps[i].FuseBoxConnect(_boxEnvironmentObject);
+            }
         }
         
         private void Start()

@@ -17,6 +17,8 @@ namespace ElectrumGames.Core.Environment
         private float[] _defaultLightIntensity;
         private bool _isFlick;
 
+        private FuseBoxEnvironmentObject _fuseBox;
+
         public void SetRedState(bool isRed)
         {
             for (var i = 0; i < lightSources.Length; i++)
@@ -36,13 +38,21 @@ namespace ElectrumGames.Core.Environment
                 _defaultLightIntensity[i] = lightSources[i].intensity;
         }
 
+        private void OnDestroy()
+        {
+            if (_fuseBox != null)
+            {
+                _fuseBox.StateChanged -= SetStateByFuseBox;
+            }
+        }
+
         public void SwitchStateTo(bool state)
         {
             if (LightMode == LightEnvironmentMode.Broken)
                 return;
 
             for (var i = 0; i < lightSources.Length; i++)
-                lightSources[i].enabled = state;
+                lightSources[i].enabled = state && _fuseBox.State;
 
             LightMode = state ? LightEnvironmentMode.Enabled : LightEnvironmentMode.Disabled;
         }
@@ -81,6 +91,22 @@ namespace ElectrumGames.Core.Environment
 
         public override void OnInteract()
         {
+        }
+
+        public void FuseBoxConnect(FuseBoxEnvironmentObject fuseBox)
+        {
+            _fuseBox = fuseBox;
+
+            _fuseBox.StateChanged += SetStateByFuseBox;
+        }
+
+        private void SetStateByFuseBox(bool state)
+        {
+            for (var i = 0; i < lightSources.Length; i++)
+            {
+                lightSources[i].enabled = state && LightMode == LightEnvironmentMode.Enabled;
+                //Debug.Log($"State - {state} | LightMode - {LightMode}");
+            }
         }
     }
 }

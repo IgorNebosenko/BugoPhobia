@@ -15,10 +15,10 @@ namespace ElectrumGames.Core.Environment
         [SerializeField] private bool initialStateOn;
         [SerializeField] private bool isBroken;
 
-        public event Action<bool> FuseBoxChanged;
+        public event Action<bool> StateChanged;
 
         private bool _lockState;
-        private bool _state;
+        public bool State { get; private set; }
 
         private void Start()
         {
@@ -26,7 +26,7 @@ namespace ElectrumGames.Core.Environment
                 OnInteract();
             
             if (isBroken)
-                FuseBoxChanged?.Invoke(false);
+                StateChanged?.Invoke(false);
         }
 
         public override void OnInteract()
@@ -35,12 +35,12 @@ namespace ElectrumGames.Core.Environment
                 return;
 
             _lockState = true;
-            _state = !_state;
+            State = !State;
             
-            handle.DOLocalRotate(_state ? eulerHandleOn : eulerHandleOff, switchTime).OnComplete(() =>
+            handle.DOLocalRotate(State ? eulerHandleOn : eulerHandleOff, switchTime).OnComplete(() =>
             {
                 if (!isBroken)
-                    FuseBoxChanged?.Invoke(_state);
+                    StateChanged?.Invoke(State);
                 _lockState = false;
             });
         }
