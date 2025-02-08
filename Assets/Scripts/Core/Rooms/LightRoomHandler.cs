@@ -111,5 +111,15 @@ namespace ElectrumGames.Core.Rooms
         {
             ChangeState(false, true);
         }
+
+        public void LockSwitch()
+        {
+            roomSwitch.SetLockState(true);
+        }
+
+        public void UnlockSwitch()
+        {
+            roomSwitch.SetLockState(false);
+        }
     }
 }

@@ -9,6 +9,8 @@ namespace ElectrumGames.Core.Environment
         [SerializeField] private Vector3 eulerDisabledPosition;
         [SerializeField] private Vector3 eulerEnabledPosition;
         [SerializeField] private Transform switchTransform;
+
+        private bool _isLocked;
         
         [field: SerializeField] public bool IsOn { get; private set; }
         
@@ -20,6 +22,10 @@ namespace ElectrumGames.Core.Environment
 
         public override void OnInteract()
         {
+            Debug.Log($"OnInteract() IsLocked: {_isLocked}");
+            if (_isLocked)
+                return;
+            
             IsOn = !IsOn;
 
             switchTransform.localEulerAngles = IsOn ? eulerEnabledPosition : eulerDisabledPosition;
@@ -41,6 +47,11 @@ namespace ElectrumGames.Core.Environment
                 return;
             
             OnInteract();
+        }
+
+        public void SetLockState(bool state)
+        {
+            _isLocked = state;
         }
     }
 }

@@ -58,7 +58,10 @@ namespace ElectrumGames.Core.Environment.House
         private void OnGhostCreated(GhostBaseController ghost)
         {
             ghost.HuntLogic.HuntStarted += CloseAllClosableDoors;
+            ghost.HuntLogic.HuntStarted += LockAllSwitches;
+            
             ghost.HuntLogic.HuntEnded += OpenAllClosableDoors;
+            ghost.HuntLogic.HuntEnded += UnlockAllSwitches;
             
             ghost.HuntLogic.HuntEnded += SwitchOffAllLight;
         }
@@ -84,6 +87,22 @@ namespace ElectrumGames.Core.Environment.House
             for (var i = 0; i < rooms.Length; i++)
             {
                 rooms[i].LightRoomHandler.SwitchOffLight();
+            }
+        }
+
+        private void LockAllSwitches()
+        {
+            for (var i = 0; i < rooms.Length; i++)
+            {
+                rooms[i].LightRoomHandler.LockSwitch();
+            }
+        }
+
+        private void UnlockAllSwitches()
+        {
+            for (var i = 0; i < rooms.Length; i++)
+            {
+                rooms[i].LightRoomHandler.UnlockSwitch();
             }
         }
     }
