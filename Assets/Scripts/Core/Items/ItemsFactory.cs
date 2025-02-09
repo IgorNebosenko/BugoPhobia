@@ -9,6 +9,8 @@ namespace ElectrumGames.Core.Items
 {
     public class ItemsFactory : MonoBehaviour, IHaveNetId
     {
+        private DiContainer _container;
+        
         private NetIdFactory _netIdFactory;
         private ItemsConfig _itemsConfig;
         private PlayerConfig _playerConfig;
@@ -22,8 +24,11 @@ namespace ElectrumGames.Core.Items
         }
         
         [Inject]
-        private void Construct(NetIdFactory netIdFactory, ItemsConfig itemsConfig, PlayerConfig playerConfig)
+        private void Construct(DiContainer container, NetIdFactory netIdFactory, ItemsConfig itemsConfig,
+            PlayerConfig playerConfig)
         {
+            _container = container;
+            
             _netIdFactory = netIdFactory;
             _itemsConfig = itemsConfig;
             _playerConfig = playerConfig;
@@ -35,8 +40,10 @@ namespace ElectrumGames.Core.Items
         {
             var template = _itemsConfig.GetItemByType(spawnPoint.ItemType).ItemInstance;
             
-            var item = Instantiate(template, 
+            var prefab = _container.InstantiatePrefab(template, 
                 spawnPoint.Position, spawnPoint.Rotation, transform);
+            var item = prefab.GetComponent<ItemInstanceBase>();
+            
             _netIdFactory.Initialize(item);
             item.Init(_playerConfig, this, id);
             item.LocalScale = template.LocalScale;

@@ -60,6 +60,8 @@ namespace ElectrumGames.Core.Player
         public int NetId { get; protected set; }
         public int OwnerId { get; protected set; }
         
+        public float CurrentSanity => Sanity.CurrentSanity;
+
         public bool IsAlive { get; protected set; } = true;
         public Transform PlayerHead => headBob;
         public IInventory Inventory { get; private set; }
@@ -223,6 +225,11 @@ namespace ElectrumGames.Core.Player
             }
 
             return null;
+        }
+
+        public void ChangeSanity(float value, int ownerId = -1)
+        {
+            Sanity.ChangeSanity(value, ownerId);
         }
     }
 }

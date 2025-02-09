@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace ElectrumGames.Core.Player
 {
-    public interface IPlayer : IHaveNetId, IHavePosition, IHavePlayerStatus, IHaveInventory, IPlayerSpawnable
+    public interface IPlayer : IHaveNetId, IHavePosition, IHavePlayerStatus, IHaveInventory, IPlayerSpawnable, ICanChangeSanity
     {
         Transform PlayerHead { get; }
         ISanity Sanity { get; }

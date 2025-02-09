@@ -48,7 +48,10 @@ namespace ElectrumGames.Core.Player
                 isPlayablePlayer, isHost);
 
             if (isHost)
-                _container.BindInstance((IPlayer)player).WithId("Host").AsSingle();
+            {
+                _container.BindInstance((IPlayer) player).WithId("Host").AsSingle();
+                _container.BindInstance((ICanChangeSanity) player).WithId("Host").AsSingle();
+            }
             else
             {
                 //Bind player with id Proxy_0/Proxy_1/Proxy_2
