@@ -113,7 +113,7 @@ namespace ElectrumGames.Core.Ghost
             huntLogic?.Setup(environmentHandler.GhostVariables, environmentHandler.GhostConstants, environmentHandler.GhostRoomId);
             ghostAbility?.Setup(environmentHandler.GhostVariables, environmentHandler.GhostConstants, environmentHandler.GhostRoomId);
             
-            controller.SetLogic(nonHuntLogic, ghostEventLogic, huntLogic, ghostAbility);
+            controller.SetLogic(nonHuntLogic, ghostEventLogic, huntLogic, ghostAbility, _ghostEmfZonePool, _emfData);
         }
 
         public INonHuntLogic GetNonHuntLogicByGhostType(GhostController controller, GhostType ghostType)

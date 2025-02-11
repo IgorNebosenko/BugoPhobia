@@ -2,6 +2,7 @@
 using ElectrumGames.CommonInterfaces;
 using ElectrumGames.Core.Common;
 using ElectrumGames.Core.Ghost.Configs;
+using ElectrumGames.Core.Ghost.Logic;
 using ElectrumGames.Core.Ghost.Logic.Abilities;
 using ElectrumGames.Core.Ghost.Logic.GhostEvents;
 using ElectrumGames.Core.Ghost.Logic.Hunt;
@@ -27,6 +28,7 @@ namespace ElectrumGames.Core.Ghost.Controllers
         public IGhostEventLogic GhostEventLogic { get; protected set; }
         public IHuntLogic HuntLogic { get; protected set; }
         public IGhostAbility GhostAbility { get; protected set; }
+        public FuseBoxCounterLogic FuseBoxCounter { get; protected set; }
         
         public EvidenceController EvidenceController { get; private set; }
         public GhostBehaviourController GhostBehaviourController { get; protected set; }

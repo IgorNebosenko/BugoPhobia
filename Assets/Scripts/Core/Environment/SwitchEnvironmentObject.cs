@@ -22,7 +22,6 @@ namespace ElectrumGames.Core.Environment
 
         public override void OnInteract()
         {
-            Debug.Log($"OnInteract() IsLocked: {_isLocked}");
             if (_isLocked)
                 return;
             

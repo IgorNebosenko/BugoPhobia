@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using ElectrumGames.Core.Player.Interactions.Items;
 using ElectrumGames.Audio;
+using ElectrumGames.Core.Common;
 using ElectrumGames.Core.Environment;
 using ElectrumGames.Core.Environment.House;
 using ElectrumGames.Core.Ghost;
@@ -55,6 +56,8 @@ namespace ElectrumGames.Injection
             Container.BindInstance(itemsFactory).AsSingle();
             
             Container.BindInstance(houseController).AsSingle();
+            
+            Container.Bind<IFuseBoxInteractable>().FromInstance(fuseBoxEnvironmentObject).AsSingle();
             Container.BindInstance(fuseBoxEnvironmentObject).AsSingle();
 
             Container.BindInstance(huntPoints).AsSingle();

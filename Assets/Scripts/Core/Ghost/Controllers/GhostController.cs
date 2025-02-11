@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Interactions;
+using ElectrumGames.Core.Ghost.Interactions.Pools;
+using ElectrumGames.Core.Ghost.Logic;
 using ElectrumGames.Core.Ghost.Logic.Abilities;
 using ElectrumGames.Core.Ghost.Logic.GhostEvents;
 using ElectrumGames.Core.Ghost.Logic.Hunt;
@@ -35,6 +38,8 @@ namespace ElectrumGames.Core.Ghost.Controllers
             GhostEventLogic?.FixedSimulate();
             HuntLogic?.FixedSimulate();
             GhostAbility?.FixedSimulate();
+            
+            FuseBoxCounter.FixedSimulate();
         }
 
         public void SetRoomsData(IReadOnlyList<Room> rooms)
@@ -85,12 +90,19 @@ namespace ElectrumGames.Core.Ghost.Controllers
         
 
         public void SetLogic(INonHuntLogic nonHuntLogic, IGhostEventLogic ghostEventLogic, IHuntLogic huntLogic, 
-            IGhostAbility ghostAbility)
+            IGhostAbility ghostAbility, GhostEmfZonePool emfZonePool, EmfData emfData)
         {
             NonHuntLogic = nonHuntLogic;
             GhostEventLogic = ghostEventLogic;
             HuntLogic = huntLogic;
             GhostAbility = ghostAbility;
+
+            EvidenceController.GetEmfOtherInteract();
+
+            FuseBoxCounter = new FuseBoxCounterLogic(fuseBox, 
+                GhostEnvironmentHandler.GhostConstants.chanceShutDownFuseBox,
+                GhostEnvironmentHandler.GhostConstants.cooldownShutDown,
+                emfZonePool, emfData, this);
         }
 
         public Room GetCurrentRoom()

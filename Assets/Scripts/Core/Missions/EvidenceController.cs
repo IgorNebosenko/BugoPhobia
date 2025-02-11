@@ -10,6 +10,8 @@ namespace ElectrumGames.Core.Missions
     {
         private EmfData _emfData;
         private IReadOnlyList<EvidenceType> _evidences;
+
+        public bool HasEmf5 => _evidences.Contains(EvidenceType.EMF5);
         
         public EvidenceController(EmfData emfData)
         {
