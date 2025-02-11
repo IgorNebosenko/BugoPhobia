@@ -6,5 +6,6 @@ namespace ElectrumGames.Core.Common
     {
         Transform FuseBoxTransform { get; }
         bool TryInteract(bool canSwitchOn);
+        void ShutDown();
     }
 }

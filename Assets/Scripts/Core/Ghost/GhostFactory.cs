@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ElectrumGames.CommonInterfaces;
 using ElectrumGames.Configs;
+using ElectrumGames.Core.Common;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Controllers;
 using ElectrumGames.Core.Ghost.Interactions.Pools;
@@ -40,6 +41,7 @@ namespace ElectrumGames.Core.Ghost
         private GhostFlickConfig _flickConfig;
         private HuntPoints _huntPoints;
         private MissionDataHandler _missionDataHandler;
+        private IFuseBoxInteractable _fuseBoxInteractable;
         private DiContainer _container;
 
         public event Action<GhostBaseController> GhostCreated;
@@ -48,7 +50,7 @@ namespace ElectrumGames.Core.Ghost
         private void Construct(NetIdFactory netIdFactory, GhostEnvironmentHandler ghostEnvironmentHandler, GhostModelsList modelsList,
             GhostDifficultyList ghostDifficultyList, ActivityConfig activityConfig, GhostEmfZonePool ghostEmfZonePool, EmfData emfData,
             EvidenceController evidenceController, MissionPlayersHandler missionPlayersHandler, GhostFlickConfig flickConfig,
-            HuntPoints huntPoints, MissionDataHandler missionDataHandler, DiContainer container)
+            HuntPoints huntPoints, MissionDataHandler missionDataHandler, IFuseBoxInteractable fuseBox, DiContainer container)
         {
             _netIdFactory = netIdFactory;
             _ghostEnvironmentHandler = ghostEnvironmentHandler;
@@ -62,6 +64,7 @@ namespace ElectrumGames.Core.Ghost
             _flickConfig = flickConfig;
             _huntPoints = huntPoints;
             _missionDataHandler = missionDataHandler;
+            _fuseBoxInteractable = fuseBox;
             _container = container;
 
             _netIdFactory.Initialize(this);
@@ -78,7 +81,7 @@ namespace ElectrumGames.Core.Ghost
             var ghost = Instantiate(ghostControllerTemplate, transform);
             _netIdFactory.Initialize(ghost);
             
-            ghost.Init(_ghostEnvironmentHandler, _modelsList, _evidenceController);
+            ghost.Init(_ghostEnvironmentHandler, _modelsList, _evidenceController, _fuseBoxInteractable);
             ghost.SetGhostAnimationSpeed(0f);
             ghost.SetGhostVisibility(false);
             ghost.SetRoomsData(rooms);

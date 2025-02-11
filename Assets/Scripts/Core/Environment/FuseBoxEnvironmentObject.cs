@@ -59,5 +59,11 @@ namespace ElectrumGames.Core.Environment
             OnInteract();
             return true;
         }
+
+        public void ShutDown()
+        {
+            if (State)
+                OnInteract();
+        }
     }
 }

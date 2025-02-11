@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using ElectrumGames.CommonInterfaces;
+using ElectrumGames.Core.Common;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Logic.Abilities;
 using ElectrumGames.Core.Ghost.Logic.GhostEvents;
@@ -35,15 +36,19 @@ namespace ElectrumGames.Core.Ghost.Controllers
         public GhostEnvironmentHandler GhostEnvironmentHandler { get; private set; }
 
         private IReadOnlyList<IGhostController> _ghostControllers;
+
+        protected IFuseBoxInteractable fuseBox;
         
         public void Init(GhostEnvironmentHandler environmentHandler, GhostModelsList modelsList, 
-            EvidenceController evidenceController)
+            EvidenceController evidenceController, IFuseBoxInteractable fuseBox)
         {
             GhostEnvironmentHandler = environmentHandler;
             GhostBehaviourController = new GhostBehaviourController(GhostEnvironmentHandler);
             GhostLookController = new GhostLookController();
             GhostHuntController = new GhostHuntController();
             GhostInteractionController = new GhostInteractionController();
+
+            this.fuseBox = fuseBox;
 
             _ghostControllers = new IGhostController[]
             {
