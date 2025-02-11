@@ -1,10 +1,12 @@
 using System;
 using DG.Tweening;
+using ElectrumGames.Core.Common;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace ElectrumGames.Core.Environment
 {
-    public class FuseBoxEnvironmentObject : EnvironmentObjectBase
+    public class FuseBoxEnvironmentObject : EnvironmentObjectBase, IFuseBoxInteractable
     {
         [SerializeField] private Transform handle;
         [Space]
@@ -19,6 +21,8 @@ namespace ElectrumGames.Core.Environment
 
         private bool _lockState;
         public bool State { get; private set; }
+        
+        public Transform FuseBoxTransform => transform;
 
         private void Start()
         {
@@ -43,6 +47,17 @@ namespace ElectrumGames.Core.Environment
                     StateChanged?.Invoke(State);
                 _lockState = false;
             });
+        }
+
+        public bool TryInteract(bool canSwitchOn)
+        {
+            var state = canSwitchOn && Random.Range(0, 2) != 0;
+            
+            if (State == state) 
+                return false;
+            
+            OnInteract();
+            return true;
         }
     }
 }

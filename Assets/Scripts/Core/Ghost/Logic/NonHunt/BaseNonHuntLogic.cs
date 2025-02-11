@@ -230,6 +230,24 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
                     randomOtherInteraction.Interact();
                 }
             }
+            else if (_otherInteractionTime >= _ghostDifficultyData.OtherInteractionCooldown &&
+                     !_ghostController.InteractionAura.FuseBox.UnityNullCheck())
+            {
+                _otherInteractionTime = 0f;
+                
+                var result = _ghostController.InteractionAura.FuseBox.TryInteract(_ghostConstants.canSwitchOnLight);
+
+                if (result)
+                {
+                    var emfZone = _emfZonesPool.SpawnCylinderZone(
+                        _ghostController.InteractionAura.FuseBox.FuseBoxTransform,
+                        _emfData.OtherInteractionHeightOffset, _emfData.OtherInteractionCylinderSize,
+                        _ghostController.EvidenceController.GetEmfOtherInteract());
+
+                    Observable.Timer(TimeSpan.FromSeconds(_emfData.TimeEmfInteraction))
+                        .Subscribe(_ => _emfZonesPool.DespawnCylinderZone(emfZone));
+                }
+            }
         }
 
         private Vector3 GetTargetPoint()

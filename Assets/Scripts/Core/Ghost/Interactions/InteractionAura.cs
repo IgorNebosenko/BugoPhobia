@@ -16,6 +16,8 @@ namespace ElectrumGames.Core.Ghost.Interactions
         public IReadOnlyList<IGhostThrowable> ThrownInTrigger => _thrownInTrigger;
         public IReadOnlyList<IGhostOtherInteraction> OtherInteractionsInTrigger => _otherInteractionsInTrigger;
 
+        public IFuseBoxInteractable FuseBox { get; private set; }
+        
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent<IDoorInteractable>(out var door))
@@ -29,6 +31,9 @@ namespace ElectrumGames.Core.Ghost.Interactions
             
             if (other.TryGetComponent<IGhostOtherInteraction>(out var otherInteraction))
                 _otherInteractionsInTrigger.Add(otherInteraction);
+
+            if (other.TryGetComponent<IFuseBoxInteractable>(out var fuseBox))
+                FuseBox = fuseBox;
         }
 
         private void OnTriggerExit(Collider other)
@@ -44,6 +49,9 @@ namespace ElectrumGames.Core.Ghost.Interactions
             
             if (other.TryGetComponent<IGhostOtherInteraction>(out var otherInteraction))
                 _otherInteractionsInTrigger.Remove(otherInteraction);
+
+            if (other.TryGetComponent<IFuseBoxInteractable>(out _))
+                FuseBox = null;
         }
     }
 }

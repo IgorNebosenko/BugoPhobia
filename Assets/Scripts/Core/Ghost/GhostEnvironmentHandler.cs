@@ -36,7 +36,8 @@ namespace ElectrumGames.Core.Ghost
                 activityData.ModifiedSanityStartHunting, activityData.DefaultHuntingSpeed, activityData.HasSpeedUp,
                 activityData.GhostVisibility, activityData.HuntCooldown, activityData.GhostEventCooldown,
                 activityData.AbilityCooldown, activityData.AbilityChance, activityData.MinDoorAngle,
-                activityData.MaxDoorAngle, activityData.MinDoorTouchTime, activityData.MaxDoorTouchTime);
+                activityData.MaxDoorAngle, activityData.MinDoorTouchTime, activityData.MaxDoorTouchTime,
+                activityData.ChanceShutDownFuseBox, activityData.CooldownShutDown, activityData.CanActivateFuseBoxByInteraction);
 
             GhostRoomId = 0;//Random.Range(minRoomId, maxRoomId);
             Debug.LogWarning($"Room id explicit set on {GhostRoomId}");

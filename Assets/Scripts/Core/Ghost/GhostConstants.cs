@@ -24,10 +24,15 @@ namespace ElectrumGames.Core.Ghost
         public readonly float minDoorTouchTime;
         public readonly float maxDoorTouchTime;
 
+        public readonly float chanceShutDownFuseBox;
+        public readonly float cooldownShutDown;
+        public readonly bool canSwitchOnLight;
+
         public GhostConstants(DistanceMoving distanceMoving, float defaultSanityStartHunting, float modifiedSanityStartHunting,
             float defaultHuntingSpeed, bool hasSpeedUp, GhostVisibility ghostVisibility,
             float huntCooldown, float ghostEventCooldown, float abilityCooldown, float abilityChance,
-            float minDoorAngle, float maxDoorAngle, float minDoorTouchTime, float maxDoorTouchTime)
+            float minDoorAngle, float maxDoorAngle, float minDoorTouchTime, float maxDoorTouchTime,
+            float chanceShutDownFuseBox, float cooldownShutDown, bool canSwitchOnLight)
         {
             this.distanceMoving = distanceMoving;
             this.defaultSanityStartHunting = defaultSanityStartHunting;
@@ -43,13 +48,17 @@ namespace ElectrumGames.Core.Ghost
             this.maxDoorAngle = maxDoorAngle;
             this.minDoorTouchTime = minDoorTouchTime;
             this.maxDoorTouchTime = maxDoorTouchTime;
+            this.chanceShutDownFuseBox = chanceShutDownFuseBox;
+            this.cooldownShutDown = cooldownShutDown;
+            this.canSwitchOnLight = canSwitchOnLight;
         }
 
         public static GhostConstants Empty()
         {
             return new GhostConstants(DistanceMoving.Minimal, 0, 0, 
                 0, false, GhostVisibility.Invisible, 0, 0, 
-                0, 0, 0, 0, 0, 0);
+                0, 0, 0, 0, 0, 0, 
+                0, 0, false);
         }
 
         public override string ToString()
