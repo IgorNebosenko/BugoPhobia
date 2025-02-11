@@ -43,6 +43,10 @@ namespace ElectrumGames.Configs
         [field: SerializeField, Range(0f, 1f)] public float ChanceOnSwitch { get; private set; }
         [field: Space]
         [field: SerializeField] public float ThrownForce { get; private set; }
+        [field: Space]
+        [field: SerializeField, Range(0f, 1f)] public float ChanceShutDownFuseBox { get; private set; }
+        [field: SerializeField] public float CooldownShutDown { get; private set; }
+        [field: SerializeField] public bool CanActivateFuseBoxByInteraction { get; private set; }
 
         public float ThrowsMin => throws.x;
         public float ThrowsMax => throws.y;
