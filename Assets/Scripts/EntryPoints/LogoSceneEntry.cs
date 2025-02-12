@@ -17,6 +17,8 @@ namespace ElectrumGames.EntryPoints
 
         private void Start()
         {
+            Application.runInBackground = true;
+            
             _viewManager.ShowView<WarningPresenter>();
         }
     }
