@@ -5,6 +5,7 @@ using ElectrumGames.Core.Common;
 using ElectrumGames.Core.Environment;
 using ElectrumGames.Core.Environment.House;
 using ElectrumGames.Core.Ghost;
+using ElectrumGames.Core.Ghost.Controllers;
 using ElectrumGames.Core.Ghost.Interactions.Pools;
 using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Missions;

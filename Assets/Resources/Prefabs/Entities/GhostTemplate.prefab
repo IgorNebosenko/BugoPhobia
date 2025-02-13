@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 1774532431903750137}
   - component: {fileID: 1313704069127954908}
   - component: {fileID: 1713490269747958503}
-  m_Layer: 0
+  - component: {fileID: 8845109407341093322}
+  m_Layer: 11
   m_Name: PlayerContactZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,6 +149,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5a2125b2dda4b21b9bcdd0b28fe3d9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8845109407341093322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982191795599064605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eea0d005919d426a8f6caac7ac5a71e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6934675742400980190

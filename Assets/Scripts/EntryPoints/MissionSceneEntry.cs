@@ -1,8 +1,8 @@
 ﻿using ElectrumGames.Configs;
+using ElectrumGames.Core.Common;
 using ElectrumGames.Core.Environment.House;
 using ElectrumGames.Core.Ghost;
 using ElectrumGames.Core.Journal;
-using ElectrumGames.Core.Missions;
 using ElectrumGames.Core.Player;
 using ElectrumGames.MVP.Managers;
 using ElectrumGames.UI.Presenters;
@@ -26,11 +26,13 @@ namespace ElectrumGames.EntryPoints
         private MissionPlayersHandler _missionPlayersHandler;
 
         private JournalManager _journalManager;
+
+        private DiContainer _container;
         
         [Inject]
         private void Construct(PlayersFactory playersFactory, GhostFactory ghostFactory,
             ViewManager viewManager, ConfigService configService, HouseController houseController, 
-            MissionPlayersHandler missionPlayersHandler, JournalManager journalManager)
+            MissionPlayersHandler missionPlayersHandler, JournalManager journalManager, DiContainer container)
         {
             _playersFactory = playersFactory;
             _ghostFactory = ghostFactory;
@@ -43,6 +45,8 @@ namespace ElectrumGames.EntryPoints
             _missionPlayersHandler = missionPlayersHandler;
 
             _journalManager = journalManager;
+
+            _container = container;
         }
         
         private void Start()
@@ -55,7 +59,8 @@ namespace ElectrumGames.EntryPoints
 
             _missionPlayersHandler.ConnectPlayer(player);
 
-            _ghostFactory.CreateGhost(_houseController.Rooms);
+            var ghost = _ghostFactory.CreateGhost(_houseController.Rooms);
+            _container.BindInstance((IHaveVisibility)ghost).AsSingle();
             
             _journalManager.PlayerJournalInstance.Reset();
             

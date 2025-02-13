@@ -42,6 +42,7 @@ namespace ElectrumGames.Core.Ghost.Configs
         [field: Space]
         [field: SerializeField] public float DefaultSanity { get; private set; } = 100f;
         [field: SerializeField] public float DefaultDrainSanity { get; private set; } = -0.25f;
+        [field: SerializeField] public float DrainSanityPerLookOnGhost { get; private set; } = 0.4f; 
         [field: SerializeField] public float MinGhostEventDrainSanity { get; private set; } = -10f;
         [field: SerializeField] public float MaxGhostEventDrainSanity { get; private set; } = -15f;
         [field: SerializeField] public float GhostEventDrainOnKillOrDisconnectMate { get; private set; } = -15f;

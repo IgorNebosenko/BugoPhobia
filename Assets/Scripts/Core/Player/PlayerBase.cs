@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using ElectrumGames.Core.Player.Interactions.Items;
 using ElectrumGames.Configs;
+using ElectrumGames.Core.Common;
 using ElectrumGames.Core.Environment;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Items;
@@ -50,6 +51,8 @@ namespace ElectrumGames.Core.Player
 
         protected EnvironmentHandler environmentHandler;
 
+        protected IHaveVisibility _ghostVisibility;
+
         private bool _isInRoomPreviousState;
 
         private Collider[] _colliders = new Collider[CollidersArraySize];
@@ -66,6 +69,8 @@ namespace ElectrumGames.Core.Player
         public InventoryIndexHandler InventoryIndexHandler { get; protected set; }
         public ISanity Sanity { get; private set; }
         public FlashLightInteractionHandler FlashLightInteractionHandler { get; protected set; }
+        
+        public LookAtGhostHandler LookAtGhostHandler { get; protected set; }
 
         public Vector3 Position => transform.position;
 
@@ -73,6 +78,11 @@ namespace ElectrumGames.Core.Player
         {
             NetId = netId;
             OwnerId = ownerId;
+        }
+
+        private void Start()
+        {
+            LookAtGhostHandler = new LookAtGhostHandler(playerCamera);
         }
 
         private void Update()
@@ -117,10 +127,12 @@ namespace ElectrumGames.Core.Player
                     environmentHandler.SetEnvironmentOutdoor();
             }
             
-            if (currentRoom.UnityNullCheck() || currentRoom.IsElectricityOn)
-                return;
+            if (!currentRoom.UnityNullCheck() && !currentRoom.IsElectricityOn)
+                Sanity.ChangeSanity(ghostDifficultyData.DefaultDrainSanity * Time.fixedDeltaTime, -1);
             
-            Sanity.ChangeSanity(ghostDifficultyData.DefaultDrainSanity * Time.fixedDeltaTime, -1);
+            if (!currentRoom.UnityNullCheck() && LookAtGhostHandler.CheckIsLookAtGhost() && 
+                !_ghostVisibility.UnityNullCheck() && _ghostVisibility.IsVisible)
+                Sanity.ChangeSanity(ghostDifficultyData.DrainSanityPerLookOnGhost * Time.fixedDeltaTime, -1);
         }
 
         protected virtual void OnInteractionSimulate(float deltaTime)
@@ -135,6 +147,8 @@ namespace ElectrumGames.Core.Player
             itemsConfig = container.Resolve<ItemsConfig>();
 
             ghostDifficultyData = difficultyData;
+            
+            _ghostVisibility = container.TryResolve<IHaveVisibility>();
             
             input = new PlayerInput(inputActions);
             input.Init();

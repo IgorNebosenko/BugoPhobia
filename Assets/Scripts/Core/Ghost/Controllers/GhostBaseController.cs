@@ -15,7 +15,7 @@ using Zenject;
 
 namespace ElectrumGames.Core.Ghost.Controllers
 {
-    public abstract class GhostBaseController : MonoBehaviour, IHaveNetId
+    public abstract class GhostBaseController : MonoBehaviour, IHaveNetId, IHaveVisibility
     {
         [SerializeField] protected Transform modelRoot;
 
@@ -36,6 +36,8 @@ namespace ElectrumGames.Core.Ghost.Controllers
         public GhostHuntController GhostHuntController { get; private set; }
         public GhostInteractionController GhostInteractionController { get; private set; }
         public GhostEnvironmentHandler GhostEnvironmentHandler { get; private set; }
+        
+        public bool IsVisible { get; private set; }
 
         private IReadOnlyList<IGhostController> _ghostControllers;
 
@@ -91,6 +93,8 @@ namespace ElectrumGames.Core.Ghost.Controllers
 
         public void SetGhostVisibility(bool isOn)
         {
+            IsVisible = isOn;
+            
             _ghostModelController.SetVisibility(isOn);
         }
     }
