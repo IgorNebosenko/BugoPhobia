@@ -129,10 +129,16 @@ namespace ElectrumGames.Core.Player
             
             if (!currentRoom.UnityNullCheck() && !currentRoom.IsElectricityOn)
                 Sanity.ChangeSanity(ghostDifficultyData.DefaultDrainSanity * Time.fixedDeltaTime, -1);
-            
-            if (!currentRoom.UnityNullCheck() && LookAtGhostHandler.CheckIsLookAtGhost() && 
-                !_ghostVisibility.UnityNullCheck() && _ghostVisibility.IsVisible)
+
+            var ghostCollider = LookAtGhostHandler.CheckIsLookAtGhost();
+
+            if (!currentRoom.UnityNullCheck() && !ghostCollider.UnityNullCheck() &&
+                ghostCollider.HaveVisibility.IsVisible)
+            {
                 Sanity.ChangeSanity(ghostDifficultyData.DrainSanityPerLookOnGhost * Time.fixedDeltaTime, -1);
+                
+            }
+
         }
 
         protected virtual void OnInteractionSimulate(float deltaTime)

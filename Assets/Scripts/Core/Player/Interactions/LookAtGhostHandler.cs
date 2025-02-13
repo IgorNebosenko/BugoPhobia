@@ -14,7 +14,7 @@ namespace ElectrumGames.Core.Player.Interactions
             _targetCamera = targetCamera;
         }
 
-        public bool CheckIsLookAtGhost()
+        public IGhostCollider CheckIsLookAtGhost()
         {
             var ray = _targetCamera.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f));
 
@@ -22,11 +22,11 @@ namespace ElectrumGames.Core.Player.Interactions
             {
                 if (hit.collider.TryGetComponent<IGhostCollider>(out var ghostCollider))
                 {
-                    return true;
+                    return ghostCollider;
                 }
             }
 
-            return false;
+            return null;
         }
     }
 }
