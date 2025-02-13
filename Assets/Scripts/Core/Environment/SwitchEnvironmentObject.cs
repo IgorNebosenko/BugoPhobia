@@ -1,6 +1,7 @@
 ﻿using System;
 using ElectrumGames.Core.Common;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace ElectrumGames.Core.Environment
 {
@@ -19,6 +20,7 @@ namespace ElectrumGames.Core.Environment
         public bool IsElectricityOn => IsOn;
 
         public event Action<bool, bool> Switch;
+        public event Action FlickLight;
 
         public override void OnInteract()
         {
@@ -39,13 +41,26 @@ namespace ElectrumGames.Core.Environment
             
             OnInteract();
         }
-
+        
         public void SwitchOff()
         {
             if (!IsOn)
                 return;
             
             OnInteract();
+        }
+        
+        public void TrySwitchOffByGhost()
+        {
+            if (IsOn)
+                return;
+
+            if (Random.Range(0, 2) != 0)
+            {
+                FlickLight?.Invoke();
+            }
+            else
+                SwitchOff();
         }
 
         public void SetLockState(bool state)

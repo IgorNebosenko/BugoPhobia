@@ -4,5 +4,7 @@
     {
         void SwitchOn();
         void SwitchOff();
+
+        void TrySwitchOffByGhost();
     }
 }

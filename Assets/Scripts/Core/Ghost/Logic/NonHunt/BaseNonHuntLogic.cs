@@ -172,7 +172,7 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
                     if (Random.Range(0f, 1f) < _ghostActivityData.ChanceOnSwitch)
                         randomSwitch.SwitchOn();
                     else
-                        randomSwitch.SwitchOff();
+                        randomSwitch.TrySwitchOffByGhost();
                 }
             }
         }

@@ -62,11 +62,13 @@ namespace ElectrumGames.Core.Rooms
         private void OnEnable()
         {
             roomSwitch.Switch += ChangeState;
+            roomSwitch.FlickLight += DoFlick;
         }
 
         private void OnDisable()
         {
             roomSwitch.Switch -= ChangeState;
+            roomSwitch.FlickLight -= DoFlick;
         }
 
         private void ChangeState(bool state, bool includeSwitchableLamps = false)
