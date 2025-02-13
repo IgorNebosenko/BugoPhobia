@@ -51,11 +51,6 @@ namespace ElectrumGames.Core.Player.Interactions
 
                 if (Physics.Raycast(ray, out var hit, _playerConfig.RayCastDistance, RayCastIgnoreMask))
                 {
-                    // if (hit.collider.TryGetComponent<DoorEnvironmentObject>(out var door))
-                    // {
-                    //     door.SetCameraAngleAndInteract(_input.Look);
-                    // }
-
                     if (hit.collider.TryGetComponent<DoorTriggerObject>(out var triggerObject))
                     {
                         triggerObject.SetCameraAngleAndInteract(_input.Look);
