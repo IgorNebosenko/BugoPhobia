@@ -160,7 +160,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.66, y: 0.66, z: 0.66}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5770942845243971708}
@@ -281,6 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac75edb1dcc4602befc19a33561e97a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <DefaultItemSize>k__BackingField: {x: 0.66, y: 0.66, z: 0.66}
   <PhysicObject>k__BackingField: {fileID: 6139243013555993350}
   <Collider>k__BackingField: {fileID: 3918579737501461323}
   <ItemType>k__BackingField: 111

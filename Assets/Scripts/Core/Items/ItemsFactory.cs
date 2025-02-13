@@ -39,7 +39,7 @@ namespace ElectrumGames.Core.Items
                 spawnPoint.Position, spawnPoint.Rotation, transform);
             _netIdFactory.Initialize(item);
             item.Init(_playerConfig, this, id);
-            item.LocalScale = template.LocalScale;
+            //item.LocalScale = template.LocalScale;
             return item;
         }
     }

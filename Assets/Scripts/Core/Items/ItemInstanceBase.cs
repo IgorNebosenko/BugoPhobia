@@ -16,7 +16,7 @@ namespace ElectrumGames.Core.Items
         private ItemsFactory _itemsFactory;
         protected IInventory inventoryReference;
 
-        public Vector3 LocalScale { get; set; } = Vector3.one;//transform.localScale;
+        public Vector3 LocalScale { get; private set; } = Vector3.one;//transform.localScale;
         
         public int NetId { get; private set; }
         public int OwnerId { get; private set; }
@@ -38,6 +38,8 @@ namespace ElectrumGames.Core.Items
             _playerConfig = playerConfig;
             _itemsFactory = itemsFactory;
             SpawnerId = spawnerId;
+
+            LocalScale = transform.localScale;
         }
         
         public abstract void OnMainInteraction();
