@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ElectrumGames.Core.Ghost.Interactions
 {
-    public class GhostCollider : MonoBehaviour, IGhostCollider
+    public class GhostVisualCollider : MonoBehaviour, IGhostCollider
     {
         public IHaveVisibility HaveVisibility { get; private set; }
 
