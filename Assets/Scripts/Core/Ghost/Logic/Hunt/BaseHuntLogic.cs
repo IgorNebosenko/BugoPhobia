@@ -28,8 +28,8 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
         
         private const int LayerToExclude = ~(1 << 2);
 
-        private GhostVariables _ghostVariables;
-        private GhostConstants _ghostConstants;
+        public GhostVariables GhostVariables { get; private set; }
+        public GhostConstants GhostConstants { get; private set; }
         private int _roomId;
 
         private float _huntCooldownTime;
@@ -64,8 +64,8 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
 
         public void Setup(GhostVariables variables, GhostConstants constants, int roomId)
         {
-            _ghostVariables = variables;
-            _ghostConstants = constants;
+            GhostVariables = variables;
+            GhostConstants = constants;
             _roomId = roomId;
             
             _ghostController.GhostHuntAura.gameObject.SetActive(true);
@@ -188,7 +188,7 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                 var isMoving = false;
                 const float distanceTolerance = 0.1f;
 
-                huntingSpeed = _ghostConstants.defaultHuntingSpeed;
+                huntingSpeed = GhostConstants.defaultHuntingSpeed;
 
                 while (stopWatch.Elapsed.Seconds < _ghostDifficultyData.HuntDuration)
                 {
@@ -281,15 +281,15 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                         continue;
                     
                     _ghostController.InteractionAura.DoorsInTrigger[i].TouchDoor(
-                        Random.Range(_ghostConstants.minDoorAngle, _ghostConstants.maxDoorAngle),
-                        Random.Range(_ghostConstants.minDoorTouchTime, _ghostConstants.maxDoorTouchTime));
+                        Random.Range(GhostConstants.minDoorAngle, GhostConstants.maxDoorAngle),
+                        Random.Range(GhostConstants.minDoorTouchTime, GhostConstants.maxDoorTouchTime));
                 }
             }
         }
 
         protected virtual void SpeedChange()
         {
-            if (!_ghostConstants.hasSpeedUp)
+            if (!GhostConstants.hasSpeedUp)
                 return;
 
             if (_ghostController.GhostHuntAura.PlayersInAura is {Count: > 0})
@@ -335,15 +335,15 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
         {
             huntingSpeed -= _ghostDifficultyData.SpeedUpByIteration;
 
-            if (huntingSpeed < _ghostConstants.defaultHuntingSpeed)
-                huntingSpeed = _ghostConstants.defaultHuntingSpeed;
+            if (huntingSpeed < GhostConstants.defaultHuntingSpeed)
+                huntingSpeed = GhostConstants.defaultHuntingSpeed;
             
             _ghostController.SetSpeed(huntingSpeed);
         }
 
         protected virtual async UniTask Flick(CancellationToken token)
         {
-            switch (_ghostConstants.ghostVisibility)
+            switch (GhostConstants.ghostVisibility)
             {
                 case GhostVisibility.Invisible:
                     _ghostController.SetGhostVisibility(false);
@@ -431,6 +431,17 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                 return hit.collider.TryGetComponent<IPlayer>(out var _);
             }
             return false;
+        }
+
+        public IPlayer GetPlayerAt(Vector3 direction)
+        {
+            if (Physics.Raycast(_ghostController.transform.position, direction,
+                    out var hit, Mathf.Infinity, LayerToExclude))
+            {
+                if (hit.collider.TryGetComponent<IPlayer>(out var player))
+                    return player;
+            }
+            return null;
         }
 
         public bool IsSeeElectronic(IPlayer player)
