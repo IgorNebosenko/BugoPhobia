@@ -20,8 +20,7 @@ namespace ElectrumGames.Core.Ghost
 
         public void InitGhost(int minGhostType, int maxGhostType, int minRoomId, int maxRoomId)
         {
-            var ghostType = GhostType.Yrka; //(GhostType)Random.Range(minGhostType, maxGhostType);
-            Debug.LogWarning($"Ghost type set as explicit {ghostType}!");
+            var ghostType = (GhostType)Random.Range(minGhostType, maxGhostType);
             
             var activityData = _activityConfig.GhostActivities.First(x => x.GhostType == ghostType);
             
@@ -39,8 +38,7 @@ namespace ElectrumGames.Core.Ghost
                 activityData.MaxDoorAngle, activityData.MinDoorTouchTime, activityData.MaxDoorTouchTime,
                 activityData.ChanceShutDownFuseBox, activityData.CooldownShutDown, activityData.CanActivateFuseBoxByInteraction);
 
-            GhostRoomId = 0;//Random.Range(minRoomId, maxRoomId);
-            Debug.LogWarning($"Room id explicit set on {GhostRoomId}");
+            GhostRoomId = Random.Range(minRoomId, maxRoomId);
             
             Debug.Log(GhostVariables);
             Debug.Log(GhostConstants);
