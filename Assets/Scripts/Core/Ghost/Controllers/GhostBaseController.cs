@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using ElectrumGames.CommonInterfaces;
 using ElectrumGames.Core.Common;
-using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Logic;
 using ElectrumGames.Core.Ghost.Logic.Abilities;
 using ElectrumGames.Core.Ghost.Logic.GhostEvents;
@@ -9,9 +8,7 @@ using ElectrumGames.Core.Ghost.Logic.Hunt;
 using ElectrumGames.Core.Ghost.Logic.NonHunt;
 using ElectrumGames.Core.Missions;
 using ElectrumGames.Extensions;
-using ElectrumGames.GlobalEnums;
 using UnityEngine;
-using Zenject;
 
 namespace ElectrumGames.Core.Ghost.Controllers
 {
