@@ -42,6 +42,8 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
         
         public bool IsInterrupt { get; set; }
 
+        protected virtual float GhostEventsFrequency => _ghostVariables.ghostEvents;
+
         public BaseGhostEvent(GhostController ghostController, GhostDifficultyData difficultyData, 
             GhostActivityData activityData, GhostEmfZonePool emfZonesPool, EmfData emfData, MissionPlayersHandler missionPlayersHandler)
         {
@@ -81,7 +83,7 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
                 {
                     _ghostEventTime = 0f;
 
-                    if (Random.Range(0f, 1f) < _ghostVariables.ghostEvents)
+                    if (Random.Range(0f, 1f) < GhostEventsFrequency)
                     {
                         var ghostRoom = _ghostController.GetCurrentRoom();
                     
