@@ -33,6 +33,11 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
         
         private bool _isMoving;
         private float _stayTime;
+
+        protected virtual float DoorsInteractions => _ghostVariables.doorsInteractions;
+        protected virtual float SwitchesInteractions => _ghostVariables.switchesInteractions;
+        protected virtual float ThrowsInteractions => _ghostVariables.throws;
+        protected virtual float OtherInteractions => _ghostVariables.otherInteractions;
         
         public bool IsInterrupt { get; set; }
 
@@ -128,7 +133,7 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
             {
                 _doorInteractionTime = 0f;
 
-                if (Random.Range(0f, 1f) < _ghostVariables.doorsInteractions)
+                if (Random.Range(0f, 1f) < DoorsInteractions)
                 {
                     var randomDoor = _ghostController.InteractionAura.DoorsInTrigger.PickRandom();
                     
@@ -159,7 +164,7 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
             {
                 _switchesInteractionTime = 0f;
 
-                if (Random.Range(0f, 1f) < _ghostVariables.switchesInteractions)
+                if (Random.Range(0f, 1f) < SwitchesInteractions)
                 {
                     var randomSwitch = _ghostController.InteractionAura.SwitchesInTrigger.PickRandom();
 
@@ -189,7 +194,7 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
             {
                 _thrownInteractionTime = 0f;
                 
-                if (Random.Range(0f, 1f) < _ghostVariables.throws)
+                if (Random.Range(0f, 1f) < ThrowsInteractions)
                 {
                     var randomThrown = _ghostController.InteractionAura.ThrownInTrigger.PickRandom();
 
@@ -214,7 +219,7 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
             if (_otherInteractionTime >= _ghostDifficultyData.OtherInteractionCooldown &&
                 _ghostController.InteractionAura.OtherInteractionsInTrigger is {Count: > 0})
             {
-                if (Random.Range(0f, 1f) < _ghostVariables.otherInteractions)
+                if (Random.Range(0f, 1f) < OtherInteractions)
                 {
                     _otherInteractionTime = 0f;
                     

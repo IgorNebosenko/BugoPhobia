@@ -20,7 +20,7 @@ namespace ElectrumGames.Core.Ghost
 
         public void InitGhost(int minGhostType, int maxGhostType, int minRoomId, int maxRoomId)
         {
-            var ghostType = GhostType.Blaze;//(GhostType)Random.Range(minGhostType, maxGhostType);
+            var ghostType = GhostType.Mare;//(GhostType)Random.Range(minGhostType, maxGhostType);
             
             var activityData = _activityConfig.GhostActivities.First(x => x.GhostType == ghostType);
             
@@ -38,7 +38,7 @@ namespace ElectrumGames.Core.Ghost
                 activityData.MaxDoorAngle, activityData.MinDoorTouchTime, activityData.MaxDoorTouchTime,
                 activityData.ChanceShutDownFuseBox, activityData.CooldownShutDown, activityData.CanActivateFuseBoxByInteraction);
 
-            GhostRoomId = Random.Range(minRoomId, maxRoomId);
+            GhostRoomId = 0;//Random.Range(minRoomId, maxRoomId);
             
             Debug.Log(GhostVariables);
             Debug.Log(GhostConstants);
