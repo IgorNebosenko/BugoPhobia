@@ -20,7 +20,7 @@ namespace ElectrumGames.Core.Ghost
 
         public void InitGhost(int minGhostType, int maxGhostType, int minRoomId, int maxRoomId)
         {
-            var ghostType = GhostType.Mare;//(GhostType)Random.Range(minGhostType, maxGhostType);
+            var ghostType = GhostType.Babaduk;//(GhostType)Random.Range(minGhostType, maxGhostType);
             
             var activityData = _activityConfig.GhostActivities.First(x => x.GhostType == ghostType);
             
