@@ -6,6 +6,7 @@ using ElectrumGames.Core.Ghost.Logic.Abilities;
 using ElectrumGames.Core.Ghost.Logic.GhostEvents;
 using ElectrumGames.Core.Ghost.Logic.Hunt;
 using ElectrumGames.Core.Ghost.Logic.NonHunt;
+using ElectrumGames.Core.Journal;
 using ElectrumGames.Core.Missions;
 using ElectrumGames.Extensions;
 using UnityEngine;
@@ -33,6 +34,7 @@ namespace ElectrumGames.Core.Ghost.Controllers
         public GhostHuntController GhostHuntController { get; private set; }
         public GhostInteractionController GhostInteractionController { get; private set; }
         public GhostEnvironmentHandler GhostEnvironmentHandler { get; private set; }
+        public JournalManager JournalManager { get; private set; }
         
         public bool IsVisible { get; private set; }
 
@@ -41,7 +43,7 @@ namespace ElectrumGames.Core.Ghost.Controllers
         protected IFuseBoxInteractable fuseBox;
         
         public void Init(GhostEnvironmentHandler environmentHandler, GhostModelsList modelsList, 
-            EvidenceController evidenceController, IFuseBoxInteractable fuseBox)
+            EvidenceController evidenceController, JournalManager journalManager, IFuseBoxInteractable fuseBox)
         {
             GhostEnvironmentHandler = environmentHandler;
             GhostBehaviourController = new GhostBehaviourController(GhostEnvironmentHandler);
@@ -60,6 +62,7 @@ namespace ElectrumGames.Core.Ghost.Controllers
             };
             
             EvidenceController = evidenceController;
+            JournalManager = journalManager;
 
             var ghostModel = environmentHandler.GhostVariables.isMale
                 ? modelsList.MaleModels.PickRandom()
