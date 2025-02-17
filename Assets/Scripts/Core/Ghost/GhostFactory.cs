@@ -383,7 +383,7 @@ namespace ElectrumGames.Core.Ghost
                 case GhostType.Mare:
                     return new MareAbility();
                 case GhostType.Babaduk:
-                    return new BabadukAbility();
+                    return new BabadukAbility(controller, _ghostEmfZonePool, activityData, _emfData);
                 case GhostType.Invisible:
                     return new InvisibleAbilities();
                 case GhostType.Yurei:
