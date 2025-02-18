@@ -481,7 +481,7 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
             _huntCooldownTime = Mathf.Infinity;
         }
 
-        protected void StopHunt()
+        protected virtual void StopHunt()
         {
             _isHunt = false;
             _ghostController.SetGhostVisibility(false);
