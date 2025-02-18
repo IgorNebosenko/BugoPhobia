@@ -195,8 +195,8 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                     if (!isMoving)
                     {
                         isMoving = true;
-                        var randomPosition = _huntPoints.Positions.PickRandom().position;
-                        MoveToPoint(randomPosition, false);
+
+                        MoveToPoint(GetHuntMovePosition(), false);
                     }
                     else if (_ghostController.NavmeshRemainingDistance < distanceTolerance)
                     {
@@ -224,6 +224,11 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
             {
                 StopHunt();
             }
+        }
+
+        protected virtual Vector3 GetHuntMovePosition()
+        {
+            return _huntPoints.Positions.PickRandom().position;
         }
 
         protected virtual void CheckPlayerOnVisual()
