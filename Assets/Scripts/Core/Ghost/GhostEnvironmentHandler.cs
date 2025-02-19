@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using ElectrumGames.Configs;
+using ElectrumGames.DebugElements;
 using ElectrumGames.GlobalEnums;
 using UnityEngine;
 
@@ -20,7 +21,11 @@ namespace ElectrumGames.Core.Ghost
 
         public void InitGhost(int minGhostType, int maxGhostType, int minRoomId, int maxRoomId)
         {
-            var ghostType = GhostType.Henchman;//(GhostType)Random.Range(minGhostType, maxGhostType);
+            GhostType ghostType;
+            if (CheatVariables.SelectedGhostType != GhostType.None)
+                ghostType = (GhostType) Random.Range(minGhostType, maxGhostType);
+            else
+                ghostType = CheatVariables.SelectedGhostType;
             
             var activityData = _activityConfig.GhostActivities.First(x => x.GhostType == ghostType);
             
@@ -38,7 +43,10 @@ namespace ElectrumGames.Core.Ghost
                 activityData.MaxDoorAngle, activityData.MinDoorTouchTime, activityData.MaxDoorTouchTime,
                 activityData.ChanceShutDownFuseBox, activityData.CooldownShutDown, activityData.CanActivateFuseBoxByInteraction);
 
-            GhostRoomId = 0;//Random.Range(minRoomId, maxRoomId);
+            if (CheatVariables.RoomId == -1)
+                GhostRoomId = Random.Range(minRoomId, maxRoomId);
+            else
+                GhostRoomId = CheatVariables.RoomId;
             
             Debug.Log(GhostVariables);
             Debug.Log(GhostConstants);
