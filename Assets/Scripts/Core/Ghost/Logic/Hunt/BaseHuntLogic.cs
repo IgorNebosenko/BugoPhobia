@@ -47,6 +47,9 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
         
         public bool IsInterrupt { get; set; }
 
+        public virtual float ChanceThrowItem => 0.5f;
+        public virtual float ChanceTouchDoor => 0.5f;
+
         public event Action HuntStarted;
         public event Action HuntEnded;
 
@@ -266,7 +269,7 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                 for (var i = 0; i < _ghostController.InteractionAura.ThrownInTrigger.Count; i++)
                 {
                     Debug.LogWarning("Read chance of throw during hunt from config!");
-                    if (Random.Range(0f, 1f) > 0.5f)
+                    if (Random.Range(0f, 1f) > ChanceThrowItem)
                         continue;
                     
                     _ghostController.InteractionAura.ThrownInTrigger[i].ThrowItem(_activityData.ThrownForce);
@@ -282,7 +285,7 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                 for (var i = 0; i < _ghostController.InteractionAura.DoorsInTrigger.Count; i++)
                 {
                     Debug.LogWarning("Read chance of door interact during hunt from config!");
-                    if (Random.Range(0f, 1f) > 0.5f)
+                    if (Random.Range(0f, 1f) > ChanceTouchDoor)
                         continue;
                     
                     _ghostController.InteractionAura.DoorsInTrigger[i].TouchDoor(
