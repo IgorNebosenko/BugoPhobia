@@ -407,7 +407,7 @@ namespace ElectrumGames.Core.Ghost
                 case GhostType.Arsonist:
                     return new ArsonistAbility();
                 case GhostType.Henchman:
-                    return new HenchmanAbility();
+                    return new HenchmanAbility(_missionPlayersHandler, controller);
                 case GhostType.Poltergeist:
                     return new PoltergeistAbility();
                 case GhostType.Ethereal:
