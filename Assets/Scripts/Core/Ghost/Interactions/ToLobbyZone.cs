@@ -1,4 +1,5 @@
 ﻿using ElectrumGames.Core.Missions;
+using ElectrumGames.Core.Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +9,8 @@ namespace ElectrumGames.Core.Ghost.Interactions
     {
         private void OnTriggerEnter(Collider other)
         {
-            SceneManager.LoadSceneAsync((int)MissionMap.LobbyTier0);
+            if (other.TryGetComponent<PlayerBase>(out var _))
+                SceneManager.LoadSceneAsync((int)MissionMap.LobbyTier0);
         }
     }
 }
