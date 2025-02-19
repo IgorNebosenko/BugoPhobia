@@ -403,7 +403,7 @@ namespace ElectrumGames.Core.Ghost
                 case GhostType.Polymorph:
                     return GetGhostAbilityByType(controller, (GhostType) Random.Range(0, (int) GhostType.Lich));
                 case GhostType.Imp:
-                    return new ImpAbility();
+                    return new ImpAbility(_journalManager);
                 case GhostType.Arsonist:
                     return new ArsonistAbility();
                 case GhostType.Henchman:
