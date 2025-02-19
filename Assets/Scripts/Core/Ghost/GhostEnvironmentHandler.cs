@@ -21,9 +21,8 @@ namespace ElectrumGames.Core.Ghost
 
         public void InitGhost(int minGhostType, int maxGhostType, int minRoomId, int maxRoomId)
         {
-            
             GhostType ghostType;
-            if (CheatVariables.SelectedGhostType != GhostType.None)
+            if (CheatVariables.SelectedGhostType == GhostType.None)
                 ghostType = (GhostType) Random.Range(minGhostType, maxGhostType);
             else
                 ghostType = CheatVariables.SelectedGhostType;
