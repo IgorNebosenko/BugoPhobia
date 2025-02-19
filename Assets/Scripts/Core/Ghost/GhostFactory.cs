@@ -399,7 +399,7 @@ namespace ElectrumGames.Core.Ghost
                 case GhostType.LostSoul:
                     return new LostSoulAbility();
                 case GhostType.Mimic:
-                    return new MimicAbility();
+                    return new MimicAbility(this, controller, _ghostEmfZonePool, _emfData);
                 case GhostType.Polymorph:
                     return GetGhostAbilityByType(controller, (GhostType) Random.Range(0, (int) GhostType.Lich));
                 case GhostType.Imp:
