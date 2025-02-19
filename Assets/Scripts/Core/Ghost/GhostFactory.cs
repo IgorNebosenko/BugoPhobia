@@ -409,7 +409,7 @@ namespace ElectrumGames.Core.Ghost
                 case GhostType.Henchman:
                     return new HenchmanAbility(_missionPlayersHandler, controller, _ghostEmfZonePool, _emfData);
                 case GhostType.Poltergeist:
-                    return new PoltergeistAbility();
+                    return new PoltergeistAbility(controller, activityData, _ghostEmfZonePool, _emfData);
                 case GhostType.Ethereal:
                     return new EtherealAbility();
                 case GhostType.Lich:
