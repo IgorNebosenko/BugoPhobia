@@ -66,8 +66,9 @@ namespace ElectrumGames.Core.Ghost.Logic.Abilities
                 var randomThrown = _ghostController.InteractionAura.ThrownInTrigger.PickRandom();
                 randomThrown.ThrowItem(_ghostActivityData.ThrownForce);
                 
-                var emfZone = _emfZonesPool.SpawnCylinderZone(_ghostController.transform, _emfData.OtherInteractionHeightOffset,
+                var emfZone = _emfZonesPool.SpawnCylinderZone(null, _emfData.OtherInteractionHeightOffset,
                     _emfData.OtherInteractionCylinderSize, _ghostController.EvidenceController.OnThrowInteract());
+                emfZone.transform.position = _ghostController.transform.position;
                 Observable.Timer(TimeSpan.FromSeconds(_emfData.TimeEmfInteraction))
                     .Subscribe(_ => _emfZonesPool.DespawnCylinderZone(emfZone));
                 
@@ -85,8 +86,9 @@ namespace ElectrumGames.Core.Ghost.Logic.Abilities
                 randomDoor.TouchDoor(Random.Range(_ghostConstants.minDoorAngle, _ghostConstants.maxDoorAngle),
                     Random.Range(_ghostConstants.minDoorTouchTime, _ghostConstants.maxDoorTouchTime));
                 
-                var emfZone = _emfZonesPool.SpawnCylinderZone(_ghostController.transform, _emfData.OtherInteractionHeightOffset,
+                var emfZone = _emfZonesPool.SpawnCylinderZone(null, _emfData.OtherInteractionHeightOffset,
                     _emfData.OtherInteractionCylinderSize, _ghostController.EvidenceController.GetEmfInteractDoor());
+                emfZone.transform.position = _ghostController.transform.position;
                 Observable.Timer(TimeSpan.FromSeconds(_emfData.TimeEmfInteraction))
                     .Subscribe(_ => _emfZonesPool.DespawnCylinderZone(emfZone));
                 
@@ -107,8 +109,9 @@ namespace ElectrumGames.Core.Ghost.Logic.Abilities
                 else
                     randomSwitch.TrySwitchOffByGhost();
                 
-                var emfZone = _emfZonesPool.SpawnCylinderZone(_ghostController.transform, _emfData.OtherInteractionHeightOffset,
+                var emfZone = _emfZonesPool.SpawnCylinderZone(null, _emfData.OtherInteractionHeightOffset,
                     _emfData.OtherInteractionCylinderSize, _ghostController.EvidenceController.GetEmfInteractSwitch());
+                emfZone.transform.position = _ghostController.transform.position;
                 Observable.Timer(TimeSpan.FromSeconds(_emfData.TimeEmfInteraction))
                     .Subscribe(_ => _emfZonesPool.DespawnCylinderZone(emfZone));
                 
@@ -125,8 +128,9 @@ namespace ElectrumGames.Core.Ghost.Logic.Abilities
                 var randomOtherInteract = _ghostController.InteractionAura.OtherInteractionsInTrigger.PickRandom();
                 randomOtherInteract.Interact();
                 
-                var emfZone = _emfZonesPool.SpawnCylinderZone(_ghostController.transform, _emfData.OtherInteractionHeightOffset,
+                var emfZone = _emfZonesPool.SpawnCylinderZone(null, _emfData.OtherInteractionHeightOffset,
                     _emfData.OtherInteractionCylinderSize, _ghostController.EvidenceController.GetEmfOtherInteract());
+                emfZone.transform.position = _ghostController.transform.position;
                 Observable.Timer(TimeSpan.FromSeconds(_emfData.TimeEmfInteraction))
                     .Subscribe(_ => _emfZonesPool.DespawnCylinderZone(emfZone));
                 
