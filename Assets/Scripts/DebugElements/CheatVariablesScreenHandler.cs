@@ -1,7 +1,7 @@
 ﻿using ElectrumGames.GlobalEnums;
 using UnityEngine;
 
-namespace ElectrumGames.DebugElements.DebugElements
+namespace ElectrumGames.DebugElements
 {
     public class CheatVariablesScreenHandler : MonoBehaviour
     {
