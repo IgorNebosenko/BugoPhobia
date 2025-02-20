@@ -84,7 +84,8 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                 return;
             }
             
-            _huntCooldownTime += Time.fixedDeltaTime;
+            if (!_isHunt)
+                _huntCooldownTime += Time.fixedDeltaTime;
 
             if (_huntCooldownTime >= _activityData.HuntCooldown)
             {
