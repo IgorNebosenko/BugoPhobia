@@ -85,6 +85,9 @@ namespace ElectrumGames.Core.Environment
         {
             Debug.LogWarning("Add UV print if this evidence exists");
             
+            if (_isLocked || _isBlocked)
+                return;
+            
             var canOpen = CurrentAngle + angle < maxAngle;
             var canClose = CurrentAngle - angle > minAngle;
 
