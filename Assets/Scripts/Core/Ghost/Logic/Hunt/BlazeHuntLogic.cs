@@ -20,6 +20,8 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
         
         private const float MinHuntSpeed = 1.2f;
         private const float LimitOfHuntSpeed = 2.25f;
+
+        private const float SpeedDownModifier = 0.5f;
         
         private readonly GhostController _ghostController;
         private readonly GhostDifficultyData _ghostDifficultyData;
@@ -124,11 +126,13 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
             {
                 SpeedDown();
             }
+            
+            Debug.Log(huntingSpeed);
         }
 
         protected override void SpeedDown()
         {
-            huntingSpeed -= _ghostDifficultyData.SpeedUpByIteration;
+            huntingSpeed -= _ghostDifficultyData.SpeedUpByIteration * SpeedDownModifier;
             
             _ghostController.SetSpeed(huntingSpeed);
         }

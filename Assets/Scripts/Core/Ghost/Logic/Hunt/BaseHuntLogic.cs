@@ -268,7 +268,6 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
             {
                 for (var i = 0; i < _ghostController.InteractionAura.ThrownInTrigger.Count; i++)
                 {
-                    Debug.LogWarning("Read chance of throw during hunt from config!");
                     if (Random.Range(0f, 1f) > ChanceThrowItem)
                         continue;
                     
@@ -284,7 +283,6 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
             {
                 for (var i = 0; i < _ghostController.InteractionAura.DoorsInTrigger.Count; i++)
                 {
-                    Debug.LogWarning("Read chance of door interact during hunt from config!");
                     if (Random.Range(0f, 1f) > ChanceTouchDoor)
                         continue;
                     
