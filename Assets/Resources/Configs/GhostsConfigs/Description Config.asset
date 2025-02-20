@@ -116,26 +116,33 @@ MonoBehaviour:
     <Weaknesses>k__BackingField: "\rIncense neutralizes the ability"
   - <GhostType>k__BackingField: 15
     <Name>k__BackingField: Arsonist
-    <Description>k__BackingField: Placeholder for localization
-    <Strength>k__BackingField: Placeholder for localization
-    <Weaknesses>k__BackingField: Placeholder for localization
+    <Description>k__BackingField: Sets fire to everything that can be set on fire,
+      including during hunting
+    <Strength>k__BackingField: Becoming stronger from fire
+    <Weaknesses>k__BackingField: "\rIncreased chance to light incense while hunting"
   - <GhostType>k__BackingField: 16
     <Name>k__BackingField: Henchman
-    <Description>k__BackingField: Placeholder for localization
-    <Strength>k__BackingField: Placeholder for localization
-    <Weaknesses>k__BackingField: Placeholder for localization
+    <Description>k__BackingField: Soul killed by Slenderman. Inherited teleportation
+      from its killer
+    <Strength>k__BackingField: Can teleport to player
+    <Weaknesses>k__BackingField: Anomaly high radiation
   - <GhostType>k__BackingField: 17
     <Name>k__BackingField: Poltergeist
-    <Description>k__BackingField: Placeholder for localization
-    <Strength>k__BackingField: Placeholder for localization
-    <Weaknesses>k__BackingField: Placeholder for localization
+    <Description>k__BackingField: One of the most famous types of ghosts. Moves around
+      the house, actively interacting with the environment
+    <Strength>k__BackingField: "\rCan throw multiple items at once"
+    <Weaknesses>k__BackingField: "\rUnable to use his ability in empty rooms"
   - <GhostType>k__BackingField: 18
     <Name>k__BackingField: Ethereal
-    <Description>k__BackingField: Placeholder for localization
-    <Strength>k__BackingField: Placeholder for localization
-    <Weaknesses>k__BackingField: Placeholder for localization
+    <Description>k__BackingField: The Ethereal, although slower than other ghosts,
+      is able to pass through obstacles
+    <Strength>k__BackingField: Able to pass through many objects but not walls
+    <Weaknesses>k__BackingField: Noticeably slower than other ghost types
   - <GhostType>k__BackingField: 19
     <Name>k__BackingField: Lich
-    <Description>k__BackingField: Placeholder for localization
-    <Strength>k__BackingField: Placeholder for localization
-    <Weaknesses>k__BackingField: Placeholder for localization
+    <Description>k__BackingField: Afraid of electricity, so does not touch it. If
+      you choose the wrong type of ghost - the player will be cursed and die before
+      reaching the lair of the ghost hunters
+    <Strength>k__BackingField: "\rIncorrectly selected ghost type will result in
+      loss of items"
+    <Weaknesses>k__BackingField: Never switches the light
