@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading;
 using ElectrumGames.Configs;
 using ElectrumGames.Core.Ghost.Configs;
@@ -187,14 +186,14 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
         {
             try
             {
-                var stopWatch = new Stopwatch();
+                var timer = Time.fixedTime;
 
                 var isMoving = false;
                 const float distanceTolerance = 0.1f;
 
                 huntingSpeed = GhostConstants.defaultHuntingSpeed;
 
-                while (stopWatch.Elapsed.Seconds < _ghostDifficultyData.HuntDuration)
+                while (Time.fixedTime - timer < _ghostDifficultyData.HuntDuration)
                 {
                     if (!isMoving)
                     {
