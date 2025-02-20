@@ -7,9 +7,9 @@ using ElectrumGames.GlobalEnums;
 
 namespace ElectrumGames.Core.Ghost.Logic.NonHunt
 {
-    public class BabadukNonHuntLogic : BaseNonHuntLogic
+    public class BabadookNonHuntLogic : BaseNonHuntLogic
     {
-        private const float BabadukSelectedModifier = 0.75f;
+        private const float BabadookSelectedModifier = 0.75f;
         private const float ExcludeGhostModifier = 1.5f;
         private const float ExcludeEvidenceModifier = 1.25f;
         
@@ -19,13 +19,13 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
         {
             get
             {
-                if (_ghostController.JournalManager.PlayerJournalInstance.SelectedGhost == GhostType.Babaduk ||
-                    _ghostController.JournalManager.OtherPlayersJournalInstances.Any(x => x.SelectedGhost == GhostType.Babaduk))
-                    return _ghostController.GhostEnvironmentHandler.GhostVariables.doorsInteractions * BabadukSelectedModifier;
+                if (_ghostController.JournalManager.PlayerJournalInstance.SelectedGhost == GhostType.Babadook ||
+                    _ghostController.JournalManager.OtherPlayersJournalInstances.Any(x => x.SelectedGhost == GhostType.Babadook))
+                    return _ghostController.GhostEnvironmentHandler.GhostVariables.doorsInteractions * BabadookSelectedModifier;
                 
-                if (_ghostController.JournalManager.PlayerJournalInstance.DeselectedGhosts.Contains(GhostType.Babaduk) ||
+                if (_ghostController.JournalManager.PlayerJournalInstance.DeselectedGhosts.Contains(GhostType.Babadook) ||
                     _ghostController.JournalManager.OtherPlayersJournalInstances.Any(x => x.DeselectedGhosts.Any(
-                        y => y ==GhostType.Babaduk)))
+                        y => y ==GhostType.Babadook)))
                 return _ghostController.GhostEnvironmentHandler.GhostVariables.doorsInteractions * ExcludeGhostModifier;
 
                 for (var i = 0; i < _ghostController.EvidenceController.Evidences.Count; i++)
@@ -46,13 +46,13 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
         {
             get
             {
-                if (_ghostController.JournalManager.PlayerJournalInstance.SelectedGhost == GhostType.Babaduk ||
-                    _ghostController.JournalManager.OtherPlayersJournalInstances.Any(x => x.SelectedGhost == GhostType.Babaduk))
-                    return _ghostController.GhostEnvironmentHandler.GhostVariables.switchesInteractions * BabadukSelectedModifier;
+                if (_ghostController.JournalManager.PlayerJournalInstance.SelectedGhost == GhostType.Babadook ||
+                    _ghostController.JournalManager.OtherPlayersJournalInstances.Any(x => x.SelectedGhost == GhostType.Babadook))
+                    return _ghostController.GhostEnvironmentHandler.GhostVariables.switchesInteractions * BabadookSelectedModifier;
                 
-                if (_ghostController.JournalManager.PlayerJournalInstance.DeselectedGhosts.Contains(GhostType.Babaduk) ||
+                if (_ghostController.JournalManager.PlayerJournalInstance.DeselectedGhosts.Contains(GhostType.Babadook) ||
                     _ghostController.JournalManager.OtherPlayersJournalInstances.Any(x => x.DeselectedGhosts.Any(
-                        y => y ==GhostType.Babaduk)))
+                        y => y ==GhostType.Babadook)))
                     return _ghostController.GhostEnvironmentHandler.GhostVariables.switchesInteractions * ExcludeGhostModifier;
 
                 for (var i = 0; i < _ghostController.EvidenceController.Evidences.Count; i++)
@@ -73,13 +73,13 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
         {
             get
             {
-                if (_ghostController.JournalManager.PlayerJournalInstance.SelectedGhost == GhostType.Babaduk ||
-                    _ghostController.JournalManager.OtherPlayersJournalInstances.Any(x => x.SelectedGhost == GhostType.Babaduk))
-                    return _ghostController.GhostEnvironmentHandler.GhostVariables.throws * BabadukSelectedModifier;
+                if (_ghostController.JournalManager.PlayerJournalInstance.SelectedGhost == GhostType.Babadook ||
+                    _ghostController.JournalManager.OtherPlayersJournalInstances.Any(x => x.SelectedGhost == GhostType.Babadook))
+                    return _ghostController.GhostEnvironmentHandler.GhostVariables.throws * BabadookSelectedModifier;
                 
-                if (_ghostController.JournalManager.PlayerJournalInstance.DeselectedGhosts.Contains(GhostType.Babaduk) ||
+                if (_ghostController.JournalManager.PlayerJournalInstance.DeselectedGhosts.Contains(GhostType.Babadook) ||
                     _ghostController.JournalManager.OtherPlayersJournalInstances.Any(x => x.DeselectedGhosts.Any(
-                        y => y ==GhostType.Babaduk)))
+                        y => y ==GhostType.Babadook)))
                     return _ghostController.GhostEnvironmentHandler.GhostVariables.throws * ExcludeGhostModifier;
 
                 for (var i = 0; i < _ghostController.EvidenceController.Evidences.Count; i++)
@@ -100,13 +100,13 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
         {
             get
             {
-                if (_ghostController.JournalManager.PlayerJournalInstance.SelectedGhost == GhostType.Babaduk ||
-                    _ghostController.JournalManager.OtherPlayersJournalInstances.Any(x => x.SelectedGhost == GhostType.Babaduk))
-                    return _ghostController.GhostEnvironmentHandler.GhostVariables.otherInteractions * BabadukSelectedModifier;
+                if (_ghostController.JournalManager.PlayerJournalInstance.SelectedGhost == GhostType.Babadook ||
+                    _ghostController.JournalManager.OtherPlayersJournalInstances.Any(x => x.SelectedGhost == GhostType.Babadook))
+                    return _ghostController.GhostEnvironmentHandler.GhostVariables.otherInteractions * BabadookSelectedModifier;
                 
-                if (_ghostController.JournalManager.PlayerJournalInstance.DeselectedGhosts.Contains(GhostType.Babaduk) ||
+                if (_ghostController.JournalManager.PlayerJournalInstance.DeselectedGhosts.Contains(GhostType.Babadook) ||
                     _ghostController.JournalManager.OtherPlayersJournalInstances.Any(x => x.DeselectedGhosts.Any(
-                        y => y ==GhostType.Babaduk)))
+                        y => y ==GhostType.Babadook)))
                     return _ghostController.GhostEnvironmentHandler.GhostVariables.otherInteractions * ExcludeGhostModifier;
 
                 for (var i = 0; i < _ghostController.EvidenceController.Evidences.Count; i++)
@@ -124,7 +124,7 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
             }
         }
 
-        public BabadukNonHuntLogic(GhostController ghostController, GhostDifficultyData ghostDifficultyData,
+        public BabadookNonHuntLogic(GhostController ghostController, GhostDifficultyData ghostDifficultyData,
             GhostActivityData activityData, GhostEmfZonePool emfZonesPool, EmfData emfData) : base(ghostController,
             ghostDifficultyData, activityData, emfZonesPool, emfData)
         {

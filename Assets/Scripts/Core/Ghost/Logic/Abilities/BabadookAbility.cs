@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 
 namespace ElectrumGames.Core.Ghost.Logic.Abilities
 {
-    public class BabadukAbility : IGhostAbility
+    public class BabadookAbility : IGhostAbility
     {
         private readonly GhostController _ghostController;
         private readonly GhostEmfZonePool _emfZonesPool;
@@ -21,7 +21,7 @@ namespace ElectrumGames.Core.Ghost.Logic.Abilities
 
         private float _cooldownTime;
         
-        public BabadukAbility(GhostController ghostController, GhostEmfZonePool emfZonesPool, 
+        public BabadookAbility(GhostController ghostController, GhostEmfZonePool emfZonesPool, 
             GhostActivityData ghostActivityData, EmfData emfData)
         {
             _ghostController = ghostController;

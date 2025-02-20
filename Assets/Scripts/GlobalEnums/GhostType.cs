@@ -6,7 +6,7 @@ namespace ElectrumGames.GlobalEnums
         Yrka,
         Wraith,
         Mare,
-        Babaduk,
+        Babadook,
         Invisible,
         Yurei,
         Glitch,

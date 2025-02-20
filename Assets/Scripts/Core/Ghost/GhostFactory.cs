@@ -138,8 +138,8 @@ namespace ElectrumGames.Core.Ghost
                 case GhostType.Mare:
                     return new MareNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                         (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
-                case GhostType.Babaduk:
-                    return new BabadukNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                case GhostType.Babadook:
+                    return new BabadookNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                         (int) _missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
                 case GhostType.Invisible:
                     return new InvisibleNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
@@ -212,8 +212,8 @@ namespace ElectrumGames.Core.Ghost
                     return new MareGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int) _missionDataHandler.MissionDifficulty],
                         activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
-                case GhostType.Babaduk:
-                    return new BabadukGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                case GhostType.Babadook:
+                    return new BabadookGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int) _missionDataHandler.MissionDifficulty],
                         activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
                 case GhostType.Invisible:
@@ -301,8 +301,8 @@ namespace ElectrumGames.Core.Ghost
                     return new MareHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int) _missionDataHandler.MissionDifficulty], activityData,
                         _missionPlayersHandler, _flickConfig, _huntPoints);
-                case GhostType.Babaduk:
-                    return new BabadukHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                case GhostType.Babadook:
+                    return new BabadookHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int) _missionDataHandler.MissionDifficulty], activityData,
                         _missionPlayersHandler, _flickConfig, _huntPoints);
                 case GhostType.Invisible:
@@ -382,8 +382,8 @@ namespace ElectrumGames.Core.Ghost
                     return new WraithAbility();
                 case GhostType.Mare:
                     return new MareAbility();
-                case GhostType.Babaduk:
-                    return new BabadukAbility(controller, _ghostEmfZonePool, activityData, _emfData);
+                case GhostType.Babadook:
+                    return new BabadookAbility(controller, _ghostEmfZonePool, activityData, _emfData);
                 case GhostType.Invisible:
                     return new InvisibleAbilities();
                 case GhostType.Yurei:
