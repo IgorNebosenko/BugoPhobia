@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using ElectrumGames.Audio.Pool;
+using ElectrumGames.Audio.Steps;
 using ElectrumGames.Core.Player.Interactions.Items;
 using ElectrumGames.Configs;
 using ElectrumGames.Core.Common;
@@ -38,6 +40,7 @@ namespace ElectrumGames.Core.Player
         
         protected IInput input;
         private IMotor _motor;
+        private IStepsHandler _stepsHandler;
         private CameraLifter _cameraLifter;
 
         protected IInteraction interaction;
@@ -109,6 +112,7 @@ namespace ElectrumGames.Core.Player
                 return;
 
             _motor.FixedSimulate(input, Time.fixedDeltaTime);
+            _stepsHandler.FixedSimulate(input, Time.fixedTime);
             PlayerUpdate();
             OnInteractionSimulate(Time.fixedDeltaTime);
         }
@@ -180,6 +184,11 @@ namespace ElectrumGames.Core.Player
             FlashLightInteractionHandler = container.Resolve<FlashLightInteractionHandler>();
 
             _motor = new PlayerMovementMotor(characterController, playerCamera, playerConfig, configService);
+            _stepsHandler = new StepsHandler(playerConfig, 
+                container.Resolve<SoundsConfig>(),
+                container.Resolve<AudioSourcesPool>(),
+                container.Resolve<SurfaceSoundsList>());
+            
             _cameraLifter = new CameraLifter(playerConfig, headBob, stayCameraTransform.localPosition,
                 sitCameraTransform.localPosition);
 

@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using ElectrumGames.Core.Player.Interactions.Items;
 using ElectrumGames.Audio;
+using ElectrumGames.Audio.Pool;
 using ElectrumGames.Core.Common;
 using ElectrumGames.Core.Environment;
 using ElectrumGames.Core.Environment.House;
@@ -40,6 +41,8 @@ namespace ElectrumGames.Injection
         [SerializeField] private NoiseGenerator noiseGenerator;
         [Space]
         [SerializeField] private FlashLightInteractionHandler flashLightInteractionHandler;
+        [Space]
+        [SerializeField] private AudioSourcesPool audioSourcesPool;
         
         
         protected override Assembly UiAssembly => typeof(UiAssemblyReference).Assembly;
@@ -70,6 +73,8 @@ namespace ElectrumGames.Injection
             Container.BindInstance(noiseGenerator).AsSingle();
 
             Container.BindInstance(flashLightInteractionHandler).AsSingle();
+
+            Container.BindInstance(audioSourcesPool).AsSingle();
             
             Container.Bind<EnvironmentData>().AsSingle();
 
