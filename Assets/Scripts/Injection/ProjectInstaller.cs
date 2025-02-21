@@ -10,6 +10,7 @@ using ElectrumGames.Core.Missions;
 using ElectrumGames.Core.Player.Movement;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Serialization;
 using Zenject;
 
 public class ProjectInstaller : MonoInstaller
@@ -37,8 +38,9 @@ public class ProjectInstaller : MonoInstaller
     [SerializeField] private FpsConfig androidFpsConfig;
     [Space]
     [SerializeField] private MissionsNames missionsNames;
+    [FormerlySerializedAs("flatSoundsList")]
     [Space]
-    [SerializeField] private FlatSoundsList flatSoundsList;
+    [SerializeField] private SurfaceSoundsList surfaceSoundsList;
     [SerializeField] private SoundsConfig soundsConfig;
     
     public override void InstallBindings()
@@ -72,7 +74,7 @@ public class ProjectInstaller : MonoInstaller
 #endif
         Container.BindInstance(missionsNames).AsSingle();
 
-        Container.BindInstance(flatSoundsList).AsSingle();
+        Container.BindInstance(surfaceSoundsList).AsSingle();
         Container.BindInstance(soundsConfig).AsSingle();
 
         Container.Bind<JournalManager>().AsSingle().NonLazy();

@@ -1,6 +1,6 @@
 ﻿namespace ElectrumGames.Audio.Steps
 {
-    public enum FlatType
+    public enum SurfaceType
     {
         Grass,
         Wood,

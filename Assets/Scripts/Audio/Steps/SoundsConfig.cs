@@ -12,5 +12,6 @@ namespace ElectrumGames.Audio.Steps
         [field: SerializeField] public AnimationCurve CurveGhostSteps { get; private set; }
         [field: Space] 
         [field: SerializeField] public float DefaultStepVolume { get; private set; } = 1f;
+        [field: SerializeField] public int DefaultPoolAudioSourcesSize { get; private set; } = 16;
     }
 }

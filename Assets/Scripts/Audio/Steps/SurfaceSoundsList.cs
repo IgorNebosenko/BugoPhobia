@@ -5,19 +5,19 @@ using UnityEngine;
 namespace ElectrumGames.Audio.Steps
 {
     [Serializable]
-    public class FlatSounds
+    public class SurfaceSounds
     {
-        [field: SerializeField] public FlatType FlatType { get; private set; }
+        [field: SerializeField] public SurfaceType SurfaceType { get; private set; }
         [SerializeField] private List<AudioClip> audioClips;
 
         public IReadOnlyList<AudioClip> AudioClips => audioClips;
     }
 
     [CreateAssetMenu(fileName = "FlatSoundsList", menuName = "Audio Config/FlatSoundsList")]
-    public class FlatSoundsList : ScriptableObject
+    public class SurfaceSoundsList : ScriptableObject
     {
-        [SerializeField] private List<FlatSounds> flatSounds;
+        [SerializeField] private List<SurfaceSounds> surfaceSounds;
 
-        public IReadOnlyList<FlatSounds> FlatSounds => flatSounds;
+        public IReadOnlyList<SurfaceSounds> SurfaceSounds => surfaceSounds;
     }
 }
