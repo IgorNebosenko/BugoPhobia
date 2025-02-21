@@ -9,7 +9,7 @@ namespace ElectrumGames.Core.Player.Movement
         private float _gravityVelocity;
 
         private float MaxSprintDuration => _playerConfig.RunDuration;
-        private bool CanSprint => _sprintDuration > 0;
+        public bool CanSprint => _sprintDuration > 0;
         
         private float _sprintDuration;
         private float _sprintCooldown;
@@ -18,7 +18,7 @@ namespace ElectrumGames.Core.Player.Movement
         private readonly Camera _camera;
         private readonly PlayerConfig _playerConfig;
         private readonly ConfigService _configService;
-
+        
         public PlayerMovementMotor(CharacterController characterController, Camera playerCamera, 
             PlayerConfig playerConfig, ConfigService configService)
         {

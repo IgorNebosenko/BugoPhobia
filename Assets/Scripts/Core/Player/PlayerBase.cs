@@ -112,7 +112,7 @@ namespace ElectrumGames.Core.Player
                 return;
 
             _motor.FixedSimulate(input, Time.fixedDeltaTime);
-            _stepsHandler.FixedSimulate(input, Time.fixedTime);
+            _stepsHandler.FixedSimulate(input, Time.fixedDeltaTime);
             PlayerUpdate();
             OnInteractionSimulate(Time.fixedDeltaTime);
         }
@@ -187,7 +187,9 @@ namespace ElectrumGames.Core.Player
             _stepsHandler = new StepsHandler(playerConfig, 
                 container.Resolve<SoundsConfig>(),
                 container.Resolve<AudioSourcesPool>(),
-                container.Resolve<SurfaceSoundsList>());
+                container.Resolve<SurfaceSoundsList>(),
+                _motor,
+                transform);
             
             _cameraLifter = new CameraLifter(playerConfig, headBob, stayCameraTransform.localPosition,
                 sitCameraTransform.localPosition);
