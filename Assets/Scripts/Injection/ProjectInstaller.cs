@@ -38,7 +38,6 @@ public class ProjectInstaller : MonoInstaller
     [SerializeField] private FpsConfig androidFpsConfig;
     [Space]
     [SerializeField] private MissionsNames missionsNames;
-    [FormerlySerializedAs("flatSoundsList")]
     [Space]
     [SerializeField] private SurfaceSoundsList surfaceSoundsList;
     [SerializeField] private SoundsConfig soundsConfig;
