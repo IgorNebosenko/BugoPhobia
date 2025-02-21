@@ -1,3 +1,4 @@
+using ElectrumGames.Audio.Steps;
 using ElectrumGames.Configs;
 using ElectrumGames.Core.Environment.Configs;
 using ElectrumGames.Core.Ghost;
@@ -36,6 +37,9 @@ public class ProjectInstaller : MonoInstaller
     [SerializeField] private FpsConfig androidFpsConfig;
     [Space]
     [SerializeField] private MissionsNames missionsNames;
+    [Space]
+    [SerializeField] private FlatSoundsList flatSoundsList;
+    [SerializeField] private SoundsConfig soundsConfig;
     
     public override void InstallBindings()
     {
@@ -67,6 +71,9 @@ public class ProjectInstaller : MonoInstaller
         Container.BindInstance(androidFpsConfig).AsSingle();
 #endif
         Container.BindInstance(missionsNames).AsSingle();
+
+        Container.BindInstance(flatSoundsList).AsSingle();
+        Container.BindInstance(soundsConfig).AsSingle();
 
         Container.Bind<JournalManager>().AsSingle().NonLazy();
 
