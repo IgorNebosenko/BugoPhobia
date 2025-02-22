@@ -76,7 +76,7 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
 
         public void FixedSimulate()
         {
-            if (_isHunt && !_isSafeTime)
+            if (_isHunt && !_isSafeTime && HasFootSteps)
                 _ghostController.GhostStepsHandler.Simulate(Time.fixedDeltaTime, _ghostController.NavmeshSpeed);
             
             if (IsInterrupt || !_missionPlayersHandler.IsAnyPlayerInHouse)
