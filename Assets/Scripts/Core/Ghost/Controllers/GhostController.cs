@@ -29,6 +29,7 @@ namespace ElectrumGames.Core.Ghost.Controllers
         
         public IReadOnlyList<Room> Rooms => _rooms;
         public float NavmeshRemainingDistance => navmeshAgent.remainingDistance;
+        public float NavmeshSpeed => navmeshAgent.speed;
 
         private IReadOnlyList<Room> _rooms;
 

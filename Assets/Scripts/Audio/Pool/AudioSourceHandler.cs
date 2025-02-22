@@ -30,5 +30,10 @@ namespace ElectrumGames.Audio.Pool
             
             _audioSourcesPool.Despawn(this);
         }
+
+        public void SetVolume(float volume)
+        {
+            audioSource.volume = volume;
+        }
     }
 }

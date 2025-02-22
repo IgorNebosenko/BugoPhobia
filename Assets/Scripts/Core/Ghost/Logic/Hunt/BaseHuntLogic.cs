@@ -48,6 +48,7 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
 
         public virtual float ChanceThrowItem => 0.5f;
         public virtual float ChanceTouchDoor => 0.5f;
+        public virtual bool HasFootSteps => true;
 
         public event Action HuntStarted;
         public event Action HuntEnded;
@@ -75,6 +76,9 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
 
         public void FixedSimulate()
         {
+            if (_isHunt && !_isSafeTime)
+                _ghostController.GhostStepsHandler.Simulate(Time.fixedDeltaTime, _ghostController.NavmeshSpeed);
+            
             if (IsInterrupt || !_missionPlayersHandler.IsAnyPlayerInHouse)
             {
                 if (_isHunt)
@@ -187,6 +191,7 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
             try
             {
                 var timer = Time.fixedTime;
+                var previousFrame = Time.fixedTime;
 
                 var isMoving = false;
                 const float distanceTolerance = 0.1f;

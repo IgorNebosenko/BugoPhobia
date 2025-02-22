@@ -57,7 +57,8 @@ namespace ElectrumGames.Core.Player.Movement
                         var clip = _soundsList.SurfaceSounds.
                             Where(x => x.SurfaceType == definition.SurfaceType).PickRandom();
                         
-                        _sourcesPool.Spawn(definition.transform.position, clip.AudioClips.PickRandom());
+                        _sourcesPool.Spawn(definition.transform.position, clip.AudioClips.PickRandom(), 
+                            _soundsConfig.DefaultPlayerStepVolume);
                     }
                 }
             }

@@ -32,7 +32,7 @@ namespace ElectrumGames.Audio.Pool
             return handler;
         }
 
-        public AudioSourceHandler Spawn(Vector3 position, AudioClip clip)
+        public AudioSourceHandler Spawn(Vector3 position, AudioClip clip, float volume)
         {
             AudioSourceHandler handler;
             
@@ -41,6 +41,7 @@ namespace ElectrumGames.Audio.Pool
                 handler = _audioSourceHandlers.PickRandom();
                 _audioSourceHandlers.Remove(handler);
                 handler.gameObject.SetActive(true);
+                handler.SetVolume(volume);
                 
                 handler.Play(position, this, clip);
             }
@@ -48,6 +49,7 @@ namespace ElectrumGames.Audio.Pool
             {
                 handler = CreateNewHandler();
                 handler.gameObject.SetActive(true);
+                handler.SetVolume(volume);
                 
                 handler.Play(position, this, clip);
             }

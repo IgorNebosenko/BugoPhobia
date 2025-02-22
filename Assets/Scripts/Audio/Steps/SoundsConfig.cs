@@ -7,11 +7,10 @@ namespace ElectrumGames.Audio.Steps
     {
         [field: SerializeField] public float FrequencyStepsPlayer { get; private set; } = 0.75f;
         [field: SerializeField] public float FrequencyStepsGhost { get; private set; } = 0.75f;
-        [field: Space]
-        [field: SerializeField] public AnimationCurve CurvePlayerSteps { get; private set; }
-        [field: SerializeField] public AnimationCurve CurveGhostSteps { get; private set; }
         [field: Space] 
-        [field: SerializeField] public float DefaultStepVolume { get; private set; } = 1f;
+        [field: SerializeField] public float DefaultPlayerStepVolume { get; private set; } = 0.35f;
+        [field: SerializeField] public float DefaultGhostStepVolume { get; private set; } = 1f;
+        [field: Space]
         [field: SerializeField] public int DefaultPoolAudioSourcesSize { get; private set; } = 16;
     }
 }

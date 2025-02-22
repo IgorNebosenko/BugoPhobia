@@ -39,7 +39,8 @@ namespace ElectrumGames.Core.Ghost
                         var clip = _surfaceSoundsList.SurfaceSounds.
                             Where(x => x.SurfaceType == definition.SurfaceType).PickRandom();
                         
-                        _audioSourcesPool.Spawn(definition.transform.position, clip.AudioClips.PickRandom());
+                        _audioSourcesPool.Spawn(definition.transform.position, clip.AudioClips.PickRandom(), 
+                            _soundsConfig.DefaultGhostStepVolume);
                     }
                 }
             }
