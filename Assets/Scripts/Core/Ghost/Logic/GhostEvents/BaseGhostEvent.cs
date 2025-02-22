@@ -353,7 +353,7 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
                                                     _ghostActivityData.MaxGhostSpeed);
             _ghostController.MoveTo(point);
             
-            if (HasFootSteps)
+            if (HasFootSteps) //This method call every fixed update
                 _ghostController.GhostStepsHandler.Simulate(Time.fixedDeltaTime, _ghostController.NavmeshSpeed);
         }
     }
