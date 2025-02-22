@@ -23,9 +23,6 @@ namespace ElectrumGames.Core.Ghost.Controllers
         [field: SerializeField] public GhostAppearAura GhostHuntAura { get; private set; }
 
         [SerializeField] private float sphereRoomCastRadius = 0.5f;
-        
-        [field: Space]
-        [field: SerializeField] public GhostStepsHandler GhostStepsHandler { get; private set; }
 
         private Collider[] _colliders = new Collider[CollidersCount];
         private const int CollidersCount = 16;

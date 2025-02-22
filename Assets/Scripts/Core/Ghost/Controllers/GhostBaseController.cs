@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using ElectrumGames.Audio.Pool;
+using ElectrumGames.Audio.Steps;
 using ElectrumGames.CommonInterfaces;
 using ElectrumGames.Core.Common;
 using ElectrumGames.Core.Ghost.Logic;
@@ -10,14 +12,19 @@ using ElectrumGames.Core.Journal;
 using ElectrumGames.Core.Missions;
 using ElectrumGames.Extensions;
 using UnityEngine;
+using Zenject;
 
 namespace ElectrumGames.Core.Ghost.Controllers
 {
     public abstract class GhostBaseController : MonoBehaviour, IHaveNetId, IHaveVisibility
     {
         [SerializeField] protected Transform modelRoot;
+        
+        [field: Space]
+        [field: SerializeField] public GhostStepsHandler GhostStepsHandler { get; protected set; }
 
         private GhostModelController _ghostModelController;
+        protected DiContainer _container;
         
         public int NetId { get; private set; }
         public int OwnerId { get; private set; }
@@ -43,7 +50,8 @@ namespace ElectrumGames.Core.Ghost.Controllers
         protected IFuseBoxInteractable fuseBox;
         
         public void Init(GhostEnvironmentHandler environmentHandler, GhostModelsList modelsList, 
-            EvidenceController evidenceController, JournalManager journalManager, IFuseBoxInteractable fuseBox)
+            EvidenceController evidenceController, JournalManager journalManager, IFuseBoxInteractable fuseBox, 
+            DiContainer container)
         {
             GhostEnvironmentHandler = environmentHandler;
             GhostBehaviourController = new GhostBehaviourController(GhostEnvironmentHandler);
@@ -52,6 +60,8 @@ namespace ElectrumGames.Core.Ghost.Controllers
             GhostInteractionController = new GhostInteractionController();
 
             this.fuseBox = fuseBox;
+
+            _container = container;
 
             _ghostControllers = new IGhostController[]
             {
@@ -69,6 +79,11 @@ namespace ElectrumGames.Core.Ghost.Controllers
                 : modelsList.FemaleModels.PickRandom();
 
             _ghostModelController = Instantiate(ghostModel.GhostModelController, Vector3.zero, Quaternion.identity, transform);
+            
+            GhostStepsHandler.Init(
+                _container.Resolve<SoundsConfig>(),
+                _container.Resolve<AudioSourcesPool>(),
+                _container.Resolve<SurfaceSoundsList>());
         }
 
         private void FixedUpdate()

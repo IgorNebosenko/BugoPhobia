@@ -85,7 +85,8 @@ namespace ElectrumGames.Core.Ghost
             var ghost = Instantiate(ghostControllerTemplate, transform);
             _netIdFactory.Initialize(ghost);
             
-            ghost.Init(_ghostEnvironmentHandler, _modelsList, _evidenceController, _journalManager, _fuseBoxInteractable);
+            ghost.Init(_ghostEnvironmentHandler, _modelsList, _evidenceController, _journalManager, _fuseBoxInteractable,
+                _container);
             ghost.SetGhostAnimationSpeed(0f);
             ghost.SetGhostVisibility(false);
             ghost.SetRoomsData(rooms);
