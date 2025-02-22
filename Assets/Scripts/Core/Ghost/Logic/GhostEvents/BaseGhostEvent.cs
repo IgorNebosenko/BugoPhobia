@@ -352,6 +352,9 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
             _ghostController.SetGhostAnimationSpeed(_ghostActivityData.DefaultNonHuntSpeed /
                                                     _ghostActivityData.MaxGhostSpeed);
             _ghostController.MoveTo(point);
+            
+            if (HasFootSteps)
+                _ghostController.GhostStepsHandler.Simulate(Time.fixedDeltaTime, _ghostController.NavmeshSpeed);
         }
     }
 }
