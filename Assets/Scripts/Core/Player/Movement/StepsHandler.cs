@@ -52,12 +52,12 @@ namespace ElectrumGames.Core.Player.Movement
                 if (Physics.Raycast(ray, out var hit, float.PositiveInfinity))
                 {
                     
-                    if (hit.collider.TryGetComponent<SurfaceSoundDefiner>(out var defenition))
+                    if (hit.collider.TryGetComponent<SurfaceSoundDefiner>(out var definition))
                     {
                         var clip = _soundsList.SurfaceSounds.
-                            Where(x => x.SurfaceType == defenition.SurfaceType).PickRandom();
+                            Where(x => x.SurfaceType == definition.SurfaceType).PickRandom();
                         
-                        _sourcesPool.Spawn(defenition.transform.position, clip.AudioClips.PickRandom());
+                        _sourcesPool.Spawn(definition.transform.position, clip.AudioClips.PickRandom());
                     }
                 }
             }
