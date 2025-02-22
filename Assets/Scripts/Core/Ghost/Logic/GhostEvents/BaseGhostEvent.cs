@@ -39,6 +39,8 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
         private bool _isGhostEvent;
 
         private bool _isDecreaseSanityByTouch;
+
+        public virtual bool HasFootSteps => true;
         
         public bool IsInterrupt { get; set; }
 
