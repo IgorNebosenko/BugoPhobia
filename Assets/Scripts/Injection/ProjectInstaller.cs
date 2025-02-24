@@ -1,3 +1,4 @@
+using ElectrumGames.Audio.Ghosts;
 using ElectrumGames.Audio.Steps;
 using ElectrumGames.Configs;
 using ElectrumGames.Core.Environment.Configs;
@@ -41,6 +42,7 @@ public class ProjectInstaller : MonoInstaller
     [Space]
     [SerializeField] private SurfaceSoundsList surfaceSoundsList;
     [SerializeField] private SoundsConfig soundsConfig;
+    [SerializeField] private GhostHuntingSounds ghostHuntingSounds;
     
     public override void InstallBindings()
     {
@@ -75,6 +77,7 @@ public class ProjectInstaller : MonoInstaller
 
         Container.BindInstance(surfaceSoundsList).AsSingle();
         Container.BindInstance(soundsConfig).AsSingle();
+        Container.BindInstance(ghostHuntingSounds).AsSingle();
 
         Container.Bind<JournalManager>().AsSingle().NonLazy();
 
