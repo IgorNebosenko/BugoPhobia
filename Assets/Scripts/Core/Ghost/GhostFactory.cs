@@ -127,8 +127,8 @@ namespace ElectrumGames.Core.Ghost
             
             switch (ghostType)
             {
-                case GhostType.Blaze:
-                    return new BlazeNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                case GhostType.Efreet:
+                    return new EfreetNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int)_missionDataHandler.MissionDifficulty], activityData, _ghostEmfZonePool, _emfData);
                 case GhostType.Yrka:
                     return new YrkaNonHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
@@ -197,8 +197,8 @@ namespace ElectrumGames.Core.Ghost
             
             switch (ghostType)
             {
-                case GhostType.Blaze:
-                    return new BlazeGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                case GhostType.Efreet:
+                    return new EfreetGhostEventLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int)_missionDataHandler.MissionDifficulty],
                         activityData, _ghostEmfZonePool, _emfData, _missionPlayersHandler);
                 case GhostType.Yrka:
@@ -286,8 +286,8 @@ namespace ElectrumGames.Core.Ghost
             
             switch (type)
             {
-                case GhostType.Blaze:
-                    return new BlazeHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
+                case GhostType.Efreet:
+                    return new EfreetHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int)_missionDataHandler.MissionDifficulty], activityData, 
                         _missionPlayersHandler, _flickConfig, _huntPoints);
                 case GhostType.Yrka:
@@ -375,8 +375,8 @@ namespace ElectrumGames.Core.Ghost
             
             switch (ghostType)
             {
-                case GhostType.Blaze:
-                    return new BlazeAbility();
+                case GhostType.Efreet:
+                    return new EfreetAbility();
                 case GhostType.Yrka:
                     return new YrkaAbility();
                 case GhostType.Wraith:

@@ -2,7 +2,7 @@ namespace ElectrumGames.GlobalEnums
 {
     public enum GhostType
     {
-        Blaze,
+        Efreet,
         Yrka,
         Wraith,
         Mare,

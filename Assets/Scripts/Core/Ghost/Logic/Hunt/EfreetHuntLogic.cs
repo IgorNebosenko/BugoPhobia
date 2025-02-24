@@ -12,7 +12,7 @@ using Debug = UnityEngine.Debug;
 
 namespace ElectrumGames.Core.Ghost.Logic.Hunt
 {
-    public class BlazeHuntLogic : BaseHuntLogic
+    public class EfreetHuntLogic : BaseHuntLogic
     {
         private bool _isMovingStopped;
 
@@ -27,7 +27,7 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
         private readonly GhostDifficultyData _ghostDifficultyData;
         private readonly HuntPoints _huntPoints;
         
-        public BlazeHuntLogic(GhostController ghostController, GhostDifficultyData ghostDifficultyData, 
+        public EfreetHuntLogic(GhostController ghostController, GhostDifficultyData ghostDifficultyData, 
             GhostActivityData activityData, MissionPlayersHandler missionPlayersHandler, GhostFlickConfig flickConfig,
             HuntPoints huntPoints) : 
             base(ghostController, ghostDifficultyData, activityData, missionPlayersHandler, flickConfig, huntPoints)
