@@ -22,6 +22,7 @@ namespace ElectrumGames.Core.Ghost.Controllers
         
         [field: Space]
         [field: SerializeField] public GhostStepsHandler GhostStepsHandler { get; protected set; }
+        [field: SerializeField] public AudioSource GhostAudioSource { get; protected set; }
 
         private GhostModelController _ghostModelController;
         protected DiContainer _container;

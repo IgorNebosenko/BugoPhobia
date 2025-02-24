@@ -15,6 +15,7 @@ namespace ElectrumGames.Core.Ghost.Controllers
 {
     public class GhostController : GhostBaseController
     {
+        [Space]
         [SerializeField] private NavMeshAgent navmeshAgent;
         [field: Space]
         [field: SerializeField] public InteractionAura InteractionAura { get; private set; }

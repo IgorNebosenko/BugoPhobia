@@ -625,6 +625,7 @@ GameObject:
   - component: {fileID: -7591501530740543211}
   - component: {fileID: 8057804841556221538}
   - component: {fileID: 4414218312698805257}
+  - component: {fileID: 1403508128520298470}
   m_Layer: 0
   m_Name: GhostTemplate
   m_TagString: Untagged
@@ -664,13 +665,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modelRoot: {fileID: 4632784405828909184}
+  <GhostStepsHandler>k__BackingField: {fileID: 4414218312698805257}
+  <GhostAudioSource>k__BackingField: {fileID: 1403508128520298470}
   navmeshAgent: {fileID: 8057804841556221538}
   <InteractionAura>k__BackingField: {fileID: 1731156326520605473}
   <GhostEventAura>k__BackingField: {fileID: 8875337757896709072}
   <ContactAura>k__BackingField: {fileID: 1713490269747958503}
   <GhostHuntAura>k__BackingField: {fileID: 5184558765853940452}
   sphereRoomCastRadius: 0.5
-  <GhostStepsHandler>k__BackingField: {fileID: 4414218312698805257}
 --- !u!195 &8057804841556221538
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -705,3 +707,127 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c792737de1a41dca99c8fc74bd8b31a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1403508128520298470
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8528196984003094281}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 6389593638933097769, guid: e4ddae662bf4c1b489593541318abb74, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 15
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.06666667
+      value: 1
+      inSlope: -0.9951138
+      outSlope: -0.9951138
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.2813207
+      value: 0.7175598
+      inSlope: -1.4413117
+      outSlope: -1.4413117
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.23993327
+      outWeight: 0.25001964
+    - serializedVersion: 3
+      time: 0.47829083
+      value: 0.47772217
+      inSlope: -0.9378748
+      outSlope: -0.9378748
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.66333824
+      value: 0.31814575
+      inSlope: -0.9748366
+      outSlope: -0.9748366
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.16135144
+    - serializedVersion: 3
+      time: 1
+      value: 0.22932535
+      inSlope: -0.06669331
+      outSlope: -0.06669331
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
