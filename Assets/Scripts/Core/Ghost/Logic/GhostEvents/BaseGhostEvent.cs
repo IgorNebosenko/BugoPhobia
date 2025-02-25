@@ -158,7 +158,7 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
 
         protected virtual GhostAppearType SelectAppearType()
         {
-            return (GhostAppearType) Random.Range(0, (int) GhostAppearType.Transparent);
+            return (GhostAppearType) Random.Range(0, (int) GhostAppearType.Transparent + 1);
         }
 
         protected virtual bool IsGhostByCloud()
