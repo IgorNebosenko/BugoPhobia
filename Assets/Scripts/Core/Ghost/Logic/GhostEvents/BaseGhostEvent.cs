@@ -125,6 +125,9 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
                 {
                     if (_isDecreaseSanityByTouch)
                     {
+                        Observable.Timer(TimeSpan.FromSeconds(1f)).Subscribe(_ =>
+                            _ghostController.GhostHuntSoundsHandler.PlayRandomDisappearSound());
+                        
                         _ghostController.ContactAura.PlayersInAura[0].Sanity.GetGhostEvent(
                             _ghostDifficultyData.MinGhostEventDrainSanity,
                             _ghostDifficultyData.MaxGhostEventDrainSanity, _ghostController.NetId);
@@ -337,7 +340,7 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
         {
             StopGhostEvent();
             CreateGhostEventZone();
-
+            
             _ghostController.GhostHuntSoundsHandler.Stop();
                                 
             var ghostRoom = _ghostController.GetCurrentRoom();
@@ -353,11 +356,11 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
             _ghostController.SetGhostVisibility(false);
             _ghostController.SetEnabledLogic(GhostLogicSelector.All);
             
+            _ghostController.GhostHuntSoundsHandler.Stop();
+            
             _chaseProcess?.Dispose();
             _ghostEventDisposable?.Dispose();
             _appearAndChaseProcess?.Dispose();
-            
-            _ghostController.GhostHuntSoundsHandler.Stop();
         }
         
         public void MoveToPoint(Vector3 point)
