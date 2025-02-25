@@ -625,6 +625,7 @@ GameObject:
   - component: {fileID: -7591501530740543211}
   - component: {fileID: 8057804841556221538}
   - component: {fileID: 4414218312698805257}
+  - component: {fileID: 338484264250780473}
   - component: {fileID: 1403508128520298470}
   m_Layer: 0
   m_Name: GhostTemplate
@@ -666,7 +667,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modelRoot: {fileID: 4632784405828909184}
   <GhostStepsHandler>k__BackingField: {fileID: 4414218312698805257}
-  <GhostAudioSource>k__BackingField: {fileID: 1403508128520298470}
+  <GhostHuntSoundsHandler>k__BackingField: {fileID: 338484264250780473}
   navmeshAgent: {fileID: 8057804841556221538}
   <InteractionAura>k__BackingField: {fileID: 1731156326520605473}
   <GhostEventAura>k__BackingField: {fileID: 8875337757896709072}
@@ -707,6 +708,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c792737de1a41dca99c8fc74bd8b31a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &338484264250780473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8528196984003094281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b167e371f6347c7ae4063d643199600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 1403508128520298470}
 --- !u!82 &1403508128520298470
 AudioSource:
   m_ObjectHideFlags: 0

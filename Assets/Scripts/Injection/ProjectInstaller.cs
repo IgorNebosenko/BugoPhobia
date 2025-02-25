@@ -43,6 +43,7 @@ public class ProjectInstaller : MonoInstaller
     [SerializeField] private SurfaceSoundsList surfaceSoundsList;
     [SerializeField] private SoundsConfig soundsConfig;
     [SerializeField] private GhostHuntingSounds ghostHuntingSounds;
+    [SerializeField] private GhostAppearSounds ghostAppearSounds;
     
     public override void InstallBindings()
     {
@@ -78,6 +79,7 @@ public class ProjectInstaller : MonoInstaller
         Container.BindInstance(surfaceSoundsList).AsSingle();
         Container.BindInstance(soundsConfig).AsSingle();
         Container.BindInstance(ghostHuntingSounds).AsSingle();
+        Container.BindInstance(ghostAppearSounds).AsSingle();
 
         Container.Bind<JournalManager>().AsSingle().NonLazy();
 
