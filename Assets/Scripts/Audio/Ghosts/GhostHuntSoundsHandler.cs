@@ -14,22 +14,22 @@ namespace ElectrumGames.Audio.Ghosts
         private bool _isMale;
         
         private GhostAppearSounds _ghostAppearSounds;
-        private GhostHuntSounds _ghostHuntSounds;
+        private GhostHuntingSoundElement _soundElement;
         
         public event Action PlayFinished;
         private bool _lastPlayState;
-
-        [Inject]
-        private void Construct(GhostHuntingSounds ghostHuntingSounds, GhostAppearSounds ghostAppearSounds)
+        
+        public void Construct(GhostHuntingSounds ghostHuntingSounds, GhostAppearSounds ghostAppearSounds)
         {
             _ghostHuntingSounds = ghostHuntingSounds;
             _ghostAppearSounds = ghostAppearSounds;
         }
 
-        public void Init(GhostHuntSounds ghostHuntSounds, bool isMale)
+        public void Init(bool isMale)
         {
-            _ghostHuntSounds = ghostHuntSounds;
             _isMale = isMale;
+            _soundElement = _ghostHuntingSounds.Elements.Where(x => isMale ? x.CanUseMale : x.CanUseFemale)
+                .PickRandom();
         }
 
         private void Update()

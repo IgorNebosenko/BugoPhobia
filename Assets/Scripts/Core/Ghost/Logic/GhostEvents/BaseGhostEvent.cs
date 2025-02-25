@@ -209,6 +209,8 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
             _ghostController.IsStopped(true);
             _ghostController.transform.LookAt(targetPlayer.Position);
             
+            _ghostController.GhostHuntSoundsHandler.PlayRandomAppearSound();
+            
             _ghostEventDisposable = Observable.Timer(TimeSpan.FromSeconds(
                     Random.Range(_ghostDifficultyData.MinStayGhostEventTime,
                         _ghostDifficultyData.MaxStayGhostEventTime)))
@@ -255,6 +257,8 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
             _ghostController.SetGhostVisibility(true); // Todo Switch by appear type
             _ghostController.IsStopped(true);
             _ghostController.transform.LookAt(targetPlayer.Position);
+            
+            _ghostController.GhostHuntSoundsHandler.PlayRandomSingingSound();
             
             _ghostEventDisposable = Observable.Timer(TimeSpan.FromSeconds(
                     Random.Range(_ghostDifficultyData.MinSingingGhostEventTime,

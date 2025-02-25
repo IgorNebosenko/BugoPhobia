@@ -86,6 +86,11 @@ namespace ElectrumGames.Core.Ghost.Controllers
                 _container.Resolve<SoundsConfig>(),
                 _container.Resolve<AudioSourcesPool>(),
                 _container.Resolve<SurfaceSoundsList>());
+            
+            GhostHuntSoundsHandler.Construct(
+                _container.Resolve<GhostHuntingSounds>(), 
+                _container.Resolve<GhostAppearSounds>());
+            GhostHuntSoundsHandler.Init(environmentHandler.GhostVariables.isMale);
         }
 
         private void FixedUpdate()
