@@ -232,6 +232,8 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
             _ghostController.transform.LookAt(targetPlayer.Position);
 
             MoveToPoint(targetPlayer.Position);
+            
+            _ghostController.GhostHuntSoundsHandler.StartGhostSounds();
 
             _chaseProcess = Observable.EveryFixedUpdate()
                 .Subscribe(_ => MoveToPoint(targetPlayer.Position));
@@ -279,10 +281,14 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
             _ghostController.SetGhostVisibility(true); // Todo Switch by appear type
             _ghostController.IsStopped(true);
             _ghostController.transform.LookAt(targetPlayer.Position);
+            
+            _ghostController.GhostHuntSoundsHandler.PlayRandomAppearSound();
 
             _ghostEventDisposable = Observable.Timer(TimeSpan.FromSeconds(_ghostDifficultyData.SafeHuntTime)).Subscribe(
                 _ =>
                 {
+                    _ghostController.GhostHuntSoundsHandler.StartGhostSounds();
+                    
                     _ghostController.IsStopped(false);
 
                     _chaseProcess = Observable.EveryUpdate()
@@ -331,6 +337,8 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
         {
             StopGhostEvent();
             CreateGhostEventZone();
+
+            _ghostController.GhostHuntSoundsHandler.Stop();
                                 
             var ghostRoom = _ghostController.GetCurrentRoom();
             ghostRoom.LightRoomHandler.RedLight = false;
@@ -348,6 +356,8 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
             _chaseProcess?.Dispose();
             _ghostEventDisposable?.Dispose();
             _appearAndChaseProcess?.Dispose();
+            
+            _ghostController.GhostHuntSoundsHandler.Stop();
         }
         
         public void MoveToPoint(Vector3 point)
