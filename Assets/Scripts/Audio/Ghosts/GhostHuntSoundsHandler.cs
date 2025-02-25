@@ -97,6 +97,9 @@ namespace ElectrumGames.Audio.Ghosts
 
         private void GhostSoundsProcess(long _)
         {
+            if (audioSource.isPlaying)
+                return;
+            
             if (_lastGhostSoundsPlayingState)
             {
                 _lastGhostSoundsPlayingState = false;

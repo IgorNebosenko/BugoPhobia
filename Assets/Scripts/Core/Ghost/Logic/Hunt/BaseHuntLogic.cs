@@ -96,6 +96,8 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
 
                 if (CanHuntBySanity() && CanHuntByChanceHunt())
                 {
+                    _ghostController.GhostHuntSoundsHandler.StartGhostSounds();
+                    
                     if (_ghostController.GhostHuntAura.PlayersInAura.Count != 0)
                     {
                         for (var i = 0; i < _ghostController.GhostHuntAura.PlayersInAura.Count; i++)
@@ -500,6 +502,8 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
             
             _huntCancellationTokenSource?.Cancel();
             _flickCancellationTokenSource?.Cancel();
+            
+            _ghostController.GhostHuntSoundsHandler.Stop();
             
             HuntEnded?.Invoke();
         }
