@@ -520,6 +520,19 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
             
             _ghostController.GhostHuntSoundsHandler.Stop();
             
+            if (_ghostController.GhostEventAura.PlayersInAura.Count > 0)
+            {
+                for (var i = 0; i < _ghostController.GhostEventAura.PlayersInAura.Count; i++)
+                {
+                    if (_ghostController.GhostEventAura.PlayersInAura[i].Inventory.Items[
+                            _ghostController.GhostEventAura.PlayersInAura[i].InventoryIndexHandler.CurrentIndex] is
+                        IGhostHuntingInteractableExit ghostHuntingInteractableExit)
+                    {
+                        ghostHuntingInteractableExit.OnGhostInteractionExit();
+                    }
+                }
+            }
+            
             HuntEnded?.Invoke();
         }
     }
