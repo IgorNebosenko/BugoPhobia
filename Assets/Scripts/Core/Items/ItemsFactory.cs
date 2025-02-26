@@ -9,9 +9,9 @@ namespace ElectrumGames.Core.Items
 {
     public class ItemsFactory : MonoBehaviour, IHaveNetId
     {
+        private DiContainer _container;
         private NetIdFactory _netIdFactory;
         private ItemsConfig _itemsConfig;
-        private PlayerConfig _playerConfig;
         
         public int NetId { get; private set; }
         public int OwnerId { get; private set; }
@@ -22,11 +22,11 @@ namespace ElectrumGames.Core.Items
         }
         
         [Inject]
-        private void Construct(NetIdFactory netIdFactory, ItemsConfig itemsConfig, PlayerConfig playerConfig)
+        private void Construct(DiContainer container, NetIdFactory netIdFactory, ItemsConfig itemsConfig)
         {
+            _container = container;
             _netIdFactory = netIdFactory;
             _itemsConfig = itemsConfig;
-            _playerConfig = playerConfig;
 
             _netIdFactory.Initialize(this);
         }
@@ -38,7 +38,7 @@ namespace ElectrumGames.Core.Items
             var item = Instantiate(template, 
                 spawnPoint.Position, spawnPoint.Rotation, transform);
             _netIdFactory.Initialize(item);
-            item.Init(_playerConfig, this, id);
+            item.Init(_container, this, id);
             return item;
         }
     }

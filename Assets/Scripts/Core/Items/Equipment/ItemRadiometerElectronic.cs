@@ -1,5 +1,6 @@
 ﻿using System;
 using ElectrumGames.Core.Common;
+using ElectrumGames.Core.Environment;
 using ElectrumGames.Core.Rooms;
 using TMPro;
 using UniRx;
@@ -37,12 +38,20 @@ namespace ElectrumGames.Core.Items
         
         private Collider[] _colliders = new Collider[CollidersCount];
         private const int CollidersCount = 16;
+
+        private EnvironmentHandler _environmentHandler;
         
         public bool IsElectricityOn => _isOn;
 
         private void Start()
         {
             Observable.Interval(TimeSpan.FromSeconds(updateInterval)).Subscribe(UpdateAction).AddTo(this);
+        }
+
+        protected override void OnAfterInit()
+        {
+            Debug.Log("OnAfterInit");
+            _environmentHandler = container.Resolve<EnvironmentHandler>();
         }
 
         private void UpdateAction(long _)
@@ -52,6 +61,8 @@ namespace ElectrumGames.Core.Items
             
             var size = Physics.OverlapSphereNonAlloc(transform.position, radiusOverlapDetection, _colliders);
 
+            var isRoomFounded = false;
+            
             for (var i = 0; i < size; i++)
             {
                 if (_colliders[i].TryGetComponent<Room>(out var room))
@@ -67,8 +78,25 @@ namespace ElectrumGames.Core.Items
                     _lastValue = Random.Range(minRad, maxRad);
                     
                     DisplayRadiation(_lastValue);
+                    
+                    isRoomFounded = true;
                     break;
                 }
+            }
+
+            if (!isRoomFounded)
+            {
+                var minRad = _environmentHandler.OutDoorRadiation - differenceRadiation;
+                var maxRad = _environmentHandler.OutDoorRadiation + differenceRadiation;
+                    
+                if (minRad < 0)
+                    minRad = 0.001f;
+                if (maxRad > 9.999f)
+                    maxRad = 9.999f;
+                
+                _lastValue = Random.Range(minRad, maxRad);
+                    
+                DisplayRadiation(_lastValue);
             }
         }
 
@@ -126,7 +154,6 @@ namespace ElectrumGames.Core.Items
 
         public void OnGhostInteractionExit()
         {
-            Debug.Log("Exit!");
             _ghostInteractionOn = false;
             DisplayRadiation(_lastValue);
         }

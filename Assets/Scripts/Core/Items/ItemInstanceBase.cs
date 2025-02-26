@@ -3,6 +3,7 @@ using ElectrumGames.Configs;
 using ElectrumGames.Core.Items.Inventory;
 using ElectrumGames.GlobalEnums;
 using UnityEngine;
+using Zenject;
 
 namespace ElectrumGames.Core.Items
 {
@@ -15,6 +16,8 @@ namespace ElectrumGames.Core.Items
         private PlayerConfig _playerConfig;
         private ItemsFactory _itemsFactory;
         protected IInventory inventoryReference;
+
+        protected DiContainer container;
 
         public Vector3 LocalScale { get; private set; } = Vector3.one;//transform.localScale;
         
@@ -33,13 +36,21 @@ namespace ElectrumGames.Core.Items
             OwnerId = ownerId;
         }
 
-        public void Init(PlayerConfig playerConfig, ItemsFactory itemsFactory, int spawnerId)
+        public void Init(DiContainer container, ItemsFactory itemsFactory, int spawnerId)
         {
-            _playerConfig = playerConfig;
+            this.container = container;
+            
+            _playerConfig = this.container.Resolve<PlayerConfig>();
             _itemsFactory = itemsFactory;
             SpawnerId = spawnerId;
 
             LocalScale = transform.localScale;
+
+            OnAfterInit();
+        }
+
+        protected virtual void OnAfterInit()
+        {
         }
         
         public abstract void OnMainInteraction();
