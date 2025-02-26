@@ -61,6 +61,8 @@ namespace ElectrumGames.Core.Items
 
                     if (minRad < 0)
                         minRad = 0.001f;
+                    if (maxRad > 9.999f)
+                        maxRad = 9.999f;
 
                     _lastValue = Random.Range(minRad, maxRad);
                     
@@ -75,7 +77,11 @@ namespace ElectrumGames.Core.Items
             _isOn = !_isOn;
 
             if (!_isOn)
+            {
                 radiationText.text = textOff;
+                backgroundImage.color = colorLow;
+                _ghostInteractionOn = false;
+            }
             else
                 DisplayRadiation(0);
             
@@ -101,8 +107,6 @@ namespace ElectrumGames.Core.Items
                 backgroundImage.color = colorHigh;
                 onLight.color = colorHigh;
             }
-
-            onLight.enabled = Random.Range(0, 3) != 0;
         }
 
         public override void OnAlternativeInteraction()
@@ -112,11 +116,17 @@ namespace ElectrumGames.Core.Items
         public void OnGhostInteractionStay()
         {
             _ghostInteractionOn = true;
-            DisplayRadiation(Random.Range(0.001f, 9.999f));
+
+            if (_isOn)
+            {
+                DisplayRadiation(Random.Range(0.001f, 9.999f));
+                onLight.enabled = Random.Range(0, 3) != 0;
+            }
         }
 
         public void OnGhostInteractionExit()
         {
+            Debug.Log("Exit!");
             _ghostInteractionOn = false;
             DisplayRadiation(_lastValue);
         }
