@@ -334,6 +334,21 @@ namespace ElectrumGames.Core.Ghost.Logic.GhostEvents
 
                 _ghostController.GhostEventAura.ResetGhostInteractableExit();
             }
+
+            if (_ghostController.GhostEventAura.PlayersOutOfAura.Count > 0)
+            {
+                for (var i = 0; i < _ghostController.GhostEventAura.PlayersOutOfAura.Count; i++)
+                {
+                    if (_ghostController.GhostEventAura.PlayersOutOfAura[i].Inventory.Items[
+                            _ghostController.GhostEventAura.PlayersOutOfAura[i].InventoryIndexHandler.CurrentIndex] is
+                        IGhostHuntingInteractableExit ghostHuntingInteractableExit)
+                    {
+                        ghostHuntingInteractableExit.OnGhostInteractionExit();
+                    }
+                }
+                
+                _ghostController.GhostEventAura.ResetPlayerExit();
+            }
         }
 
         protected virtual void OnGhostEventEnded(long _)
