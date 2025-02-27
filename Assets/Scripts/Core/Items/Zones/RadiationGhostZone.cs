@@ -33,7 +33,6 @@ namespace ElectrumGames.Core.Items.Zones
 
         private IEnumerator AccumulateRadiation(float time, float targetValue)
         {
-            Debug.Log($"Accumulating radiation | Time: {time} | Target value: {targetValue}");
             var elapsedTime = 0f;
             
             var startRadiation = CurrentRadiation;
