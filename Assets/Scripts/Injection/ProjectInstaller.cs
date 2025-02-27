@@ -29,6 +29,7 @@ public class ProjectInstaller : MonoInstaller
     [SerializeField] private GhostFlickConfig ghostFlickConfig;
     [Space]
     [SerializeField] private WeatherConfig weatherConfig;
+    [SerializeField] private TemperatureConfig temperatureConfig;
     [Space]
     [SerializeField] private PlayerConfig playerConfig;
     [SerializeField] private UserConfig userConfig;
@@ -60,6 +61,7 @@ public class ProjectInstaller : MonoInstaller
         Container.BindInstance(defaultMissionItems).AsSingle();
         Container.BindInstance(ghostFlickConfig).AsSingle();
         Container.BindInstance(weatherConfig).AsSingle();
+        Container.BindInstance(temperatureConfig).AsSingle();
         
         Container.BindInstance(playerConfig).AsSingle();
         
