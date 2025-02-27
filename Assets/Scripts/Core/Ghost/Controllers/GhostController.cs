@@ -7,6 +7,7 @@ using ElectrumGames.Core.Ghost.Logic.Abilities;
 using ElectrumGames.Core.Ghost.Logic.GhostEvents;
 using ElectrumGames.Core.Ghost.Logic.Hunt;
 using ElectrumGames.Core.Ghost.Logic.NonHunt;
+using ElectrumGames.Core.Missions;
 using ElectrumGames.Core.Rooms;
 using UnityEngine;
 using UnityEngine.AI;
@@ -35,6 +36,13 @@ namespace ElectrumGames.Core.Ghost.Controllers
         public float NavmeshSpeed => navmeshAgent.speed;
 
         private IReadOnlyList<Room> _rooms;
+
+        private void Start()
+        {
+            RadiationGhostZone.Init(
+                _container.Resolve<EvidenceController>(), 
+                _container.Resolve<RadiationConfig>());
+        }
 
         private void FixedUpdate()
         {

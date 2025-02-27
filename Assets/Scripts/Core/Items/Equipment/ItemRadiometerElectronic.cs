@@ -61,7 +61,7 @@ namespace ElectrumGames.Core.Items
             
             var size = Physics.OverlapSphereNonAlloc(transform.position, radiusOverlapDetection, _colliders);
 
-            var isRoomFounded = false;
+            var isTargetFounded = false;
             
             for (var i = 0; i < size; i++)
             {
@@ -79,12 +79,12 @@ namespace ElectrumGames.Core.Items
                     
                     DisplayRadiation(_lastValue);
                     
-                    isRoomFounded = true;
+                    isTargetFounded = true;
                     break;
                 }
             }
 
-            if (!isRoomFounded)
+            if (!isTargetFounded)
             {
                 var minRad = _environmentHandler.OutDoorRadiation - _radiationConfig.DifferenceRadiation;
                 var maxRad = _environmentHandler.OutDoorRadiation + _radiationConfig.DifferenceRadiation;
