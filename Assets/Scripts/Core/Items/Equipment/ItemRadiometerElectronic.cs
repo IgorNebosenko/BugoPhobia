@@ -2,6 +2,7 @@
 using ElectrumGames.Core.Common;
 using ElectrumGames.Core.Environment;
 using ElectrumGames.Core.Ghost.Configs;
+using ElectrumGames.Core.Items.Zones;
 using ElectrumGames.Core.Rooms;
 using TMPro;
 using UniRx;
@@ -20,6 +21,7 @@ namespace ElectrumGames.Core.Items
         [Space]
         [SerializeField] private string textOff = "OFF";
         [SerializeField] private string textOnFormat = "{0:0.000} mR/h";
+        [SerializeField] private float updateInterval = 10f;
         [Space]
         [SerializeField] private Color colorLow;
         [SerializeField] private Color colorMedium;
@@ -42,7 +44,7 @@ namespace ElectrumGames.Core.Items
 
         private void Start()
         {
-            Observable.Interval(TimeSpan.FromSeconds(_radiationConfig.UpdateInterval)).
+            Observable.Interval(TimeSpan.FromSeconds(updateInterval)).
                 Subscribe(UpdateAction).AddTo(this);
         }
 
@@ -62,13 +64,13 @@ namespace ElectrumGames.Core.Items
             var size = Physics.OverlapSphereNonAlloc(transform.position, radiusOverlapDetection, _colliders);
 
             var isTargetFounded = false;
-            
+
             for (var i = 0; i < size; i++)
             {
-                if (_colliders[i].TryGetComponent<Room>(out var room))
+                if (_colliders[i].TryGetComponent<RadiationGhostZone>(out var radiationGhostZone))
                 {
-                    var minRad = room.RadiationRoomHandler.Radiation - _radiationConfig.DifferenceRadiation;
-                    var maxRad = room.RadiationRoomHandler.Radiation + _radiationConfig.DifferenceRadiation;
+                    var minRad = radiationGhostZone.CurrentRadiation - _radiationConfig.DifferenceRadiation;
+                    var maxRad = radiationGhostZone.CurrentRadiation + _radiationConfig.DifferenceRadiation;
 
                     if (minRad <= 0)
                         minRad = _radiationConfig.MinRadiationValue;
@@ -78,9 +80,32 @@ namespace ElectrumGames.Core.Items
                     _lastValue = Random.Range(minRad, maxRad);
                     
                     DisplayRadiation(_lastValue);
-                    
                     isTargetFounded = true;
                     break;
+                }
+            }
+
+            if (!isTargetFounded)
+            {
+                for (var i = 0; i < size; i++)
+                {
+                    if (_colliders[i].TryGetComponent<Room>(out var room))
+                    {
+                        var minRad = room.RadiationRoomHandler.Radiation - _radiationConfig.DifferenceRadiation;
+                        var maxRad = room.RadiationRoomHandler.Radiation + _radiationConfig.DifferenceRadiation;
+
+                        if (minRad <= 0)
+                            minRad = _radiationConfig.MinRadiationValue;
+                        if (maxRad > _radiationConfig.MaxRadiationValue)
+                            maxRad = _radiationConfig.MaxRadiationValue;
+
+                        _lastValue = Random.Range(minRad, maxRad);
+
+                        DisplayRadiation(_lastValue);
+
+                        isTargetFounded = true;
+                        break;
+                    }
                 }
             }
 

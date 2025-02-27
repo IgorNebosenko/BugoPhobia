@@ -10,7 +10,6 @@ namespace ElectrumGames.Core.Ghost.Configs
         [field: SerializeField] public float RadiationValueEvidence { get; private set; } = 0.12f;
         [field: SerializeField] public float RadiationValueEvidenceMax { get; private set; } = 0.42f;
         [field: Space]
-        [field: SerializeField] public float UpdateInterval { get; private set; } = 10f;
         [field: SerializeField] public float RadiusOverlapDetection { get; private set; } = 0.5f;
         [field: SerializeField] public float DifferenceRadiation { get; private set; } = 0.005f;
         

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Interactions;
 using ElectrumGames.Core.Ghost.Interactions.Pools;
@@ -7,8 +8,10 @@ using ElectrumGames.Core.Ghost.Logic.Abilities;
 using ElectrumGames.Core.Ghost.Logic.GhostEvents;
 using ElectrumGames.Core.Ghost.Logic.Hunt;
 using ElectrumGames.Core.Ghost.Logic.NonHunt;
+using ElectrumGames.Core.Items.Zones;
 using ElectrumGames.Core.Missions;
 using ElectrumGames.Core.Rooms;
+using ElectrumGames.GlobalEnums;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -40,7 +43,7 @@ namespace ElectrumGames.Core.Ghost.Controllers
         private void Start()
         {
             RadiationGhostZone.Init(
-                _container.Resolve<EvidenceController>(), 
+                _container.Resolve<EvidenceController>().Evidences.Contains(EvidenceType.Radiation), 
                 _container.Resolve<RadiationConfig>());
         }
 
