@@ -1,6 +1,7 @@
 ﻿using System;
 using ElectrumGames.Core.Common;
 using ElectrumGames.Core.Environment;
+using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Rooms;
 using TMPro;
 using UniRx;
@@ -24,12 +25,7 @@ namespace ElectrumGames.Core.Items
         [SerializeField] private Color colorMedium;
         [SerializeField] private Color colorHigh;
         [Space]
-        [SerializeField] private float radiationValueMedium = 0.06f;
-        [SerializeField] private float radiationValueEvidence = 0.12f;
-        [Space]
-        [SerializeField] private float updateInterval = 10f;
         [SerializeField] private float radiusOverlapDetection = 0.5f;
-        [SerializeField] private float differenceRadiation = 0.005f;
         
         private bool _isOn;
         private bool _ghostInteractionOn;
@@ -40,18 +36,22 @@ namespace ElectrumGames.Core.Items
         private const int CollidersCount = 16;
 
         private EnvironmentHandler _environmentHandler;
+        private RadiationConfig _radiationConfig;
         
         public bool IsElectricityOn => _isOn;
 
         private void Start()
         {
-            Observable.Interval(TimeSpan.FromSeconds(updateInterval)).Subscribe(UpdateAction).AddTo(this);
+            Observable.Interval(TimeSpan.FromSeconds(_radiationConfig.UpdateInterval)).
+                Subscribe(UpdateAction).AddTo(this);
         }
 
         protected override void OnAfterInit()
         {
-            Debug.Log("OnAfterInit");
             _environmentHandler = container.Resolve<EnvironmentHandler>();
+            _radiationConfig = container.Resolve<RadiationConfig>();
+            
+            
         }
 
         private void UpdateAction(long _)
@@ -67,13 +67,13 @@ namespace ElectrumGames.Core.Items
             {
                 if (_colliders[i].TryGetComponent<Room>(out var room))
                 {
-                    var minRad = room.RadiationRoomHandler.Radiation - differenceRadiation;
-                    var maxRad = room.RadiationRoomHandler.Radiation + differenceRadiation;
+                    var minRad = room.RadiationRoomHandler.Radiation - _radiationConfig.DifferenceRadiation;
+                    var maxRad = room.RadiationRoomHandler.Radiation + _radiationConfig.DifferenceRadiation;
 
-                    if (minRad < 0)
-                        minRad = 0.001f;
-                    if (maxRad > 9.999f)
-                        maxRad = 9.999f;
+                    if (minRad <= 0)
+                        minRad = _radiationConfig.MinRadiationValue;
+                    if (maxRad > _radiationConfig.MaxRadiationValue)
+                        maxRad = _radiationConfig.MaxRadiationValue;
 
                     _lastValue = Random.Range(minRad, maxRad);
                     
@@ -86,13 +86,13 @@ namespace ElectrumGames.Core.Items
 
             if (!isRoomFounded)
             {
-                var minRad = _environmentHandler.OutDoorRadiation - differenceRadiation;
-                var maxRad = _environmentHandler.OutDoorRadiation + differenceRadiation;
+                var minRad = _environmentHandler.OutDoorRadiation - _radiationConfig.DifferenceRadiation;
+                var maxRad = _environmentHandler.OutDoorRadiation + _radiationConfig.DifferenceRadiation;
                     
-                if (minRad < 0)
-                    minRad = 0.001f;
-                if (maxRad > 9.999f)
-                    maxRad = 9.999f;
+                if (minRad <= 0)
+                    minRad = _radiationConfig.MinRadiationValue;
+                if (maxRad > _radiationConfig.MaxRadiationValue)
+                    maxRad = _radiationConfig.MaxRadiationValue;
                 
                 _lastValue = Random.Range(minRad, maxRad);
                     
@@ -120,12 +120,12 @@ namespace ElectrumGames.Core.Items
         {
             radiationText.text = string.Format(textOnFormat, value);
 
-            if (value < radiationValueMedium)
+            if (value < _radiationConfig.RadiationValueMedium)
             {
                 backgroundImage.color = colorLow;
                 onLight.color = colorLow;
             }
-            else if (value < radiationValueEvidence)
+            else if (value < _radiationConfig.RadiationValueEvidence)
             {
                 backgroundImage.color = colorMedium;
                 onLight.color = colorMedium;
