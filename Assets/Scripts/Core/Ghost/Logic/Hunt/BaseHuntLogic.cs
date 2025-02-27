@@ -108,7 +108,9 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                                 IStartHuntInteractable startHuntInteractable)
                             {
 
-                                if (startHuntInteractable.OnHuntInteraction())
+                                if (startHuntInteractable.RadiusUse < Vector3.Distance(
+                                        _ghostController.transform.position, startHuntInteractable.Position)
+                                    && startHuntInteractable.OnHuntInteraction())
                                 {
                                     Debug.Log(
                                         $"Hunt interrupted by crucifix in hands of player! Uses remain: {startHuntInteractable.CountUsesRemain}");
@@ -123,7 +125,11 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                     {
                         for (var i = 0; i < _ghostController.GhostHuntAura.StartHuntInteractableList.Count; i++)
                         {
-                            if (_ghostController.GhostHuntAura.StartHuntInteractableList[i].OnHuntInteraction())
+                            var startHuntInteractable = _ghostController.GhostHuntAura.StartHuntInteractableList[i];
+                            
+                            if (startHuntInteractable.RadiusUse < Vector3.Distance(
+                                    _ghostController.transform.position, startHuntInteractable.Position)
+                                && startHuntInteractable.OnHuntInteraction())
                             {
                                 Debug.Log(
                                     $"Hunt interrupted by crucifix in ground! Uses remain: " +
