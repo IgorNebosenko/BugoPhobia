@@ -6112,6 +6112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d750f3ccbac241dcb57b4f8f72c901e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxTemperature: 20
+  temperatureCoefficient: 1
   <AverageTemperature>k__BackingField: 20
 --- !u!114 &470827135
 MonoBehaviour:
@@ -11916,6 +11918,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d750f3ccbac241dcb57b4f8f72c901e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxTemperature: 22.5
+  temperatureCoefficient: 1
   <AverageTemperature>k__BackingField: 22.5
 --- !u!114 &1026378968
 MonoBehaviour:
@@ -16489,6 +16493,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d750f3ccbac241dcb57b4f8f72c901e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxTemperature: 18
+  temperatureCoefficient: 1
   <AverageTemperature>k__BackingField: 18
 --- !u!114 &1511061077
 MonoBehaviour:

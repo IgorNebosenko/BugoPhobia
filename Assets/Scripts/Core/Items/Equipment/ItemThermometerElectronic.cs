@@ -50,10 +50,10 @@ namespace ElectrumGames.Core.Items
             {
                 if (_colliders[i].TryGetComponent<Room>(out var room))
                 {
-                    var minTemp = room.TemperatureRoom.AverageTemperature - differenceTemperature;
-                    var maxTemp = room.TemperatureRoom.AverageTemperature + differenceTemperature;
+                    var minTemp = room.TemperatureRoom.CurrentTemperature - differenceTemperature;
+                    var maxTemp = room.TemperatureRoom.CurrentTemperature + differenceTemperature;
 
-                    if (minTemp < 0 && room.TemperatureRoom.AverageTemperature > 0)
+                    if (minTemp < 0 && room.TemperatureRoom.CurrentTemperature > 0)
                         minTemp = 0.1f;
                     
                     DisplayTemperature(Random.Range(minTemp, maxTemp));

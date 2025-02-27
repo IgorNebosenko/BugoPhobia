@@ -4,6 +4,9 @@ namespace ElectrumGames.Core.Rooms
 {
     public class TemperatureRoomHandler : MonoBehaviour
     {
-        [field: SerializeField] public float AverageTemperature { get; private set; }
+        [SerializeField] private float maxTemperature;
+        [SerializeField] private float temperatureCoefficient;
+        
+        public float CurrentTemperature { get; private set; }
     }
 }
