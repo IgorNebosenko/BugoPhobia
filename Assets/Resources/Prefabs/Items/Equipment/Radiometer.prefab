@@ -598,11 +598,8 @@ MonoBehaviour:
   backgroundImage: {fileID: 6586531576986102500}
   textOff: OFF
   textOnFormat: '{0:0.000} mR/h'
+  updateInterval: 10
   colorLow: {r: 0.60784316, g: 0.6784314, b: 0.60784316, a: 1}
   colorMedium: {r: 0.6773556, g: 0.6792453, b: 0.45817018, a: 1}
   colorHigh: {r: 0.6698113, g: 0.50514215, b: 0.48340157, a: 1}
-  radiationValueMedium: 0.06
-  radiationValueEvidence: 0.12
-  updateInterval: 10
   radiusOverlapDetection: 0.5
-  differenceRadiation: 0.005

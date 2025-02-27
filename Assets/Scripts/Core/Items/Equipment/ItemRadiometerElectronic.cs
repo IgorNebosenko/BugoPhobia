@@ -52,8 +52,6 @@ namespace ElectrumGames.Core.Items
         {
             _environmentHandler = container.Resolve<EnvironmentHandler>();
             _radiationConfig = container.Resolve<RadiationConfig>();
-            
-            
         }
 
         private void UpdateAction(long _)
