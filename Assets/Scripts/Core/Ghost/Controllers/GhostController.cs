@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using ElectrumGames.Core.Environment.Configs;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Interactions;
 using ElectrumGames.Core.Ghost.Interactions.Pools;
@@ -45,6 +46,8 @@ namespace ElectrumGames.Core.Ghost.Controllers
             RadiationGhostZone.Init(
                 _container.Resolve<EvidenceController>().Evidences.Contains(EvidenceType.Radiation), 
                 _container.Resolve<RadiationConfig>());
+            
+            SetTemperatureAtGhostRoom();
         }
 
         private void FixedUpdate()
@@ -131,6 +134,23 @@ namespace ElectrumGames.Core.Ghost.Controllers
             }
 
             return null;
+        }
+
+        public void SetTemperatureAtGhostRoom()
+        {
+            for (var i = 0; i < _rooms.Count; i++)
+            {
+                if (_rooms[i].RoomId != GhostEnvironmentHandler.GhostVariables.roomId)
+                {
+                    _rooms[i].TemperatureRoom.SetTemperatureRoomState(TemperatureRoomState.NoGhost);
+                }
+                else
+                {
+                    _rooms[i].TemperatureRoom.SetTemperatureRoomState(
+                        EvidenceController.Evidences.Contains(EvidenceType.FreezingTemperature) ?
+                            TemperatureRoomState.GhostWithFreezing : TemperatureRoomState.GhostWithoutFreezing);
+                }
+            }
         }
     }
 }

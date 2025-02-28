@@ -27,6 +27,11 @@ namespace ElectrumGames.Core.Ghost
             else
                 ghostType = CheatVariables.SelectedGhostType;
             
+            if (CheatVariables.RoomId == -1)
+                GhostRoomId = Random.Range(minRoomId, maxRoomId);
+            else
+                GhostRoomId = CheatVariables.RoomId;
+            
             var activityData = _activityConfig.GhostActivities.First(x => x.GhostType == ghostType);
             
             GhostVariables = new GhostVariables(ghostType, Random.Range(0, 2) != 0, Random.Range(0, 1000),//<-
@@ -34,7 +39,8 @@ namespace ElectrumGames.Core.Ghost
                 Random.Range(activityData.DoorsInteractionsMin, activityData.DoorsInteractionsMax),
                 Random.Range(activityData.SwitchesInteractionsMin, activityData.SwitchesInteractionsMax),
                 Random.Range(activityData.OtherInteractionsMin, activityData.OtherInteractionsMax),
-                Random.Range(activityData.GhostEventsMin, activityData.GhostEventsMax));
+                Random.Range(activityData.GhostEventsMin, activityData.GhostEventsMax),
+                    GhostRoomId);
 
             GhostConstants = new GhostConstants(activityData.DistanceMoving, activityData.DefaultSanityStartHunting,
                 activityData.ModifiedSanityStartHunting, activityData.DefaultHuntingSpeed, activityData.HasSpeedUp,
@@ -42,11 +48,6 @@ namespace ElectrumGames.Core.Ghost
                 activityData.AbilityCooldown, activityData.AbilityChance, activityData.MinDoorAngle,
                 activityData.MaxDoorAngle, activityData.MinDoorTouchTime, activityData.MaxDoorTouchTime,
                 activityData.ChanceShutDownFuseBox, activityData.CooldownShutDown, activityData.CanActivateFuseBoxByInteraction);
-
-            if (CheatVariables.RoomId == -1)
-                GhostRoomId = Random.Range(minRoomId, maxRoomId);
-            else
-                GhostRoomId = CheatVariables.RoomId;
             
             Debug.Log(GhostVariables);
             Debug.Log(GhostConstants);

@@ -42,7 +42,7 @@ namespace ElectrumGames.Core.Ghost.Controllers
         public GhostLookController GhostLookController { get; private set; }
         public GhostHuntController GhostHuntController { get; private set; }
         public GhostInteractionController GhostInteractionController { get; private set; }
-        public GhostEnvironmentHandler GhostEnvironmentHandler { get; private set; }
+        public GhostEnvironmentHandler GhostEnvironmentHandler { get; protected set; }
         public JournalManager JournalManager { get; private set; }
         
         public bool IsVisible { get; private set; }

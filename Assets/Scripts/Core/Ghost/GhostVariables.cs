@@ -1,4 +1,5 @@
 ﻿using ElectrumGames.GlobalEnums;
+using UnityEngine;
 
 namespace ElectrumGames.Core.Ghost
 {
@@ -15,9 +16,10 @@ namespace ElectrumGames.Core.Ghost
         public readonly float otherInteractions;
 
         public readonly float ghostEvents;
+        public readonly int roomId;
 
         public GhostVariables(GhostType ghostType, bool isMale, int age, float throws, float doorsInteractions, 
-            float switchesInteractions, float otherInteractions, float ghostEvents)
+            float switchesInteractions, float otherInteractions, float ghostEvents, int roomId)
         {
             this.ghostType = ghostType;
             this.isMale = isMale;
@@ -27,12 +29,13 @@ namespace ElectrumGames.Core.Ghost
             this.switchesInteractions = switchesInteractions;
             this.otherInteractions = otherInteractions;
             this.ghostEvents = ghostEvents;
+            this.roomId = roomId;
         }
 
         public static GhostVariables Empty()
         {
             return new GhostVariables(GhostType.None, false, 0, 0, 0, 0,
-                0, 0);
+                0, 0, 0);
         }
 
         public override string ToString()
@@ -47,7 +50,9 @@ namespace ElectrumGames.Core.Ghost
                    "Switches interactions: " + $"{switchesInteractions}\n" +
                    "Other interactions: " + $"{otherInteractions}\n" +
                    "-----\n" +
-                   "Ghost events: " + $"{ghostEvents}\n\n";
+                   "Ghost events: " + $"{ghostEvents}\n" +
+                   "-----\n" +
+                   "Room id: " + $"{roomId}\n";
         }
     }
 }
