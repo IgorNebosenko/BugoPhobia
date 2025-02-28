@@ -14,8 +14,6 @@ namespace ElectrumGames.Core.Missions
         public EvidenceController(EmfData emfData)
         {
             _emfData = emfData;
-            Debug.LogWarning("There's set explicit evidences!");
-            SetData(new [] {EvidenceType.EMF5, EvidenceType.UV, EvidenceType.FreezingTemperature});
         }
 
         public void SetData(IReadOnlyList<EvidenceType> evidences)

@@ -12,7 +12,7 @@ namespace ElectrumGames.Core.Ghost
         public GhostConstants GhostConstants { get; private set; } = GhostConstants.Empty();
         public int GhostRoomId { get; private set; }
         
-        private readonly ActivityConfig _activityConfig;
+        public readonly ActivityConfig _activityConfig;
         
         public GhostEnvironmentHandler(ActivityConfig activityConfig)
         {

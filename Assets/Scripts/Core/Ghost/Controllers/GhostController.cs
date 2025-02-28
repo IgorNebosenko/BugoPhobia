@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using ElectrumGames.Core.Environment;
 using ElectrumGames.Core.Environment.Configs;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Interactions;
@@ -43,6 +44,9 @@ namespace ElectrumGames.Core.Ghost.Controllers
 
         private void Start()
         {
+            EvidenceController.SetData(EvidenceConfig.ConfigData.First(x => 
+                x.GhostType == GhostEnvironmentHandler.GhostVariables.ghostType).Evidences);
+            
             RadiationGhostZone.Init(
                 _container.Resolve<EvidenceController>().Evidences.Contains(EvidenceType.Radiation), 
                 _container.Resolve<RadiationConfig>());

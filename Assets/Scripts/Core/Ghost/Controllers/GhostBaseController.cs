@@ -3,6 +3,7 @@ using ElectrumGames.Audio.Ghosts;
 using ElectrumGames.Audio.Pool;
 using ElectrumGames.Audio.Steps;
 using ElectrumGames.CommonInterfaces;
+using ElectrumGames.Configs;
 using ElectrumGames.Core.Common;
 using ElectrumGames.Core.Ghost.Logic;
 using ElectrumGames.Core.Ghost.Logic.Abilities;
@@ -42,8 +43,9 @@ namespace ElectrumGames.Core.Ghost.Controllers
         public GhostLookController GhostLookController { get; private set; }
         public GhostHuntController GhostHuntController { get; private set; }
         public GhostInteractionController GhostInteractionController { get; private set; }
-        public GhostEnvironmentHandler GhostEnvironmentHandler { get; protected set; }
+        public GhostEnvironmentHandler GhostEnvironmentHandler { get; private set; }
         public JournalManager JournalManager { get; private set; }
+        public EvidenceConfig EvidenceConfig { get; private set; }
         
         public bool IsVisible { get; private set; }
 
@@ -52,8 +54,8 @@ namespace ElectrumGames.Core.Ghost.Controllers
         protected IFuseBoxInteractable fuseBox;
         
         public void Init(GhostEnvironmentHandler environmentHandler, GhostModelsList modelsList, 
-            EvidenceController evidenceController, JournalManager journalManager, IFuseBoxInteractable fuseBox, 
-            DiContainer container)
+            EvidenceController evidenceController, JournalManager journalManager,
+            IFuseBoxInteractable fuseBox, DiContainer container)
         {
             GhostEnvironmentHandler = environmentHandler;
             GhostBehaviourController = new GhostBehaviourController(GhostEnvironmentHandler);
@@ -75,6 +77,7 @@ namespace ElectrumGames.Core.Ghost.Controllers
             
             EvidenceController = evidenceController;
             JournalManager = journalManager;
+            EvidenceConfig = container.Resolve<EvidenceConfig>();
 
             var ghostModel = environmentHandler.GhostVariables.isMale
                 ? modelsList.MaleModels.PickRandom()
