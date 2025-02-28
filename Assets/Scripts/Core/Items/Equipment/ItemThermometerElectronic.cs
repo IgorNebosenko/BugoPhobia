@@ -1,5 +1,6 @@
 ﻿using System;
 using ElectrumGames.Core.Common;
+using ElectrumGames.Core.Environment;
 using ElectrumGames.Core.Rooms;
 using TMPro;
 using UniRx;
@@ -32,9 +33,16 @@ namespace ElectrumGames.Core.Items
 
         private IDisposable _ghostInteractionProcess;
 
+        private EnvironmentHandler _environmentHandler;
+
         private void Start()
         {
             Observable.Interval(TimeSpan.FromSeconds(updateInterval)).Subscribe(UpdateAction).AddTo(this);
+        }
+
+        protected override void OnAfterInit()
+        {
+            _environmentHandler = container.Resolve<EnvironmentHandler>();
         }
 
         private void UpdateAction(long _)
@@ -53,7 +61,7 @@ namespace ElectrumGames.Core.Items
                     var minTemp = room.TemperatureRoom.CurrentTemperature - differenceTemperature;
                     var maxTemp = room.TemperatureRoom.CurrentTemperature + differenceTemperature;
 
-                    if (minTemp < 0 && room.TemperatureRoom.CurrentTemperature > 0)
+                    if (minTemp < 0f && room.TemperatureRoom.CurrentTemperature > 0f)
                         minTemp = 0.1f;
                     
                     DisplayTemperature(Random.Range(minTemp, maxTemp));
@@ -64,7 +72,17 @@ namespace ElectrumGames.Core.Items
             }
 
             if (!isRoomFounded)
-                thermometerText.text = textOn;
+            {
+                {
+                    var minTemp = _environmentHandler.OutDoorTemperature - differenceTemperature;
+                    var maxTemp = _environmentHandler.OutDoorTemperature + differenceTemperature;
+
+                    if (minTemp < 0f && _environmentHandler.OutDoorTemperature > 0f)
+                        minTemp = 0.1f;
+                    
+                    DisplayTemperature(Random.Range(minTemp, maxTemp));
+                }
+            }
         }
 
         public override void OnMainInteraction()
