@@ -24,7 +24,7 @@ namespace ElectrumGames.Core.Environment
         
         public Transform FuseBoxTransform => transform;
 
-        private void Start()
+        private void Awake()
         {
             if (initialStateOn)
                 OnInteract();
