@@ -6114,7 +6114,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTemperature: 20
   temperatureCoefficient: 1
-  <AverageTemperature>k__BackingField: 20
 --- !u!114 &470827135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11920,7 +11919,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTemperature: 22.5
   temperatureCoefficient: 1
-  <AverageTemperature>k__BackingField: 22.5
 --- !u!114 &1026378968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16495,7 +16493,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTemperature: 18
   temperatureCoefficient: 1
-  <AverageTemperature>k__BackingField: 18
 --- !u!114 &1511061077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20708,6 +20705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directionalLight: {fileID: 1319833904}
   <OutDoorRadiation>k__BackingField: 0.015
+  outDoorTemperature: 2
 --- !u!4 &1850548444
 Transform:
   m_ObjectHideFlags: 0

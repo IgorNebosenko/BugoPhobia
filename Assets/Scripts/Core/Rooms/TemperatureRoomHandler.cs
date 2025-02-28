@@ -12,6 +12,8 @@ namespace ElectrumGames.Core.Rooms
         [SerializeField] private float temperatureCoefficient;
 
         private bool _isInProcess;
+        private bool _isInterrupted;
+        
         private float _targetTemperature;
         private TemperatureRoomState _roomState;
         
@@ -48,9 +50,18 @@ namespace ElectrumGames.Core.Rooms
 
         private void Update()
         {
-            if (!_isInProcess && !Mathf.Approximately(CurrentTemperature, _targetTemperature))
+            if (!Mathf.Approximately(CurrentTemperature, _targetTemperature))
             {
-                StartCoroutine(MoveToTemperature());
+                var difference = CurrentTemperature - _targetTemperature;
+
+                if (difference != 0)
+                {
+                    var timePerDegree = Random.Range(_temperatureConfig.MinTimeChangeOneDegree,
+                        _temperatureConfig.MaxTimeChangeOneDegree);
+                    
+                    CurrentTemperature += (difference < 0) ? 
+                        Time.deltaTime / timePerDegree : -Time.deltaTime / timePerDegree;
+                }
             }
         }
 
@@ -84,40 +95,6 @@ namespace ElectrumGames.Core.Rooms
             if (_roomState == TemperatureRoomState.NoGhost)
                 _targetTemperature =
                     state ? maxTemperature : _environmentHandler.OutDoorTemperature * temperatureCoefficient;
-        }
-        
-        private IEnumerator MoveToTemperature()
-        {
-            _isInProcess = true;
-
-            var timePerDegree = Random.Range(_temperatureConfig.MinTimeChangeOneDegree,
-                _temperatureConfig.MaxTimeChangeOneDegree);
-            
-            float startTemperature = CurrentTemperature;
-            float targetDegree = Mathf.RoundToInt(startTemperature);
-
-            while (Mathf.Approximately(targetDegree, Mathf.RoundToInt(_targetTemperature)))
-            {
-                if (targetDegree < Mathf.RoundToInt(_targetTemperature))
-                    targetDegree += 1f;
-                else
-                    targetDegree -= 1f;
-
-                float startTime = Time.time;
-                
-                while (Time.time - startTime <= timePerDegree)
-                {
-                    CurrentTemperature = Mathf.Lerp(startTemperature, targetDegree, (Time.time - startTime) / timePerDegree);
-                    
-                    yield return null;
-                }
-
-                startTemperature = targetDegree;
-            }
-
-            CurrentTemperature = _targetTemperature;
-
-            _isInProcess = false;
         }
     }
 }
