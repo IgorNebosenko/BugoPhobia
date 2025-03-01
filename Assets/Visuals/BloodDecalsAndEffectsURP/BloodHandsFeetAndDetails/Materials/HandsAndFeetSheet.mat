@@ -8,15 +8,15 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: HandsAndFeetSheet
-  m_Shader: {fileID: 4800000, guid: 3abc2696835a57e47a3fb05babf7e908, type: 3}
+  m_Shader: {fileID: 4800000, guid: bab9f179fcc361042b0b795cdcf26cc4, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _RECEIVE_SHADOWS_OFF
+  m_ValidKeywords: []
   m_InvalidKeywords:
   - _ALPHAPREMULTIPLY_ON
   - _RECEIVESHADOWS_OFF
-  m_LightmapFlags: 4
+  - _RECEIVE_SHADOWS_OFF
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -110,8 +110,9 @@ Material:
     - _DriedBlood_Metallic: 0.425
     - _DriedOpacityLevel: 2
     - _DstBlend: 10
+    - _EmissionStrength: 1
     - _EnvironmentReflections: 1
-    - _Gloss: 0.666
+    - _Gloss: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -137,6 +138,7 @@ Material:
     - _Color: {r: 0.30588236, g: 0.054901965, b: 0.054901965, a: 1}
     - _DriedBloodColorGloss: {r: 0.14580745, g: 0.32156864, b: 0.047058817, a: 0.20392157}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MainColorTintFadeA: {r: 0.17451982, g: 0.98039216, b: 0, a: 0.6862745}
+    - _MainColor: {r: 0, g: 1, b: 0.8604934, a: 1}
+    - _MainColorTintFadeA: {r: 0.17999995, g: 1, b: 0, a: 0.6862745}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
