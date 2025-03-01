@@ -68,11 +68,11 @@ namespace ElectrumGames.UI.Views
             Instantiate(settingsSelectableItem, gameTabContainer).Init("*Language", 
                 new List<string>{"English"}, Presenter.OnChangeLanguage, 0);
             
-            Instantiate(settingsSelectableItem, gameTabContainer).Init("*Voice",
-                new List<string>{"English"}, Presenter.OnChangeVoice, 0);
+            Instantiate(settingsSelectableItem, gameTabContainer).Init("Voice",
+                new List<string>{"None"}, Presenter.OnChangeVoice, 0);
             
-            Instantiate(settingsSelectableItem, gameTabContainer).Init("*Recognition system",
-                new List<string>{"System", "Vosk", "Text", "None"}, Presenter.OnChangeRecognitionSystem,
+            Instantiate(settingsSelectableItem, gameTabContainer).Init("Recognition system",
+                new List<string>{"Text"}, Presenter.OnChangeRecognitionSystem,
                 0);
             
             #endregion
