@@ -1,5 +1,6 @@
 ﻿using System;
 using ElectrumGames.Core.Ghost.Configs;
+using ElectrumGames.Core.Player.Movement;
 using ElectrumGames.Extensions;
 using UnityEngine;
 

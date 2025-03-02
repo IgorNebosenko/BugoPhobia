@@ -1,9 +1,12 @@
 ﻿using ElectrumGames.Core.Common;
+using ElectrumGames.Core.Player.Movement;
+using ElectrumGames.Extensions;
 using ElectrumGames.MVP.Managers;
+using ElectrumGames.UI.Presenters;
 using TMPro;
 using UnityEngine;
 
-namespace ElectrumGames.Core.Items
+namespace ElectrumGames.Core.Items.Equipment.WithVisualElements
 {
     public class ItemSpiritBoxElectronic : ItemInstanceBase,
         IGhostHuntingHasElectricity, IGhostHuntingInteractableStay, IGhostHuntingInteractableExit
@@ -26,6 +29,8 @@ namespace ElectrumGames.Core.Items
         [SerializeField] private string textResponse = "GHOST";
 
         private PopupManager _popupManager;
+        private SpiritBoxPopupPresenter _spiritBoxPopupPresenter;
+        private InputActions _inputActions;
         
         private bool _isOn;
 
@@ -47,6 +52,7 @@ namespace ElectrumGames.Core.Items
         protected override void OnAfterInit()
         {
             _popupManager = container.Resolve<PopupManager>();
+            _inputActions = container.Resolve<InputActions>();
         }
 
         private void FixedUpdate()
@@ -99,10 +105,49 @@ namespace ElectrumGames.Core.Items
             _isOn = !_isOn;
 
             onLight.enabled = _isOn;
+
+            _spiritBoxPopupPresenter?.Close();
+            _spiritBoxPopupPresenter = _popupManager.ShowPopup<SpiritBoxPopupPresenter>();
+            
+            _inputActions.Moving.Disable();
+            _inputActions.UiEvents.Disable();
+            
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
 
         public override void OnAlternativeInteraction()
         {
+            if (_spiritBoxPopupPresenter.UnityNullCheck())
+                return;
+            
+            _spiritBoxPopupPresenter.Close();
+            _spiritBoxPopupPresenter = null;
+            
+            _inputActions.Moving.Enable();
+            _inputActions.UiEvents.Enable();
+            
+            Cursor.visible = false;
+            
+            _isOn = false;
+            onLight.enabled = false;
+        }
+
+        public override void OnAfterDrop()
+        {
+            if (_spiritBoxPopupPresenter.UnityNullCheck())
+                return;
+            
+            _spiritBoxPopupPresenter.Close();
+            _spiritBoxPopupPresenter = null;
+            
+            _inputActions.Moving.Enable();
+            _inputActions.UiEvents.Enable();
+            
+            Cursor.visible = false;
+
+            _isOn = false;
+            onLight.enabled = false;
         }
 
         private void DisplayFrequency(float frequency)
