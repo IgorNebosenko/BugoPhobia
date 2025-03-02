@@ -56,7 +56,7 @@ namespace ElectrumGames.Core.Ghost.Controllers
                 _container.Resolve<EvidenceController>().Evidences.Contains(EvidenceType.SpiritBox),
                 GhostEnvironmentHandler.GhostVariables.isMale,
                 GhostEnvironmentHandler.GhostVariables.age < 30,
-                _container.Resolve<RadioConfig>());
+                _container.Resolve<SpiritBoxConfig>());
             
             SetTemperatureAtGhostRoom();
         }

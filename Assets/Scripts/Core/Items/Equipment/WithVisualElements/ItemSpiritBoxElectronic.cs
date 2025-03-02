@@ -1,7 +1,8 @@
 ﻿using ElectrumGames.Core.Common;
+using ElectrumGames.Core.Ghost.Configs;
+using ElectrumGames.Core.Items.Zones;
 using ElectrumGames.Core.Player.Movement;
 using ElectrumGames.Extensions;
-using ElectrumGames.MVP;
 using ElectrumGames.MVP.Managers;
 using ElectrumGames.UI.Presenters;
 using TMPro;
@@ -12,7 +13,8 @@ namespace ElectrumGames.Core.Items.Equipment.WithVisualElements
     public class ItemSpiritBoxElectronic : ItemInstanceBase,
         IGhostHuntingHasElectricity, IGhostHuntingInteractableStay, IGhostHuntingInteractableExit
     {
-        [SerializeField] public float percentChanceResponse = 0.5f;
+        [SerializeField] private float percentChanceResponse = 0.35f;
+        [SerializeField] private float cooldownTime = 2f;
         [Space]
         [SerializeField] private TMP_Text frequencyText;
         [SerializeField] private Light onLight;
@@ -26,12 +28,12 @@ namespace ElectrumGames.Core.Items.Equipment.WithVisualElements
         [SerializeField] private string textOnFormat = "{0:0.0}";
         [Space] 
         [SerializeField] private float responsePause = 1f;
-        [SerializeField] private string textNoResponse = "NO RESPONSE";
-        [SerializeField] private string textResponse = "GHOST";
 
         private PopupManager _popupManager;
-        private SpiritBoxPopupPresenter _spiritBoxPopupPresenter;
         private InputActions _inputActions;
+        private SpiritBoxConfig _spiritBoxConfig;
+        
+        private SpiritBoxPopupPresenter _spiritBoxPopupPresenter;
         
         private bool _isOn;
 
@@ -42,18 +44,26 @@ namespace ElectrumGames.Core.Items.Equipment.WithVisualElements
         private bool _ghostInteractionOn;
 
         private float _responsePauseTime;
+        private float _cooldownRequest;
+        
+        private Collider[] _colliders = new Collider[CollidersCount];
+        private const float SphereRoomCastRadius = 0.5f;
+        private const int CollidersCount = 16;
         
         public bool IsElectricityOn => _isOn;
 
         private void Awake()
         {
             _currentFrequency = minFrequency;
+
+            _cooldownRequest = cooldownTime;
         }
 
         protected override void OnAfterInit()
         {
             _popupManager = container.Resolve<PopupManager>();
             _inputActions = container.Resolve<InputActions>();
+            _spiritBoxConfig = container.Resolve<SpiritBoxConfig>();
         }
 
         private void Close()
@@ -75,6 +85,10 @@ namespace ElectrumGames.Core.Items.Equipment.WithVisualElements
                 frequencyText.text = textOff;
                 return;
             }
+            
+            if (_cooldownRequest >= 0)
+                _cooldownRequest -= Time.fixedDeltaTime;
+            
             if (_ghostInteractionOn)
                 return;
 
@@ -104,13 +118,8 @@ namespace ElectrumGames.Core.Items.Equipment.WithVisualElements
                 if (_currentFrequency <= minFrequency)
                     _isFrequencyIncrease = true;
             }
+            
             DisplayFrequency(_currentFrequency);
-        }
-
-        public void SetResponse(bool isSuccessful)
-        {
-            DisplayResponse(isSuccessful);
-            //ToDo say from dynamic response
         }
 
         public override void OnMainInteraction()
@@ -122,7 +131,11 @@ namespace ElectrumGames.Core.Items.Equipment.WithVisualElements
             if (!_spiritBoxPopupPresenter.UnityNullCheck())
             {
                 if (_spiritBoxPopupPresenter.ViewExists)
+                {
+                    UnsubscribeToPopup();
                     _spiritBoxPopupPresenter.Close();
+                }
+
                 _spiritBoxPopupPresenter = null;
             }
 
@@ -138,6 +151,7 @@ namespace ElectrumGames.Core.Items.Equipment.WithVisualElements
             {
                 _spiritBoxPopupPresenter = _popupManager.ShowPopup<SpiritBoxPopupPresenter>();
                 _spiritBoxPopupPresenter.Init(Close);
+                SubscribeToPopup();
 
                 _inputActions.Moving.Disable();
                 _inputActions.UiEvents.Disable();
@@ -149,10 +163,10 @@ namespace ElectrumGames.Core.Items.Equipment.WithVisualElements
 
         public override void OnAlternativeInteraction()
         {
-            Debug.Log("Alternative interaction");
             if (_spiritBoxPopupPresenter.UnityNullCheck())
                 return;
             
+            UnsubscribeToPopup();
             _spiritBoxPopupPresenter.Close();
             _spiritBoxPopupPresenter = null;
             
@@ -170,6 +184,7 @@ namespace ElectrumGames.Core.Items.Equipment.WithVisualElements
             if (_spiritBoxPopupPresenter.UnityNullCheck())
                 return;
             
+            UnsubscribeToPopup();
             _spiritBoxPopupPresenter.Close();
             _spiritBoxPopupPresenter = null;
             
@@ -187,11 +202,11 @@ namespace ElectrumGames.Core.Items.Equipment.WithVisualElements
             frequencyText.text = string.Format(textOnFormat, frequency);
         }
 
-        private void DisplayResponse(bool isSuccessful)
+        private void DisplayResponse(string response)
         {
             _responsePauseTime = responsePause;
 
-            frequencyText.text = isSuccessful ? textResponse : textNoResponse;
+            frequencyText.text = response;
         }
 
         public void OnGhostInteractionStay()
@@ -209,6 +224,71 @@ namespace ElectrumGames.Core.Items.Equipment.WithVisualElements
         {
             _ghostInteractionOn = false;
             onLight.enabled = _isOn;
+        }
+
+        private void SubscribeToPopup()
+        {
+            _spiritBoxPopupPresenter.WhereAreYouClicked += OnWhereAreYouClicked;
+            _spiritBoxPopupPresenter.IsMaleClicked += OnIsMaleClicked;
+            _spiritBoxPopupPresenter.AgeClicked += OnAgeClicked;
+        }
+        
+        private void UnsubscribeToPopup()
+        {
+            _spiritBoxPopupPresenter.WhereAreYouClicked -= OnWhereAreYouClicked;
+            _spiritBoxPopupPresenter.IsMaleClicked -= OnIsMaleClicked;
+            _spiritBoxPopupPresenter.AgeClicked -= OnAgeClicked;
+        }
+
+        private void OnWhereAreYouClicked()
+        {
+            OnClicked(SpiritBoxGhostRequest.WhereGhost);
+        }
+        
+        private void OnIsMaleClicked()
+        {
+            OnClicked(SpiritBoxGhostRequest.IsMale);
+        }
+        
+        private void OnAgeClicked()
+        {
+            OnClicked(SpiritBoxGhostRequest.Age);
+        }
+
+        private void OnClicked(SpiritBoxGhostRequest request)
+        {
+            if (_cooldownRequest > 0)
+                return;
+
+            _cooldownRequest = cooldownTime;
+            
+            var zone = CheckIsOnZone();
+            
+            if (zone.UnityNullCheck())
+                return;
+
+            if (Random.Range(0f, 1f) < percentChanceResponse)
+            {
+                DisplayResponse(SpiritBoxDataElement.Empty().Text);
+            }
+            else
+            {
+                var response = zone.GetResponse(request);
+                DisplayResponse(response.Text);
+            }
+        }
+
+        private SpiritBoxGhostZone CheckIsOnZone()
+        {
+            var size = Physics.OverlapSphereNonAlloc(transform.position, SphereRoomCastRadius, _colliders);
+
+            for (var i = 0; i < size; i++)
+            {
+                if (_colliders[i].TryGetComponent<SpiritBoxGhostZone>(out var spiritBoxGhostZone))
+                    return spiritBoxGhostZone;
+            }
+
+            return null;
         }
     }
 }

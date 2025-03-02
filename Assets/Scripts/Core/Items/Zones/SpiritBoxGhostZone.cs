@@ -12,29 +12,32 @@ namespace ElectrumGames.Core.Items.Zones
         private bool _isMale;
         private bool _isYoung;
         
-        private RadioConfig _radioConfig;
+        private SpiritBoxConfig _spiritBoxConfig;
         
-        public void Init(bool hasRadioEvidence, bool isMale, bool isYoung, RadioConfig radioConfig)
+        public void Init(bool hasRadioEvidence, bool isMale, bool isYoung, SpiritBoxConfig spiritBoxConfig)
         {
             _hasEvidence = hasRadioEvidence;
             _isMale = isMale;
             _isYoung = isYoung;
             
-            _radioConfig = radioConfig;
+            _spiritBoxConfig = spiritBoxConfig;
         }
 
-        public RadioDataElement GetResponse(SpiritBoxGhostRequest request)
+        public SpiritBoxDataElement GetResponse(SpiritBoxGhostRequest request)
         {
+            if (!_hasEvidence)
+                return SpiritBoxDataElement.Empty();
+            
             switch (request)
             {
                 case SpiritBoxGhostRequest.WhereGhost:
-                    return _radioConfig.CloseDistanceVariants.PickRandom();
+                    return _spiritBoxConfig.CloseDistanceVariants.PickRandom();
                 case SpiritBoxGhostRequest.IsMale:
-                    return _isMale ? _radioConfig.True : _radioConfig.False;
+                    return _isMale ? _spiritBoxConfig.True : _spiritBoxConfig.False;
                 case SpiritBoxGhostRequest.Age:
-                    return _isYoung ? _radioConfig.Young : _radioConfig.Old;
+                    return _isYoung ? _spiritBoxConfig.Young : _spiritBoxConfig.Old;
                 default:
-                    return new RadioDataElement();
+                    return SpiritBoxDataElement.Empty();
             }
         }
     }
