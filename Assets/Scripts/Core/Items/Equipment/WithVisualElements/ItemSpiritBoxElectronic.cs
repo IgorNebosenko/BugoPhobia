@@ -184,7 +184,12 @@ namespace ElectrumGames.Core.Items.Equipment.WithVisualElements
             if (_spiritBoxPopupPresenter.UnityNullCheck())
                 return;
             
-            UnsubscribeToPopup();
+            if (_spiritBoxPopupPresenter.ViewExists)
+            {
+                UnsubscribeToPopup();
+                _spiritBoxPopupPresenter.Close();
+            }
+            
             _spiritBoxPopupPresenter.Close();
             _spiritBoxPopupPresenter = null;
             
