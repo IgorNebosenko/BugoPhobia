@@ -7,6 +7,8 @@ namespace ElectrumGames.Core.Items
     public class ItemSpiritBoxElectronic : ItemInstanceBase,
         IGhostHuntingHasElectricity, IGhostHuntingInteractableStay, IGhostHuntingInteractableExit
     {
+        [SerializeField] public float percentChanceResponse = 0.5f;
+        [Space]
         [SerializeField] private TMP_Text frequencyText;
         [SerializeField] private Light onLight;
         [SerializeField] private float minFrequency = 88f;

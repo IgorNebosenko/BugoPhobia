@@ -13,8 +13,6 @@ namespace ElectrumGames.Core.Ghost.Configs
     [CreateAssetMenu(fileName = "RadioConfig", menuName = "Ghosts configs/Radio Config")]
     public class RadioConfig : ScriptableObject
     {
-        [field: SerializeField] public float PercentChanceResponse { get; private set; }
-        [field: Space]
         [field: SerializeField] public RadioDataElement[] CloseDistanceVariants { get; private set; } = {};
         [field: Space]
         [field: SerializeField] public RadioDataElement True { get; private set; }
