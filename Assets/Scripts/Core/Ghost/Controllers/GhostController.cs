@@ -51,8 +51,12 @@ namespace ElectrumGames.Core.Ghost.Controllers
             RadiationGhostZone.Init(
                 _container.Resolve<EvidenceController>().Evidences.Contains(EvidenceType.Radiation), 
                 _container.Resolve<RadiationConfig>());
-            
-            RadioGhostZone.Init();
+
+            RadioGhostZone.Init(
+                _container.Resolve<EvidenceController>().Evidences.Contains(EvidenceType.SpiritBox),
+                GhostEnvironmentHandler.GhostVariables.isMale,
+                GhostEnvironmentHandler.GhostVariables.age < 30,
+                _container.Resolve<RadioConfig>());
             
             SetTemperatureAtGhostRoom();
         }
