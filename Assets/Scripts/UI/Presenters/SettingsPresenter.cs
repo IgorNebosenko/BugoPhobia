@@ -15,6 +15,8 @@ namespace ElectrumGames.UI.Presenters
         public FpsConfig FpsConfig { get; }
         public ScreenResolutionService ScreenResolution { get; }
 
+        public int QualityLevel => QualitySettings.GetQualityLevel();
+
         private readonly Camera _injectedCamera;
         
         private readonly InputActions _inputActions;
@@ -58,6 +60,11 @@ namespace ElectrumGames.UI.Presenters
             _inputActions.UI.Enable();
             
             _inputActions.Interactions.Enable();
+        }
+
+        public void OnChangeQualityLevel(int value)
+        {
+            QualitySettings.SetQualityLevel(value);
         }
 
         public void OnXSensitivitySliderChanged(float value)

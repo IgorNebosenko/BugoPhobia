@@ -46,6 +46,10 @@ namespace ElectrumGames.UI.Views
         {
             #region Game
             
+            Instantiate(settingsSelectableItem, gameTabContainer).Init("Quality", 
+                new List<string>{"Very Low", "Low", "Medium", "High", "Very high"}, Presenter.OnChangeQualityLevel, 
+                Presenter.QualityLevel);
+            
             Instantiate(settingsSliderItem, gameTabContainer).Init("X Sensitivity", 
                 Presenter.UserConfig.MinXSensitivity, Presenter.UserConfig.MaxXSensitivity, 
                 Presenter.ConfigService.XSensitivity, Presenter.OnXSensitivitySliderChanged, 
