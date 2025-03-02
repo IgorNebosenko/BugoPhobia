@@ -126,8 +126,6 @@ namespace ElectrumGames.Core.Ghost.Controllers
             HuntLogic = huntLogic;
             GhostAbility = ghostAbility;
 
-            EvidenceController.GetEmfOtherInteract();
-
             FuseBoxCounter = new FuseBoxCounterLogic(fuseBox, 
                 GhostEnvironmentHandler.GhostConstants.chanceShutDownFuseBox,
                 GhostEnvironmentHandler.GhostConstants.cooldownShutDown,
