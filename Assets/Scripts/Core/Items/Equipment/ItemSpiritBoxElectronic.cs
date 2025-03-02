@@ -111,6 +111,9 @@ namespace ElectrumGames.Core.Items
 
         public void OnGhostInteractionStay()
         {
+            if (!_isOn)
+                return;
+            
             _ghostInteractionOn = true;
             
             DisplayFrequency(Random.Range(minFrequency, maxFrequency));
