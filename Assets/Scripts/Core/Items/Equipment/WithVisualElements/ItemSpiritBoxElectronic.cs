@@ -1,6 +1,7 @@
 ﻿using ElectrumGames.Core.Common;
 using ElectrumGames.Core.Player.Movement;
 using ElectrumGames.Extensions;
+using ElectrumGames.MVP;
 using ElectrumGames.MVP.Managers;
 using ElectrumGames.UI.Presenters;
 using TMPro;
@@ -55,6 +56,18 @@ namespace ElectrumGames.Core.Items.Equipment.WithVisualElements
             _inputActions = container.Resolve<InputActions>();
         }
 
+        private void Close()
+        {
+            _isOn = false;
+            onLight.enabled = false;
+            
+            _inputActions.Moving.Enable();
+            _inputActions.UiEvents.Enable();
+
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
         private void FixedUpdate()
         {
             if (!_isOn)
@@ -106,18 +119,37 @@ namespace ElectrumGames.Core.Items.Equipment.WithVisualElements
 
             onLight.enabled = _isOn;
 
-            _spiritBoxPopupPresenter?.Close();
-            _spiritBoxPopupPresenter = _popupManager.ShowPopup<SpiritBoxPopupPresenter>();
-            
-            _inputActions.Moving.Disable();
-            _inputActions.UiEvents.Disable();
-            
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+            if (!_spiritBoxPopupPresenter.UnityNullCheck())
+            {
+                if (_spiritBoxPopupPresenter.ViewExists)
+                    _spiritBoxPopupPresenter.Close();
+                _spiritBoxPopupPresenter = null;
+            }
+
+            if (!_isOn)
+            {
+                _inputActions.Moving.Enable();
+                _inputActions.UiEvents.Enable();
+
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            else
+            {
+                _spiritBoxPopupPresenter = _popupManager.ShowPopup<SpiritBoxPopupPresenter>();
+                _spiritBoxPopupPresenter.Init(Close);
+
+                _inputActions.Moving.Disable();
+                _inputActions.UiEvents.Disable();
+
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
         }
 
         public override void OnAlternativeInteraction()
         {
+            Debug.Log("Alternative interaction");
             if (_spiritBoxPopupPresenter.UnityNullCheck())
                 return;
             

@@ -13,5 +13,23 @@ namespace ElectrumGames.UI.Views
         [SerializeField] private Button ageButton;
         [Space]
         [SerializeField] private Button closeButton;
+
+        private void Start()
+        {
+            whereAreYouButton.onClick.AddListener(Presenter.OnWhereAreYouClicked);
+            areYouMaleButton.onClick.AddListener(Presenter.OnIsMaleClicked);
+            ageButton.onClick.AddListener(Presenter.OnAgeClicked);
+            
+            closeButton.onClick.AddListener(Presenter.OnExitClicked);
+        }
+
+        private void OnDestroy()
+        {
+            whereAreYouButton.onClick.RemoveListener(Presenter.OnWhereAreYouClicked);
+            areYouMaleButton.onClick.RemoveListener(Presenter.OnIsMaleClicked);
+            ageButton.onClick.RemoveListener(Presenter.OnAgeClicked);
+            
+            closeButton.onClick.RemoveListener(Presenter.OnExitClicked);
+        }
     }
 }
