@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace ElectrumGames.Core.Items.Zones
 {
-    public class RadioGhostZone : MonoBehaviour
+    public class SpiritBoxGhostZone : MonoBehaviour
     {
         private bool _hasEvidence;
         private bool _isMale;
@@ -22,15 +22,15 @@ namespace ElectrumGames.Core.Items.Zones
             _radioConfig = radioConfig;
         }
 
-        public RadioDataElement GetResponse(RadioGhostRequest request)
+        public RadioDataElement GetResponse(SpiritBoxGhostRequest request)
         {
             switch (request)
             {
-                case RadioGhostRequest.WhereGhost:
+                case SpiritBoxGhostRequest.WhereGhost:
                     return _radioConfig.CloseDistanceVariants.PickRandom();
-                case RadioGhostRequest.IsMale:
+                case SpiritBoxGhostRequest.IsMale:
                     return _isMale ? _radioConfig.True : _radioConfig.False;
-                case RadioGhostRequest.Age:
+                case SpiritBoxGhostRequest.Age:
                     return _isYoung ? _radioConfig.Young : _radioConfig.Old;
                 default:
                     return new RadioDataElement();

@@ -1,6 +1,6 @@
 ﻿namespace ElectrumGames.Core.Items.Zones
 {
-    public enum RadioGhostRequest
+    public enum SpiritBoxGhostRequest
     {
         WhereGhost,
         IsMale,

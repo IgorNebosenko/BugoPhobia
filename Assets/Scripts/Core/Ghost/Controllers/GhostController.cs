@@ -30,7 +30,7 @@ namespace ElectrumGames.Core.Ghost.Controllers
         [field: SerializeField] public GhostAppearAura GhostHuntAura { get; private set; }
         [field: Space]
         [field: SerializeField] public RadiationGhostZone RadiationGhostZone { get; private set; }
-        [field: SerializeField] public RadioGhostZone RadioGhostZone { get; private set; }
+        [field: SerializeField] public SpiritBoxGhostZone SpiritBoxGhostZone { get; private set; }
         [Space]
         [SerializeField] private float sphereRoomCastRadius = 0.5f;
 
@@ -52,7 +52,7 @@ namespace ElectrumGames.Core.Ghost.Controllers
                 _container.Resolve<EvidenceController>().Evidences.Contains(EvidenceType.Radiation), 
                 _container.Resolve<RadiationConfig>());
 
-            RadioGhostZone.Init(
+            SpiritBoxGhostZone.Init(
                 _container.Resolve<EvidenceController>().Evidences.Contains(EvidenceType.SpiritBox),
                 GhostEnvironmentHandler.GhostVariables.isMale,
                 GhostEnvironmentHandler.GhostVariables.age < 30,
