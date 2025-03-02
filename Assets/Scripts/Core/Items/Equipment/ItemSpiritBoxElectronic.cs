@@ -1,4 +1,5 @@
 ﻿using ElectrumGames.Core.Common;
+using ElectrumGames.MVP.Managers;
 using TMPro;
 using UnityEngine;
 
@@ -23,6 +24,8 @@ namespace ElectrumGames.Core.Items
         [SerializeField] private float responsePause = 1f;
         [SerializeField] private string textNoResponse = "NO RESPONSE";
         [SerializeField] private string textResponse = "GHOST";
+
+        private PopupManager _popupManager;
         
         private bool _isOn;
 
@@ -39,6 +42,11 @@ namespace ElectrumGames.Core.Items
         private void Awake()
         {
             _currentFrequency = minFrequency;
+        }
+
+        protected override void OnAfterInit()
+        {
+            _popupManager = container.Resolve<PopupManager>();
         }
 
         private void FixedUpdate()
