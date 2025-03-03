@@ -1,4 +1,5 @@
-﻿using ElectrumGames.Audio;
+﻿using System.Collections;
+using ElectrumGames.Audio;
 using ElectrumGames.Core.Common;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Items.Zones;
@@ -31,6 +32,7 @@ namespace ElectrumGames.Core.Items.Equipment.WithVisualElements
         [SerializeField] private float responsePause = 1f;
         [Space]
         [SerializeField] private NoiseGenerator noiseGenerator;
+        [SerializeField] private AudioSource audioSourceResponse;
 
         private PopupManager _popupManager;
         private InputActions _inputActions;
@@ -224,6 +226,11 @@ namespace ElectrumGames.Core.Items.Equipment.WithVisualElements
             frequencyText.text = response;
         }
 
+        private void PlayResponse(AudioClip clip)
+        {
+            audioSourceResponse.PlayOneShot(clip);
+        }
+
         public void OnGhostInteractionStay()
         {
             if (!_isOn)
@@ -290,6 +297,7 @@ namespace ElectrumGames.Core.Items.Equipment.WithVisualElements
             {
                 var response = zone.GetResponse(request);
                 DisplayResponse(response.Text);
+                PlayResponse(response.Clip);
             }
         }
 
