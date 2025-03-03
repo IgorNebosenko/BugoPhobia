@@ -17,6 +17,7 @@ namespace ElectrumGames.EntryPoints
 
         private void Start()
         {
+            Application.targetFrameRate = 60;
             Application.runInBackground = true;
             
             _viewManager.ShowView<WarningPresenter>();
