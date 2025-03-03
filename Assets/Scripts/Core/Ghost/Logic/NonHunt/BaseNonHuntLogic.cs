@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using ElectrumGames.Configs;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Controllers;
@@ -146,7 +147,8 @@ namespace ElectrumGames.Core.Ghost.Logic.NonHunt
                             .Subscribe(_ => _emfZonesPool.DespawnCylinderZone(emfZone));
                         
                         randomDoor.TouchDoor(Random.Range(_ghostConstants.minDoorAngle, _ghostConstants.maxDoorAngle),
-                            Random.Range(_ghostConstants.minDoorTouchTime, _ghostConstants.maxDoorTouchTime));
+                            Random.Range(_ghostConstants.minDoorTouchTime, _ghostConstants.maxDoorTouchTime),
+                            _ghostController.EvidenceController.Evidences.Contains(EvidenceType.UV));
                     }
                 }
             }

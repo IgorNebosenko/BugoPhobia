@@ -1,5 +1,7 @@
 ﻿using DG.Tweening;
 using ElectrumGames.Core.Common;
+using ElectrumGames.Core.Items.Zones.Handlers;
+using ElectrumGames.Extensions;
 using UnityEngine;
 
 namespace ElectrumGames.Core.Environment
@@ -10,6 +12,8 @@ namespace ElectrumGames.Core.Environment
         [SerializeField] private float maxAngle = 90f;
         [SerializeField] private float openedForce = 1f;
         [SerializeField] private float openSpeed = 0.1f;
+
+        [SerializeField] private UvPrintHandler[] uvPrintsHandlers;
         
         private bool _isLocked;
         private bool _isBlocked;
@@ -81,10 +85,13 @@ namespace ElectrumGames.Core.Environment
         {
         }
 
-        public void TouchDoor(float angle, float time)
+        public void TouchDoor(float angle, float time, bool hasEvidence)
         {
-            Debug.LogWarning("Add UV print if this evidence exists");
-            
+            if (hasEvidence)
+            {
+                uvPrintsHandlers.PickRandom().MakeRandomPrint();
+            }
+
             if (_isLocked || _isBlocked)
                 return;
             

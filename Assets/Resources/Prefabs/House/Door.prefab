@@ -197,6 +197,9 @@ MonoBehaviour:
   maxAngle: 180
   openedForce: 0.66
   openSpeed: 0.1
+  uvPrintsHandlers:
+  - {fileID: 123539126845487812}
+  - {fileID: 4450668589400833836}
   <DoorWithLock>k__BackingField: 1
   <CurrentAngle>k__BackingField: 0
 --- !u!1 &6180540719068835089
@@ -328,6 +331,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2017229739723850205, guid: 2f91e21ef4cb0194987c21fc3b57f7e5, type: 3}
   m_PrefabInstance: {fileID: 967213196645357792}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4450668589400833836 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3508243393851713484, guid: 2f91e21ef4cb0194987c21fc3b57f7e5, type: 3}
+  m_PrefabInstance: {fileID: 967213196645357792}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 699025cc4c044981b79c757b112caadc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3537910560930192648
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -385,6 +399,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f91e21ef4cb0194987c21fc3b57f7e5, type: 3}
+--- !u!114 &123539126845487812 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3508243393851713484, guid: 2f91e21ef4cb0194987c21fc3b57f7e5, type: 3}
+  m_PrefabInstance: {fileID: 3537910560930192648}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 699025cc4c044981b79c757b112caadc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3091594887817125077 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2017229739723850205, guid: 2f91e21ef4cb0194987c21fc3b57f7e5, type: 3}

@@ -47,6 +47,9 @@ namespace ElectrumGames.Core.Items.Zones.Handlers
 
         public void MakeRandomPrint()
         {
+            if (!_currentDecal.UnityNullCheck())
+                _currentDecal.SetActive(false);
+            
             _currentDecal = decals.PickRandom();
             
             _material = _currentDecal.GetComponent<MeshRenderer>().material;
@@ -58,7 +61,15 @@ namespace ElectrumGames.Core.Items.Zones.Handlers
             _vanishProcess?.Dispose();
 
             _vanishProcess = Observable.Timer(TimeSpan.FromSeconds(vanishTime)).
-                Subscribe((_) => _currentDecal = null);
+                Subscribe((_) =>
+                {
+                    _currentDecal = null;
+                    
+                    var color = _material.GetColor(MainColor);
+                    color.a = 0f;
+                    _material.SetColor(MainColor, color);
+
+                });
         }
 
         public void ChargingProcess(float value)

@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Linq;
 using ElectrumGames.Configs;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Controllers;
 using ElectrumGames.Core.Ghost.Interactions.Pools;
 using ElectrumGames.Extensions;
+using ElectrumGames.GlobalEnums;
 using UniRx;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -84,7 +86,8 @@ namespace ElectrumGames.Core.Ghost.Logic.Abilities
             {
                 var randomDoor = _ghostController.InteractionAura.DoorsInTrigger.PickRandom();
                 randomDoor.TouchDoor(Random.Range(_ghostConstants.minDoorAngle, _ghostConstants.maxDoorAngle),
-                    Random.Range(_ghostConstants.minDoorTouchTime, _ghostConstants.maxDoorTouchTime));
+                    Random.Range(_ghostConstants.minDoorTouchTime, _ghostConstants.maxDoorTouchTime),
+                    _ghostController.EvidenceController.Evidences.Contains(EvidenceType.UV));
                 
                 var emfZone = _emfZonesPool.SpawnCylinderZone(null, _emfData.OtherInteractionHeightOffset,
                     _emfData.OtherInteractionCylinderSize, _ghostController.EvidenceController.GetEmfInteractDoor());

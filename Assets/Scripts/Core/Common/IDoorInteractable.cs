@@ -3,6 +3,6 @@
     public interface IDoorInteractable : IGhostInteractable
     {
         bool DoorWithLock { get; }
-        void TouchDoor(float angle, float time);
+        void TouchDoor(float angle, float time, bool hasEvidence);
     }
 }

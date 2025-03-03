@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using ElectrumGames.Configs;
 using ElectrumGames.Core.Ghost.Configs;
@@ -301,7 +302,8 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                     
                     _ghostController.InteractionAura.DoorsInTrigger[i].TouchDoor(
                         Random.Range(GhostConstants.minDoorAngle, GhostConstants.maxDoorAngle),
-                        Random.Range(GhostConstants.minDoorTouchTime, GhostConstants.maxDoorTouchTime));
+                        Random.Range(GhostConstants.minDoorTouchTime, GhostConstants.maxDoorTouchTime),
+                        _ghostController.EvidenceController.Evidences.Contains(EvidenceType.UV));
                 }
             }
         }
