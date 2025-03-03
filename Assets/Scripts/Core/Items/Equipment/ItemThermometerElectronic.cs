@@ -1,6 +1,7 @@
 ﻿using System;
 using ElectrumGames.Core.Common;
 using ElectrumGames.Core.Environment;
+using ElectrumGames.Core.Environment.Configs;
 using ElectrumGames.Core.Rooms;
 using TMPro;
 using UniRx;
@@ -34,6 +35,7 @@ namespace ElectrumGames.Core.Items
         private IDisposable _ghostInteractionProcess;
 
         private EnvironmentHandler _environmentHandler;
+        private TemperatureConfig _temperatureConfig;
 
         private void Start()
         {
@@ -43,6 +45,7 @@ namespace ElectrumGames.Core.Items
         protected override void OnAfterInit()
         {
             _environmentHandler = container.Resolve<EnvironmentHandler>();
+            _temperatureConfig = container.Resolve<TemperatureConfig>();
         }
 
         private void UpdateAction(long _)
@@ -63,6 +66,9 @@ namespace ElectrumGames.Core.Items
 
                     if (minTemp < 0f && room.TemperatureRoom.CurrentTemperature > 0f)
                         minTemp = 0.1f;
+
+                    if (minTemp < _temperatureConfig.MinEvidenceTemperature)
+                        minTemp = _temperatureConfig.MinEvidenceTemperature;
                     
                     DisplayTemperature(Random.Range(minTemp, maxTemp));
                     
