@@ -1,4 +1,5 @@
-﻿using ElectrumGames.Core.Common;
+﻿using ElectrumGames.Audio;
+using ElectrumGames.Core.Common;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Items.Zones;
 using ElectrumGames.Core.Player.Movement;
@@ -28,10 +29,11 @@ namespace ElectrumGames.Core.Items.Equipment.WithVisualElements
         [SerializeField] private string textOnFormat = "{0:0.0}";
         [Space] 
         [SerializeField] private float responsePause = 1f;
+        [Space]
+        [SerializeField] private NoiseGenerator noiseGenerator;
 
         private PopupManager _popupManager;
         private InputActions _inputActions;
-        private SpiritBoxConfig _spiritBoxConfig;
         
         private SpiritBoxPopupPresenter _spiritBoxPopupPresenter;
         
@@ -63,7 +65,6 @@ namespace ElectrumGames.Core.Items.Equipment.WithVisualElements
         {
             _popupManager = container.Resolve<PopupManager>();
             _inputActions = container.Resolve<InputActions>();
-            _spiritBoxConfig = container.Resolve<SpiritBoxConfig>();
         }
 
         private void Close()
@@ -73,6 +74,8 @@ namespace ElectrumGames.Core.Items.Equipment.WithVisualElements
             
             _inputActions.Moving.Enable();
             _inputActions.UiEvents.Enable();
+
+            noiseGenerator.SetPlayState(false);
 
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
@@ -141,6 +144,8 @@ namespace ElectrumGames.Core.Items.Equipment.WithVisualElements
 
             if (!_isOn)
             {
+                noiseGenerator.SetPlayState(false);
+                
                 _inputActions.Moving.Enable();
                 _inputActions.UiEvents.Enable();
 
@@ -149,6 +154,8 @@ namespace ElectrumGames.Core.Items.Equipment.WithVisualElements
             }
             else
             {
+                noiseGenerator.SetPlayState(true);
+                
                 _spiritBoxPopupPresenter = _popupManager.ShowPopup<SpiritBoxPopupPresenter>();
                 _spiritBoxPopupPresenter.Init(Close);
                 SubscribeToPopup();
@@ -166,6 +173,8 @@ namespace ElectrumGames.Core.Items.Equipment.WithVisualElements
             if (_spiritBoxPopupPresenter.UnityNullCheck())
                 return;
             
+            noiseGenerator.SetPlayState(false);
+            
             UnsubscribeToPopup();
             _spiritBoxPopupPresenter.Close();
             _spiritBoxPopupPresenter = null;
@@ -181,6 +190,8 @@ namespace ElectrumGames.Core.Items.Equipment.WithVisualElements
 
         public override void OnAfterDrop()
         {
+            noiseGenerator.SetPlayState(false);
+            
             if (_spiritBoxPopupPresenter.UnityNullCheck())
                 return;
             
@@ -190,7 +201,6 @@ namespace ElectrumGames.Core.Items.Equipment.WithVisualElements
                 _spiritBoxPopupPresenter.Close();
             }
             
-            _spiritBoxPopupPresenter.Close();
             _spiritBoxPopupPresenter = null;
             
             _inputActions.Moving.Enable();
