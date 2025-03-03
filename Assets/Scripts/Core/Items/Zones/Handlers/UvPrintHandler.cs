@@ -26,8 +26,6 @@ namespace ElectrumGames.Core.Items.Zones.Handlers
         {
             for (var i = 0 ; i < decals.Length; i++)
                 decals[i].SetActive(false);
-            
-            //MakeRandomPrint();
         }
 
         private void Update()
