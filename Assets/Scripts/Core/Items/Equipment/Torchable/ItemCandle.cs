@@ -2,9 +2,9 @@
 using ElectrumGames.GlobalEnums;
 using UnityEngine;
 
-namespace ElectrumGames.Core.Items
+namespace ElectrumGames.Core.Items.Equipment.Torchable
 {
-    public class ItemCandle : ItemInstanceBase
+    public class ItemCandle : TorchableBase
     {
         [SerializeField] private Light lightSource;
         
@@ -23,7 +23,7 @@ namespace ElectrumGames.Core.Items
                 {
                     if (matches.TryUseMatch())
                     {
-                        lightSource.enabled = true;
+                        Torch();
                         return;
                     }
                 }
@@ -44,6 +44,11 @@ namespace ElectrumGames.Core.Items
         private void OnDisable()
         {
             lightSource.enabled = false;
+        }
+
+        public override void Torch()
+        {
+            lightSource.enabled = true;
         }
     }
 }
