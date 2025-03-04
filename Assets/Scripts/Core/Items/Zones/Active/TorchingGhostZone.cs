@@ -1,13 +1,18 @@
-﻿using ElectrumGames.Core.Ghost.Configs;
+﻿using System.Collections.Generic;
+using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Interactions.Pools;
 using ElectrumGames.Core.Items.Equipment.Torchable;
 using ElectrumGames.Core.Player;
+using ElectrumGames.Extensions;
 using UnityEngine;
+using Zenject;
 
 namespace ElectrumGames.Core.Items.Zones.Active
 {
     public class TorchingGhostZone : MonoBehaviour
     {
+        private List<TorchableBase> _torchables = new ();
+        
         private TorchConfig _torchConfig;
         private GhostEmfZonePool _ghostEmfZonePool;
         private bool _hasEvidence;
@@ -16,6 +21,15 @@ namespace ElectrumGames.Core.Items.Zones.Active
 
         private float _cooldown;
 
+        [Inject] // for tests
+        private void Construct(TorchConfig torchConfig, GhostEmfZonePool emfZonePool, EmfData data)
+        {
+            _torchConfig = torchConfig;
+            _ghostEmfZonePool = emfZonePool;
+            _hasEvidence = true;
+            _hasEmf5 = true;
+            _emfData = data;
+        }
         public void Init(TorchConfig torchConfig, GhostEmfZonePool emfZonePool, bool hasEvidence, bool hasEmf5, EmfData data)
         {
             _torchConfig = torchConfig;
@@ -25,31 +39,62 @@ namespace ElectrumGames.Core.Items.Zones.Active
             _emfData = data;
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             if (!_hasEvidence)
                 return;
 
-            _cooldown += Time.fixedDeltaTime;
+            _cooldown += Time.deltaTime;
+
+            if (_cooldown <= _torchConfig.TorchCooldown) 
+                return;
+            
+            _cooldown = 0f;
+
+            if (_torchables.Count == 0)
+                return;
+                
+            var item = _torchables.PickRandom();
+                
+            if (!item.UnityNullCheck() && Random.Range(0f, 1f) < item?.ChanceTorch)
+                TryTorch(item);
         }
 
-        private void OnTriggerStay(Collider other)
+        private void OnTriggerEnter(Collider other)
         {
-            if (!_hasEvidence || _cooldown < _torchConfig.TorchCooldown)
-                return;
-
-            _cooldown = 0f;
-            
             if (other.TryGetComponent<TorchableBase>(out var torchable))
             {
-                TryTorch(torchable);
+                Debug.Log($"Add torchable {other.name}");
+                _torchables.Add(torchable);
             }
             else if (other.TryGetComponent<PlayerBase>(out var player))
             {
                 var currentItem = player.Inventory.Items[player.InventoryIndexHandler.CurrentIndex];
                 
                 if (currentItem is TorchableBase torchableBase)
-                    TryTorch(torchableBase);
+                {
+                    Debug.Log($"Add torchable {other.name}");
+                    _torchables.Add(torchableBase);
+                }
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.TryGetComponent<TorchableBase>(out var torchable))
+            {
+                Debug.Log($"Remove torchable {other.name}");
+                _torchables.Remove(torchable);
+            }
+            else if (other.TryGetComponent<PlayerBase>(out var player))
+            {
+                var currentItem = player.Inventory.Items[player.InventoryIndexHandler.CurrentIndex];
+                
+                if (currentItem is TorchableBase torchableBase)
+                {
+                    Debug.Log($"Remove torchable {other.name}");
+                    _torchables.Remove(torchableBase);
+                }
             }
         }
 
@@ -61,7 +106,7 @@ namespace ElectrumGames.Core.Items.Zones.Active
 
                 var emfLevel = _hasEmf5 ? _emfData.ChanceEvidence < Random.Range(0f, 1f) ? 4 : _emfData.TorchDefaultEmf 
                     : _emfData.TorchDefaultEmf;
-
+                
                 _ghostEmfZonePool.SpawnSphereZone(torchable.transform, _emfData.TorchHeightOffset,
                     _emfData.TorchSphereSize, emfLevel);
             }
