@@ -22,6 +22,10 @@ namespace ElectrumGames.Core.Ghost.Configs
         [field: SerializeField] public float ThrowSphereSize { get; private set; } = 1.5f;
         [field: SerializeField] public float ThrowHeightOffset { get; private set; } = 0f;
         [field: Space]
+        [field: SerializeField] public int TorchDefaultEmf { get; private set; } = 1;
+        [field: SerializeField] public float TorchSphereSize { get; private set; } = 1.5f;
+        [field: SerializeField] public float TorchHeightOffset { get; private set; } = 0f;
+        [field: Space]
         [field: SerializeField] public int OtherInteractionDefaultEmf { get; private set; } = 1;
         [field: SerializeField] public Vector3 OtherInteractionCylinderSize { get; private set; } = new(2f, 1f, 2f);
         [field: SerializeField] public float OtherInteractionHeightOffset { get; private set; } = 1f;

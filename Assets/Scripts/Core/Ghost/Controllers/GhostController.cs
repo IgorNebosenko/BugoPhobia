@@ -61,7 +61,10 @@ namespace ElectrumGames.Core.Ghost.Controllers
                 _container.Resolve<SpiritBoxConfig>());
             
             TorchingGhostZone.Init(_container.Resolve<TorchConfig>(),
-                EvidenceController.Evidences.Contains(EvidenceType.Torching));
+                _container.Resolve<GhostEmfZonePool>(),
+                EvidenceController.Evidences.Contains(EvidenceType.Torching),
+                EvidenceController.Evidences.Contains(EvidenceType.EMF5),
+                _container.Resolve<EmfData>());
             
             SetTemperatureAtGhostRoom();
         }
