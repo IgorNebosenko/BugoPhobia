@@ -11,6 +11,7 @@ using ElectrumGames.Core.Ghost.Logic.GhostEvents;
 using ElectrumGames.Core.Ghost.Logic.Hunt;
 using ElectrumGames.Core.Ghost.Logic.NonHunt;
 using ElectrumGames.Core.Items.Zones;
+using ElectrumGames.Core.Items.Zones.Active;
 using ElectrumGames.Core.Missions;
 using ElectrumGames.Core.Rooms;
 using ElectrumGames.GlobalEnums;
@@ -31,6 +32,7 @@ namespace ElectrumGames.Core.Ghost.Controllers
         [field: Space]
         [field: SerializeField] public RadiationGhostZone RadiationGhostZone { get; private set; }
         [field: SerializeField] public SpiritBoxGhostZone SpiritBoxGhostZone { get; private set; }
+        [field: SerializeField] public TorchingGhostZone TorchingGhostZone { get; private set; }
         [Space]
         [SerializeField] private float sphereRoomCastRadius = 0.5f;
 
@@ -57,6 +59,9 @@ namespace ElectrumGames.Core.Ghost.Controllers
                 GhostEnvironmentHandler.GhostVariables.isMale,
                 GhostEnvironmentHandler.GhostVariables.age < 30,
                 _container.Resolve<SpiritBoxConfig>());
+            
+            TorchingGhostZone.Init(_container.Resolve<TorchConfig>(),
+                EvidenceController.Evidences.Contains(EvidenceType.Torching));
             
             SetTemperatureAtGhostRoom();
         }
