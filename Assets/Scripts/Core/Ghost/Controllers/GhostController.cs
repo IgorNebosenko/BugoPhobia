@@ -33,6 +33,7 @@ namespace ElectrumGames.Core.Ghost.Controllers
         [field: SerializeField] public RadiationGhostZone RadiationGhostZone { get; private set; }
         [field: SerializeField] public SpiritBoxGhostZone SpiritBoxGhostZone { get; private set; }
         [field: SerializeField] public TorchingGhostZone TorchingGhostZone { get; private set; }
+        [field: SerializeField] public GhostWritingZone GhostWritingZone { get; private set; }
         [Space]
         [SerializeField] private float sphereRoomCastRadius = 0.5f;
 
@@ -63,6 +64,12 @@ namespace ElectrumGames.Core.Ghost.Controllers
             TorchingGhostZone.Init(_container.Resolve<TorchConfig>(),
                 _container.Resolve<GhostEmfZonePool>(),
                 EvidenceController.Evidences.Contains(EvidenceType.Torching),
+                EvidenceController.Evidences.Contains(EvidenceType.EMF5),
+                _container.Resolve<EmfData>());
+            
+            GhostWritingZone.Init(_container.Resolve<GhostWritableConfig>(),
+                _container.Resolve<GhostEmfZonePool>(),
+                EvidenceController.Evidences.Contains(EvidenceType.GhostWriting),
                 EvidenceController.Evidences.Contains(EvidenceType.EMF5),
                 _container.Resolve<EmfData>());
             

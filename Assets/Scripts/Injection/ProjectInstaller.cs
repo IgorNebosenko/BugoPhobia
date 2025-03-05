@@ -48,6 +48,7 @@ public class ProjectInstaller : MonoInstaller
     [SerializeField] private RadiationConfig radiationConfig;
     [SerializeField] private SpiritBoxConfig spiritBoxConfig;
     [SerializeField] private TorchConfig torchConfig;
+    [SerializeField] private GhostWritableConfig ghostWritableConfig;
     
     public override void InstallBindings()
     {
@@ -88,6 +89,7 @@ public class ProjectInstaller : MonoInstaller
         Container.BindInstance(radiationConfig).AsSingle();
         Container.BindInstance(spiritBoxConfig).AsSingle();
         Container.BindInstance(torchConfig).AsSingle();
+        Container.BindInstance(ghostWritableConfig).AsSingle();
 
         Container.Bind<JournalManager>().AsSingle().NonLazy();
 

@@ -57,14 +57,24 @@ namespace ElectrumGames.Core.Items.Zones.Active
             var item = _torchables.PickRandom();
                 
             if (!item.UnityNullCheck() && Random.Range(0f, 1f) < item?.ChanceTorch)
-                TryTorch(item);
+                Torch(item);
+        }
+        
+        private void Torch(TorchableBase torchable)
+        {
+            torchable.Torch();
+
+            var emfLevel = _hasEmf5 ? _emfData.ChanceEvidence < Random.Range(0f, 1f) ? _emfData.EvidenceLevel : _emfData.TorchDefaultEmf 
+                : _emfData.TorchDefaultEmf;
+                
+            _ghostEmfZonePool.SpawnSphereZone(torchable.transform, _emfData.TorchHeightOffset,
+                _emfData.TorchSphereSize, emfLevel);
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent<TorchableBase>(out var torchable))
             {
-                Debug.Log($"Add torchable {other.name}");
                 _torchables.Add(torchable);
             }
             else if (other.TryGetComponent<PlayerBase>(out var player))
@@ -73,7 +83,6 @@ namespace ElectrumGames.Core.Items.Zones.Active
                 
                 if (currentItem is TorchableBase torchableBase)
                 {
-                    Debug.Log($"Add torchable {other.name}");
                     _torchables.Add(torchableBase);
                 }
             }
@@ -83,7 +92,6 @@ namespace ElectrumGames.Core.Items.Zones.Active
         {
             if (other.TryGetComponent<TorchableBase>(out var torchable))
             {
-                Debug.Log($"Remove torchable {other.name}");
                 _torchables.Remove(torchable);
             }
             else if (other.TryGetComponent<PlayerBase>(out var player))
@@ -92,23 +100,8 @@ namespace ElectrumGames.Core.Items.Zones.Active
                 
                 if (currentItem is TorchableBase torchableBase)
                 {
-                    Debug.Log($"Remove torchable {other.name}");
                     _torchables.Remove(torchableBase);
                 }
-            }
-        }
-
-        private void TryTorch(TorchableBase torchable)
-        {
-            if (Random.Range(0f, 1f) < torchable.ChanceTorch)
-            {
-                torchable.Torch();
-
-                var emfLevel = _hasEmf5 ? _emfData.ChanceEvidence < Random.Range(0f, 1f) ? 4 : _emfData.TorchDefaultEmf 
-                    : _emfData.TorchDefaultEmf;
-                
-                _ghostEmfZonePool.SpawnSphereZone(torchable.transform, _emfData.TorchHeightOffset,
-                    _emfData.TorchSphereSize, emfLevel);
             }
         }
     }

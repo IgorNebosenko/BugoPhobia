@@ -30,6 +30,10 @@ namespace ElectrumGames.Core.Ghost.Configs
         [field: SerializeField] public Vector3 OtherInteractionCylinderSize { get; private set; } = new(2f, 1f, 2f);
         [field: SerializeField] public float OtherInteractionHeightOffset { get; private set; } = 1f;
         [field: Space]
+        [field: SerializeField] public int GhostWritingDefaultEmf { get; private set; } = 1;
+        [field: SerializeField] public Vector3 GhostWritingCylinderSize { get; private set; } = new(1.5f, 1f, 1.5f);
+        [field: SerializeField] public float GhostWritingHeightOffset { get; private set; } = 1f;
+        [field: Space]
         [field: SerializeField] public int GhostEventDefaultEmf { get; private set; } = 3;
         [field: SerializeField] public Vector3 GhostEventCylinderSize { get; private set; } = new(3f, 1f, 3f);
         [field: SerializeField] public float GhostEventHeightOffset { get; private set; } = 1f;
