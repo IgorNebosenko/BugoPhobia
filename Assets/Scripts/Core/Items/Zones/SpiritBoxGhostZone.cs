@@ -1,6 +1,4 @@
-﻿using System;
-using ElectrumGames.Core.Ghost.Configs;
-using ElectrumGames.Core.Player.Movement;
+﻿using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Extensions;
 using UnityEngine;
 
@@ -25,7 +23,7 @@ namespace ElectrumGames.Core.Items.Zones
 
         public SpiritBoxDataElement GetResponse(SpiritBoxGhostRequest request)
         {
-            if (!_hasEvidence)
+            if (!_hasEvidence || !IsOnLight())
                 return SpiritBoxDataElement.Empty();
             
             switch (request)
@@ -39,6 +37,11 @@ namespace ElectrumGames.Core.Items.Zones
                 default:
                     return SpiritBoxDataElement.Empty();
             }
+        }
+
+        private bool IsOnLight()
+        {
+            return true;
         }
     }
 }

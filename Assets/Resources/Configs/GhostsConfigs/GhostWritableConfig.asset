@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dedf2e7f9f1e4121b702005e7cfbd612, type: 3}
   m_Name: GhostWritableConfig
   m_EditorClassIdentifier: 
-  <WriteCooldown>k__BackingField: 0.1
+  minWriteCooldown: 15
+  maxWriteCooldown: 35
