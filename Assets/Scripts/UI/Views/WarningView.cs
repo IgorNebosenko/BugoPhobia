@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using DG.Tweening;
 using ElectrumGames.MVP;
 using ElectrumGames.UI.Presenters;

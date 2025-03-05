@@ -18,7 +18,7 @@ namespace ElectrumGames.UI.Presenters
         public void ShowNextView()
         {
             _viewManager.ShowView<LoadingPresenter>();
-            SceneManager.LoadSceneAsync((int) MissionMap.LobbyTier0);
+            SceneManager.LoadSceneAsync((int) MissionMap.SceneSelector);
         }
     }
 }

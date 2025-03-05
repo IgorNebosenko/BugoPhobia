@@ -9,6 +9,7 @@ using ElectrumGames.Core.Journal;
 using ElectrumGames.Core.Lobby;
 using ElectrumGames.Core.Missions;
 using ElectrumGames.Core.Player.Movement;
+using ElectrumGames.Core.Tutorial;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Serialization;
@@ -90,6 +91,8 @@ public class ProjectInstaller : MonoInstaller
         Container.BindInstance(spiritBoxConfig).AsSingle();
         Container.BindInstance(torchConfig).AsSingle();
         Container.BindInstance(ghostWritableConfig).AsSingle();
+
+        Container.Bind<TutorialHandler>().AsSingle();
 
         Container.Bind<JournalManager>().AsSingle().NonLazy();
 
