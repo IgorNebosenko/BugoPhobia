@@ -1,4 +1,4 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
 using ElectrumGames.Core.Common;
 using UnityEngine;
 
@@ -17,7 +17,7 @@ namespace ElectrumGames.Core.Lobby
 
         public LobbyManager()
         {
-            if (OpenedLobbies().Length == 0)
+            if (OpenedLobbies() == null || OpenedLobbies().Length == 0)
                 AddOpenedLobby(0);
         }
 
@@ -28,7 +28,11 @@ namespace ElectrumGames.Core.Lobby
 
         public void AddOpenedLobby(int lobbyId)
         {
-            var openedLobbies = OpenedLobbies().ToList();
+            var openedLobbies = new List<int>();
+            var rangeLobbies = OpenedLobbies();
+            
+            if (rangeLobbies != null)
+                openedLobbies.AddRange(rangeLobbies);
             
             if (openedLobbies.Contains(lobbyId))
                 return;
