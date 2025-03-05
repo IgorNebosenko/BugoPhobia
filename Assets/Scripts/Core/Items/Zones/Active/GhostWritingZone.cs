@@ -78,7 +78,6 @@ namespace ElectrumGames.Core.Items.Zones.Active
         {
             if (other.TryGetComponent<GhostWritableBase>(out var writiable))
             {
-                Debug.Log($"Add item {other.name}");
                 _writables.Add(writiable);
             }
         }
