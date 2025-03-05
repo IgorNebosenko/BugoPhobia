@@ -93,6 +93,7 @@ public class ProjectInstaller : MonoInstaller
         Container.BindInstance(ghostWritableConfig).AsSingle();
 
         Container.Bind<TutorialHandler>().AsSingle();
+        Container.Bind<LobbyManager>().AsSingle();
 
         Container.Bind<JournalManager>().AsSingle().NonLazy();
 

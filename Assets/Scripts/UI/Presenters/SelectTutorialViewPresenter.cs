@@ -1,4 +1,5 @@
-﻿using ElectrumGames.Core.Missions;
+﻿using ElectrumGames.Core.Lobby;
+using ElectrumGames.Core.Missions;
 using ElectrumGames.MVP;
 using ElectrumGames.MVP.Managers;
 using ElectrumGames.UI.Views;
@@ -9,10 +10,13 @@ namespace ElectrumGames.UI.Presenters
 {
     public class SelectTutorialViewPresenter : Presenter<SelectTutorialView>
     {
+        private readonly LobbyManager _lobbyManager;
         private readonly ViewManager _viewManager;
         
-        public SelectTutorialViewPresenter(SelectTutorialView view, ViewManager viewManager) : base(view)
+        public SelectTutorialViewPresenter(SelectTutorialView view, LobbyManager lobbyManager, ViewManager viewManager) :
+            base(view)
         {
+            _lobbyManager = lobbyManager;
             _viewManager = viewManager;
         }
 
@@ -30,8 +34,7 @@ namespace ElectrumGames.UI.Presenters
 
         public void OnSkipButtonClicked()
         {
-            SceneManager.LoadSceneAsync((int) MissionMap.LobbyTier0);
-            Debug.LogError("Here must be selection lobby not 0!");
+            SceneManager.LoadSceneAsync((int) MissionMap.LobbyTier0 + _lobbyManager.LobbyId);
             _viewManager.ShowView<LoadingPresenter>();
         }
     }
