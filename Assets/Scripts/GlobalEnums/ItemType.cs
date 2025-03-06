@@ -70,6 +70,11 @@
         PlasticBottle,
         WaterCoolerBottle,
         WhineBottleRed,
-        WhineBottleWhite
+        WhineBottleWhite,
+        
+        Wrench0 = 1060,
+        Wrench1,
+        
+        WireCutters = 1070
     }
 }
