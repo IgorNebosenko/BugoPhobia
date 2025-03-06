@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1603792372311426295}
   - component: {fileID: 5252883514424063308}
   - component: {fileID: 3106400853496443830}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: knife-kitchen-chopper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9058426313646692334}
   serializedVersion: 4
-  m_Mass: 3.5
+  m_Mass: 4
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -131,14 +131,14 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 72
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &3106400853496443830
 MonoBehaviour:
   m_ObjectHideFlags: 0

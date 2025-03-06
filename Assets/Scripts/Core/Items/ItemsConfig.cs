@@ -7,11 +7,8 @@ using UnityEngine;
 namespace ElectrumGames.Core.Items
 {
     [Serializable]
-    public class ItemConfigData
+    public class ItemConfigData : EnvironmentItemConfig
     {
-        [field: SerializeField] public ItemInstanceBase ItemInstance { get; private set; }
-        [field: SerializeField] public Vector3 UserPositionAtCamera { get; private set; }
-        [field: SerializeField] public Quaternion UserRotationAtCamera { get; private set; }
         [field: SerializeField] public string ItemLocalizedName { get; private set; }
         
         [field: SerializeField] public int RequiredLevel { get; private set; }
@@ -40,7 +37,7 @@ namespace ElectrumGames.Core.Items
         {
             if ((int) itemType >= 1000)
             {
-                Debug.LogError($"Try to get item but index is in range of environment items!");
+                Debug.LogError($"Try to get item but index is in range of environment items! {itemType}");
                 return null;
             }
             
@@ -51,7 +48,7 @@ namespace ElectrumGames.Core.Items
         {
             if ((int) itemType < 1000)
             {
-                Debug.LogError($"Try to get item but index is in range of equipment items!");
+                Debug.LogError($"Try to get item but index is in range of equipment items! {itemType}");
                 return null;
             }
 

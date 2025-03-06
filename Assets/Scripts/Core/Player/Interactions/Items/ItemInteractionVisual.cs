@@ -51,11 +51,17 @@ namespace ElectrumGames.Core.Player.Interactions.Items
 
             if (_inventory.Items[_lastIndex] != null)
             {
-                var configData = _itemsConfig.GetItemByType(_inventory.Items[_lastIndex].ItemType);
+                EnvironmentItemConfig item;
+                var itemType = _inventory.Items[_lastIndex].ItemType;
+
+                if ((int) itemType < 1000)
+                    item = _itemsConfig.GetItemByType(_inventory.Items[_lastIndex].ItemType);
+                else
+                    item = _itemsConfig.GetEnvironmentItemByType(itemType);
 
                 _inventory.Items[_lastIndex].transform.parent = _parentHand;
-                _inventory.Items[_lastIndex].transform.localPosition = configData.UserPositionAtCamera;
-                _inventory.Items[_lastIndex].transform.localRotation = configData.UserRotationAtCamera;
+                _inventory.Items[_lastIndex].transform.localPosition = item.UserPositionAtCamera;
+                _inventory.Items[_lastIndex].transform.localRotation = item.UserRotationAtCamera;
                 _inventory.Items[_lastIndex].transform.localScale = _inventory.Items[_lastIndex].LocalScale;
                 _inventory.Items[_lastIndex].gameObject.SetActive(true);
                 _inventory.Items[_lastIndex].PhysicObject.isKinematic = true;

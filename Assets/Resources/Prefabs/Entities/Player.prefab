@@ -372,7 +372,7 @@ CharacterController:
   serializedVersion: 3
   m_Height: 2
   m_Radius: 0.5
-  m_SlopeLimit: 45
+  m_SlopeLimit: 25
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -394,4 +394,3 @@ MonoBehaviour:
   stayCameraTransform: {fileID: 8202975295015769363}
   sitCameraTransform: {fileID: 5544509260644594519}
   sphereRoomCastRadius: 0.5
-  _isInRoomPreviosState: 0
