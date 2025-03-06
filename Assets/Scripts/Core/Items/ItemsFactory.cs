@@ -33,7 +33,9 @@ namespace ElectrumGames.Core.Items
 
         public ItemInstanceBase Spawn(ItemSpawnPoint spawnPoint, int id)
         {
-            var template = _itemsConfig.GetItemByType(spawnPoint.ItemType).ItemInstance;
+            var template = (int) spawnPoint.ItemType < 1000
+                ? _itemsConfig.GetItemByType(spawnPoint.ItemType).ItemInstance
+                : _itemsConfig.GetEnvironmentItemByType(spawnPoint.ItemType).ItemInstance;
             
             var item = Instantiate(template, 
                 spawnPoint.Position, spawnPoint.Rotation, transform);

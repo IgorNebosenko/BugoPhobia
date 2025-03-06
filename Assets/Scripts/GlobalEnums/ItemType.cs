@@ -55,6 +55,21 @@
         BigSpoon,
         
         Pan = 1030,
-        PanWok
+        PanWok,
+        
+        CupPlastic = 1040,
+        CupPlasticRed,
+        CupSmall,
+        GlassDrink,
+        GlassIrishCoffee,
+        MokkaPot,
+        PotCoffee,
+        Teapot,
+        
+        RumBottle = 1050,
+        PlasticBottle,
+        WaterCoolerBottle,
+        WhineBottleRed,
+        WhineBottleWhite
     }
 }

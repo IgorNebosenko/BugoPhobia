@@ -19,15 +19,43 @@ namespace ElectrumGames.Core.Items
         [field: SerializeField] public int MaxCountOnMission { get; private set; }
     }
 
+    [Serializable]
+    public class EnvironmentItemConfig
+    {
+        [field: SerializeField] public ItemInstanceBase ItemInstance { get; private set; }
+        [field: SerializeField] public Vector3 UserPositionAtCamera { get; private set; }
+        [field: SerializeField] public Quaternion UserRotationAtCamera { get; private set; }
+    }
+
     [CreateAssetMenu(fileName = "Items Config", menuName = "Items/ItemsConfig")]
     public class ItemsConfig : ScriptableObject
     {
         [field: SerializeField, ListDrawerSettings(NumberOfItemsPerPage = 5)] 
         public List<ItemConfigData> ItemsList { get; private set; }
+        
+        [field: SerializeField, ListDrawerSettings(NumberOfItemsPerPage = 5)] 
+        public List<EnvironmentItemConfig> EnvironmentItemsList { get; private set; }
 
         public ItemConfigData GetItemByType(ItemType itemType)
         {
+            if ((int) itemType >= 1000)
+            {
+                Debug.LogError($"Try to get item but index is in range of environment items!");
+                return null;
+            }
+            
             return ItemsList.Find(x => x.ItemInstance.ItemType == itemType);
+        }
+
+        public EnvironmentItemConfig GetEnvironmentItemByType(ItemType itemType)
+        {
+            if ((int) itemType < 1000)
+            {
+                Debug.LogError($"Try to get item but index is in range of equipment items!");
+                return null;
+            }
+
+            return EnvironmentItemsList.Find(x => x.ItemInstance.ItemType == itemType);
         }
     }
 }
