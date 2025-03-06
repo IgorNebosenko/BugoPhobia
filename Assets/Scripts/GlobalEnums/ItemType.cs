@@ -75,6 +75,15 @@
         Wrench0 = 1060,
         Wrench1,
         
-        WireCutters = 1070
+        WireCutters = 1070,
+        
+        Hammer = 1080,
+        
+        ToiletPaper = 1090,
+        
+        Telephone = 1100,
+        ConsoleHandled,
+        
+        ToothBrush = 1110,
     }
 }
