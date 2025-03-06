@@ -6,11 +6,11 @@ namespace ElectrumGames.Core.Items
 {
     public class ItemMarkers : MonoBehaviour
     {
-        [SerializeField] private ItemSpawnPoint[] itemSpawnPoints;
+        private List<ItemSpawnPoint> _itemSpawnPoints;
 
         private ItemsFactory _itemsFactory;
 
-        public IReadOnlyList<ItemSpawnPoint> ItemSpawnPoints => itemSpawnPoints;
+        public IReadOnlyList<ItemSpawnPoint> ItemSpawnPoints => _itemSpawnPoints;
         
         [Inject]
         private void Construct(ItemsFactory itemsFactory)
@@ -20,10 +20,17 @@ namespace ElectrumGames.Core.Items
 
         private void Start()
         {
-            for (var i = 0; i < itemSpawnPoints.Length; i++)
+            _itemSpawnPoints = new List<ItemSpawnPoint>();
+            
+            for (var i = 0; i < transform.childCount; i++)
             {
-                itemSpawnPoints[i].SpawnerId = i;
-                _itemsFactory.Spawn(itemSpawnPoints[i], i);
+                if (transform.GetChild(i).TryGetComponent<ItemSpawnPoint>(out var item))
+                {
+                    item.SpawnerId = i;
+                    _itemsFactory.Spawn(item, i);
+                    
+                    _itemSpawnPoints.Add(item);
+                }
             }
         }
     }
