@@ -44,6 +44,17 @@
         IncenseAdvanced,
         
         PlateRoundWhite = 1000,
-        PlateRoundBrown
+        PlateRoundBrown,
+        
+        KnifeForBread = 1010,
+        KnifeChopper,
+        KnifeLarge,
+        KnifeSmall,
+        
+        ForkBig = 1020,
+        BigSpoon,
+        
+        Pan = 1030,
+        PanWok
     }
 }
