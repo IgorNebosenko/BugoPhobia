@@ -12,7 +12,8 @@ namespace ElectrumGames.Core.Items
         [field: SerializeField] public Rigidbody PhysicObject { get; private set; }
         [field: SerializeField] public Collider Collider { get; private set; }
         [field: SerializeField] public ItemType ItemType { get; protected set; }
-
+        [field: SerializeField] public CollisionThrowSound CollisionThrowSound { get; private set; }
+        
         private PlayerConfig _playerConfig;
         private ItemsFactory _itemsFactory;
         protected IInventory inventoryReference;

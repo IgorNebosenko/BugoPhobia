@@ -36,6 +36,7 @@ public class ProjectInstaller : MonoInstaller
     [SerializeField] private UserConfig userConfig;
     [Space]
     [SerializeField] private ItemsConfig itemsConfig;
+    [SerializeField] private ItemThrowSoundConfig itemThrowSoundConfig;
     [Space]
     [SerializeField] private FpsConfig pcFpsConfig;
     [SerializeField] private FpsConfig androidFpsConfig;
@@ -75,6 +76,7 @@ public class ProjectInstaller : MonoInstaller
         Container.BindInstance(userConfig).AsSingle();
         
         Container.BindInstance(itemsConfig).AsSingle();
+        Container.BindInstance(itemThrowSoundConfig).AsSingle();
         
 #if UNITY_STANDALONE
         Container.BindInstance(pcFpsConfig).AsSingle();
