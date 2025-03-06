@@ -281,11 +281,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac75edb1dcc4602befc19a33561e97a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <DefaultItemSize>k__BackingField: {x: 0.66, y: 0.66, z: 0.66}
   <PhysicObject>k__BackingField: {fileID: 6139243013555993350}
   <Collider>k__BackingField: {fileID: 3918579737501461323}
   <ItemType>k__BackingField: 111
+  <CollisionThrowSound>k__BackingField: 1
   countUses: 2
+  <RadiusUse>k__BackingField: 3
   firstUseSource: {fileID: 1588778548284457274}
   secondUseSource: {fileID: 7648652131132737612}
 --- !u!1 &5340368013600711726

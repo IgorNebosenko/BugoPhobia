@@ -12,4 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dccf959ed88c4840994c014f446d7478, type: 3}
   m_Name: Item Throw Sound Config
   m_EditorClassIdentifier: 
-  <ItemThrowSoundItems>k__BackingField: []
+  <ItemThrowSoundItems>k__BackingField:
+  - <CollisionThrowSound>k__BackingField: 0
+    <AudioClip>k__BackingField: {fileID: 8300000, guid: c49031b12d0d42f4ca8d36dd02a86ab4, type: 3}
+  - <CollisionThrowSound>k__BackingField: 1
+    <AudioClip>k__BackingField: {fileID: 8300000, guid: 3a43020f7e4aee2499e7d087483cc9d7, type: 3}
+  - <CollisionThrowSound>k__BackingField: 2
+    <AudioClip>k__BackingField: {fileID: 8300000, guid: 53d66a34ab56bbf489cda0e7f92b538d, type: 3}
+  - <CollisionThrowSound>k__BackingField: 3
+    <AudioClip>k__BackingField: {fileID: 8300000, guid: db58a63b24298fa4fb4bb36e6f7dcf29, type: 3}

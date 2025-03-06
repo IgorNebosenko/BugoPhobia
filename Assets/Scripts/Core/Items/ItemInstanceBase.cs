@@ -1,4 +1,6 @@
-﻿using ElectrumGames.CommonInterfaces;
+﻿using System.Linq;
+using ElectrumGames.Audio.Pool;
+using ElectrumGames.CommonInterfaces;
 using ElectrumGames.Configs;
 using ElectrumGames.Core.Items.Inventory;
 using ElectrumGames.GlobalEnums;
@@ -18,13 +20,22 @@ namespace ElectrumGames.Core.Items
         private ItemsFactory _itemsFactory;
         protected IInventory inventoryReference;
 
+        private AudioSourcesPool _audioSources;
+        private ItemThrowSoundConfig _throwSoundConfig;
+
         protected DiContainer container;
+        
+        private bool _isInDropState;
 
         public Vector3 LocalScale { get; private set; } = Vector3.one;//transform.localScale;
         
         public int NetId { get; private set; }
         public int OwnerId { get; private set; }
         public int SpawnerId { get; private set; }
+
+        private void Update()
+        {
+        }
 
         public void SetInventory(IInventory inventory)
         {
@@ -43,6 +54,10 @@ namespace ElectrumGames.Core.Items
             
             _playerConfig = this.container.Resolve<PlayerConfig>();
             _itemsFactory = itemsFactory;
+            
+            _audioSources = container.Resolve<AudioSourcesPool>();
+            _throwSoundConfig = container.Resolve<ItemThrowSoundConfig>();
+            
             SpawnerId = spawnerId;
 
             LocalScale = transform.localScale;
@@ -72,12 +87,31 @@ namespace ElectrumGames.Core.Items
             
             transform.parent = _itemsFactory.transform;
             transform.localScale = LocalScale;
+
+            _isInDropState = true;
             
             OnAfterDrop();
         }
 
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (_isInDropState && !collision.collider.isTrigger)
+            {
+                _isInDropState = false;
+                PlayCollisionDropSound();
+            }
+        }
+
         public virtual void OnAfterDrop()
         {
+        }
+
+        public void PlayCollisionDropSound()
+        {
+            var clip = _throwSoundConfig.ItemThrowSoundItems.
+                First(x => x.CollisionThrowSound == CollisionThrowSound).AudioClip;
+
+            _audioSources.Spawn(transform.position, clip, 1f);
         }
     }
 }
