@@ -6,7 +6,7 @@ namespace ElectrumGames.Core.Common
     {
         int CountUsesRemain { get; }
         float RadiusUse { get; }
-        Vector3 Position { get; }
+        Transform Transform { get; }
         bool OnHuntInteraction();
     }
 }

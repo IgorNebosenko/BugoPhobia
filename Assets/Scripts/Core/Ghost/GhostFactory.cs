@@ -289,81 +289,81 @@ namespace ElectrumGames.Core.Ghost
                 case GhostType.Efreet:
                     return new EfreetHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int)_missionDataHandler.MissionDifficulty], activityData, 
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                        _missionPlayersHandler, _flickConfig, _huntPoints, _emfData, _ghostEmfZonePool);
                 case GhostType.Yrka:
                     return new YrkaHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int)_missionDataHandler.MissionDifficulty], activityData, 
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                        _missionPlayersHandler, _flickConfig, _huntPoints, _emfData, _ghostEmfZonePool);
                 case GhostType.Wraith:
                     return new WraithHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int) _missionDataHandler.MissionDifficulty], activityData,
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                        _missionPlayersHandler, _flickConfig, _huntPoints, _emfData, _ghostEmfZonePool);
                 case GhostType.Mare:
                     return new MareHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int) _missionDataHandler.MissionDifficulty], activityData,
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                        _missionPlayersHandler, _flickConfig, _huntPoints, _emfData, _ghostEmfZonePool);
                 case GhostType.Babadook:
                     return new BabadookHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int) _missionDataHandler.MissionDifficulty], activityData,
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                        _missionPlayersHandler, _flickConfig, _huntPoints, _emfData, _ghostEmfZonePool);
                 case GhostType.Invisible:
                     return new InvisibleHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int) _missionDataHandler.MissionDifficulty], activityData,
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                        _missionPlayersHandler, _flickConfig, _huntPoints, _emfData, _ghostEmfZonePool);
                 case GhostType.Yurei:
                     return new YureiHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int) _missionDataHandler.MissionDifficulty], activityData,
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                        _missionPlayersHandler, _flickConfig, _huntPoints, _emfData, _ghostEmfZonePool);
                 case GhostType.Glitch:
                     return new GlitchHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int) _missionDataHandler.MissionDifficulty], activityData,
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                        _missionPlayersHandler, _flickConfig, _huntPoints, _emfData, _ghostEmfZonePool);
                 case GhostType.Naamah:
                     return new NaamahHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int) _missionDataHandler.MissionDifficulty], activityData,
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                        _missionPlayersHandler, _flickConfig, _huntPoints, _emfData, _ghostEmfZonePool);
                 case GhostType.ElementalFear:
                     return new ElementalOfFearHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int) _missionDataHandler.MissionDifficulty], activityData,
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                        _missionPlayersHandler, _flickConfig, _huntPoints, _emfData, _ghostEmfZonePool);
                 case GhostType.Deogen:
                     return new DeogenHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int) _missionDataHandler.MissionDifficulty], activityData,
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                        _missionPlayersHandler, _flickConfig, _huntPoints, _emfData, _ghostEmfZonePool);
                 case GhostType.LostSoul:
                     return new LostSoulHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int) _missionDataHandler.MissionDifficulty], activityData,
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                        _missionPlayersHandler, _flickConfig, _huntPoints, _emfData, _ghostEmfZonePool);
                 case GhostType.Mimic:
                     return new MimicHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int) _missionDataHandler.MissionDifficulty], activityData,
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                        _missionPlayersHandler, _flickConfig, _huntPoints, _emfData, _ghostEmfZonePool);
                 case GhostType.Polymorph:
                     return GetHuntLogicByType(controller, (GhostType) Random.Range(0, (int) GhostType.Lich));
                 case GhostType.Imp:
                     return new ImpHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int) _missionDataHandler.MissionDifficulty], activityData,
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                        _missionPlayersHandler, _flickConfig, _huntPoints, _emfData, _ghostEmfZonePool);
                 case GhostType.Arsonist:
                     return new ArsonistHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int) _missionDataHandler.MissionDifficulty], activityData,
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                        _missionPlayersHandler, _flickConfig, _huntPoints, _emfData, _ghostEmfZonePool);
                 case GhostType.Henchman:
                     return new HenchmanHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int) _missionDataHandler.MissionDifficulty], activityData,
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                        _missionPlayersHandler, _flickConfig, _huntPoints, _emfData, _ghostEmfZonePool);
                 case GhostType.Poltergeist:
                     return new PoltergeistHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int) _missionDataHandler.MissionDifficulty], activityData,
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                        _missionPlayersHandler, _flickConfig, _huntPoints, _emfData, _ghostEmfZonePool);
                 case GhostType.Ethereal:
                     return new EtherealHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int) _missionDataHandler.MissionDifficulty], activityData,
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                        _missionPlayersHandler, _flickConfig, _huntPoints, _emfData, _ghostEmfZonePool);
                 case GhostType.Lich:
                     return new LichHuntLogic(controller, _ghostDifficultyList.GhostDifficultyData[
                             (int) _missionDataHandler.MissionDifficulty], activityData,
-                        _missionPlayersHandler, _flickConfig, _huntPoints);
+                        _missionPlayersHandler, _flickConfig, _huntPoints, _emfData, _ghostEmfZonePool);
                 default:
                     throw new ArgumentOutOfRangeException();
             }

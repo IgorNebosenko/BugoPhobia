@@ -9,6 +9,7 @@ using ElectrumGames.Extensions;
 using ElectrumGames.GlobalEnums;
 using Cysharp.Threading.Tasks;
 using ElectrumGames.Core.Common;
+using ElectrumGames.Core.Ghost.Interactions.Pools;
 using ElectrumGames.Core.Player;
 using UniRx;
 using UnityEngine;
@@ -25,6 +26,9 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
         private readonly MissionPlayersHandler _missionPlayersHandler;
         private readonly GhostFlickConfig _ghostFlickConfig;
         private readonly HuntPoints _huntPoints;
+
+        private readonly EmfData _emfData;
+        private readonly GhostEmfZonePool _emfZonePool;
         
         private const int LayerToExclude = ~(1 << 2);
 
@@ -56,7 +60,7 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
 
         public BaseHuntLogic(GhostController ghostController, GhostDifficultyData ghostDifficultyData, 
             GhostActivityData activityData, MissionPlayersHandler missionPlayersHandler, GhostFlickConfig ghostFlickConfig,
-            HuntPoints huntPoints)
+            HuntPoints huntPoints, EmfData emfData, GhostEmfZonePool emfZonePool)
         {
             _ghostController = ghostController;
             _ghostDifficultyData = ghostDifficultyData;
@@ -64,6 +68,9 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
             _missionPlayersHandler = missionPlayersHandler;
             _ghostFlickConfig = ghostFlickConfig;
             _huntPoints = huntPoints;
+
+            _emfData = emfData;
+            _emfZonePool = emfZonePool;
         }
 
         public void Setup(GhostVariables variables, GhostConstants constants, int roomId)
@@ -110,12 +117,23 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                             {
 
                                 if (startHuntInteractable.RadiusUse < Vector3.Distance(
-                                        _ghostController.transform.position, startHuntInteractable.Position)
+                                        _ghostController.transform.position, startHuntInteractable.Transform.position)
                                     && startHuntInteractable.OnHuntInteraction())
                                 {
                                     Debug.Log(
                                         $"Hunt interrupted by crucifix in hands of player! Uses remain: {startHuntInteractable.CountUsesRemain}");
                                     StopHunt();
+                                    
+                                    var emfLevel = _ghostController.EvidenceController.Evidences.Contains(EvidenceType.EMF5)
+                                        ? _emfData.ChanceEvidence < Random.Range(0f, 1f) ? _emfData.EvidenceLevel : _emfData.CrucifixDefaultEmf
+                                        : _emfData.CrucifixDefaultEmf;
+                                    
+                                    var emfZone = _emfZonePool.SpawnCylinderZone(startHuntInteractable.Transform, _emfData.CrucifixHeightOffset,
+                                        _emfData.CrucifixCylinderSize, emfLevel);
+            
+                                    Observable.Timer(TimeSpan.FromSeconds(_emfData.TimeEmfInteraction))
+                                        .Subscribe(_ => _emfZonePool.DespawnCylinderZone(emfZone));
+                                    
                                     return;
                                 }
                             }
@@ -129,13 +147,24 @@ namespace ElectrumGames.Core.Ghost.Logic.Hunt
                             var startHuntInteractable = _ghostController.GhostHuntAura.StartHuntInteractableList[i];
                             
                             if (startHuntInteractable.RadiusUse < Vector3.Distance(
-                                    _ghostController.transform.position, startHuntInteractable.Position)
+                                    _ghostController.transform.position, startHuntInteractable.Transform.position)
                                 && startHuntInteractable.OnHuntInteraction())
                             {
                                 Debug.Log(
                                     $"Hunt interrupted by crucifix in ground! Uses remain: " +
                                     $"{_ghostController.GhostHuntAura.StartHuntInteractableList[i].CountUsesRemain}");
                                 StopHunt();
+                                
+                                var emfLevel = _ghostController.EvidenceController.Evidences.Contains(EvidenceType.EMF5)
+                                    ? _emfData.ChanceEvidence < Random.Range(0f, 1f) ? _emfData.EvidenceLevel : _emfData.CrucifixDefaultEmf
+                                    : _emfData.CrucifixDefaultEmf;
+                                
+                                var emfZone = _emfZonePool.SpawnCylinderZone(startHuntInteractable.Transform, _emfData.CrucifixHeightOffset,
+                                    _emfData.CrucifixCylinderSize, emfLevel);
+            
+                                Observable.Timer(TimeSpan.FromSeconds(_emfData.TimeEmfInteraction))
+                                    .Subscribe(_ => _emfZonePool.DespawnCylinderZone(emfZone));
+                                
                                 return;
                             }
                         }
