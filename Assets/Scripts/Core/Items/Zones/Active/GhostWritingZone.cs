@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Core.Ghost.Interactions.Pools;
 using ElectrumGames.Core.Items.GhostWritable;
 using ElectrumGames.Extensions;
+using UniRx;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace ElectrumGames.Core.Items.Zones.Active
 {
@@ -70,8 +73,11 @@ namespace ElectrumGames.Core.Items.Zones.Active
                 ? _data.ChanceEvidence < Random.Range(0f, 1f) ? _data.EvidenceLevel : _data.GhostWritingDefaultEmf
                 : _data.GhostWritingDefaultEmf;
 
-            _emfZonePool.SpawnCylinderZone(writable.transform, _data.GhostWritingHeightOffset,
+            var emfZone = _emfZonePool.SpawnCylinderZone(writable.transform, _data.GhostWritingHeightOffset,
                 _data.GhostWritingCylinderSize, emfLevel);
+            
+            Observable.Timer(TimeSpan.FromSeconds(_data.TimeEmfInteraction))
+                .Subscribe(_ => _emfZonePool.DespawnCylinderZone(emfZone));
         }
 
         private void OnTriggerEnter(Collider other)
