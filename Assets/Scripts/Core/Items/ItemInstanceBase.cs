@@ -25,7 +25,7 @@ namespace ElectrumGames.Core.Items
 
         protected DiContainer container;
         
-        private bool _isInDropState;
+        protected bool isInDropState;
 
         public Vector3 LocalScale { get; private set; } = Vector3.one;//transform.localScale;
         
@@ -88,16 +88,16 @@ namespace ElectrumGames.Core.Items
             transform.parent = _itemsFactory.transform;
             transform.localScale = LocalScale;
 
-            _isInDropState = true;
+            isInDropState = true;
             
             OnAfterDrop();
         }
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (_isInDropState && !collision.collider.isTrigger)
+            if (isInDropState && !collision.collider.isTrigger)
             {
-                _isInDropState = false;
+                isInDropState = false;
                 PlayCollisionDropSound();
             }
         }

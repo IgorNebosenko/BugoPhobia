@@ -18,6 +18,8 @@ namespace ElectrumGames.Core.Items
         public void ThrowItem(float force)
         {
             var direction = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+
+            isInDropState = true;
             
             PhysicObject.AddForce(direction * force, ForceMode.Impulse);
         }
