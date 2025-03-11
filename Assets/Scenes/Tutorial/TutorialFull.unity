@@ -33,7 +33,7 @@ RenderSettings:
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
   m_DefaultReflectionMode: 0
-  m_DefaultReflectionResolution: 128
+  m_DefaultReflectionResolution: 256
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
@@ -93,8 +93,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 2a2a6e6ba4d1e8d49a84b1479cccd750, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: c8b2a32a224533d4db783a1e0fa0abf4, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -164,6 +164,127 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &43195491
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 906061941}
+    m_Modifications:
+    - target: {fileID: 866785892998281536, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 8.5781124e-38
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 8.22e-42
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 2.524355e-29
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100386397922960618, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: <LightMode>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423854120468754122, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 31.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.835
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Name
+      value: light-ceiling-circle (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 1.57e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 2.595e-42
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 2.524355e-29
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
 --- !u!1 &50297351
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,17 +390,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 906061941}
     m_Modifications:
+    - target: {fileID: 866785892998281536, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 3.9415303e+12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 6.2097996e+22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 7.7140256e+31
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 538860700
       objectReference: {fileID: 0}
     - target: {fileID: 2100386397922960618, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: <LightMode>k__BackingField
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423854120468754122, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -325,13 +470,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: light-ceiling-circle (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 0.006216272
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 6.9499736e-37
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0.0000069527887
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -346,17 +511,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 906061941}
     m_Modifications:
+    - target: {fileID: 866785892998281536, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 805.5847
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 2.6785363e+20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.0505619e-38
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 1.4988622e+25
       objectReference: {fileID: 0}
     - target: {fileID: 2100386397922960618, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: <LightMode>k__BackingField
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423854120468754122, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -402,13 +591,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: light-ceiling-circle (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.3e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 7.8e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 9e-44
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -585,6 +790,127 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &177238499
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 906061941}
+    m_Modifications:
+    - target: {fileID: 866785892998281536, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 3.93419e+12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 7.483e-42
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 2.524355e-29
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100386397922960618, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: <LightMode>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423854120468754122, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 27.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.835
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Name
+      value: light-ceiling-circle (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 7.365175e+31
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 2.0531772e-19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.1693425e-19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 41989250
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
 --- !u!1 &181105794
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,6 +1238,127 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5526335790339021213, guid: 8cb0a1294e76f96479eac53bac1286bd, type: 3}
   m_PrefabInstance: {fileID: 2102981293}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &252028715
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 906061941}
+    m_Modifications:
+    - target: {fileID: 866785892998281536, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.3e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 7.8e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 9.1e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100386397922960618, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: <LightMode>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423854120468754122, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 22.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.835
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 11.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Name
+      value: light-ceiling-circle (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.5918e-41
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 2.584e-41
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 2.524355e-29
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
 --- !u!1 &259214893
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,20 +1621,520 @@ MonoBehaviour:
   cylinderZoneTemplate: {fileID: 4473479056289998647, guid: a1f46e7190d3c80448b9b910e29c5410, type: 3}
   sphereZoneTemplate: {fileID: 3137316416401091561, guid: ef3b6d73332b0c84f962a02aacf70bd7, type: 3}
   initialSize: 8
+--- !u!1001 &386335428
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 906061941}
+    m_Modifications:
+    - target: {fileID: 866785892998281536, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 3.948926e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.623e-42
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 2.524355e-29
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100386397922960618, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: <LightMode>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423854120468754122, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 34.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.835
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 11.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Name
+      value: light-ceiling-circle (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 2.6020852e-16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 3.156e-42
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 2.524355e-29
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
 --- !u!4 &396496239 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3356750743746441978, guid: 50876b88cfd7ac34982a43041afee49c, type: 3}
   m_PrefabInstance: {fileID: 1351805209}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &430997451
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 906061941}
+    m_Modifications:
+    - target: {fileID: 866785892998281536, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.3e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 7.8e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 8.4e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100386397922960618, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: <LightMode>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423854120468754122, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 22.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.835
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Name
+      value: light-ceiling-circle (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.3e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 7.8e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 9.1e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+--- !u!4 &438834469 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+  m_PrefabInstance: {fileID: 614005566}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &453286458 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+  m_PrefabInstance: {fileID: 252028715}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &468263818
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 906061941}
+    m_Modifications:
+    - target: {fileID: 866785892998281536, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.3e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 7.8e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 8.7e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100386397922960618, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: <LightMode>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423854120468754122, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 22.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.835
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Name
+      value: light-ceiling-circle (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.3e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 7.8e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 9.7e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
 --- !u!4 &488824738 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
   m_PrefabInstance: {fileID: 152764248}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &614005566
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 906061941}
+    m_Modifications:
+    - target: {fileID: 866785892998281536, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 5.806e-42
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 2.524355e-29
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100386397922960618, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: <LightMode>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423854120468754122, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 28.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.835
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Name
+      value: light-ceiling-circle (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 2.487832e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 2.5376e-41
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 2.524355e-29
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+--- !u!4 &623906919 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+  m_PrefabInstance: {fileID: 1723632867}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &644845302 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
   m_PrefabInstance: {fileID: 83147950}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &653699647 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+  m_PrefabInstance: {fileID: 177238499}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &705325630
 GameObject:
@@ -1221,6 +2168,11 @@ Transform:
   - {fileID: 350580475}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &705422009 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+  m_PrefabInstance: {fileID: 2048015036}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &731734808
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1229,17 +2181,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 906061941}
     m_Modifications:
+    - target: {fileID: 866785892998281536, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 7.34684e-40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 9.1835e-41
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 5.1134027e-37
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 4.362186e-39
       objectReference: {fileID: 0}
     - target: {fileID: 2100386397922960618, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: <LightMode>k__BackingField
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423854120468754122, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1285,13 +2261,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: light-ceiling-circle
       objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 8e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 2.6688e-41
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 2.524355e-29
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1611,17 +2607,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 906061941}
     m_Modifications:
+    - target: {fileID: 866785892998281536, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: NaN
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2100386397922960618, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: <LightMode>k__BackingField
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423854120468754122, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1667,13 +2687,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: light-ceiling-circle (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.3e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 7.8e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 9.2e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1911,6 +2951,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &870657682 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+  m_PrefabInstance: {fileID: 43195491}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &879113952 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
@@ -2092,6 +3137,15 @@ Transform:
   - {fileID: 920300387}
   - {fileID: 644845302}
   - {fileID: 2013334436}
+  - {fileID: 2000540541}
+  - {fileID: 1239658879}
+  - {fileID: 705422009}
+  - {fileID: 453286458}
+  - {fileID: 1863380977}
+  - {fileID: 870657682}
+  - {fileID: 653699647}
+  - {fileID: 623906919}
+  - {fileID: 438834469}
   - {fileID: 879113952}
   - {fileID: 1383478304}
   m_Father: {fileID: 316831022}
@@ -2101,6 +3155,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
   m_PrefabInstance: {fileID: 802299339}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &972546851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 972546852}
+  - component: {fileID: 972546853}
+  m_Layer: 2
+  m_Name: 4Evidences
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &972546852
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 972546851}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 28.5, y: 0.49, z: 14.5}
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1830289300}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &972546853
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 972546851}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1001290464
 GameObject:
   m_ObjectHideFlags: 0
@@ -2876,6 +3983,11 @@ MonoBehaviour:
   <DoorsRoomHandler>k__BackingField: {fileID: 1238991666}
   <RadiationRoomHandler>k__BackingField: {fileID: 1238991665}
   neighborRooms: []
+--- !u!4 &1239658879 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+  m_PrefabInstance: {fileID: 430997451}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1273211805
 GameObject:
   m_ObjectHideFlags: 0
@@ -3362,17 +4474,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 906061941}
     m_Modifications:
+    - target: {fileID: 866785892998281536, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: NaN
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 5.614711e-31
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2100386397922960618, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: <LightMode>k__BackingField
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423854120468754122, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3418,13 +4554,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: light-ceiling-circle (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.3e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 7.8e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 8.7e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3444,17 +4600,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 906061941}
     m_Modifications:
+    - target: {fileID: 866785892998281536, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 1.1754945e-38
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 6.7e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 6e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 2.1e-44
       objectReference: {fileID: 0}
     - target: {fileID: 2100386397922960618, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: <LightMode>k__BackingField
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423854120468754122, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3500,13 +4680,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: light-ceiling-circle (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 5.738e-42
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 3.01335e-40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 2.6726e-41
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: NaN
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3896,17 +5096,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 906061941}
     m_Modifications:
+    - target: {fileID: 866785892998281536, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 2.663334e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 6.878e-42
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 2.524355e-29
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2100386397922960618, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: <LightMode>k__BackingField
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423854120468754122, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3952,13 +5176,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: light-ceiling-circle (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.3e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 7.8e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 8.4e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3973,17 +5217,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 906061941}
     m_Modifications:
+    - target: {fileID: 866785892998281536, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.3e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 7.8e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 9e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2100386397922960618, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: <LightMode>k__BackingField
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423854120468754122, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4029,13 +5297,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: light-ceiling-circle (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.3e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 7.8e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 9.1e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4489,6 +5777,127 @@ Transform:
   - {fileID: 1053964058}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1723632867
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 906061941}
+    m_Modifications:
+    - target: {fileID: 866785892998281536, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 8.4772774e+30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: NaN
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 2.5771e-41
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100386397922960618, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: <LightMode>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423854120468754122, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 22.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.835
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Name
+      value: light-ceiling-circle (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 1.578803e-19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.3563128e-19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 3574.8203
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 1.0947093e+27
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
 --- !u!4 &1727849430 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
@@ -4522,8 +5931,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.5235849, g: 0.5385558, b: 1, a: 1}
+  m_Intensity: 0.15
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -4562,13 +5971,13 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 2.557e-42, y: 0, z: 0, w: 1e-45}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
@@ -4623,17 +6032,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 906061941}
     m_Modifications:
+    - target: {fileID: 866785892998281536, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.3e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 7.8e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 9.7e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2100386397922960618, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: <LightMode>k__BackingField
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423854120468754122, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4679,13 +6112,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: light-ceiling-circle (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: NaN
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4725,6 +6178,7 @@ Transform:
   - {fileID: 855779022}
   - {fileID: 396496239}
   - {fileID: 243559094}
+  - {fileID: 972546852}
   m_Father: {fileID: 316831022}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1833569919
@@ -4888,17 +6342,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 906061941}
     m_Modifications:
+    - target: {fileID: 866785892998281536, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.3e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 7.8e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 9.8e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2100386397922960618, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: <LightMode>k__BackingField
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423854120468754122, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4944,19 +6422,44 @@ PrefabInstance:
       propertyPath: m_Name
       value: light-ceiling-circle (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 4.132659e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 5.335e-42
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+--- !u!4 &1863380977 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+  m_PrefabInstance: {fileID: 386335428}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1919833284
 GameObject:
   m_ObjectHideFlags: 0
@@ -5117,17 +6620,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 906061941}
     m_Modifications:
+    - target: {fileID: 866785892998281536, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.3e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 7.8e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 7.4e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2100386397922960618, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: <LightMode>k__BackingField
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423854120468754122, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5173,19 +6700,44 @@ PrefabInstance:
       propertyPath: m_Name
       value: light-ceiling-circle (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 1.7411202e+25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 5.4596653e-31
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.3563128e-19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 1.4993883e+10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+--- !u!4 &2000540541 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+  m_PrefabInstance: {fileID: 468263818}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2011855926
 GameObject:
   m_ObjectHideFlags: 0
@@ -5358,6 +6910,123 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directionalLight: {fileID: 1776719534}
   <OutDoorRadiation>k__BackingField: 0.015
+--- !u!1001 &2048015036
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 906061941}
+    m_Modifications:
+    - target: {fileID: 866785892998281536, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.3e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 7.8e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006933226295109988, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 8.5e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100386397922960618, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: <LightMode>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423854120468754122, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 22.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.835
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481896536998891266, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Name
+      value: light-ceiling-circle (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116085157447330432, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.3e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 7.8e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 8.7e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608628695651079047, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c0ae59549fada324ebc5e989b6b9475c, type: 3}
 --- !u!1 &2056667065
 GameObject:
   m_ObjectHideFlags: 0
