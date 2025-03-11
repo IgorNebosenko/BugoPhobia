@@ -21,7 +21,7 @@ namespace ElectrumGames.Core.Items.Zones.Active
 
         private float _cooldown;
 
-        [Inject] // for tests
+        [Inject] // for tutorial
         private void Construct(TorchConfig torchConfig, GhostEmfZonePool emfZonePool, EmfData data)
         {
             _torchConfig = torchConfig;

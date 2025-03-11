@@ -1,13 +1,21 @@
 ﻿using System.Collections;
 using ElectrumGames.Core.Ghost.Configs;
 using UnityEngine;
+using Zenject;
 
 namespace ElectrumGames.Core.Items.Zones
 {
     public class RadiationGhostZone : MonoBehaviour
     {
         public float CurrentRadiation { get; private set; }
-        
+
+        [Inject] //for tutorial
+        private void Construct(RadiationConfig radiationConfig)
+        {
+            CurrentRadiation = Random.Range(radiationConfig.RadiationValueEvidence,
+                radiationConfig.RadiationValueEvidenceMax);
+        }
+
         public void Init(bool hasEvidence, RadiationConfig radiationConfig)
         {
             CurrentRadiation = radiationConfig.StartRadiation;

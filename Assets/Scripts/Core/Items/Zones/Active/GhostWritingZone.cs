@@ -23,7 +23,7 @@ namespace ElectrumGames.Core.Items.Zones.Active
 
         private float _cooldown;
 
-        [Inject] //for tests
+        [Inject] //for tutorial
         private void Construct(GhostWritableConfig config, GhostEmfZonePool emfZonePool, EmfData emfData)
         {
             _config = config;

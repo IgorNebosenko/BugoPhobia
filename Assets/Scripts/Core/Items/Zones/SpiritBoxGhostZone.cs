@@ -1,6 +1,7 @@
 ﻿using ElectrumGames.Core.Ghost.Configs;
 using ElectrumGames.Extensions;
 using UnityEngine;
+using Zenject;
 
 namespace ElectrumGames.Core.Items.Zones
 {
@@ -11,7 +12,16 @@ namespace ElectrumGames.Core.Items.Zones
         private bool _isYoung;
         
         private SpiritBoxConfig _spiritBoxConfig;
-        
+
+        [Inject] //for tutorial
+        private void Construct(SpiritBoxConfig spiritBoxConfig)
+        {
+            _hasEvidence = true;
+            _isMale = Random.Range(0, 2) != 0;
+            _isYoung = Random.Range(0, 2) != 0;
+            _spiritBoxConfig = spiritBoxConfig;
+        }
+
         public void Init(bool hasRadioEvidence, bool isMale, bool isYoung, SpiritBoxConfig spiritBoxConfig)
         {
             _hasEvidence = hasRadioEvidence;
