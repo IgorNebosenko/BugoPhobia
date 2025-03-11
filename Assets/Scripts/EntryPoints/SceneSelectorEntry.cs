@@ -26,7 +26,10 @@ namespace ElectrumGames.EntryPoints
         private void Start()
         {
             if (!_tutorialHandler.IsTutorialFinished)
-                _viewManager.ShowView<SelectTutorialViewPresenter>();
+            {
+                _viewManager.ShowView<LoadingPresenter>();
+                SceneManager.LoadSceneAsync((int) MissionMap.TutorialSelector);
+            }
             else
             {
                 _viewManager.ShowView<LoadingPresenter>();
