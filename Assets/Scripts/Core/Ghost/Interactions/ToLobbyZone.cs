@@ -10,7 +10,7 @@ namespace ElectrumGames.Core.Ghost.Interactions
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent<PlayerBase>(out var _))
-                SceneManager.LoadSceneAsync((int)MissionMap.LobbyTier0);
+                SceneManager.LoadSceneAsync((int)MissionMap.SceneSelector);
         }
     }
 }
