@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using ElectrumGames.Core.Environment;
+﻿using ElectrumGames.Core.Environment;
 using ElectrumGames.Core.Environment.Configs;
 using UnityEngine;
 using Zenject;
@@ -21,7 +20,7 @@ namespace ElectrumGames.Core.Rooms
         private EnvironmentHandler _environmentHandler;
         private TemperatureConfig _temperatureConfig;
         
-        public float CurrentTemperature { get; private set; }
+        public virtual float CurrentTemperature { get; private set; }
 
         [Inject]
         private void Construct(FuseBoxEnvironmentObject fuseBox, EnvironmentHandler environmentHandler, 

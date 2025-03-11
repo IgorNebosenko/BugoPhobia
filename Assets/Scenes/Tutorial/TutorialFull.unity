@@ -577,6 +577,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 996397601032062133, guid: 8bf4c9a6f9aad264ea8b0010b1a5a8cb, type: 3}
   m_PrefabInstance: {fileID: 117984321}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &149565888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 149565889}
+  - component: {fileID: 149565890}
+  m_Layer: 0
+  m_Name: EmfZonesPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &149565889
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149565888}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1722092410}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &149565890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149565888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8fe54715fb8456ba0dcecc36985b87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cylinderZoneTemplate: {fileID: 4473479056289998647, guid: a1f46e7190d3c80448b9b910e29c5410, type: 3}
+  sphereZoneTemplate: {fileID: 3137316416401091561, guid: ef3b6d73332b0c84f962a02aacf70bd7, type: 3}
+  initialSize: 8
 --- !u!1001 &152764248
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3681,6 +3728,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1040649913
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1040649914}
+  - component: {fileID: 1040649915}
+  m_Layer: 0
+  m_Name: Thermometr
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1040649914
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040649913}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4, y: 0, z: 17.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2116352792}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1040649915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040649913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10733c8b3ce64b32ae7133f09aadfb04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ItemType>k__BackingField: 21
 --- !u!1 &1053964057
 GameObject:
   m_ObjectHideFlags: 0
@@ -4476,6 +4568,7 @@ MonoBehaviour:
   audioSourcesPool: {fileID: 1053964059}
   itemMarkers: {fileID: 2116352793}
   fuseBoxEnvironmentObject: {fileID: 211046517}
+  ghostEmfZonePool: {fileID: 149565890}
   tutorialHouseController: {fileID: 316831023}
   environmentHandler: {fileID: 2017359522}
   noiseGenerator: {fileID: 1448109579}
@@ -6197,6 +6290,7 @@ Transform:
   - {fileID: 79461024}
   - {fileID: 2011855927}
   - {fileID: 1053964058}
+  - {fileID: 149565889}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1723632867
@@ -6621,7 +6715,7 @@ GameObject:
   - component: {fileID: 1833569926}
   - component: {fileID: 1833569929}
   - component: {fileID: 1833569925}
-  - component: {fileID: 1833569924}
+  - component: {fileID: 1833569930}
   - component: {fileID: 1833569923}
   - component: {fileID: 1833569922}
   - component: {fileID: 1833569921}
@@ -6689,20 +6783,6 @@ MonoBehaviour:
   spawnPointAtRoom: {fileID: 0}
   activityPoints: []
   sheltersPoints: []
---- !u!114 &1833569924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1833569919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d750f3ccbac241dcb57b4f8f72c901e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxTemperature: -9.9
-  temperatureCoefficient: 1
 --- !u!114 &1833569925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6757,11 +6837,25 @@ MonoBehaviour:
   <RoomId>k__BackingField: 1
   boxCollider: {fileID: 1833569926}
   <LightRoomHandler>k__BackingField: {fileID: 1833569925}
-  <TemperatureRoom>k__BackingField: {fileID: 1833569924}
+  <TemperatureRoom>k__BackingField: {fileID: 1833569930}
   <GhostRoomHandler>k__BackingField: {fileID: 1833569923}
   <DoorsRoomHandler>k__BackingField: {fileID: 1833569922}
   <RadiationRoomHandler>k__BackingField: {fileID: 1833569921}
   neighborRooms: []
+--- !u!114 &1833569930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833569919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c8ee812efd47d08360c15b62eb0bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTemperature: 0
+  temperatureCoefficient: 0
 --- !u!1001 &1847609357
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7226,7 +7320,6 @@ GameObject:
   - component: {fileID: 2017359521}
   - component: {fileID: 2017359520}
   - component: {fileID: 2017359519}
-  - component: {fileID: 2017359518}
   - component: {fileID: 2017359522}
   m_Layer: 0
   m_Name: Environment
@@ -7235,27 +7328,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &2017359518
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2017359516}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2017359519
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7693,7 +7765,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1040649914}
   m_Father: {fileID: 1490935889}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2116352793

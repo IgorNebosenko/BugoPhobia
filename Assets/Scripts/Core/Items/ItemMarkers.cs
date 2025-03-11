@@ -20,6 +20,7 @@ namespace ElectrumGames.Core.Items
 
         private void Start()
         {
+            Debug.Log("start!");
             _itemSpawnPoints = new List<ItemSpawnPoint>();
             
             for (var i = 0; i < transform.childCount; i++)
