@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using ElectrumGames.Audio;
 using ElectrumGames.Audio.Pool;
 using ElectrumGames.Core.Environment;

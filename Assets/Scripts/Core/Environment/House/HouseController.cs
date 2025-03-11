@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using ElectrumGames.Core.Environment.Enums;
+﻿using System.Collections.Generic;
 using ElectrumGames.Core.Ghost;
 using ElectrumGames.Core.Ghost.Controllers;
 using ElectrumGames.Core.Rooms;
