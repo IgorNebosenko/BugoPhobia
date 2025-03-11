@@ -56,17 +56,26 @@ namespace ElectrumGames.Core.Rooms
         
         private void Start()
         {
+            if (roomSwitch == null)
+                return;
+            
             IsLightOn = roomSwitch.IsElectricityOn;
         }
 
         private void OnEnable()
         {
+            if (roomSwitch == null)
+                return;
+            
             roomSwitch.Switch += ChangeState;
             roomSwitch.FlickLight += DoFlick;
         }
 
         private void OnDisable()
         {
+            if (roomSwitch == null)
+                return;
+            
             roomSwitch.Switch -= ChangeState;
             roomSwitch.FlickLight -= DoFlick;
         }
