@@ -25,12 +25,14 @@ namespace ElectrumGames.UI.Presenters
 
         public void OnYesButtonClicked()
         {
+            _tutorialHandler.IsTutorialFinished = true;
             SceneManager.LoadSceneAsync((int) MissionMap.TutorialFull);
             _viewManager.ShowView<LoadingPresenter>();
         }
 
         public void OnAlreadyPlayedButtonClicked()
         {
+            _tutorialHandler.IsTutorialFinished = true;
             SceneManager.LoadSceneAsync((int) MissionMap.TutorialShort);
             _viewManager.ShowView<LoadingPresenter>();
         }

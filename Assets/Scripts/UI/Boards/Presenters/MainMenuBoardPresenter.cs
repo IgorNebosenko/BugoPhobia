@@ -43,6 +43,7 @@ namespace ElectrumGames.UI.Boards.Presenters
 
         public void OnTutorialClicked()
         {
+            SceneManager.LoadSceneAsync((int) MissionMap.TutorialSelector);
         }
 
         public void OnSettingsClicked()
