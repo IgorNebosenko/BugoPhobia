@@ -33,7 +33,7 @@ namespace ElectrumGames.UI.Presenters
         public void OnAlreadyPlayedButtonClicked()
         {
             _tutorialHandler.IsTutorialFinished = true;
-            SceneManager.LoadSceneAsync((int) MissionMap.TutorialShort);
+            SceneManager.LoadSceneAsync((int) MissionMap.TutorialAdvanced);
             _viewManager.ShowView<LoadingPresenter>();
         }
 

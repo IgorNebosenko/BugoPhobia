@@ -8,11 +8,12 @@ using ElectrumGames.Core.Items;
 using ElectrumGames.Core.Player;
 using ElectrumGames.Core.Player.Interactions.Items;
 using ElectrumGames.UI;
+using ElectrumGames.UI.UiEvents;
 using UnityEngine;
 
 namespace ElectrumGames.Injection
 {
-    public class TutorialFullInstaller : BaseSceneInstaller
+    public class TutorialInstaller : BaseSceneInstaller
     {
         [Space]
         [SerializeField] private Camera mainCamera;
@@ -56,6 +57,8 @@ namespace ElectrumGames.Injection
             Container.BindInstance(noiseGenerator).AsSingle();
 
             Container.BindInstance(flashLightInteractionHandler).AsSingle();
+            
+            Container.Bind<UiEventsHandler>().AsSingle().NonLazy();
             
             Container.Bind<MissionPlayersHandler>().AsSingle();
         }

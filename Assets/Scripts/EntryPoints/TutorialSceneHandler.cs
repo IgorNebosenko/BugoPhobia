@@ -7,7 +7,7 @@ using Zenject;
 
 namespace ElectrumGames.EntryPoints
 {
-    public class TutorialFullSceneHandler : MonoBehaviour
+    public class TutorialSceneHandler : MonoBehaviour
     {
         [SerializeField] private Transform playerSpawnPoint;
 

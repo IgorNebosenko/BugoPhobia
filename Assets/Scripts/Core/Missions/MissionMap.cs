@@ -7,7 +7,7 @@
         SceneSelector = 1,
         TutorialSelector = 2,
         TutorialFull = 3,
-        TutorialShort = 4,
+        TutorialAdvanced = 4,
         LobbyTier0 = 5,
         LobbyTier1 = 6,
         LobbyTier2 = 7,
