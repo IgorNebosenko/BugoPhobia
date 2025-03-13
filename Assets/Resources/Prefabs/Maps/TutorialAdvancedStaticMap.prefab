@@ -208,12 +208,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Game in alpha-test, so it can containce not-implemented logic and bugs.
-    Not implemented - I mark with *. bugs - please write in our <b>Discord</b> in
-    tickets section. You can use english, russian or ukranian language for this.
-
-    Also
-    in our <b>Discord</b> you can get more about game and plans for it'
+  m_text: At this moment - this <b>evidence</b> works only for doors, for windows
+    and surfaces aren't implemented yet. Exception - this window. Here evidence hold
+    on for 300 hours :)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
   m_sharedMaterial: {fileID: -8914906939226613671, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
@@ -2036,7 +2033,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6776455443672403471}
   m_Layer: 0
-  m_Name: InitialTutorialView
+  m_Name: UVTutorialView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2549,12 +2546,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Game in alpha-test, so it can containce not-implemented logic and bugs.
-    Not implemented - I mark with *. bugs - please write in our <b>Discord</b> in
-    tickets section. You can use english, russian or ukranian language for this.
-
-    Also
-    in our <b>Discord</b> you can get more about game and plans for it'
+  m_text: You can orientate by <b>color</b> of light you're radiometr. <b>Green</b>
+    - normal radiation, <b>yellow</be> - high but not evidence, <b>red</b> - is evidence
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
   m_sharedMaterial: {fileID: -8914906939226613671, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
@@ -2588,8 +2581,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 102
   m_fontStyle: 0
-  m_HorizontalAlignment: 8
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -3852,7 +3845,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: UV
+  m_text: Radiation
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
   m_sharedMaterial: {fileID: -8914906939226613671, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
@@ -5117,7 +5110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1085981407672231037}
   m_Layer: 0
-  m_Name: InitialTutorialView
+  m_Name: RadiationTutorialView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5531,14 +5524,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bugophobia is indie-horror where you need to investigate ghost type, collect
-    evidences for define which type of ghost is this.  It''s like other games about
-    <b>ghost hunting</b>. Besides evidences - some ghosts are have abilities and
-    uncommon behaivour at hunt, check it on Journal (<b>J</b>).
+  m_text: 'Radiation - one of <b>4</b> evidences which works around ghost. It accumulates
+    in micro-Roentgen system. Radiation is accumulate with time like freezing temperature
 
-    There''s now
-    <b>7</b> evidences and <b>20</b> ghosts. All, except <b>Glitch</b> have 3 evidences,
-    <b>Glitch</b> have 4.'
+    Radiation
+    has 3 states:
+
+    0-0.06 mR/h - normal
+
+    0.06-0.12 mR/h - high, but not evidence
+
+    0.12+
+    mR/h - <b>evidence</b>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
   m_sharedMaterial: {fileID: -8914906939226613671, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
@@ -5565,7 +5562,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 102
+  m_fontSize: 98.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6766,14 +6763,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bugophobia is indie-horror where you need to investigate ghost type, collect
-    evidences for define which type of ghost is this.  It''s like other games about
-    <b>ghost hunting</b>. Besides evidences - some ghosts are have abilities and
-    uncommon behaivour at hunt, check it on Journal (<b>J</b>).
+  m_text: 'Some of ghosts during interaction with doors/windows/surfaces can leave
+    <b>UV</b> fingerprints
 
-    There''s now
-    <b>7</b> evidences and <b>20</b> ghosts. All, except <b>Glitch</b> have 3 evidences,
-    <b>Glitch</b> have 4.'
+    You can see them by using <b>UV</b>-light(flashlight
+    or stick)
+
+    Fingerprints are hold on surfaces with <b>100%</b> chance for
+    <b>2</b> minutes'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
   m_sharedMaterial: {fileID: -8914906939226613671, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
