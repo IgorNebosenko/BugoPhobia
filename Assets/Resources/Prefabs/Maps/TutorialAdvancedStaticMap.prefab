@@ -65,14 +65,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bugophobia is indie-horror where you need to investigate ghost type, collect
-    evidences for define which type of ghost is this.  It''s like other games about
-    <b>ghost hunting</b>. Besides evidences - some ghosts are have abilities and
-    uncommon behaivour at hunt, check it on Journal (<b>J</b>).
-
-    There''s now
-    <b>7</b> evidences and <b>20</b> ghosts. All, except <b>Glitch</b> have 3 evidences,
-    <b>Glitch</b> have 4.'
+  m_text: Some of ghosts can interact with your <b>notebooks</b>. This is an evidence
+    like drawings on an easel or at notebooks. Picture is random, and don't show's
+    type of ghost, it's age or gender
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
   m_sharedMaterial: {fileID: -8914906939226613671, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
@@ -394,7 +389,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8548321602195675330}
   m_Layer: 0
-  m_Name: InitialTutorialView
+  m_Name: GhostWritingTutorialView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -849,12 +844,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Game in alpha-test, so it can containce not-implemented logic and bugs.
-    Not implemented - I mark with *. bugs - please write in our <b>Discord</b> in
-    tickets section. You can use english, russian or ukranian language for this.
-
-    Also
-    in our <b>Discord</b> you can get more about game and plans for it'
+  m_text: At this moment - it can <b>torch</b>  - <b>candles</b>, incense isn't implemented
+    yet
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
   m_sharedMaterial: {fileID: -8914906939226613671, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
@@ -888,8 +879,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 102
   m_fontStyle: 0
-  m_HorizontalAlignment: 8
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1308,7 +1299,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: UV
+  m_text: Freezing temperatures
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
   m_sharedMaterial: {fileID: -8914906939226613671, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
@@ -1743,7 +1734,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4436700441608719506}
   m_Layer: 0
-  m_Name: InitialTutorialView
+  m_Name: FreezingTemperatureTutorialView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2683,7 +2674,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: UV
+  m_text: Spirit Box
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
   m_sharedMaterial: {fileID: -8914906939226613671, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
@@ -3108,12 +3099,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Game in alpha-test, so it can containce not-implemented logic and bugs.
-    Not implemented - I mark with *. bugs - please write in our <b>Discord</b> in
-    tickets section. You can use english, russian or ukranian language for this.
-
-    Also
-    in our <b>Discord</b> you can get more about game and plans for it'
+  m_text: You can get <b>response</b> as text in your spirit box
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
   m_sharedMaterial: {fileID: -8914906939226613671, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
@@ -3147,8 +3133,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 102
   m_fontStyle: 0
-  m_HorizontalAlignment: 8
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -3249,7 +3235,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: UV
+  m_text: Ghost writing
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
   m_sharedMaterial: {fileID: -8914906939226613671, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
@@ -3521,7 +3507,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: UV
+  m_text: Torching
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
   m_sharedMaterial: {fileID: -8914906939226613671, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
@@ -3602,7 +3588,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1281713838085442295}
   m_Layer: 0
-  m_Name: InitialTutorialView
+  m_Name: TorchingTutorialView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4302,14 +4288,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bugophobia is indie-horror where you need to investigate ghost type, collect
-    evidences for define which type of ghost is this.  It''s like other games about
-    <b>ghost hunting</b>. Besides evidences - some ghosts are have abilities and
-    uncommon behaivour at hunt, check it on Journal (<b>J</b>).
-
-    There''s now
-    <b>7</b> evidences and <b>20</b> ghosts. All, except <b>Glitch</b> have 3 evidences,
-    <b>Glitch</b> have 4.'
+  m_text: All ghosts, include with <b>torching</b> are decreases temperature in their
+    room. Some of ghosts can make <b>evidence</b> - freezing temperature. This <b>evidence</b>
+    isn't around ghost, it's in ghost room
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
   m_sharedMaterial: {fileID: -8914906939226613671, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
@@ -4554,14 +4535,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bugophobia is indie-horror where you need to investigate ghost type, collect
-    evidences for define which type of ghost is this.  It''s like other games about
-    <b>ghost hunting</b>. Besides evidences - some ghosts are have abilities and
-    uncommon behaivour at hunt, check it on Journal (<b>J</b>).
+  m_text: 'When ghost interacts with real world - it creates <b>EMF</b> - electro-magnetic
+    fields
 
-    There''s now
-    <b>7</b> evidences and <b>20</b> ghosts. All, except <b>Glitch</b> have 3 evidences,
-    <b>Glitch</b> have 4.'
+    EMF-2 - when ghost interact with world: ghost writing,  torching,
+    etc.
+
+    EMF-3 - when it throw item
+
+    EMF-4 - ghost event
+
+    EMF-5 - with
+    <b>25%</b> chance can be on 2 or 3 level if ghost have this <b>evidence</b>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
   m_sharedMaterial: {fileID: -8914906939226613671, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
@@ -4772,14 +4757,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bugophobia is indie-horror where you need to investigate ghost type, collect
-    evidences for define which type of ghost is this.  It''s like other games about
-    <b>ghost hunting</b>. Besides evidences - some ghosts are have abilities and
-    uncommon behaivour at hunt, check it on Journal (<b>J</b>).
+  m_text: 'Ghosts can response in your <b>Spirit Box</b> if you too close to it.
 
-    There''s now
-    <b>7</b> evidences and <b>20</b> ghosts. All, except <b>Glitch</b> have 3 evidences,
-    <b>Glitch</b> have 4.'
+    If
+    you to close - you can have <b>NO RESPONSE</b> or response as evidense.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
   m_sharedMaterial: {fileID: -8914906939226613671, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
@@ -5001,7 +4982,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1105736790318214192}
   m_Layer: 0
-  m_Name: InitialTutorialView
+  m_Name: Emf5TutorialView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5312,7 +5293,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: UV
+  m_text: EMF-5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
   m_sharedMaterial: {fileID: -8914906939226613671, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
@@ -5780,14 +5761,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bugophobia is indie-horror where you need to investigate ghost type, collect
-    evidences for define which type of ghost is this.  It''s like other games about
-    <b>ghost hunting</b>. Besides evidences - some ghosts are have abilities and
-    uncommon behaivour at hunt, check it on Journal (<b>J</b>).
-
-    There''s now
-    <b>7</b> evidences and <b>20</b> ghosts. All, except <b>Glitch</b> have 3 evidences,
-    <b>Glitch</b> have 4.'
+  m_text: Angry types of <b>ghosts</b> can torch items, as like <b>candles</b>, <b>incenses</b>
+    and other
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
   m_sharedMaterial: {fileID: -8914906939226613671, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
@@ -6162,12 +6137,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Game in alpha-test, so it can containce not-implemented logic and bugs.
-    Not implemented - I mark with *. bugs - please write in our <b>Discord</b> in
-    tickets section. You can use english, russian or ukranian language for this.
-
-    Also
-    in our <b>Discord</b> you can get more about game and plans for it'
+  m_text: Ghost writing works around <b>4.5</b> meters arond ghost with some chance.
+    As default - chance is <b>50%</b>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
   m_sharedMaterial: {fileID: -8914906939226613671, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
@@ -6201,8 +6172,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 102
   m_fontStyle: 0
-  m_HorizontalAlignment: 8
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -6378,12 +6349,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Game in alpha-test, so it can containce not-implemented logic and bugs.
-    Not implemented - I mark with *. bugs - please write in our <b>Discord</b> in
-    tickets section. You can use english, russian or ukranian language for this.
-
-    Also
-    in our <b>Discord</b> you can get more about game and plans for it'
+  m_text: <b>Freezing temperature</b> is easy for define <b>evidence</b>, so if you
+    find it - you find ghost <b>room</b>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
   m_sharedMaterial: {fileID: -8914906939226613671, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
@@ -6417,8 +6384,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 102
   m_fontStyle: 0
-  m_HorizontalAlignment: 8
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -6622,12 +6589,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Game in alpha-test, so it can containce not-implemented logic and bugs.
-    Not implemented - I mark with *. bugs - please write in our <b>Discord</b> in
-    tickets section. You can use english, russian or ukranian language for this.
+  m_text: '<b>EMF</b> is works on cylinder or sphere <b>trigger</b>, so it works
+    only in interaction floor
 
-    Also
-    in our <b>Discord</b> you can get more about game and plans for it'
+    <b>EMF-5</b> isn''t display dangerous from ghost,
+    so not need to scary from it'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
   m_sharedMaterial: {fileID: -8914906939226613671, guid: cd805655da06e4d4b8b4b283b948b632, type: 2}
@@ -6661,8 +6627,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 102
   m_fontStyle: 0
-  m_HorizontalAlignment: 8
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
