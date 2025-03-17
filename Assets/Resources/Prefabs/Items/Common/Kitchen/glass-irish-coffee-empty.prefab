@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5276593154498601934}
   - component: {fileID: 3598890260663236544}
   - component: {fileID: 5485105976816165709}
-  - component: {fileID: 2931182649499814452}
+  - component: {fileID: -5524428217617256060}
   - component: {fileID: 5153251684805894444}
   - component: {fileID: 7663286860920011161}
   m_Layer: 6
@@ -89,8 +89,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2931182649499814452
-MeshCollider:
+--- !u!65 &-5524428217617256060
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -107,10 +107,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -4402868137636910709, guid: ed113eb9a5c67574cae0b684e1f5ea75, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.10562496, y: 0.14821644, z: 0.07575829}
+  m_Center: {x: -0.014933333, y: 0.07410822, z: 0}
 --- !u!114 &5153251684805894444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,8 +123,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <PhysicObject>k__BackingField: {fileID: 7663286860920011161}
-  <Collider>k__BackingField: {fileID: 2931182649499814452}
+  <Collider>k__BackingField: {fileID: -5524428217617256060}
   <ItemType>k__BackingField: 1044
+  <CollisionThrowSound>k__BackingField: 0
 --- !u!54 &7663286860920011161
 Rigidbody:
   m_ObjectHideFlags: 0
