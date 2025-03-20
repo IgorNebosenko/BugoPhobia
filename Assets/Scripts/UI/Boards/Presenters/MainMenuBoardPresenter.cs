@@ -31,14 +31,12 @@ namespace ElectrumGames.UI.Boards.Presenters
 
         public void OnDemoClicked()
         {
-            _missionDataHandler.MissionMap = MissionMap.DemoHouse;
-            _missionDataHandler.PlayerJournalId = 0;
-
-            SceneManager.LoadSceneAsync((int)_missionDataHandler.MissionMap);
+            boardsUiController.ShowBoardWithType(DisplayBoardsMenu.DemoSelector);
         }
 
         public void OnMultiPlayerClicked()
         {
+            boardsUiController.ShowBoardWithType(DisplayBoardsMenu.MultiPlayer);
         }
 
         public void OnTutorialClicked()
@@ -49,6 +47,11 @@ namespace ElectrumGames.UI.Boards.Presenters
         public void OnSettingsClicked()
         {
             _viewManager.ShowView<SettingsPresenter>();
+        }
+
+        public void OnSpecialThanksClicked()
+        {
+            boardsUiController.ShowBoardWithType(DisplayBoardsMenu.SpecialThanks);
         }
 
         public void OnAboutClicked()

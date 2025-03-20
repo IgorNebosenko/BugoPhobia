@@ -12,6 +12,7 @@ namespace ElectrumGames.UI.Boards.Views
         [SerializeField] private Button multiPlayerButton;
         [SerializeField] private Button tutorialButton;
         [SerializeField] private Button settingsButton;
+        [SerializeField] private Button specialThanksButton;
         [SerializeField] private Button aboutUsButton;
         [SerializeField] private Button exitButton;
         [Space]
@@ -36,6 +37,7 @@ namespace ElectrumGames.UI.Boards.Views
             multiPlayerButton.onClick.AddListener(presenter.OnMultiPlayerClicked);
             tutorialButton.onClick.AddListener(presenter.OnTutorialClicked);
             settingsButton.onClick.AddListener(presenter.OnSettingsClicked);
+            specialThanksButton.onClick.AddListener(presenter.OnSpecialThanksClicked);
             aboutUsButton.onClick.AddListener(presenter.OnAboutClicked);
             exitButton.onClick.AddListener(presenter.OnExitClicked);
             
@@ -50,6 +52,7 @@ namespace ElectrumGames.UI.Boards.Views
             multiPlayerButton.onClick.RemoveListener(presenter.OnMultiPlayerClicked);
             tutorialButton.onClick.RemoveListener(presenter.OnTutorialClicked);
             settingsButton.onClick.RemoveListener(presenter.OnSettingsClicked);
+            specialThanksButton.onClick.RemoveListener(presenter.OnSpecialThanksClicked);
             aboutUsButton.onClick.RemoveListener(presenter.OnAboutClicked);
             exitButton.onClick.RemoveListener(presenter.OnExitClicked);
             

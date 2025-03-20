@@ -4,7 +4,9 @@
     {
         MainMenu = 0,
         SinglePlayer,
+        DemoSelector,
         MultiPlayer,
+        SpecialThanks,
         AboutUs,
         HuntResult = 10
     }
